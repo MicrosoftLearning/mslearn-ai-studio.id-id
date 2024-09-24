@@ -11,6 +11,10 @@ Dalam latihan ini, Anda akan menjelajahi pengaruh filter konten default dalam Az
 
 Latihan ini akan memakan waktu sekitar **25** menit.
 
+## Sebelum memulai
+
+Untuk menyelesaikan latihan ini, langganan Azure Anda harus disetujui untuk akses ke layanan Azure OpenAI. Isi [formulir pendaftaran](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) untuk meminta akses ke model Azure OpenAI.
+
 ## Membuat Azure AI Hub
 
 Anda memerlukan Azure AI Hub di langganan Azure Anda untuk menghosting proyek. Anda dapat membuat sumber daya ini saat membuat proyek, atau menyediakannya sebelumnya (yang akan kita lakukan dalam latihan ini).

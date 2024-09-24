@@ -11,6 +11,10 @@ Dalam latihan ini, Anda akan menjelajahi katalog model di Azure AI Studio.
 
 Latihan ini akan memakan waktu sekitar **25** menit.
 
+## Sebelum memulai
+
+Untuk menyelesaikan latihan ini, langganan Azure Anda harus disetujui untuk akses ke layanan Azure OpenAI. Isi [formulir pendaftaran](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) untuk meminta akses ke model Azure OpenAI.
+
 ## Membuat Azure AI hub
 
 Anda memerlukan hub Azure AI di langganan Azure Anda untuk menghosting proyek. Anda dapat membuat sumber daya ini saat membuat proyek, atau menyediakannya sebelumnya (yang akan kita lakukan dalam latihan ini).
@@ -74,7 +78,7 @@ Salinan Anda perlu memberikan informasi yang akurat secara faktual, jadi grounde
 1. Di Azure AI Studio, navigasikan ke **Tolok ukur Model** di bawah bagian **Memulai** , menggunakan menu di sebelah kiri.
     Di tab **Tolok ukur kualitas** Anda dapat menemukan beberapa bagan yang sudah divisualisasikan untuk Anda, membandingkan model yang berbeda.
 1. Filter model yang ditampilkan:
-    - **Tugas**: Jawaban atas pertanyaan
+    - **Tugas**: Jawaban atas Pertanyaan
     - **Koleksi**: Azure OpenAI
     - **Metrik**: Koherensi, Kefasihan, Groundedness
 1. Jelajahi bagan yang dihasilkan dan tabel perbandingan. Saat menjelajahi, Anda dapat mencoba dan menjawab pertanyaan berikut:
@@ -93,7 +97,7 @@ Sekarang setelah Anda menjelajahi opsi Anda melalui tolok ukur model, Anda siap 
 Mari kita mulai dengan menyebarkan model dari katalog Model. Anda mungkin lebih suka opsi ini ketika Anda ingin memfilter semua model yang tersedia.
 
 1. Navigasikan ke halaman **Katalog model** di bawah bagian **Memulai** , menggunakan menu di sebelah kiri.
-1. Cari dan sebarkan `gpt-35-turbo` model, yang dikumpulkan oleh Azure AI, dengan pengaturan berikut:
+1. Cari dan sebarkan `gpt-35-turbo` midel, yang dikumpulkan oleh Azure AI, dengan pengaturan berikut:
     - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda, mengindikasikan bahwa itu model GPT-3.5*
     - **Versi model**: *Pilih versi default*
     - **Tipe penyebaran**: Standar
@@ -105,7 +109,7 @@ Mari kita mulai dengan menyebarkan model dari katalog Model. Anda mungkin lebih 
 
 Jika Anda sudah tahu persis model mana yang ingin Anda sebarkan, Anda mungkin lebih suka melakukannya melalui Penyebaran.
 
-1. Navigasikan ke halaman **Penyebaran** di bawah bagian **Komponen** , menggunakan menu di sebelah kiri.
+1. Navigasi ke halaman **Penyebaran** di bawah bagian **Komponen** , menggunakan menu di sebelah kiri.
 1. Pada tab **Penyebaran model** ,buat penyebaran model baru dengan pengaturan berikut:
     - **Model**: gpt 4
     - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda mengindikasikan bahwa itu model GPT-4*
@@ -119,9 +123,9 @@ Jika Anda sudah tahu persis model mana yang ingin Anda sebarkan, Anda mungkin le
 
 ## Menguji model di taman bermain obrolan
 
-Sekarang setelah kita memiliki dua model untuk dibandingkan, mari kita lihat bagaimana model bersikap dalam interaksi percakapan.
+Sekarang setelah kita memiliki dua model untuk dibandingkan, mari kita lihat bagaimana model bersifat dalam interaksi percakapan.
 
-1. Navigasikan ke halaman **Obrolan** di bawah bagian **Proyek playground** , menggunakan menu di sebelah kiri.
+1. Navigasi ke halaman **Obrolan** di bawah bagian **Proyek playground** , menggunakan menu di sebelah kiri.
 1. Di **Taman bermain obrolan**, pilih penyebaran GPT-3.5 Anda.
 1. Di jendela obrolan, masukkan kueri `What can you do?` dan lihat responnya.
     Jawabannya sangat umum. Ingatlah kita ingin membuat salinan kustom yang berfungsi sebagai asisten perjalanan. Anda dapat menentukan jenis bantuan apa yang Anda inginkan dalam pertanyaan yang Anda ajukan.
@@ -134,13 +138,13 @@ Sekarang setelah kita memiliki dua model untuk dibandingkan, mari kita lihat bag
 
 1. Pilih **Terapkan perubahan**, dan **Hapus obrolan**.
 1. Di jendela obrolan, masukkan kueri `What can you do?` dan tampilkan respons baru. Amati perbedaannya dengan jawaban yang Anda terima sebelumnya. Jawabannya khusus untuk perjalanan sekarang.
-1. Lanjutkan percakapan dengan bertanya: `I'm planning a trip to London, what can I do there?` Salinan menawarkan banyak informasi terkait perjalanan. Anda mungkin ingin memperbaiki outputnya. Misalnya, Anda mungkin ingin jawabannya lebih ringkas.
+1. Lanjutkan percakapan dengan bertanya: `I'm planning a trip to London, what can I do there?` Salinan menawarkan banyak informasi terkait perjalanan. Anda mungkin ingin meningkatkan output masih. Misalnya, Anda mungkin ingin jawabannya lebih ringkas.
 1. Perbarui pesan sistem dengan menambahkan `Answer with a maximum of two sentences.` ke akhir pesan. Terapkan perubahan, hapus obrolan, dan uji obrolan lagi dengan bertanya: `I'm planning a trip to London, what can I do there?` Anda mungkin juga ingin salinan Anda melanjutkan percakapan alih-alih hanya menjawab pertanyaan.
 1. Perbarui pesan sistem dengan menambahkan `End your answer with a follow-up question.` ke akhir pesan. Terapkan perubahan, kosongkan obrolan, dan uji obrolan lagi dengan bertanya: `I'm planning a trip to London, what can I do there?`
 1. Ubah **Penyebaran** Anda ke model GPT-4 Anda dan ulangi semua langkah di bagian ini. Perhatikan bagaimana model dapat bervariasi dalam outputnya.
 1. Terakhir, uji kedua model pada kueri `Who is the prime minister of the UK?`. Performa pada pertanyaan ini terkait dengan groundedness (apakah responsnya akurat secara faktual) dari model. Apakah performa berkorelasi dengan kesimpulan Anda dari tolok ukur Model?
 
-Sekarang setelah Anda menjelajahi kedua model, pertimbangkan model apa yang akan Anda pilih sekarang untuk kasus penggunaan Anda. Pada awalnya, output dari model mungkin berbeda, dan Anda mungkin lebih suka satu model daripada yang lain. Namun, setelah memperbarui pesan sistem, Anda mungkin melihat bahwa perbedaannya minimal. Dari perspektif pengoptimalan biaya, Anda kemudian dapat memilih model GPT-3.5 daripada model GPT-4, karena performanya sangat mirip.
+Sekarang setelah Anda menjelajahi kedua model, pertimbangkan model apa yang akan Anda pilih sekarang untuk kasus penggunaan Anda. Pada awalnya, output dari model mungkin berbeda, dan Anda mungkin lebih suka satu model daripada yang lain. Namun, setelah memperbarui pesan sistem, Anda mungkin melihat bahwa perbedaannya minimal. Dari perspektif pengoptimalan biaya, Anda kemudian dapat memilih model GPT-3.5 atas model GPT-4, karena performanya sangat mirip.
 
 ## Penghapusan
 
