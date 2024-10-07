@@ -13,7 +13,6 @@ Latihan ini akan memakan waktu sekitar **90** menit.
 
 Untuk menyelesaikan latihan ini, Anda perlu:
 
-- Anda memerlukan langganan Azure yang telah disetujui untuk mendapatkan akses ke layanan Azure OpenAI. Isi [formulir pendaftaran](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access?WT.mc_id=academic-140829-cacaste) untuk meminta akses ke model Azure OpenAI.
 - Akun GitHub untuk membuat fork repositori proyek dan mengujinya di lingkungan GitHub Codespaces. Buat akun gratis [di GitHub](https://github.com/).
 - Tingkat dasar Azure AI Search untuk mengaktifkan Semantic Ranker. Pelajari selengkapnya tentang [detail harga Pencarian AI](https://azure.microsoft.com/pricing/details/search/).
 - Untuk menyebarkan tiga model OpenAI (`gpt-35-turbo`, `gpt-4`, `text-embedding-ada-002`). Agar dapat menyebarkan model, Anda perlu membuat hub AI di wilayah dengan kuota yang memadai. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models?WT.mc_id=academic-140829-cacaste#model-summary-table-and-region-availability)
@@ -32,33 +31,33 @@ Dengan memilih tautan proyek yang disertakan dalam koleksi, Anda akan diarahkan 
 
 ![Arsitektur Obrolan Contoso](./media/contoso_chat_architecture.png)
 
-## Menggunakan Visual Studio Codespaces
+## Mengatur GitHub Codespaces
 
 Dalam latihan ini Anda akan menggunakan [GitHub Codespaces](https://github.com/features/codespaces), fitur GitHub yang memungkinkan Anda meluncurkan [kontainer pengembangan](https://docs.github.com/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers) yang dihosting cloud yang telah dikonfigurasi sebelumnya langsung dari repositori Anda, dengan satu klik. Dengan cara ini, Anda dapat dengan cepat memulai pengodean tanpa harus menyiapkan lingkungan pengembangan lokal Anda, karena Codespaces sudah memiliki semua alat dan dependensi yang diperlukan yang telah diinstal sebelumnya.
 
 Untuk menginisialisasi lingkungan pengembangan Anda, ikuti langkah-langkah di bawah ini:
 
 1. **Fork repositori**: Pilih tombol **Fork** di sudut kanan atas halaman repositori GitHub untuk membuat salinan repositori di akun GitHub Anda.
-1. Setelah Anda memiliki repositori fork, pilih tombol **Kode** dan pilih **Codespace.**
+1. Setelah Anda memiliki repositori fork, pilih tombol **Kode** dan pilih **Codespaces**.
 1. Pilih tombol **+** untuk membuat codespace baru di cabang utama repositori fork Anda.
 
-    ![Membuat Visual Studio Codespaces](./media/create_codespaces.png)
+    ![Membuat GitHub Codespaces](./media/create_codespaces.png)
 
 1. Dalam beberapa detik, Anda akan diarahkan ke tab browser baru di mana lingkungan Codespaces disiapkan dengan [editor Visual Studio Code terlampir](https://code.visualstudio.com/docs/devcontainers/containers) secara default. Anda dapat terus bekerja di tab browser, atau menyambungkan kembali ke Codespace yang sedang berjalan dari editor Visual Studio Code lokal Anda dengan mengklik tombol **Buka di Visual Studio Code Desktop** dari menu kiri atas.
 
-## Menyambungkan lingkungan Visual Studio Code ke Azure
+## Menyambungkan lingkungan VS Code ke Azure
 
 Langkah selanjutnya adalah menyambungkan lingkungan pengembangan lokal Anda dengan langganan Azure tempat Anda ingin menyebarkan proyek. Mulailah dengan membuka terminal baru di IDE Visual Studio Code Anda.
 
 1. Pertama, verifikasi bahwa [versi terbaru](https://github.com/Azure/azure-dev/releases/tag/azure-dev-cli_1.9.3) Azure Developer CLI diinstal.
     ```bash
-        azd version
+    azd version
     ```
 
-1. Selanjutnya, masuk ke Akun Azure Anda dari terminal Visual Studio Code.
+1. Selanjutnya, masuk ke Akun Azure Anda dari terminal VS Code.
 
     ```bash
-        azd auth login 
+    azd auth login 
     ```
 
 ## Memprovisikan sumber daya Azure untuk proyek Anda
@@ -68,21 +67,21 @@ Setelah masuk, Anda siap untuk mulai menyediakan sumber daya Azure untuk proyek 
 1. Provisikan *dan sebarkan* aplikasi AI Anda menggunakan azd.
 
     ```bash
-        azd up
+    azd up
     ```
 
-1. Anda akan melihat permintaan berikut: Tanggapi menggunakan panduan di bawah ini:
+1. Anda akan melihat perintah berikut: Tanggapi menggunakan panduan di bawah ini:
     - **Masukkan nama lingkungan baru:***Digunakan untuk membuat nama grup sumber daya Anda*.
     - **Pilih Langganan Azure yang akan digunakan**: *Pilih langganan yang memiliki akses ke model Azure OpenAI*.
     - **Pilih lokasi Azure yang akan digunakan**: *Pilih lokasi dengan kuota model yang tersedia*.
 
     > Gunakan [tabel ringkasan model dan ketersediaan wilayah](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?WT.mc_id=academic-140829-cacaste#model-summary-table-and-region-availability) untuk menemukan wilayah yang Anda butuhkan. Misalnya, Anda dapat menggunakan `sweden central` sebagai lokasi Azure karena ini adalah wilayah di mana sebagian besar model Azure OpenAI tersedia.
 
-## Validasikan provisi dengan menggunakan portal Azure
+## Validasikan provisi dengan menggunakan Portal Azure
 
 Provisi dan penyebaran aplikasi AI menggunakan azd dapat memakan waktu 10 menit atau lebih untuk menyelesaikannya. Anda dapat melacak kemajuan dengan:
 
-- Menampilkan Penyedia sumber daya di [Portal Azure](https://ms.portal.azure.com/). Cari grup sumber daya yang sesuai dengan nama lingkungan Anda. Pilih opsi **Penyebaran** di bar samping, lalu pantau status penyebaran sumber daya yang sedang dibuat.
+- Menampilkan Penyedia sumber daya di [Portal Azure](https://ms.portal.azure.com/). Cari grup sumber daya yang sesuai dengan nama lingkungan Anda. Pilih opsi **Penyebaran** di bilah sisi, lalu pantau status penyebaran sumber daya yang sedang dibuat.
 - Mengunjungi portal [Azure AI Studio](https://ai.azure.com) . Masuk menggunakan akun Azure Anda. Cari hub AI yang sesuai dengan grup sumber daya di atas (Anda mungkin perlu menyegarkan beberapa kali). Pilih proyek AI yang tercantum, lalu pilih **Penyebaran** di bilah sampingnya untuk melacak status untuk model dan penyebaran aplikasi obrolan.
 
 Mari kita jelajahi cara memvalidasi provisi sumber daya menggunakan Portal Azure.
@@ -95,7 +94,7 @@ Mari kita jelajahi cara memvalidasi provisi sumber daya menggunakan Portal Azure
 1. Mari kita mulai dengan memverifikasi bahwa sumber daya [arsitektur Azure AI Studio](https://learn.microsoft.com/azure/ai-studio/concepts/architecture) telah dibuat. Gambar di bawah ini memberikan detail lebih lanjut tentang apa yang disediakan masing-masing sumber daya ini ke aplikasi AI kami.
 
     - **Hub Azure AI**: Sumber daya Azure tingkat atas. Menyediakan lingkungan kolaborasi untuk tim.
-    - **Proyek Azure AI**: Anak hub. Mengelompokkan komponen aplikasi untuk orkestrasi, kustomisasi.
+    - **Proyek Azure AI**: Turunan hub. Mengelompokkan komponen aplikasi untuk orkestrasi, kustomisasi.
     - **Layanan Azure AI**: Mengelola titik akhir model Anda.
 
     ![Arsitektur Azure AI Studio](./media/resource-provider-connected-resources.svg)
@@ -108,16 +107,16 @@ Mari kita jelajahi cara memvalidasi provisi sumber daya menggunakan Portal Azure
 1. Selanjutnya, kita dapat memvalidasi bahwa kita memiliki sumber daya pendukung untuk mengelola kebutuhan aplikasi AI kita:
 
     - **Application Insights**: Untuk mendukung pemantauan dan telemetri untuk aplikasi yang disebarkan.
-    - **Container Registry**: Untuk menyimpan dan mengelola gambar Docker yang digunakan dalam proyek, secara privat.
+    - **Registri Kontainer**: Untuk menyimpan dan mengelola gambar Docker yang digunakan dalam proyek, secara privat.
     - **Brankas kunci**: Untuk menyimpan rahasia proyek (kunci, kredensial) dengan aman.
     - **Akun penyimpanan**: Untuk menyimpan data yang terkait dengan manajemen proyek AI (termasuk log).
-    - **Aturan pemberitahuan detektor pintar**: Detektor anomali Application Insights (untuk permintaan).
+    - **Aturan peringatan detektor pintar**: Detektor anomali Application Insights (untuk permintaan).
 
 1. Terakhir tetapi tidak kalah pentingnya, Anda akan melihat sumber daya baru dengan jenis **penyebaran online pembelajaran mesin**. Ini adalah sumber daya yang sesuai dengan titik akhir proyek Azure AI yang disebarkan (untuk salinan obrolan).
 
 ## Memvalidasi penyebaran menggunakan Azure AI Studio
 
-Portal Azure membantu Anda mengelola sumber daya Azure yang mendasar untuk proyek Anda. Portal Azure AI Studio membantu Anda *membangun dan mengelola* proyek AI itu sendiri, end-to-end, dari pemilihan model hingga penyebaran aplikasi. Perintah `azd up` harus telah menyelesaikan seluruh proses dari provisi model yang diperlukan, hingga menyebarkan dan menghosting titik akhir API salinan untuk penggunaan. Mari kita validasi bahwa aplikasi berfungsi seperti yang diharapkan.
+Portal Azure membantu Anda mengelola sumber daya Azure yang mendasar untuk proyek Anda. Portal Azure AI Studio membantu Anda *membangun dan mengelola* proyek AI itu sendiri, menyeluruh, dari pemilihan model hingga penyebaran aplikasi. Perintah `azd up` harus telah menyelesaikan seluruh proses dari provisi model yang diperlukan, hingga menyebarkan dan menghosting titik akhir API salinan untuk penggunaan. Mari kita validasi bahwa aplikasi berfungsi seperti yang diharapkan.
 
 1. Kunjungi halaman **Kelola** di [Azure AI Studio](https://ai.azure.com/manage) untuk melihat semua hub Azure AI di langganan Anda.
 1. Pilih hub untuk grup sumber daya Anda untuk melihat semua proyek Azure AI di dalamnya.
@@ -145,7 +144,7 @@ Untuk memvalidasi bahwa salinan yang disebarkan berfungsi, gunakan kemampuan pla
 1. Untuk saat ini, uji penyebaran salinan dengan **Input**pengujian berikut:
 
     ```bash
-      {"question": "tell me about your hiking shoes", "customerId": "2", "chat_history": []}
+    {"question": "tell me about your hiking shoes", "customerId": "2", "chat_history": []}
     ```
 
 Anda harus mendapatkan respons JSON yang valid dalam komponen output seperti yang ditunjukkan.
@@ -194,16 +193,16 @@ Perintah **azd up** tidak hanya menyediakan dan menyebarkan aplikasi ke Azure, p
 1. Verifikasi bahwa Anda memiliki **alat Alur prompt** yang terinstal di lingkungan pengembangan Anda.
 
     ```bash
-        pf version
+    pf version
     ```
 
 1. Gunakan **alat uji alur pf** untuk menguji **aplikasi aliran fleksibel contoso_chat** secara lokal, dengan pertanyaan sampel di bawah ini. Perhatikan sintaks perintah untuk meneruskan input:
 
     ```bash
-        pf flow test --flow ./contoso_chat --inputs question="tell me about your jackets" customerId="3" chat_history=[]
+    pf flow test --flow ./contoso_chat --inputs question="tell me about your jackets" customerId="3" chat_history=[]
     ```
 
-Anda akan menerima respons .
+Anda seharusnya menerima respons seperti ini:
 
 ![Contoh output Apl:](./media/example_app_output.png)
 
@@ -212,7 +211,7 @@ Anda akan menerima respons .
 1. Anda dapat melacak detail eksekusi Anda dengan bendera seperti yang `--ui` ditunjukkan di bawah ini.
 
     ```bash
-        pf flow test --flow ./contoso_chat --inputs question="tell me about your jackets" customerId="3" chat_history=[] --ui
+    pf flow test --flow ./contoso_chat --inputs question="tell me about your jackets" customerId="3" chat_history=[] --ui
     ```
 
 Perintah ini harus meluncurkan **tampilan jejak** di browser Anda (di tab baru) dengan tabel yang menyediakan detail tingkat tinggi tentang eksekusi pengujian tersebut termasuk latensi dan penggunaan token.
@@ -264,7 +263,7 @@ deployment/                         # ai.endpoint config files (named in azure.y
 requirements.txt
 ```
 
-Saat Anda ingin mengkustomisasi kode:
+Saat Anda ingin menyesuaikan kode:
 
 - Jika Anda membuat perubahan aplikasi (dalam `contoso_chat/`) cukup jalankan `azd deploy` untuk menyebarkan ulang aplikasi ke backend yang disediakan sebelumnya. Tidak diperlukan langkah-langkah provisi ulang atau intervensi manual tambahan.
 - Jika Anda membuat perubahan sumber daya (dalam `infra/` folder) maka jalankan `azd up` untuk memprovisikan ulang dan menyebarkan ulang aplikasi. Ini akan secara otomatis mengambil nilai konfigurasi anda sebelumnya dari `.azure/` dan memodifikasinya.
@@ -275,24 +274,24 @@ Saatnya untuk membangun salinan kustom Anda sendiri. Berikut adalah beberapa hal
 
 Ingatlah untuk setiap opsi ini:
 
-- Gunakan `azd deploy` untuk menyebarkan ulang aplikasi Jika Anda hanya mengubah kode aplikasi.
+- Gunakan `azd deploy` untuk menyebarkan ulang aplikasi jika Anda hanya mengubah kode aplikasi.
 - Gunakan `azd up` untuk memprovisikan ulang dan menyebarkan ulang aplikasi jika Anda mengubah konfigurasi sumber daya.
 
 ### Menyesuaikan data riwayat pelanggan dan pesanan
 
 1. Tinjau data sampel di bawah **data/customer_info** untuk merasakan skema default.
-1. Jelajahi **notebook data/create-cosmos-db.ipynb** untuk pendekatan kode-pertama untuk pembaruan data.
-1. **Ubah** data sampel dan **jalankan** notebook untuk mengubah database Azure CosmosDB default.
+1. Jelajahi buku catatan **data/create-cosmos-db.ipynb** untuk pendekatan kode-pertama untuk pembaruan data.
+1. **Ubah** data sampel dan **jalankan** buku catatan untuk mengubah database Azure CosmosDB default.
 1. **Sebarkan** ulang aplikasi. Coba pertanyaan pengujian untuk memvalidasi bahwa data pelanggan baru dikembalikan.
 
 ### Menyesuaikan data katalog produk
 
 1. Tinjau data sampel di bawah **data/product_info/** untuk merasakan skema default.
-1. Jelajahi **notebook create-azure-search.ipynb** untuk pendekatan code-first untuk mengindeks pembaruan.
+1. Jelajahi buku catatan **create-azure-search.ipynb** untuk pendekatan code-first untuk mengindeks pembaruan.
 1. **Ubah** data sampel dan **jalankan** buku catatan untuk mengubah indeks Pencarian Azure AI default.
 1. **Sebarkan** ulang aplikasi. Coba pertanyaan pengujian untuk memvalidasi bahwa data produk baru dikembalikan.
 
-### Mengkustomisasi templat perintah
+### Sesuaikan templat perintah
 
 1. Tinjau file **contoso_chat/chat.prompty** untuk merasakan templat prompt default.
 1. Tinjau **contoso_chat/chat.json** untuk memahami skema data sampel untuk pengujian.
@@ -310,14 +309,14 @@ Ganti himpunan data pengujian yang digunakan untuk menjalankan alur evaluasi apl
 
     Alur evaluasi akan berjalan secara otomatis, dan Anda dapat memeriksa hasilnya di tab Tindakan GitHub di repositori Anda.
 
-1. Anda dapat menyesuaikan alur evaluasi dengan memodifikasi **file evaluate.yaml** di **folder .github/workflows** proyek dan **skrip evaluations_chat.py** di **folder evaluasi** .
+1. Anda dapat menyesuaikan alur evaluasi dengan memodifikasi file **evaluate.yaml** di folder **github/workflows** proyek dan skrip **evaluations_chat.py** di folder **evaluasi** .
 
-## Membersihkan sumber daya dan menghapus.
+## Membersihkan dan menghapus sumber daya Azura
 
-Proyek ini menggunakan model dan layanan (misalnya Azure AI Search) yang dapat dikenakan biaya non-sepele jika dibiarkan berjalan dalam jangka panjang. Setelah selesai menjelajahi templat Azure AI AZD ini, Anda harus menghapus sumber daya yang telah Anda buat untuk menghindari biaya Azure yang tidak perlu. Anda dapat melakukannya dengan menjalankan perintah berikut di terminal VS Code:
+Proyek ini menggunakan model dan layanan (misalnya Pencarian Azure AI) yang dapat dikenakan biaya yang tidak sepele jika dibiarkan berjalan dalam jangka panjang. Setelah selesai menjelajahi templat Azure AI AZD ini, Anda harus menghapus sumber daya yang telah Anda buat untuk menghindari biaya Azure yang tidak perlu. Anda dapat melakukannya dengan menjalankan perintah berikut di terminal VS Code:
 
 ```bash
-    azd down
+azd down
 ```
 
 Ini tidak hanya membalikkan langkah-langkah yang diambil untuk memprovisikan dan menyebarkan aplikasi, tetapi juga mengambil langkah tambahan untuk *membersihkan* sumber daya yang mungkin disimpan dalam status "penghapusan sementara", yang memengaruhi kemampuan Anda untuk menggunakan kembali nama sumber daya atau mengklaim kembali kuota model. **Perintah ini akan meminta Anda tentang tindakan ini selama pematian - jadi pastikan Anda merespons dengan benar**.
