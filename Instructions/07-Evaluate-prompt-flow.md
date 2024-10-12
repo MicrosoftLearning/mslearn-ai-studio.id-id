@@ -1,17 +1,13 @@
 ---
 lab:
-  title: Evaluasi performa salinan kustom Anda di Azure AI Studio
+  title: Mengevaluasi performa salinan kustom Anda di Azure AI Studio
 ---
 
-# Evaluasi performa salinan kustom Anda di Azure AI Studio
+# Mengevaluasi performa salinan kustom Anda di Azure AI Studio
 
 Dalam latihan ini, Anda akan menjelajahi evaluasi bawaan dan kustom untuk menilai dan membandingkan performa aplikasi AI Anda dengan Azure AI Studio.
 
 Latihan ini akan memakan waktu sekitar **30** menit.
-
-## Sebelum memulai
-
-Untuk menyelesaikan latihan ini, langganan Azure Anda harus disetujui untuk akses ke layanan Azure OpenAI. Isi [formulir pendaftaran](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) untuk meminta akses ke model Azure OpenAI.
 
 ## Membuat hub dan proyek AI di Azure AI Studio
 
@@ -86,8 +82,8 @@ Sekarang setelah Anda memiliki model yang disebarkan dengan pesan sistem yang di
 
 Anda dapat meninjau respons model secara manual berdasarkan data pengujian. Peninjauan secara manual memungkinkan Anda menguji input yang berbeda satu per satu untuk mengevaluasi apakah model berfungsi seperti yang diharapkan.
 
-1. Di **taman bermain Obrolan**, pilih menu dropdown **Evaluasi** dari bilah atas, dan pilih **Evaluasi manual**.
-1. Ubah **Pesan sistem** ke pesan yang sama seperti yang Anda gunakan di atas (disertakan di sini lagi):
+1. Di **taman bermain Obrolan**, pilih menu dropdown **Evaluasi**  dari bilah atas, dan pilih **Evaluasi manual**.
+1. Ubah **Pesan sistem** ke pesan yang sama seperti yang Anda gunakan di atas (sertakan di sini lagi):
 
    ```
    **Objective**: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
@@ -131,11 +127,11 @@ Ketika Anda telah membuat salinan dengan alur obrolan, Anda dapat mengevaluasi a
 
 1. Pilih tab **Evaluasi otomatis** dan buat **Evaluasi baru** dengan pengaturan berikut: <details>  
       <summary><b>Tips pemecahan masalah</b>: Kesalahan izin</summary>
-        <p>Jika Anda menerima kesalahan izin saat membuat alur permintaan baru, coba langkah berikut untuk memecahkan masalah:</p>
+        <p>Jika Anda menerima kesalahan izin saat membuat alur perintah baru, coba langkah berikut untuk memecahkan masalah:</p>
         <ul>
-          <li>Di portal Azure, pilih sumber daya Layanan AI.</li>
+          <li>Di portal Azure, pilih Penjelajah Sumber Daya dari Semua Layanan.</li>
           <li>Pada halaman IAM, di tab Identitas, konfirmasikan bahwa itu adalah identitas terkelola yang ditetapkan sistem.</li>
-          <li>Navigasikan ke Akun Penyimpanan. Pada halaman IAM, tambahkan penetapan peran <em>Pembaca data blob penyimpanan</em>.</li>
+          <li>Lakukan navigasi ke Akun Penyimpanan. Pada halaman IAM, tambahkan penetapan peran <em>Pembaca data blob penyimpanan</em>.</li>
           <li>Di bawah <strong>Tetapkan akses ke</strong>, pilih <strong>Identitas Terkelola</strong>, <strong>+ Pilih anggota</strong>, dan pilih <strong>Semua identitas terkelola yang ditetapkan sistem</strong>.</li>
           <li>Tinjau dan tetapkan untuk menyimpan pengaturan baru dan coba lagi langkah sebelumnya.</li>
         </ul>

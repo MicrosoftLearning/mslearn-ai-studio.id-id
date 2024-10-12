@@ -9,10 +9,6 @@ Dalam latihan ini, Anda akan menyempurnakan model bahasa dengan Azure AI Studio 
 
 Latihan ini akan memakan waktu sekitar **45** menit.
 
-## Sebelum memulai
-
-Untuk menyelesaikan latihan ini, langganan Azure Anda harus disetujui untuk akses ke layanan Azure OpenAI. Isi [formulir pendaftaran](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) untuk meminta akses ke model Azure OpenAI.
-
 ## Membuat hub dan proyek AI di Azure AI Studio
 
 Anda mulai dengan membuat proyek Azure AI Studio dalam hub Azure AI:
@@ -76,7 +72,7 @@ Saat penyempurnaan telah berhasil diselesaikan, Anda dapat menyebarkan model.
 Setelah menyebarkan model yang disempurnakan, Anda dapat menguji model seperti Anda dapat menguji model lain yang disebarkan.
 
 1. Saat penyebaran siap, navigasikan ke model yang disempurnakan dan pilih **Buka di taman bermain**.
-1. Di jendela obrolan, masukkan kueri `What can you do?` Pemberitahuan bahwa meskipun Anda tidak menentukan pesan sistem untuk menginstruksikan model Anda untuk menjawab pertanyaan terkait perjalanan, model sudah memahami apa yang harus difokuskannya.
+1. Di jendela obrolan, masukkan kueri `What can you do?` Perhatikan bahwa meskipun Anda tidak menentukan pesan sistem untuk menginstruksikan model Anda untuk menjawab pertanyaan yang berhubungan dengan perjalanan, model sudah memahami apa yang harus difokuskan.
 1. Coba dengan kueri lain seperti `Where should I go on holiday for my 30th birthday?`
 
 ## Menghapus sumber daya Azure

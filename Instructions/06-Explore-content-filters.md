@@ -11,17 +11,13 @@ Dalam latihan ini, Anda akan menjelajahi pengaruh filter konten default dalam Az
 
 Latihan ini akan memakan waktu sekitar **25** menit.
 
-## Sebelum memulai
-
-Untuk menyelesaikan latihan ini, langganan Azure Anda harus disetujui untuk akses ke layanan Azure OpenAI. Isi [formulir pendaftaran](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) untuk meminta akses ke model Azure OpenAI.
-
 ## Membuat Azure AI Hub
 
 Anda memerlukan Azure AI Hub di langganan Azure Anda untuk menghosting proyek. Anda dapat membuat sumber daya ini saat membuat proyek, atau menyediakannya sebelumnya (yang akan kita lakukan dalam latihan ini).
 
 1. Di browser web, buka [https://ai.azure.com](https://ai.azure.com) dan masuk menggunakan kredensial Azure Anda.
 
-1. Pada bagian Manajemen, pilih Semua hub, lalu pilih **+ Hub baru**. Buat proyek baru dengan pengaturan berikut:
+1. Pada bagian Manajemen, pilih Semua sumber daya, lalu pilih **+ Hub baru**. Buat proyek baru dengan pengaturan berikut:
     - **Nama hub**: *Nama unik*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Pilih atau buat grup sumber daya dengan nama unik*.
@@ -54,7 +50,7 @@ Anda memerlukan Azure AI Hub di langganan Azure Anda untuk menghosting proyek. A
 
 Azure AI Hub menyediakan ruang kerja kolaboratif tempat Anda dapat menentukan satu atau beberapa *proyek*. Mari kita buat proyek di Azure AI Hub Anda.
 
-1. Di Azure AI Studio, pada halaman **Build** , pilih **+ Proyek baru**. Kemudian, di wizard **Buat proyek baru** , buat proyek dengan pengaturan berikut:
+1. Di Azure AI Studio, pada halaman **Gambaran umum Hub**, pilih **+ Proyek baru**. Kemudian, di wizard **Buat proyek baru** , buat proyek dengan pengaturan berikut:
 
     - **Nama proyek**: *Nama unik untuk proyek Anda*
     - **Hub**: *AI Hub Anda*
@@ -86,7 +82,7 @@ Sekarang Anda sudah siap untuk menyebarkan model untuk digunakan melalui **Azure
 
 Filter konten diterapkan pada perintah dan penyelesaian untuk mencegah bahasa yang berpotensi berbahaya atau menyinggung.
 
-1. Di halaman **Bangun** , pilih **Filter konten** di bilah navigasi kiri, lalu pilih **+ Buat filter konten**.
+1. Di bagian **Komponen** di bilah navigasi sebelah kiri, pilih **Filter konten**, lalu pilih **+ Buat filter konten**.
 
 1. Pada tab **Informasi dasar** ,berikan informasi berikut ini: 
     - **Nama**: *Nama unik untuk filter konten Anda*
@@ -121,7 +117,7 @@ Filter konten diterapkan pada perintah dan penyelesaian untuk mencegah bahasa ya
 
 Mari kita lihat, bagaimana perilaku model ini dalam interaksi percakapan.
 
-1. Navigasikan ke **Playground** di panel kiri.
+1. Arahkan ke **Playground Proyek** di panel kiri.
 
 1. Pada mode **Obrolan** masukkan perintah berikut di bagian **Sesi obrolan** 
 
