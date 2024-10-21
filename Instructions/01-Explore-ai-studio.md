@@ -1,13 +1,17 @@
 ---
 lab:
-  title: Jelajahi komponen dan alat Azure AI Studio
+  title: Menjelajahi komponen dan alat Azure AI Studio
 ---
 
-# Jelajahi komponen dan alat Azure AI Studio
+# Menjelajahi komponen dan alat Azure AI Studio
 
 Dalam latihan ini, Anda menggunakan Azure AI Studio untuk membuat proyek dan menjelajahi model AI generatif.
 
 Latihan ini memakan waktu sekitar **30** menit.
+
+## Sebelum memulai
+
+Untuk menyelesaikan latihan ini, langganan Azure Anda harus disetujui untuk akses ke layanan Azure OpenAI. Isi [formulir pendaftaran](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) untuk meminta akses ke model Azure OpenAI.
 
 ## Buka Azure AI Studio
 
