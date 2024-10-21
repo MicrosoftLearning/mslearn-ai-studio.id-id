@@ -1,17 +1,20 @@
 ---
 lab:
-  title: Evaluasi performa salinan kustom Anda di Azure AI Studio
+  title: Mengevaluasi aplikasi bahasa di Azure AI Studio
 ---
 
-# Evaluasi performa salinan kustom Anda di Azure AI Studio
+# Mengevaluasi aplikasi bahasa di Azure AI Studio
 
 Dalam latihan ini, Anda akan menjelajahi evaluasi bawaan dan kustom untuk menilai dan membandingkan performa aplikasi AI Anda dengan Azure AI Studio.
 
-Latihan ini akan memakan waktu sekitar **30** menit.
+> Untuk menyelesaikan latihan ini, langganan Azure Anda harus disetujui untuk akses ke layanan Azure OpenAI. Isi [formulir pendaftaran](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) untuk meminta akses ke model Azure OpenAI.
 
-## Sebelum memulai
+Untuk membuat salinan dengan alur perintah, Anda perlu:
 
-Untuk menyelesaikan latihan ini, langganan Azure Anda harus disetujui untuk akses ke layanan Azure OpenAI. Isi [formulir pendaftaran](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) untuk meminta akses ke model Azure OpenAI.
+- Buat hub AI dan proyek dalam Azure AI Studio.
+- Sebarkan model GPT
+- Evaluasi model pada himpunan data pengujian dengan metrik.
+- Tentukan metrik evaluasi kustom dan jalankan terhadap himpunan data pengujian.
 
 ## Membuat hub dan proyek AI di Azure AI Studio
 
@@ -42,7 +45,7 @@ Anda mulai dengan membuat proyek Azure AI Studio dalam hub Azure AI:
     > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
 
 1. Tinjau konfigurasi Anda dan buat proyek Anda.
-1. Tunggu proyek Anda dibuat.
+1. Tunggu 5-10 menit hingga proyek Anda dibuat.
 
 ## Sebarkan model GPT
 
@@ -82,31 +85,12 @@ Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model
 
 Sekarang setelah Anda memiliki model yang disebarkan dengan pesan sistem yang diperbarui, Anda dapat mengevaluasi model.
 
-## Mengevaluasi model bahasa di Azure AI Studio secara manual
+## Mengevaluasi model bahasa di Azure AI Studio
 
 Anda dapat meninjau respons model secara manual berdasarkan data pengujian. Peninjauan secara manual memungkinkan Anda menguji input yang berbeda satu per satu untuk mengevaluasi apakah model berfungsi seperti yang diharapkan.
 
-1. Di **taman bermain Obrolan**, pilih menu dropdown **Evaluasi** dari bilah atas, dan pilih **Evaluasi manual**.
-1. Ubah **Pesan sistem** ke pesan yang sama seperti yang Anda gunakan di atas (disertakan di sini lagi):
-
-   ```
-   **Objective**: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
-
-   **Capabilities**:
-   - Provide up-to-date travel information, including destinations, accommodations, transportation, and local attractions.
-   - Offer personalized travel suggestions based on user preferences, budget, and travel dates.
-   - Share tips on packing, safety, and navigating travel disruptions.
-   - Help with itinerary planning, including optimal routes and must-see landmarks.
-   - Answer common travel questions and provide solutions to potential travel issues.
-    
-   **Instructions**:
-   1. Engage with the user in a friendly and professional manner, as a travel agent would.
-   2. Use available resources to provide accurate and relevant travel information.
-   3. Tailor responses to the user's specific travel needs and interests.
-   4. Ensure recommendations are practical and consider the user's safety and comfort.
-   5. Encourage the user to ask follow-up questions for further assistance.
-   ```
-
+1. Pada **playground Obrolan**, pilih **Evaluasi** dari bilah atas.
+1. Jendela baru terbuka dengan pesan sistem Anda sebelumnya yang sudah diisi dan model yang Anda sebarkan dipilih.
 1. Di bagian **Hasil evaluasi manual** Anda akan menambahkan lima input yang akan Anda tinjau outputnya. Masukkan lima pertanyaan berikut sebagai lima **Input**terpisah:
 
    `Can you provide a list of the top-rated budget hotels in Rome?`
@@ -124,24 +108,7 @@ Anda dapat meninjau respons model secara manual berdasarkan data pengujian. Peni
 1. Pilih **Simpan hasil** dari bilah menu atas. Masukkan `manual_evaluation_results` sebagai nama untuk hasilnya.
 1. Menggunakan menu di sebelah kiri, navigasikan ke **Evaluasi**.
 1. Pilih tab **Evaluasi manual** untuk menemukan evaluasi manual yang baru saja Anda simpan. Perhatikan bahwa Anda dapat menjelajahi evaluasi manual yang dibuat sebelumnya, melanjutkan di mana Anda pergi, dan menyimpan evaluasi yang diperbarui.
-
-## Mengevaluasi salinan Anda dengan metrik bawaan
-
-Ketika Anda telah membuat salinan dengan alur obrolan, Anda dapat mengevaluasi alur dengan melakukan eksekusi batch dan menilai performa alur dengan metrik bawaan.
-
-1. Pilih tab **Evaluasi otomatis** dan buat **Evaluasi baru** dengan pengaturan berikut: <details>  
-      <summary><b>Tips pemecahan masalah</b>: Kesalahan izin</summary>
-        <p>Jika Anda menerima kesalahan izin saat membuat alur permintaan baru, coba langkah berikut untuk memecahkan masalah:</p>
-        <ul>
-          <li>Di portal Azure, pilih sumber daya Layanan AI.</li>
-          <li>Pada halaman IAM, di tab Identitas, konfirmasikan bahwa itu adalah identitas terkelola yang ditetapkan sistem.</li>
-          <li>Navigasikan ke Akun Penyimpanan. Pada halaman IAM, tambahkan penetapan peran <em>Pembaca data blob penyimpanan</em>.</li>
-          <li>Di bawah <strong>Tetapkan akses ke</strong>, pilih <strong>Identitas Terkelola</strong>, <strong>+ Pilih anggota</strong>, dan pilih <strong>Semua identitas terkelola yang ditetapkan sistem</strong>.</li>
-          <li>Tinjau dan tetapkan untuk menyimpan pengaturan baru dan coba lagi langkah sebelumnya.</li>
-        </ul>
-    </details>
-
-    - **Apa yang ingin Anda evaluasi?**: Himpunan data
+1. Pilih tab **Evaluasi metrik** dan buat evaluasi baru dengan pengaturan berikut:
     - **Nama evaluasi**: *Masukkan nama unik*
     - **Skenario seperti apa yang Anda evaluasi?**: Pertanyaan dan jawaban tanpa konteks
     - **Pilih data yang ingin Anda evaluasi**: Tambahkan himpunan data Anda

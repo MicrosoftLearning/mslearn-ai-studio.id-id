@@ -1,17 +1,20 @@
 ---
 lab:
-  title: Evaluasi performa salinan kustom Anda di Azure AI Studio
+  title: Mulai membuat salinan kustom dengan alur perintah di Azure AI Studio
 ---
 
-# Evaluasi performa salinan kustom Anda di Azure AI Studio
+# Mulai membuat salinan kustom dengan alur perintah di Azure AI Studio
 
-Dalam latihan ini, Anda akan menjelajahi evaluasi bawaan dan kustom untuk menilai dan membandingkan performa aplikasi AI Anda dengan Azure AI Studio.
+Dalam latihan ini, Anda akan menggunakan alur prompt Azure AI Studio untuk membuat salinan kustom yang menggunakan perintah pengguna dan riwayat obrolan sebagai input, dan menggunakan model GPT dari Azure OpenAI untuk menghasilkan output.
 
-Latihan ini akan memakan waktu sekitar **30** menit.
+> Untuk menyelesaikan latihan ini, langganan Azure Anda harus disetujui untuk akses ke layanan Azure OpenAI. Isi [formulir pendaftaran](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) untuk meminta akses ke model Azure OpenAI.
 
-## Sebelum memulai
+Untuk membuat salinan dengan alur perintah, Anda perlu:
 
-Untuk menyelesaikan latihan ini, langganan Azure Anda harus disetujui untuk akses ke layanan Azure OpenAI. Isi [formulir pendaftaran](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) untuk meminta akses ke model Azure OpenAI.
+- Buat hub AI dan proyek dalam Azure AI Studio.
+- Sebarkan model GPT
+- Buat alur yang menggunakan model GPT yang disebarkan untuk menghasilkan jawaban berdasarkan input pengguna.
+- Menguji dan menyebarkan alur.
 
 ## Membuat hub dan proyek AI di Azure AI Studio
 
@@ -42,7 +45,7 @@ Anda mulai dengan membuat proyek Azure AI Studio dalam hub Azure AI:
     > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
 
 1. Tinjau konfigurasi Anda dan buat proyek Anda.
-1. Tunggu proyek Anda dibuat.
+1. Tunggu 5-10 menit hingga proyek Anda dibuat.
 
 ## Sebarkan model GPT
 
@@ -57,6 +60,10 @@ Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model
     - **Batas Tarif Token Per Menit (ribuan)**: 5K
     - **Filter konten**: Default
 1. Tunggu hingga aplikasi disebarkan. Saat penyebaran siap, pilih **Buka di playground**.
+1. Di jendela obrolan, masukkan kueri `What can you do?`.
+
+    Perhatikan bahwa jawabannya umum karena tidak ada instruksi khusus untuk asisten. Untuk membuatnya terfokus pada tugas, Anda dapat mengubah permintaan sistem.
+
 1. Ubah kode **Pesan sistem** ke kode berikut:
 
    ```
@@ -78,18 +85,36 @@ Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model
    ```
 
 1. Pilih **Terapkan perubahan**.
-1. Di jendela obrolan, masukkan kueri: `What can you do?` untuk memverifikasi bahwa model bahasa bertingkah seperti yang diharapkan.
+1. Di jendela obrolan, masukkan kueri yang sama seperti sebelumnya: `What can you do?` Perhatikan perubahan respons.
 
-Sekarang setelah Anda memiliki model yang disebarkan dengan pesan sistem yang diperbarui, Anda dapat mengevaluasi model.
+Sekarang setelah Anda bermain-main dengan pesan sistem untuk model GPT yang disebarkan, Anda dapat menyesuaikan aplikasi lebih lanjut dengan bekerja dengan alur prompt.
 
-## Mengevaluasi model bahasa di Azure AI Studio secara manual
+## Membuat dan menjalankan alur obrolan di Azure AI Studio
 
-Anda dapat meninjau respons model secara manual berdasarkan data pengujian. Peninjauan secara manual memungkinkan Anda menguji input yang berbeda satu per satu untuk mengevaluasi apakah model berfungsi seperti yang diharapkan.
+Anda dapat membuat alur baru dari templat, atau membuat alur berdasarkan konfigurasi Anda di taman bermain. Karena Anda sudah bereksperimen di taman bermain, Anda akan menggunakan opsi ini untuk membuat alur baru.
 
-1. Di **taman bermain Obrolan**, pilih menu dropdown **Evaluasi** dari bilah atas, dan pilih **Evaluasi manual**.
-1. Ubah **Pesan sistem** ke pesan yang sama seperti yang Anda gunakan di atas (disertakan di sini lagi):
+1. Di **Obrolan playground**, pilih **Alur perintah** dari bilah atas.
+1. Masukkan `Travel-Chat` sebagai nama folder.
 
-   ```
+    Alur obrolan sederhana dibuat untuk Anda. Perhatikan ada dua input (riwayat obrolan dan pertanyaan pengguna), simpul LLM yang akan terhubung dengan model bahasa yang Anda sebarkan, dan output untuk mencerminkan respons dalam obrolan.
+
+    Untuk dapat menguji alur Anda, Anda memerlukan komputasi.
+
+1. Pilih **Mulai sesi komputasi** dari bilah atas.
+1. Sesi komputasi akan memakan waktu 1-3 menit untuk memulai.
+1. Temukan simpul LLM bernama **obrolan**. Perhatikan bahwa perintah sudah menyertakan permintaan sistem yang Anda tentukan di taman bermain obrolan.
+
+    Anda masih perlu menyambungkan simpul LLM ke model yang Anda sebarkan.
+
+1. Di bagian simpul LLM, untuk **Koneksi**, pilih koneksi yang dibuat untuk Anda saat Anda membuat hub AI.
+1. Untuk **Api**, pilih **obrolan**.
+1. Untuk **nama_penyebaran**, pilih model **gpt-35-turbo** yang Anda sebarkan.
+1. Untuk **format_respons**, pilih **{"type":"text"}**.
+1. Tinjau bidang perintah dan pastikan bidang tersebut terlihat seperti berikut ini:
+
+   ```yml
+   {% raw %}
+   system:
    **Objective**: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
 
    **Capabilities**:
@@ -98,60 +123,53 @@ Anda dapat meninjau respons model secara manual berdasarkan data pengujian. Peni
    - Share tips on packing, safety, and navigating travel disruptions.
    - Help with itinerary planning, including optimal routes and must-see landmarks.
    - Answer common travel questions and provide solutions to potential travel issues.
-    
+
    **Instructions**:
    1. Engage with the user in a friendly and professional manner, as a travel agent would.
    2. Use available resources to provide accurate and relevant travel information.
    3. Tailor responses to the user's specific travel needs and interests.
    4. Ensure recommendations are practical and consider the user's safety and comfort.
    5. Encourage the user to ask follow-up questions for further assistance.
+
+   {% for item in chat_history %}
+   user:
+   {{item.inputs.question}}
+   assistant:
+   {{item.outputs.answer}}
+   {% endfor %}
+
+   user:
+   {{question}}
+   {% endraw %}
    ```
 
-1. Di bagian **Hasil evaluasi manual** Anda akan menambahkan lima input yang akan Anda tinjau outputnya. Masukkan lima pertanyaan berikut sebagai lima **Input**terpisah:
+### Menguji dan menyebarkan alur
 
-   `Can you provide a list of the top-rated budget hotels in Rome?`
+Setelah mengembangkan alur, Anda dapat menggunakan jendela obrolan untuk menguji alur.
 
-   `I'm looking for a vegan-friendly restaurant in New York City. Can you help?`
+1. Pastikan sesi komputasi berjalan.
+1. Pilih **Simpan**.
+1. Pilih **Obrolan** untuk menguji alur.
+1. Masukkan kueri: `I have one day in London, what should I do?` dan tinjau output.
 
-   `Can you suggest a 7-day itinerary for a family vacation in Orlando, Florida?`
+    Saat Anda puas dengan perilaku alur yang Anda buat, Anda dapat menyebarkan alur.
 
-   `Can you help me plan a surprise honeymoon trip to the Maldives?`
-
-   `Are there any guided tours available for the Great Wall of China?`
-
-1. Pilih **Jalankan** dari bilah atas untuk menghasilkan output untuk semua pertanyaan yang Anda tambahkan sebagai input.
-1. Anda sekarang dapat meninjau output secara manual untuk setiap pertanyaan dengan memilih ikon jempol ke atas atau bawah di kanan bawah respons. Beri peringkat setiap respons, memastikan Anda menyertakan setidaknya satu jempol ke atas dan satu respons jempol ke bawah dalam peringkat Anda.
-1. Pilih **Simpan hasil** dari bilah menu atas. Masukkan `manual_evaluation_results` sebagai nama untuk hasilnya.
-1. Menggunakan menu di sebelah kiri, navigasikan ke **Evaluasi**.
-1. Pilih tab **Evaluasi manual** untuk menemukan evaluasi manual yang baru saja Anda simpan. Perhatikan bahwa Anda dapat menjelajahi evaluasi manual yang dibuat sebelumnya, melanjutkan di mana Anda pergi, dan menyimpan evaluasi yang diperbarui.
-
-## Mengevaluasi salinan Anda dengan metrik bawaan
-
-Ketika Anda telah membuat salinan dengan alur obrolan, Anda dapat mengevaluasi alur dengan melakukan eksekusi batch dan menilai performa alur dengan metrik bawaan.
-
-1. Pilih tab **Evaluasi otomatis** dan buat **Evaluasi baru** dengan pengaturan berikut: <details>  
-      <summary><b>Tips pemecahan masalah</b>: Kesalahan izin</summary>
-        <p>Jika Anda menerima kesalahan izin saat membuat alur permintaan baru, coba langkah berikut untuk memecahkan masalah:</p>
-        <ul>
-          <li>Di portal Azure, pilih sumber daya Layanan AI.</li>
-          <li>Pada halaman IAM, di tab Identitas, konfirmasikan bahwa itu adalah identitas terkelola yang ditetapkan sistem.</li>
-          <li>Navigasikan ke Akun Penyimpanan. Pada halaman IAM, tambahkan penetapan peran <em>Pembaca data blob penyimpanan</em>.</li>
-          <li>Di bawah <strong>Tetapkan akses ke</strong>, pilih <strong>Identitas Terkelola</strong>, <strong>+ Pilih anggota</strong>, dan pilih <strong>Semua identitas terkelola yang ditetapkan sistem</strong>.</li>
-          <li>Tinjau dan tetapkan untuk menyimpan pengaturan baru dan coba lagi langkah sebelumnya.</li>
-        </ul>
-    </details>
-
-    - **Apa yang ingin Anda evaluasi?**: Himpunan data
-    - **Nama evaluasi**: *Masukkan nama unik*
-    - **Skenario seperti apa yang Anda evaluasi?**: Pertanyaan dan jawaban tanpa konteks
-    - **Pilih data yang ingin Anda evaluasi**: Tambahkan himpunan data Anda
-        - Unduh file https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl JSONL dan unggah ke UI.
-    - **Pilih metrik**: Koherensi, Kefasihan
-    - **Koneksi**: *Koneksi Layanan AI Anda*
-    - **Nama/Model penyebaran**: *Model GPT-3.5 yang Anda sebarkan*
-1. Tunggu hingga evaluasi selesai, Anda mungkin perlu menyegarkan.
-1. Pilih eksekusi evaluasi yang baru saja Anda buat.
-1. Jelajahi **Dasbor metrik** dan **Hasil metrik terperinci**.
+1. Pilih **Sebarkan** untuk menyebarkan alur dengan pengaturan berikut:
+    - **Pengaturan dasar**:
+        - **Titik akhir**: Baru
+        - **Nama titik akhir**: *Masukkan nama unik*
+        - **Nama penyebaran**: *Masukkan nama yang unik*
+        - **Komputer virtual**: Standard_DS3_v2
+        - **Jumlah instans**: 3
+        - **Inferensi pengumpulan data**: Aktif
+    - **Pengaturan tingkat lanjut**:
+        - *Menjaga pengaturan default*
+1. Di Azure AI Studio, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Komponen**, pilih halaman **Penyebaran** .
+1. Perhatikan bahwa secara default **penyebaran model** tercantum, termasuk model bahasa yang Anda sebarkan.
+1. Pilih tab **Penyebaran aplikasi** untuk menemukan alur yang Anda sebarkan. Mungkin perlu waktu sebelum penyebaran dicantumkan dan berhasil dibuat.
+1. Ketika penyebaran telah berhasil, pilih penyebaran tersebut. Kemudian, pada halaman **Uji** , masukkan perintah `What is there to do in San Francisco?` dan tinjau responsnya.
+1. Masukkan perintah `Where else could I go?` dan tinjau responsnya.
+1. Lihat halaman **Konsumsi** untuk titik akhir, dan perhatikan bahwa halaman tersebut berisi informasi koneksi dan kode sampel yang dapat Anda gunakan untuk membangun aplikasi klien untuk titik akhir Anda - memungkinkan Anda mengintegrasikan solusi alur perintah ke dalam aplikasi sebagai salinan kustom.
 
 ## Menghapus sumber daya Azure
 

@@ -1,19 +1,12 @@
----
-lab:
-  title: Membuat salinan kustom yang menggunakan data Anda sendiri
----
-
 # Membuat salinan kustom yang menggunakan data Anda sendiri
 
 Retrieval Augmented Generation (RAG) adalah teknik yang digunakan untuk membangun aplikasi yang mengintegrasikan data dari sumber data kustom ke dalam permintaan untuk model AI generatif. RAG adalah pola yang umum digunakan untuk mengembangkan *salinan*kustom - aplikasi berbasis obrolan yang menggunakan model bahasa untuk menafsirkan input dan menghasilkan respons yang sesuai.
 
 Dalam latihan ini, Anda akan menggunakan Azure AI Studio untuk mengintegrasikan data kustom ke dalam alur permintaan AI generatif.
 
+> **Catatan**: Azure AI Studio sedang dalam pratinjau pada saat penulisan, dan sedang dalam pengembangan aktif. Beberapa elemen layanan mungkin tidak persis seperti yang dijelaskan, dan beberapa fitur mungkin tidak berfungsi seperti yang diharapkan.
+
 Latihan ini memakan waktu sekitar **45** menit.
-
-## Sebelum memulai
-
-Untuk menyelesaikan latihan ini, langganan Azure Anda harus disetujui untuk akses ke layanan Azure OpenAI. Isi [formulir pendaftaran](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) untuk meminta akses ke model Azure OpenAI.
 
 ## Membuat sumber daya  Pencarian Azure AI
 
@@ -122,9 +115,6 @@ Sebelum menggunakan indeks Anda dalam alur prompt berbasis RAG, mari kita verifi
 1. Pada halaman Obrolan, di panel Opsi, pastikan penyebaran model **gpt-35-turbo-16k** Anda dipilih. Kemudian, di panel sesi obrolan utama, kirimkan perintah `Where can I stay in New York?`
 1. Tinjau respons, yang harus menjadi jawaban umum dari model tanpa data apa pun dari indeks.
 1. Pada panel Penyiapan, pilih tab **Tambahkan data Anda** , lalu tambahkan **indeks-brosur** indeks proyek dan pilih jenis pencarian **hibrid (vektor + kata kunci).** 
-
-   > **Catatan**: Beberapa pengguna segera menemukan indeks yang baru dibuat tidak tersedia. Menyegarkan browser biasanya membantu, tetapi jika Anda masih mengalami masalah di mana tidak dapat menemukan indeks, Anda mungkin perlu menunggu sampai indeks dikenali.
-   
 1. Setelah indeks ditambahkan dan sesi obrolan dimulai ulang, kirim ulang perintah `Where can I stay in New York?`
 1. Tinjau respons, yang harus didasarkan pada data dalam indeks.
 
@@ -134,18 +124,6 @@ Indeks vektor Anda telah disimpan di proyek Azure AI Studio, memungkinkan Anda m
 
 1. Di Azure AI Studio, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Alat**, pilih halaman **Alur permintaan** 
 1. Buat alur permintaan baru dengan mengkloning **Tanya Jawab Multi-Putaran pada sampel Data** Anda di galeri. Simpan klon sampel ini di folder bernama `brochure-flow`.
-    <details>  
-      <summary><b>Tips pemecahan masalah</b>: Kesalahan izin</summary>
-        <p>Jika Anda menerima kesalahan izin saat membuat alur permintaan baru, coba langkah berikut untuk memecahkan masalah:</p>
-        <ul>
-          <li>Di portal Azure, pilih sumber daya Layanan AI.</li>
-          <li>Pada halaman IAM, di tab Identitas, konfirmasikan bahwa itu adalah identitas terkelola yang ditetapkan sistem.</li>
-          <li>Navigasikan ke Akun Penyimpanan. Pada halaman IAM, tambahkan penetapan peran <em>Pembaca data blob penyimpanan</em>.</li>
-          <li>Di bawah <strong>Tetapkan akses ke</strong>, pilih <strong>Identitas Terkelola</strong>, <strong>+ Pilih anggota</strong>, dan pilih <strong>Semua identitas terkelola yang ditetapkan sistem</strong>.</li>
-          <li>Tinjau dan tetapkan untuk menyimpan pengaturan baru dan coba lagi langkah sebelumnya.</li>
-        </ul>
-    </details>
-
 1. Saat halaman perancang alur perintah terbuka, tinjau **alur-brosur**. Jendela Anda akan terlihat seperti gambar berikut:
 
     ![Cuplikan layar grafik alur perintah](./media/chat-flow.png)

@@ -1,13 +1,17 @@
 ---
 lab:
-  title: Membuat salinan kustom dengan alur perintah di Azure AI Studio
+  title: Membuat salinan kustom dengan alur prompt di Azure AI Studio
 ---
 
-# Membuat salinan kustom dengan alur perintah di Azure AI Studio
+# Membuat salinan kustom dengan alur prompt di Azure AI Studio
 
 Dalam latihan ini, Anda akan menggunakan alur prompt Azure AI Studio untuk membuat salinan kustom yang menggunakan perintah pengguna dan riwayat obrolan sebagai input, dan menggunakan model GPT dari Azure OpenAI untuk menghasilkan output.
 
 Latihan ini akan memakan waktu sekitar **30** menit.
+
+## Sebelum memulai
+
+Untuk menyelesaikan latihan ini, langganan Azure Anda harus disetujui untuk akses ke layanan Azure OpenAI. Isi [formulir pendaftaran](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) untuk meminta akses ke model Azure OpenAI.
 
 ## Membuat hub dan proyek AI di Azure AI Studio
 
@@ -85,18 +89,6 @@ Sekarang setelah Anda bermain-main dengan pesan sistem untuk model GPT yang dise
 ## Membuat dan menjalankan alur obrolan di Azure AI Studio
 
 Anda dapat membuat alur baru dari templat, atau membuat alur berdasarkan konfigurasi Anda di taman bermain. Karena Anda sudah bereksperimen di taman bermain, Anda akan menggunakan opsi ini untuk membuat alur baru.
-
-<details>  
-    <summary><b>Tips pemecahan masalah</b>: Kesalahan izin</summary>
-    <p>Jika Anda menerima kesalahan izin saat membuat alur perintah baru, coba langkah berikut untuk memecahkan masalah:</p>
-    <ul>
-        <li>Di portal Azure, pilih Penjelajah Sumber Daya dari Semua Layanan.</li>
-        <li>Pada halaman IAM, di tab Identitas, konfirmasikan bahwa itu adalah identitas terkelola yang ditetapkan sistem.</li>
-        <li>Lakukan navigasi ke Akun Penyimpanan. Pada halaman IAM, tambahkan penetapan peran <em>Pembaca data blob penyimpanan</em>.</li>
-        <li>Di bawah <strong>Tetapkan akses ke</strong>, pilih <strong>Identitas Terkelola</strong>, <strong>+ Pilih anggota</strong>, dan pilih <strong>Semua identitas terkelola yang ditetapkan sistem</strong>.</li>
-        <li>Tinjau dan tetapkan untuk menyimpan pengaturan baru dan coba lagi langkah sebelumnya.</li>
-    </ul>
-</details>
 
 1. Di **Obrolan playground**, pilih **Alur perintah** dari bilah atas.
 1. Masukkan `Travel-Chat` sebagai nama folder.
