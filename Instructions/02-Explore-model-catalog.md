@@ -18,22 +18,12 @@ Anda memerlukan hub Azure AI di langganan Azure Anda untuk menghosting proyek. A
 1. Pada bagian **Manajemen**, pilih **Semua sumber daya**, lalu pilih **+ Hub baru**. Buat proyek baru dengan pengaturan berikut:
     - **Nama hub**: *Nama unik*
     - **Langganan**: *Langganan Azure Anda*
-    - **Grup sumber daya**: *Pilih atau buat grup sumber daya dengan nama unik*.
-    - **Lokasi**: *Buat **pilihan acak** dari salah satu wilayah berikut*\*
-        - Australia Timur
-        - Kanada Timur
-        - AS Timur
-        - AS Timur 2
-        - Prancis Tengah
-        - Jepang Timur
-        - AS Tengah Bagian Utara
-        - Swedia Tengah
-        - Swiss Utara
-        - UK Selatan
-    - **Menyambungkan Azure AI Services atau Azure OpenAI**: *Pilih untuk membuat Layanan AI baru atau gunakan yang sudah ada*
+    - **Grup sumber daya**: *Grup sumber daya baru*
+    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-35-turbo** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
+    - **Menyambungkan Azure AI Services atau Azure OpenAI**: *Membuat koneksi baru*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
-    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
+    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
 
     Setelah hub Azure AI dibuat, hub tersebut akan terlihat mirip dengan gambar berikut:
 
@@ -94,12 +84,13 @@ Mari kita mulai dengan menyebarkan model dari katalog Model. Anda mungkin lebih 
 
 1. Navigasikan ke halaman **Katalog model** di bawah bagian **Memulai** , menggunakan menu di sebelah kiri.
 1. Cari dan sebarkan `gpt-35-turbo` model, yang dikumpulkan oleh Azure AI, dengan pengaturan berikut:
-    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda, mengindikasikan bahwa itu model GPT-3.5*
-    - **Versi model**: *Pilih versi default*
+    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
     - **Tipe penyebaran**: Standar
-    - **Sumber daya Azure OpenAI yang tersambung**: *Pilih koneksi default yang dibuat saat Anda membuat hub*
+    - **Versi model**: *Pilih versi default*
+    - **Sumber daya AI**: *Pilih sumber daya yang dibuat sebelumnya*
     - **Batas Tarif Token Per Menit (ribuan)**: 5K
-    - **Filter konten**: Default
+    - **Filter konten**: DefaultV2
+    - **Aktifkan kuota dinamis**: Dinonaktifkan
 
 ### Menyebarkan model melalui Penyebaran
 
@@ -108,12 +99,13 @@ Jika Anda sudah tahu persis model mana yang ingin Anda sebarkan, Anda mungkin le
 1. Navigasikan ke halaman **Penyebaran** di bawah bagian **Komponen** , menggunakan menu di sebelah kiri.
 1. Pada tab **Penyebaran model** ,buat penyebaran model baru dengan pengaturan berikut:
     - **Model**: gpt 4
-    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda mengindikasikan bahwa itu model GPT-4*
-    - **Versi model**: *Pilih versi default*
+    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
     - **Tipe penyebaran**: Standar
-    - **Sumber daya Azure OpenAI yang tersambung**: *Pilih koneksi default yang dibuat saat Anda membuat hub*
+    - **Versi model**: *Pilih versi default*
+    - **Sumber daya AI**: *Pilih sumber daya yang dibuat sebelumnya*
     - **Batas Tarif Token Per Menit (ribuan)**: 5K
-    - **Filter konten**: Default
+    - **Filter konten**: DefaultV2
+    - **Aktifkan kuota dinamis**: Dinonaktifkan
 
     > **Catatan**: Anda mungkin telah melihat beberapa model yang menunjukkan tolok ukur Model, tetapi bukan sebagai opsi dalam katalog model Anda. Ketersediaan model berbeda per lokasi. Lokasi Anda ditentukan pada tingkat hub AI, tempat Anda dapat menggunakan **Pembantu lokasi** untuk menentukan model yang ingin Anda sebarkan untuk mendapatkan daftar lokasi tempat Anda dapat menyebarkannya.
 
@@ -132,11 +124,11 @@ Sekarang setelah kita memiliki dua model untuk dibandingkan, mari kita lihat bag
    You are an AI travel assistant that helps people plan their trips. Your objective is to offer support for travel-related inquiries, such as visa requirements, weather forecasts, local attractions, and cultural norms.
    ```
 
-1. Pilih **Terapkan perubahan**, dan **Hapus obrolan**.
+1. Pilih **Simpan**, dan **Hapus obrolan**.
 1. Di jendela obrolan, masukkan kueri `What can you do?` dan tampilkan respons baru. Amati perbedaannya dengan jawaban yang Anda terima sebelumnya. Jawabannya khusus untuk perjalanan sekarang.
 1. Lanjutkan percakapan dengan bertanya: `I'm planning a trip to London, what can I do there?` Salinan menawarkan banyak informasi terkait perjalanan. Anda mungkin ingin memperbaiki outputnya. Misalnya, Anda mungkin ingin jawabannya lebih ringkas.
 1. Perbarui pesan sistem dengan menambahkan `Answer with a maximum of two sentences.` ke akhir pesan. Terapkan perubahan, hapus obrolan, dan uji obrolan lagi dengan bertanya: `I'm planning a trip to London, what can I do there?` Anda mungkin juga ingin salinan Anda melanjutkan percakapan alih-alih hanya menjawab pertanyaan.
-1. Perbarui pesan sistem dengan menambahkan `End your answer with a follow-up question.` ke akhir pesan. Terapkan perubahan, kosongkan obrolan, dan uji obrolan lagi dengan bertanya: `I'm planning a trip to London, what can I do there?`
+1. Perbarui pesan sistem dengan menambahkan `End your answer with a follow-up question.` ke akhir pesan. Simpan perubahan, kosongkan obrolan, dan uji obrolan lagi dengan bertanya: `I'm planning a trip to London, what can I do there?`
 1. Ubah **Penyebaran** Anda ke model GPT-4 Anda dan ulangi semua langkah di bagian ini. Perhatikan bagaimana model dapat bervariasi dalam outputnya.
 1. Terakhir, uji kedua model pada kueri `Who is the prime minister of the UK?`. Performa pada pertanyaan ini terkait dengan groundedness (apakah responsnya akurat secara faktual) dari model. Apakah performa berkorelasi dengan kesimpulan Anda dari tolok ukur Model?
 

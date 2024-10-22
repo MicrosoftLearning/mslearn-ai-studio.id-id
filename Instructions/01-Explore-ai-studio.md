@@ -1,17 +1,13 @@
 ---
 lab:
-  title: Menjelajahi komponen dan alat Azure AI Studio
+  title: Jelajahi komponen dan alat Azure AI Studio
 ---
 
-# Menjelajahi komponen dan alat Azure AI Studio
+# Jelajahi komponen dan alat Azure AI Studio
 
 Dalam latihan ini, Anda menggunakan Azure AI Studio untuk membuat proyek dan menjelajahi model AI generatif.
 
 Latihan ini memakan waktu sekitar **30** menit.
-
-## Sebelum memulai
-
-Untuk menyelesaikan latihan ini, langganan Azure Anda harus disetujui untuk akses ke layanan Azure OpenAI. Isi [formulir pendaftaran](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) untuk meminta akses ke model Azure OpenAI.
 
 ## Buka Azure AI Studio
 
@@ -27,26 +23,19 @@ Mari kita mulai dengan menjelajahi Azure AI Studio.
 
 Anda memerlukan hub Azure AI di langganan Azure Anda untuk menghosting proyek. Anda dapat membuat sumber daya ini saat membuat proyek, atau menyediakannya sebelumnya (yang akan kita lakukan dalam latihan ini).
 
-1. Di bagian **Manajemen** , pilih **Semua hub**, lalu pilih **+ Hub baru**. Buat proyek baru dengan pengaturan berikut:
+1. Pada bagian **Manajemen**, pilih **Semua sumber daya**, lalu pilih **+ Hub baru**. Buat proyek baru dengan pengaturan berikut:
     - **Nama hub**: *Nama unik*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Pilih atau buat grup sumber daya dengan nama unik*.
-    - **Lokasi**: *Buat **pilihan acak** dari salah satu wilayah berikut*\*
-        - Australia Timur
-        - Kanada Timur
-        - AS Timur
-        - AS Timur 2
-        - Prancis Tengah
-        - Jepang Timur
-        - AS Tengah Bagian Utara
-        - Swedia Tengah
-        - Swiss Utara
-        - UK Selatan
+    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-35-turbo** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
     - **Menyambungkan Azure AI Services atau Azure OpenAI**: *Pilih untuk membuat Layanan AI baru atau gunakan yang sudah ada*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
     > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
 
+1. Pilih **Berikutnya** dan tinjau konfigurasi Anda.
+1. Pilih **Buat** dan tunggu hingga prosesnya selesai.
+   
     Setelah hub Azure AI dibuat, hub tersebut akan terlihat mirip dengan gambar berikut:
 
     ![Cuplikan layar detail hub Azure AI di Azure AI Studio.](./media/azure-ai-resource.png)
@@ -80,16 +69,17 @@ Hub Azure AI menyediakan ruang kerja kolaboratif tempat Anda dapat menentukan sa
 Anda dapat menggunakan proyek untuk membuat solusi AI yang kompleks berdasarkan model AI generatif. Eksplorasi penuh dari semua opsi pengembangan yang tersedia di Azure AI Studio berada di luar cakupan latihan ini, tetapi kami akan menjelajahi beberapa cara dasar di mana Anda dapat bekerja dengan model dalam proyek.
 
 1. Di panel sebelah kiri untuk proyek Anda, di bagian **Komponen** pilih halaman **Penyebaran** .
-1. Pada halaman **Penyebaran** , di tab **Penyebaran model** pilih **+ Buat penyebaran**.
+1. Pada halaman **Penyebaran** , di tab **Penyebaran model** pilih **+ Terapkan model**.
 1. Cari model **gpt-35-turbo** dari daftar, pilih dan konfirmasi.
 1. Sebarkan model dengan pengaturan berikut:
     - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
-    - **Versi model**: *Pilih versi default*
     - **Tipe penyebaran**: Standar
-    - **Sumber daya Azure OpenAI yang tersambung**: *Pilih koneksi default yang dibuat saat Anda membuat hub*
+    - **Versi model**: *Pilih versi default*
+    - **Sumber daya AI**: *Pilih sumber daya yang dibuat sebelumnya*
     - **Batas Tarif Token Per Menit (ribuan)**: 5K
-    - **Filter konten**: Default
-
+    - **Filter konten**: DefaultV2
+    - **Aktifkan kuota dinamis**: Dinonaktifkan
+      
     > **Catatan**: Mengurangi TPM membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 5.000 TPM cukup untuk data yang digunakan dalam latihan ini.
 
 1. Setelah model disebarkan, di halaman gambaran umum penyebaran, pilih **Buka di playground**.
