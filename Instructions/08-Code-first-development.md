@@ -37,17 +37,18 @@ Dalam latihan ini Anda akan menggunakan [GitHub Codespaces](https://github.com/f
 
 Untuk menginisialisasi lingkungan pengembangan Anda, ikuti langkah-langkah di bawah ini:
 
-1. **Fork repositori**: Pilih tombol **Fork** di sudut kanan atas halaman repositori GitHub untuk membuat salinan repositori di akun GitHub Anda.
+1. Navigasikan ke repositori **obrolan-contoso** : `https://github.com/Azure-Samples/contoso-chat`
+1. Pilih tombol **Fork** di sudut kanan atas halaman repositori GitHub obrolan-contoso untuk membuat salinan repositori tersebut di akun GitHub Anda.
 1. Setelah Anda memiliki repositori fork, pilih tombol **Kode** dan pilih **Codespaces**.
 1. Pilih tombol **+** untuk membuat codespace baru di cabang utama repositori fork Anda.
 
     ![Membuat GitHub Codespaces](./media/create_codespaces.png)
 
-1. Dalam beberapa detik, Anda akan diarahkan ke tab browser baru di mana lingkungan Codespaces disiapkan dengan [editor Visual Studio Code terlampir](https://code.visualstudio.com/docs/devcontainers/containers) secara default. Anda dapat terus bekerja di tab browser, atau menyambungkan kembali ke Codespace yang sedang berjalan dari editor Visual Studio Code lokal Anda dengan mengklik tombol **Buka di Visual Studio Code Desktop** dari menu kiri atas.
+1. Dalam beberapa detik, Anda akan diarahkan ke tab browser baru di mana lingkungan Codespaces disiapkan dengan [editor Visual Studio Code terlampir](https://code.visualstudio.com/docs/devcontainers/containers) secara default.
 
 ## Menyambungkan lingkungan VS Code ke Azure
 
-Langkah selanjutnya adalah menyambungkan lingkungan pengembangan lokal Anda dengan langganan Azure tempat Anda ingin menyebarkan proyek. Mulailah dengan membuka terminal baru di IDE Visual Studio Code Anda.
+Langkah selanjutnya adalah menyambungkan lingkungan pengembangan lokal Anda dengan langganan Azure tempat Anda ingin menyebarkan proyek tersebut. Mulailah dengan membuka terminal baru di lingkungan VS Code Anda yang sedang berjalan di Codespace.
 
 1. Pertama, verifikasi bahwa [versi terbaru](https://github.com/Azure/azure-dev/releases/tag/azure-dev-cli_1.9.3) Azure Developer CLI diinstal.
     ```bash
