@@ -20,7 +20,7 @@ Anda mulai dengan membuat proyek Azure AI Studio dalam hub Azure AI:
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Grup sumber daya baru*
     - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-35-turbo** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
-    - **Menyambungkan Azure AI Services atau Azure OpenAI**: *Membuat koneksi baru*
+    - **Sambungkan Layanan Azure AI atau Azure OpenAI**: (Baru) *Autofills dengan nama hub yang Anda pilih*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
     > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
@@ -33,7 +33,7 @@ Anda mulai dengan membuat proyek Azure AI Studio dalam hub Azure AI:
 Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model terlebih dahulu. Azure AI Studio memungkinkan Anda menyebarkan model OpenAI yang dapat Anda gunakan dalam alur Anda.
 
 1. Di panel navigasi di sebelah kiri, di bawah **Komponen**, pilih halaman **Penyebaran** .
-1. Buat penyebaran model **gpt-35-turbo** baru dengan pengaturan berikut:
+1. Buat penyebaran baru model **gpt-35-turbo** dengan pengaturan berikut dengan memilih **Sesuaikan** di wizard **Sebarkan model**:
     - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
     - **Tipe penyebaran**: Standar
     - **Versi model**: *Pilih versi default*
@@ -42,7 +42,7 @@ Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model
     - **Filter konten**: DefaultV2
     - **Aktifkan kuota dinamis**: Dinonaktifkan
 1. Tunggu hingga aplikasi disebarkan. Saat penyebaran siap, pilih **Buka di playground**.
-1. Ubah kode **Pesan sistem** ke kode berikut:
+1. Dalam kotak teks **Berikan instruksi model dan konteks** , ubah konten menjadi yang berikut ini:
 
    ```
    **Objective**: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
@@ -128,14 +128,17 @@ Ketika Anda telah membuat salinan dengan alur obrolan, Anda dapat mengevaluasi a
 
     - **Apa yang ingin Anda evaluasi?**: Himpunan data
     - **Nama evaluasi**: *Masukkan nama unik*
-    - **Skenario seperti apa yang Anda evaluasi?**: Pertanyaan dan jawaban tanpa konteks
     - Pilih **Selanjutnya**
     - **Pilih data yang ingin Anda evaluasi**: Tambahkan himpunan data Anda
         - Unduh file https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl JSONL dan unggah ke UI.
+    - Pilih **Selanjutnya**
     - **Pilih metrik**: Koherensi, Kefasihan
     - **Koneksi**: *Koneksi Layanan AI Anda*
     - **Nama/Model penyebaran**: *Model GPT-3.5 yang Anda sebarkan*
-1. Pilih **Berikutnya** lalu tinjau data Anda dan kirimkan evaluasi baru tersebut.
+    - **kueri**: Pilih **pertanyaan** sebagai sumber data
+    - **respons**: Pilih **jawaban** sebagai sumber data
+      
+1. Pilih **Berikutnya** lalu tinjau data Anda dan **Kirimkan** evaluasi baru tersebut.
 1. Tunggu hingga evaluasi selesai, Anda mungkin perlu menyegarkan.
 1. Pilih eksekusi evaluasi yang baru saja Anda buat.
 1. Jelajahi **Dasbor metrik** dan **Hasil metrik terperinci**.

@@ -20,22 +20,12 @@ Anda memerlukan Azure AI Hub di langganan Azure Anda untuk menghosting proyek. A
 1. Pada bagian Manajemen, pilih Semua sumber daya, lalu pilih **+ Hub baru**. Buat proyek baru dengan pengaturan berikut:
     - **Nama hub**: *Nama unik*
     - **Langganan**: *Langganan Azure Anda*
-    - **Grup sumber daya**: *Pilih atau buat grup sumber daya dengan nama unik*.
-    - **Lokasi**: *Buat **pilihan acak** dari salah satu wilayah berikut*\*
-        - Australia Timur
-        - Kanada Timur
-        - AS Timur
-        - AS Timur 2
-        - Prancis Tengah
-        - Jepang Timur
-        - AS Tengah Bagian Utara
-        - Swedia Tengah
-        - Swiss Utara
-        - UK Selatan
-    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: Pilih untuk membuat Layanan AI baru atau gunakan yang sudah ada
+    - **Grup sumber daya**: *Grup sumber daya baru*
+    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-35-turbo** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
+    - **Menyambungkan Azure AI Services atau Azure OpenAI**: *Membuat koneksi baru*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
-    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
+    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
 
 1. Pilih **Buat**. Proses pembuatan mungkin memerlukan waktu beberapa menit untuk diselesaikan. Selama pembuatan hub, sumber daya AI berikut juga akan dibuat untuk Anda: 
     - Layanan AI
@@ -68,14 +58,14 @@ Sekarang Anda sudah siap untuk menyebarkan model untuk digunakan melalui **Azure
 1. Di Azure AI Studio, buat penyebaran baru dengan pengaturan sebagai berikut:
 
     - **Model**: gpt-35-turbo
+    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
     - **Tipe penyebaran**: Standar
-    - **Sumber daya Azure OpenAI yang terhubung**: *Koneksi Azure OpenAI Anda*
-    - **Versi model**: Pembaruan otomatis ke default
-    - **Nama penyebaran**: *Nama unik pilihan Anda*
-    - **Opsi tingkat lanjut**
-        - **Filter konten**: Default
-        - **Batas tarif token per menit**: 5K
-
+    - **Versi model**: *Pilih versi default*
+    - **Sumber daya AI**: *Pilih sumber daya yang dibuat sebelumnya*
+    - **Batas Tarif Token Per Menit (ribuan)**: 5K
+    - **Filter konten**: DefaultV2
+    - **Aktifkan kuota dinamis**: Dinonaktifkan
+      
 > **Catatan**: Setiap model Azure AI Studio dioptimalkan untuk keseimbangan kemampuan dan performa yang berbeda. Kita akan menggunakan **model GPT 3.5 Turbo** dalam latihan ini, yang sangat mampu menghasilkan bahasa alami dan skenario obrolan.
 
 ## Jelajahi filter konten
