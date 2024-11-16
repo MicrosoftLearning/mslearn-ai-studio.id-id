@@ -22,42 +22,36 @@ Anda harus terlebih dahulu membuat proyek di Azure AI Studio untuk membuat sumbe
 Anda mulai dengan membuat proyek Azure AI Studio dan Azure AI Hub untuk mendukungnya.
 
 1. Di browser web, buka [https://ai.azure.com](https://ai.azure.com) dan masuk menggunakan kredensial Azure Anda.
-1. Pilih halaman **Buat** , lalu pilih **+ Proyek baru**.
+1. Pilih halaman **Beranda** lalu pilih **+ Proyek baru**.
 1. Di wizard **Buat proyek baru** buat proyek dengan pengaturan berikut:
     - **Nama proyek**: *Nama unik untuk proyek Anda*
-    - **Azure Hub**: *Buat sumber daya dengan pengaturan berikut:*
-        - **Nama AI Hub**: *Nama unik*
-        - **Langganan**: *Langganan Azure Anda*
-        - **Grup sumber daya**: *Grup sumber daya baru*
-        - **Lokasi**: *Buat **pilihan acak** dari salah satu wilayah berikut*\*
-        - Australia Timur
-        - Kanada Timur
-        - AS Timur
-        - AS Timur 2
-        - Prancis Tengah
-        - Jepang Timur
-        - AS Tengah Bagian Utara
-        - Swedia Tengah
-        - Swiss Utara
-        - UK Selatan
+    - **Hub**: *Buat proyek baru dengan pengaturan berikut:*
+    - **Nama hub**: *Nama unik*
+    - **Langganan**: *Langganan Azure Anda*
+    - **Grup sumber daya**: *Grup sumber daya baru*
+    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-35-turbo** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
+    - **Menyambungkan Azure AI Services atau Azure OpenAI**: *Membuat koneksi baru*
+    - **Menyambungkan Azure AI Search**: Lewati koneksi
 
-    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
+    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
 
 1. Tinjau konfigurasi Anda dan buat proyek Anda.
-1. Tunggu 5-10 menit hingga proyek Anda dibuat.
+1. Tunggu proyek Anda dibuat.
 
 ## Sebarkan model GPT
 
 Untuk menggunakan model LLM dalam alur perintah, Anda perlu menyebarkan model terlebih dahulu. Azure AI Studio memungkinkan Anda menyebarkan model OpenAI yang dapat Anda gunakan dalam alur Anda.
 
 1. Di panel navigasi di sebelah kiri, di bawah **Komponen**, pilih halaman **Penyebaran** .
-1. Pada Azure OpenAI Studio, navigasikan ke halaman **Penyebaran** .
 1. Buat penyebaran model **gpt-35-turbo** baru dengan pengaturan berikut:
-    - **Model:**: `gpt-35-turbo`
-    - **Versi model**: *Biarkan nilai default*
-    - **Nama penyebaran**: `gpt-35-turbo`
-    - Atur opsi **Tingkat Lanjut** untuk menggunakan filter konten default dan untuk membatasi token per menit (TPM) ke **5K**.
-
+    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
+    - **Tipe penyebaran**: Standar
+    - **Versi model**: *Pilih versi default*
+    - **Sumber daya AI**: *Pilih sumber daya yang dibuat sebelumnya*
+    - **Batas Tarif Token Per Menit (ribuan)**: 5K
+    - **Filter konten**: DefaultV2
+    - **Aktifkan kuota dinamis**: Dinonaktifkan
+   
 Setelah model LLM disebarkan, Anda dapat membuat alur di Azure AI Studio yang memanggil model yang disebarkan.
 
 ## Membuat dan menjalankan alur di Azure AI Studio
@@ -72,6 +66,18 @@ Untuk membuat alur baru dengan templat, Anda dapat memilih salah satu jenis alur
 1. Pilih **+ Buat** untuk membuat alur baru.
 1. Buat **Alur standar** baru dan masukkan `entity-recognition` sebagai nama folder.
 
+<details>  
+    <summary><b>Tips pemecahan masalah</b>: Kesalahan izin</summary>
+    <p>Jika Anda menerima kesalahan izin saat membuat alur perintah baru, coba langkah berikut untuk memecahkan masalah:</p>
+    <ul>
+        <li>Di portal Azure, pilih Penjelajah Sumber Daya dari Semua Layanan.</li>
+        <li>Pada halaman IAM, di tab Identitas, konfirmasikan bahwa itu adalah identitas terkelola yang ditetapkan sistem.</li>
+        <li>Lakukan navigasi ke Akun Penyimpanan. Pada halaman IAM, tambahkan penetapan peran <em>Pembaca data blob penyimpanan</em>.</li>
+        <li>Di bawah <strong>Tetapkan akses ke</strong>, pilih <strong>Identitas Terkelola</strong>, <strong>+ Pilih anggota</strong>, dan pilih <strong>Semua identitas terkelola yang ditetapkan sistem</strong>.</li>
+        <li>Tinjau dan tetapkan untuk menyimpan pengaturan baru dan coba lagi langkah sebelumnya.</li>
+    </ul>
+</details>
+
 Aliran standar dengan satu input, dua simpul, dan satu output dibuat untuk Anda. Anda akan memperbarui alur untuk mengambil dua input, mengekstrak entitas, membersihkan output dari simpul LLM, dan mengembalikan entitas sebagai output.
 
 ### Memulai runtime otomatis
@@ -79,9 +85,8 @@ Aliran standar dengan satu input, dua simpul, dan satu output dibuat untuk Anda.
 Untuk menguji alur, Anda memerlukan komputasi. Komputasi yang diperlukan tersedia untuk Anda melalui runtime.
 
 1. Setelah membuat alur baru yang Anda beri nama `entity-recognition`, alur akan terbuka di studio.
-1. Pilih bidang **Pilih runtime** dari bilah atas.
-1. Di daftar **Runtime otomatis**, pilih **Mulai** untuk memulai runtime otomatis.
-1. Tunggu hingga runtime dimulai.
+1. Pilih **Mulai sesi komputasi** dari bilah atas.
+1. Sesi komputasi akan memakan waktu 1-3 menit untuk memulai.
 
 ### Mengonfigurasi input
 

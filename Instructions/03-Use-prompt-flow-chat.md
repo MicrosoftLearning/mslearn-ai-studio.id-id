@@ -1,17 +1,13 @@
 ---
 lab:
-  title: Membuat salinan kustom dengan alur prompt di Azure AI Studio
+  title: Membuat salinan kustom dengan alur perintah di Azure AI Studio
 ---
 
-# Membuat salinan kustom dengan alur prompt di Azure AI Studio
+# Membuat salinan kustom dengan alur perintah di Azure AI Studio
 
 Dalam latihan ini, Anda akan menggunakan alur prompt Azure AI Studio untuk membuat salinan kustom yang menggunakan perintah pengguna dan riwayat obrolan sebagai input, dan menggunakan model GPT dari Azure OpenAI untuk menghasilkan output.
 
 Latihan ini akan memakan waktu sekitar **30** menit.
-
-## Sebelum memulai
-
-Untuk menyelesaikan latihan ini, langganan Azure Anda harus disetujui untuk akses ke layanan Azure OpenAI. Isi [formulir pendaftaran](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) untuk meminta akses ke model Azure OpenAI.
 
 ## Membuat hub dan proyek AI di Azure AI Studio
 
@@ -22,24 +18,14 @@ Anda mulai dengan membuat proyek Azure AI Studio dalam hub Azure AI:
 1. Di wizard **Buat proyek baru** buat proyek dengan pengaturan berikut:
     - **Nama proyek**: *Nama unik untuk proyek Anda*
     - **Hub**: *Buat proyek baru dengan pengaturan berikut:*
-        - **Nama hub**: *Nama unik*
-        - **Langganan**: *Langganan Azure Anda*
-        - **Grup sumber daya**: *Grup sumber daya baru*
-        - **Lokasi**: *Buat **pilihan acak** dari salah satu wilayah berikut*\*
-        - Australia Timur
-        - Kanada Timur
-        - AS Timur
-        - AS Timur 2
-        - Prancis Tengah
-        - Jepang Timur
-        - AS Tengah Bagian Utara
-        - Swedia Tengah
-        - Swiss Utara
-        - UK Selatan
+    - **Nama hub**: *Nama unik*
+    - **Langganan**: *Langganan Azure Anda*
+    - **Grup sumber daya**: *Grup sumber daya baru*
+    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-35-turbo** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
     - **Menyambungkan Azure AI Services atau Azure OpenAI**: *Membuat koneksi baru*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
-    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
+    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
 
 1. Tinjau konfigurasi Anda dan buat proyek Anda.
 1. Tunggu proyek Anda dibuat.
@@ -51,11 +37,12 @@ Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model
 1. Di panel navigasi di sebelah kiri, di bawah **Komponen**, pilih halaman **Penyebaran** .
 1. Buat penyebaran model **gpt-35-turbo** baru dengan pengaturan berikut:
     - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
-    - **Versi model**: *Pilih versi default*
     - **Tipe penyebaran**: Standar
-    - **Sumber daya Azure OpenAI yang tersambung**: *Pilih koneksi default*
+    - **Versi model**: *Pilih versi default*
+    - **Sumber daya AI**: *Pilih sumber daya yang dibuat sebelumnya*
     - **Batas Tarif Token Per Menit (ribuan)**: 5K
-    - **Filter konten**: Default
+    - **Filter konten**: DefaultV2
+    - **Aktifkan kuota dinamis**: Dinonaktifkan
 1. Tunggu hingga aplikasi disebarkan. Saat penyebaran siap, pilih **Buka di playground**.
 1. Di jendela obrolan, masukkan kueri `What can you do?`.
 
@@ -81,7 +68,7 @@ Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model
    5. Encourage the user to ask follow-up questions for further assistance.
    ```
 
-1. Pilih **Terapkan perubahan**.
+1. Pilih **Simpan**.
 1. Di jendela obrolan, masukkan kueri yang sama seperti sebelumnya: `What can you do?` Perhatikan perubahan respons.
 
 Sekarang setelah Anda bermain-main dengan pesan sistem untuk model GPT yang disebarkan, Anda dapat menyesuaikan aplikasi lebih lanjut dengan bekerja dengan alur prompt.
@@ -89,6 +76,18 @@ Sekarang setelah Anda bermain-main dengan pesan sistem untuk model GPT yang dise
 ## Membuat dan menjalankan alur obrolan di Azure AI Studio
 
 Anda dapat membuat alur baru dari templat, atau membuat alur berdasarkan konfigurasi Anda di taman bermain. Karena Anda sudah bereksperimen di taman bermain, Anda akan menggunakan opsi ini untuk membuat alur baru.
+
+<details>  
+    <summary><b>Tips pemecahan masalah</b>: Kesalahan izin</summary>
+    <p>Jika Anda menerima kesalahan izin saat membuat alur perintah baru, coba langkah berikut untuk memecahkan masalah:</p>
+    <ul>
+        <li>Di portal Azure, pilih Penjelajah Sumber Daya dari Semua Layanan.</li>
+        <li>Pada halaman IAM, di tab Identitas, konfirmasikan bahwa itu adalah identitas terkelola yang ditetapkan sistem.</li>
+        <li>Lakukan navigasi ke Akun Penyimpanan. Pada halaman IAM, tambahkan penetapan peran <em>Pembaca data blob penyimpanan</em>.</li>
+        <li>Di bawah <strong>Tetapkan akses ke</strong>, pilih <strong>Identitas Terkelola</strong>, <strong>+ Pilih anggota</strong>, dan pilih <strong>Semua identitas terkelola yang ditetapkan sistem</strong>.</li>
+        <li>Tinjau dan tetapkan untuk menyimpan pengaturan baru dan coba lagi langkah sebelumnya.</li>
+    </ul>
+</details>
 
 1. Di **Obrolan playground**, pilih **Alur perintah** dari bilah atas.
 1. Masukkan `Travel-Chat` sebagai nama folder.
