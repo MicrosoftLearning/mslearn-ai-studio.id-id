@@ -1,40 +1,39 @@
 ---
 lab:
-  title: Membuat salinan kustom dengan alur perintah di Azure AI Studio
+  title: Membuat copilot kustom dengan alur perintah di portal Azure AI Foundry
 ---
 
-# Membuat salinan kustom dengan alur perintah di Azure AI Studio
+# Membuat copilot kustom dengan alur perintah di portal Azure AI Foundry
 
-Dalam latihan ini, Anda akan menggunakan alur prompt Azure AI Studio untuk membuat salinan kustom yang menggunakan perintah pengguna dan riwayat obrolan sebagai input, dan menggunakan model GPT dari Azure OpenAI untuk menghasilkan output.
+Dalam latihan ini, Anda akan menggunakan alur perintah Azure AI Foundry untuk membuat copilot kustom yang menggunakan perintah pengguna dan riwayat obrolan sebagai input, dan menggunakan model GPT dari Azure OpenAI untuk menghasilkan output.
 
 Latihan ini akan memakan waktu sekitar **30** menit.
 
-## Membuat hub dan proyek AI di Azure AI Studio
+## Membuat AI hub dan proyek di portal Azure AI Foundry.
 
-Anda mulai dengan membuat proyek Azure AI Studio dalam hub Azure AI:
+Anda mulai dengan membuat proyek portal Azure AI Foundry dalam hub Azure AI:
 
 1. Di browser web, buka [https://ai.azure.com](https://ai.azure.com) dan masuk menggunakan kredensial Azure Anda.
-1. Pilih halaman **Beranda** lalu pilih **+ Proyek baru**.
-1. Di wizard **Buat proyek baru** buat proyek dengan pengaturan berikut:
-    - **Nama proyek**: *Nama unik untuk proyek Anda*
-    - **Hub**: *Buat proyek baru dengan pengaturan berikut:*
+1. Di beranda, pilih **+ Buat proyek**.
+1. Di wizard **Buat proyek**, Anda bisa melihat semua sumber daya Azure yang akan dibuat secara otomatis dengan proyek Anda, atau Anda bisa mengkustomisasi pengaturan berikut dengan memilih **Sesuaikan** sebelum memilih **Buat**:
+
     - **Nama hub**: *Nama unik*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Grup sumber daya baru*
     - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-35-turbo** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
-    - **Menyambungkan Azure AI Services atau Azure OpenAI**: *Membuat koneksi baru*
+    - **Sambungkan Layanan Azure AI atau Azure OpenAI**: (Baru) *Autofills dengan nama hub yang Anda pilih*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
     > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
 
-1. Tinjau konfigurasi Anda dan buat proyek Anda.
-1. Tunggu proyek Anda dibuat.
+1. Jika Anda memilih **Sesuaikan**, pilih **Berikutnya** dan tinjau konfigurasi Anda.
+1. Pilih **Buat** dan tunggu hingga prosesnya selesai.
 
 ## Sebarkan model GPT
 
-Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model terlebih dahulu. Azure AI Studio memungkinkan Anda menyebarkan model OpenAI yang dapat Anda gunakan dalam alur Anda.
+Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model terlebih dahulu. Azure AI Foundry memungkinkan Anda menerapkan model OpenAI yang dapat Anda gunakan dalam alur Anda.
 
-1. Di panel navigasi di sebelah kiri, di bawah **Komponen**, pilih halaman **Penyebaran** .
+1. Di panel navigasi di sebelah kiri, di bawah **Aset saya**, pilih halaman **Model + titik akhir**.
 1. Buat penyebaran model **gpt-35-turbo** baru dengan pengaturan berikut:
     - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
     - **Tipe penyebaran**: Standar
@@ -48,7 +47,7 @@ Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model
 
     Perhatikan bahwa jawabannya umum karena tidak ada instruksi khusus untuk asisten. Untuk membuatnya terfokus pada tugas, Anda dapat mengubah permintaan sistem.
 
-1. Ubah kode **Pesan sistem** ke kode berikut:
+1. Ubah pesan **Berikan instruksi dan konteks model** ke yang berikut ini:
 
    ```md
    **Objective**: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
@@ -68,12 +67,12 @@ Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model
    5. Encourage the user to ask follow-up questions for further assistance.
    ```
 
-1. Pilih **Simpan**.
+1. Pilih **Terapkan perubahan**.
 1. Di jendela obrolan, masukkan kueri yang sama seperti sebelumnya: `What can you do?` Perhatikan perubahan respons.
 
 Sekarang setelah Anda bermain-main dengan pesan sistem untuk model GPT yang disebarkan, Anda dapat menyesuaikan aplikasi lebih lanjut dengan bekerja dengan alur prompt.
 
-## Membuat dan menjalankan alur obrolan di Azure AI Studio
+## Membuat dan menjalankan alur obrolan di portal Azure AI Foundry
 
 Anda dapat membuat alur baru dari templat, atau membuat alur berdasarkan konfigurasi Anda di taman bermain. Karena Anda sudah bereksperimen di taman bermain, Anda akan menggunakan opsi ini untuk membuat alur baru.
 
@@ -82,7 +81,7 @@ Anda dapat membuat alur baru dari templat, atau membuat alur berdasarkan konfigu
     <p>Jika Anda menerima kesalahan izin saat membuat alur perintah baru, coba langkah berikut untuk memecahkan masalah:</p>
     <ul>
         <li>Di portal Azure, pilih Penjelajah Sumber Daya dari Semua Layanan.</li>
-        <li>Pada halaman IAM, di tab Identitas, konfirmasikan bahwa itu adalah identitas terkelola yang ditetapkan sistem.</li>
+        <li>Pada tab Identitas di bawah Manajemen Sumber Daya, konfirmasikan bahwa itu adalah identitas terkelola yang ditetapkan sistem.</li>
         <li>Lakukan navigasi ke Akun Penyimpanan. Pada halaman IAM, tambahkan penetapan peran <em>Pembaca data blob penyimpanan</em>.</li>
         <li>Di bawah <strong>Tetapkan akses ke</strong>, pilih <strong>Identitas Terkelola</strong>, <strong>+ Pilih anggota</strong>, dan pilih <strong>Semua identitas terkelola yang ditetapkan sistem</strong>.</li>
         <li>Tinjau dan tetapkan untuk menyimpan pengaturan baru dan coba lagi langkah sebelumnya.</li>
@@ -109,7 +108,6 @@ Anda dapat membuat alur baru dari templat, atau membuat alur berdasarkan konfigu
 1. Tinjau bidang perintah dan pastikan bidang tersebut terlihat seperti berikut ini:
 
    ```yml
-   {% raw %}
    system:
    **Objective**: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
 
@@ -136,7 +134,6 @@ Anda dapat membuat alur baru dari templat, atau membuat alur berdasarkan konfigu
 
    user:
    {{question}}
-   {% endraw %}
    ```
 
 ### Menguji dan menyebarkan alur
@@ -160,16 +157,15 @@ Setelah mengembangkan alur, Anda dapat menggunakan jendela obrolan untuk menguji
         - **Inferensi pengumpulan data**: Aktif
     - **Pengaturan tingkat lanjut**:
         - *Menjaga pengaturan default*
-1. Di Azure AI Studio, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Komponen**, pilih halaman **Penyebaran** .
-1. Perhatikan bahwa secara default **penyebaran model** tercantum, termasuk model bahasa yang Anda sebarkan.
-1. Pilih tab **Penyebaran aplikasi** untuk menemukan alur yang Anda sebarkan. Mungkin perlu waktu sebelum penyebaran dicantumkan dan berhasil dibuat.
+1. Di portal Azure AI Foundry, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Aset saya**, pilih halaman **Model + titik akhir**.
+1. Perhatikan bahwa secara default **Penerapan model** tercantum, termasuk model bahasa yang digunakan dan alur yang digunakan. Mungkin perlu waktu sebelum penyebaran dicantumkan dan berhasil dibuat.
 1. Ketika penyebaran telah berhasil, pilih penyebaran tersebut. Kemudian, pada halaman **Uji** , masukkan perintah `What is there to do in San Francisco?` dan tinjau responsnya.
 1. Masukkan perintah `Where else could I go?` dan tinjau responsnya.
 1. Lihat halaman **Konsumsi** untuk titik akhir, dan perhatikan bahwa halaman tersebut berisi informasi koneksi dan kode sampel yang dapat Anda gunakan untuk membangun aplikasi klien untuk titik akhir Anda - memungkinkan Anda mengintegrasikan solusi alur perintah ke dalam aplikasi sebagai salinan kustom.
 
 ## Menghapus sumber daya Azure
 
-Setelah selesai menjelajahi Azure AI Studio, Anda harus menghapus sumber daya yang telah Anda buat untuk menghindari biaya Azure yang tidak perlu.
+Setelah selesai menjelajahi portal Azure AI Foundry, Anda harus menghapus sumber daya yang telah Anda buat untuk menghindari biaya Azure yang tidak perlu.
 
 - Navigasikan ke [portal Microsoft Azure](https://portal.azure.com) di `https://portal.azure.com`.
 - Di portal Microsoft Azure, pada halaman **Beranda**, pilih **Grup sumber daya**.

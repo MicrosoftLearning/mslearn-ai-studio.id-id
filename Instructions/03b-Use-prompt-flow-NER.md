@@ -1,9 +1,9 @@
 ---
 lab:
-  title: Menggunakan alur perintah untuk Pengenalan Entitas Bernama (NER) di Azure AI Studio
+  title: Menggunakan alur perintah untuk Pengenalan Entitas Bernama (NER) di portal Azure AI Foundry
 ---
 
-# Menggunakan alur perintah untuk Pengenalan Entitas Bernama (NER) di Azure AI Studio
+# Menggunakan alur perintah untuk Pengenalan Entitas Bernama (NER) di portal Azure AI Foundry
 
 Mengekstrak informasi berharga dari teks dikenal sebagai Pengenal Entitas Bernama (NER). Entitas adalah kata kunci yang menarik bagi Anda dalam teks tertentu.
 
@@ -11,39 +11,41 @@ Mengekstrak informasi berharga dari teks dikenal sebagai Pengenal Entitas Bernam
 
 Model Bahasa Besar (LLM) dapat digunakan untuk melakukan NER. Untuk membuat aplikasi yang mengambil teks sebagai entitas input dan output, Anda dapat membuat alur yang menggunakan simpul LLM dengan alur prompt.
 
-Dalam latihan ini, Anda akan menggunakan alur prompt Azure AI Studio untuk membuat aplikasi LLM yang mengharapkan jenis entitas dan teks sebagai input. Ini memanggil model GPT dari Azure OpenAI melalui simpul LLM untuk mengekstrak entitas yang diperlukan dari teks tertentu, membersihkan hasil dan menghasilkan entitas yang diekstrak.
+Dalam latihan ini, Anda akan menggunakan alur perintah Azure AI Foundry untuk membuat aplikasi LLM yang mengharapkan jenis entitas dan teks sebagai input. Ini memanggil model GPT dari Azure OpenAI melalui simpul LLM untuk mengekstrak entitas yang diperlukan dari teks tertentu, membersihkan hasil dan menghasilkan entitas yang diekstrak.
 
 ![Gambaran umum latihan](./media/get-started-lab.png)
 
-Anda harus terlebih dahulu membuat proyek di Azure AI Studio untuk membuat sumber daya Azure yang diperlukan. Kemudian, Anda dapat menyebarkan model GPT dengan layanan Azure OpenAI. Setelah Anda memiliki sumber daya yang diperlukan, Anda dapat membuat alur. Terakhir, Anda akan menjalankan alur untuk mengujinya dan melihat output sampel.
+Anda harus terlebih dahulu membuat proyek di portal Azure AI Foundry untuk membuat sumber daya Azure yang diperlukan. Kemudian, Anda dapat menyebarkan model GPT dengan layanan Azure OpenAI. Setelah Anda memiliki sumber daya yang diperlukan, Anda dapat membuat alur. Terakhir, Anda akan menjalankan alur untuk mengujinya dan melihat output sampel.
 
-## Membuat proyek di Azure AI Studio
+## Membuat proyek di portal Azure AI Foundry
 
-Anda mulai dengan membuat proyek Azure AI Studio dan Azure AI Hub untuk mendukungnya.
+Anda mulai dengan membuat proyek Azure AI Foundry dan Azure AI Hub untuk mendukungnya.
 
 1. Di browser web, buka [https://ai.azure.com](https://ai.azure.com) dan masuk menggunakan kredensial Azure Anda.
-1. Pilih halaman **Beranda** lalu pilih **+ Proyek baru**.
-1. Di wizard **Buat proyek baru** buat proyek dengan pengaturan berikut:
+1. Di beranda, pilih **+ Buat proyek**.
+1. Di wizard **Buat proyek**, Anda bisa melihat semua sumber daya Azure yang akan dibuat secara otomatis dengan proyek Anda, atau Anda bisa mengkustomisasi pengaturan berikut dengan memilih **Sesuaikan** sebelum memilih **Buat**:
+
     - **Nama proyek**: *Nama unik untuk proyek Anda*
     - **Hub**: *Buat proyek baru dengan pengaturan berikut:*
     - **Nama hub**: *Nama unik*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Grup sumber daya baru*
     - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-35-turbo** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
-    - **Menyambungkan Azure AI Services atau Azure OpenAI**: *Membuat koneksi baru*
+    - **Sambungkan Layanan Azure AI atau Azure OpenAI**: (Baru) *Autofills dengan nama hub yang Anda pilih*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
     > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
 
-1. Tinjau konfigurasi Anda dan buat proyek Anda.
-1. Tunggu proyek Anda dibuat.
+1. Jika Anda memilih **Sesuaikan**, pilih **Berikutnya** dan tinjau konfigurasi Anda.
+1. Pilih **Buat** dan tunggu hingga prosesnya selesai.
 
 ## Sebarkan model GPT
 
-Untuk menggunakan model LLM dalam alur perintah, Anda perlu menyebarkan model terlebih dahulu. Azure AI Studio memungkinkan Anda menyebarkan model OpenAI yang dapat Anda gunakan dalam alur Anda.
+Untuk menggunakan model LLM dalam alur perintah, Anda perlu menyebarkan model terlebih dahulu. Azure AI Foundry memungkinkan Anda menerapkan model OpenAI yang dapat Anda gunakan dalam alur Anda.
 
-1. Di panel navigasi di sebelah kiri, di bawah **Komponen**, pilih halaman **Penyebaran** .
-1. Buat penyebaran model **gpt-35-turbo** baru dengan pengaturan berikut:
+1. Di panel navigasi di sebelah kiri, di bawah **Aset saya**, pilih halaman **Model + titik akhir**.
+1. Buat penyebaran baru model **gpt-35-turbo** dengan pengaturan berikut dengan memilih **Sesuaikan** di detail penerapan:
+   
     - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
     - **Tipe penyebaran**: Standar
     - **Versi model**: *Pilih versi default*
@@ -52,9 +54,9 @@ Untuk menggunakan model LLM dalam alur perintah, Anda perlu menyebarkan model te
     - **Filter konten**: DefaultV2
     - **Aktifkan kuota dinamis**: Dinonaktifkan
    
-Setelah model LLM disebarkan, Anda dapat membuat alur di Azure AI Studio yang memanggil model yang disebarkan.
+Setelah model LLM diterapkan, Anda dapat membuat alur di Azure AI Foundry yang memanggil model yang telah diterapkan.
 
-## Membuat dan menjalankan alur di Azure AI Studio
+## Membuat dan menjalankan alur di portal Azure AI Foundry
 
 Sekarang setelah Anda memiliki semua sumber daya yang diperlukan yang disediakan, Anda dapat membuat alur.
 
@@ -62,7 +64,7 @@ Sekarang setelah Anda memiliki semua sumber daya yang diperlukan yang disediakan
 
 Untuk membuat alur baru dengan templat, Anda dapat memilih salah satu jenis alur yang ingin Anda kembangkan.
 
-1. Di panel navigasi di sebelah kiri, di bawah **Alat**, pilih **Alur perintah**.
+1. Di panel navigasi di sebelah kiri, di bawah **Membangun dan menyesuaikan**, pilih **Alur prompt**.
 1. Pilih **+ Buat** untuk membuat alur baru.
 1. Buat **Alur standar** baru dan masukkan `entity-recognition` sebagai nama folder.
 
@@ -71,7 +73,7 @@ Untuk membuat alur baru dengan templat, Anda dapat memilih salah satu jenis alur
     <p>Jika Anda menerima kesalahan izin saat membuat alur perintah baru, coba langkah berikut untuk memecahkan masalah:</p>
     <ul>
         <li>Di portal Azure, pilih Penjelajah Sumber Daya dari Semua Layanan.</li>
-        <li>Pada halaman IAM, di tab Identitas, konfirmasikan bahwa itu adalah identitas terkelola yang ditetapkan sistem.</li>
+        <li>Pada tab Identitas di bawah Manajemen Sumber Daya, konfirmasikan bahwa itu adalah identitas terkelola yang ditetapkan sistem.</li>
         <li>Lakukan navigasi ke Akun Penyimpanan. Pada halaman IAM, tambahkan penetapan peran <em>Pembaca data blob penyimpanan</em>.</li>
         <li>Di bawah <strong>Tetapkan akses ke</strong>, pilih <strong>Identitas Terkelola</strong>, <strong>+ Pilih anggota</strong>, dan pilih <strong>Semua identitas terkelola yang ditetapkan sistem</strong>.</li>
         <li>Tinjau dan tetapkan untuk menyimpan pengaturan baru dan coba lagi langkah sebelumnya.</li>
@@ -108,12 +110,11 @@ Alur standar sudah mencakup simpul yang menggunakan alat LLM. Anda dapat menemuk
 
 1. Navigasi ke **simpul LLM** bernama `joke`.
 1. Ganti nama dengan `NER_LLM`
-1. Untuk **Koneksi**, pilih `Default_AzureOpenAI` koneksi.
+1. Untuk **Koneksi**, pilih koneksi yang dibuat untuk Anda saat Anda membuat hub AI.
 1. Untuk **nama_penyebaran**, pilih model yang `gpt-35-turbo` Anda sebarkan.
 1. Ganti bidang perintah dengan kode berikut:
 
    ```yml
-   {% raw %}
    system:
 
    Your task is to find entities of a certain type from the given text content.
@@ -126,7 +127,6 @@ Alur standar sudah mencakup simpul yang menggunakan alat LLM. Anda dapat menemuk
    Entity type: {{entity_type}}
    Text content: {{text}}
    Entities:
-   {% endraw %}
    ```
 
 1. Pilih **Validasi dan uraikan input**.
@@ -180,7 +180,7 @@ Sekarang setelah Anda mengembangkan alur, Anda dapat menjalankannya untuk menguj
 
 ## Menghapus sumber daya Azure
 
-Setelah selesai menjelajahi Azure AI Studio, Anda harus menghapus sumber daya yang telah Anda buat untuk menghindari biaya Azure yang tidak perlu.
+Setelah selesai menjelajahi portal Azure AI Foundry, Anda harus menghapus sumber daya yang telah Anda buat untuk menghindari biaya Azure yang tidak perlu.
 
 - Navigasikan ke [portal Microsoft Azure](https://portal.azure.com) di `https://portal.azure.com`.
 - Di portal Microsoft Azure, pada halaman **Beranda**, pilih **Grup sumber daya**.

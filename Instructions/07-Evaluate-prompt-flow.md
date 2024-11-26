@@ -1,17 +1,17 @@
 ---
 lab:
-  title: Evaluasi performa salinan kustom Anda di Azure AI Studio
+  title: Mengevaluasi performa copilot kustom Anda di Azure AI Foundry
 ---
 
-# Evaluasi performa salinan kustom Anda di Azure AI Studio
+# Mengevaluasi performa copilot kustom Anda di Azure AI Foundry
 
-Dalam latihan ini, Anda akan menjelajahi evaluasi bawaan dan kustom untuk menilai dan membandingkan performa aplikasi AI Anda dengan Azure AI Studio.
+Dalam latihan ini, Anda akan menjelajahi evaluasi bawaan dan kustom untuk menilai dan membandingkan performa aplikasi AI Anda dengan portal Azure AI Foundry.
 
 Latihan ini akan memakan waktu sekitar **30** menit.
 
-## Membuat hub dan proyek AI di Azure AI Studio
+## Membuat hub AI dan proyek di Azure AI Foundry
 
-Anda mulai dengan membuat proyek Azure AI Studio dalam hub Azure AI:
+Anda mulai dengan membuat proyek Azure AI Foundry dalam hub Azure AI:
 
 1. Di browser web, buka [https://ai.azure.com](https://ai.azure.com) dan masuk menggunakan kredensial Azure Anda.
 1. Pilih halaman **Beranda** lalu pilih **+ Proyek baru**.
@@ -30,9 +30,10 @@ Anda mulai dengan membuat proyek Azure AI Studio dalam hub Azure AI:
 
 ## Sebarkan model GPT
 
-Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model terlebih dahulu. Azure AI Studio memungkinkan Anda menyebarkan model OpenAI yang dapat Anda gunakan dalam alur Anda.
+Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model terlebih dahulu. Azure AI Foundry memungkinkan Anda menerapkan model OpenAI yang dapat Anda gunakan dalam alur Anda.
 
-1. Di panel navigasi di sebelah kiri, di bawah **Komponen**, pilih halaman **Penyebaran** .
+1. Navigasikan ke halaman **Model + titik akhir** di bawah bagian **Aset saya**, menggunakan menu di sebelah kiri.
+1. Pilih tombol **+ Sebarkan model** , dan pilih opsi **Sebarkan model dasar**.
 1. Buat penyebaran baru model **gpt-35-turbo** dengan pengaturan berikut dengan memilih **Sesuaikan** di wizard **Sebarkan model**:
     - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
     - **Tipe penyebaran**: Standar
@@ -62,12 +63,12 @@ Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model
    5. Encourage the user to ask follow-up questions for further assistance.
    ```
 
-1. Pilih **Simpan**.
-1. Di jendela obrolan, masukkan kueri: `What can you do?` untuk memverifikasi bahwa model bahasa bertingkah seperti yang diharapkan.
+1. Pilih **Terapkan perubahan**.
+1. Di jendela obrolan (riwayat), masukkan kueri: `What can you do?` untuk memverifikasi bahwa model bahasa berperilaku seperti yang diharapkan.
 
 Sekarang setelah Anda memiliki model yang disebarkan dengan pesan sistem yang diperbarui, Anda dapat mengevaluasi model.
 
-## Mengevaluasi model bahasa di Azure AI Studio secara manual
+## Mengevaluasi model bahasa di portal Azure AI Foundry secara manual
 
 Anda dapat meninjau respons model secara manual berdasarkan data pengujian. Peninjauan secara manual memungkinkan Anda menguji input yang berbeda satu per satu untuk mengevaluasi apakah model berfungsi seperti yang diharapkan.
 
@@ -112,7 +113,13 @@ Anda dapat meninjau respons model secara manual berdasarkan data pengujian. Peni
 
 ## Mengevaluasi salinan Anda dengan metrik bawaan
 
-Ketika Anda telah membuat salinan dengan alur obrolan, Anda dapat mengevaluasi alur dengan melakukan eksekusi batch dan menilai performa alur dengan metrik bawaan.
+Ketika Anda telah membuat aplikasi obrolan dengan alur prompt, Anda dapat mengevaluasi alur tersebut dengan melakukan proses batch dan menilai kinerja alur tersebut dengan metrik bawaan.
+
+![Diagram konstruksi himpunan data input untuk evaluasi.](./media/diagram-dataset-evaluation.png)
+
+Untuk mengevaluasi alur obrolan, kueri pengguna, dan respons obrolan disediakan sebagai input untuk evaluasi.
+
+Untuk menghemat waktu, kami telah membuat kumpulan himpunan data output untuk Anda yang berisi hasil beberapa input yang sedang diproses oleh alur permintaan. Setiap hasil disimpan dalam himpunan data yang akan Anda evaluasi di langkah berikutnya.
 
 1. Pilih tab **Evaluasi otomatis** dan buat **Evaluasi baru** dengan pengaturan berikut: <details>  
       <summary><b>Tips pemecahan masalah</b>: Kesalahan izin</summary>
@@ -130,7 +137,7 @@ Ketika Anda telah membuat salinan dengan alur obrolan, Anda dapat mengevaluasi a
     - **Nama evaluasi**: *Masukkan nama unik*
     - Pilih **Selanjutnya**
     - **Pilih data yang ingin Anda evaluasi**: Tambahkan himpunan data Anda
-        - Unduh file https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl JSONL dan unggah ke UI.
+        - Unduh [himpunan data validasi](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl) di `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl`, simpan sebagai file JSONL dan unggah ke UI.
     - Pilih **Selanjutnya**
     - **Pilih metrik**: Koherensi, Kefasihan
     - **Koneksi**: *Koneksi Layanan AI Anda*
@@ -145,7 +152,7 @@ Ketika Anda telah membuat salinan dengan alur obrolan, Anda dapat mengevaluasi a
 
 ## Menghapus sumber daya Azure
 
-Setelah selesai menjelajahi Azure AI Studio, Anda harus menghapus sumber daya yang telah Anda buat untuk menghindari biaya Azure yang tidak perlu.
+Setelah selesai menjelajahi Azure AI Foundry, Anda harus menghapus sumber daya yang telah Anda buat untuk menghindari biaya Azure yang tidak perlu.
 
 - Navigasikan ke [portal Microsoft Azure](https://portal.azure.com) di `https://portal.azure.com`.
 - Di portal Microsoft Azure, pada halaman **Beranda**, pilih **Grup sumber daya**.
