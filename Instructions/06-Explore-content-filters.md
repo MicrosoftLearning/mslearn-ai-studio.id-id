@@ -1,13 +1,13 @@
 ---
 lab:
-  title: Jelajahi filter konten untuk mencegah output konten yang berbahaya di Azure AI Studio
+  title: Jelajahi filter konten untuk mencegah output konten yang berbahaya di Azure AI Foundry
 ---
 
-# Jelajahi filter konten untuk mencegah output konten yang berbahaya di Azure AI Studio
+# Jelajahi filter konten untuk mencegah output konten yang berbahaya di Azure AI Foundry
 
-Azure AI Studio dilengkapi filter konten default untuk membantu memastikan bahwa perintah dan penyelesaian yang berpotensi berbahaya diidentifikasi dan dihapus dari interaksi dengan layanan. Selain itu, Anda dapat mengajukan izin untuk menentukan filter konten kustom untuk kebutuhan spesifik Anda guna memastikan penyebaran model menerapkan prinsip-prinsip AI yang bertanggung jawab yang sesuai dengan skenario AI generatif Anda. Pemfilteran konten adalah salah satu elemen pendekatan yang efektif untuk AI yang bertanggung jawab ketika bekerja dengan model AI generatif.
+Azure AI Foundr dilengkapi filter konten default untuk membantu memastikan bahwa perintah dan penyelesaian yang berpotensi berbahaya diidentifikasi dan dihapus dari interaksi dengan layanan. Selain itu, Anda dapat mengajukan izin untuk menentukan filter konten kustom untuk kebutuhan spesifik Anda guna memastikan penyebaran model menerapkan prinsip-prinsip AI yang bertanggung jawab yang sesuai dengan skenario AI generatif Anda. Pemfilteran konten adalah salah satu elemen pendekatan yang efektif untuk AI yang bertanggung jawab ketika bekerja dengan model AI generatif.
 
-Dalam latihan ini, Anda akan menjelajahi pengaruh filter konten default dalam Azure AI Studio.
+Dalam latihan ini, Anda akan menjelajahi pengaruh filter konten default dalam Azure AI Foundry.
 
 Latihan ini akan memakan waktu sekitar **25** menit.
 
@@ -34,28 +34,28 @@ Anda memerlukan Azure AI Hub di langganan Azure Anda untuk menghosting proyek. A
 
 1. Setelah Azure AI Hub dibuat, akan terlihat mirip dengan gambar berikut:
 
-    ![Cuplikan layar detail Azure AI Hub di Azure AI Studio.](./media/azure-ai-overview.png)
+    ![Tangkapan layar detail Azure AI Hub di portal Azure AI Foundry.](./media/azure-ai-overview.png)
 
 ## Membuat proyek
 
 Azure AI Hub menyediakan ruang kerja kolaboratif tempat Anda dapat menentukan satu atau beberapa *proyek*. Mari kita buat proyek di Azure AI Hub Anda.
 
-1. Di Azure AI Studio, pada halaman **Gambaran umum Hub**, pilih **+ Proyek baru**. Kemudian, di wizard **Buat proyek baru** , buat proyek dengan pengaturan berikut:
+1. Di portal Azure AI Foundry, pada halaman **Gambaran umum Hub**, pilih **+ Proyek baru**. Kemudian, di wizard **Buat proyek baru** , buat proyek dengan pengaturan berikut:
 
     - **Nama proyek**: *Nama unik untuk proyek Anda*
     - **Hub**: *AI Hub Anda*
 
 1. Tunggu proyek Anda dibuat. Halaman ini akan terlihat mirip dengan gambar berikut:
 
-    ![Cuplikan layar halaman detail proyek di portal Azure AI Studio.](./media/azure-ai-project.png)
+    ![Cuplikan layar detail Azure AI Hub di portal Azure AI Foundry.](./media/azure-ai-project.png)
 
 1. Tampilkan halaman di panel di sisi kiri, perluas setiap bagian, dan perhatikan tugas yang bisa Anda lakukan dan sumber daya yang bisa Anda kelola dalam proyek.
 
 ## Terapkan model
 
-Sekarang Anda sudah siap untuk menyebarkan model untuk digunakan melalui **Azure AI Studio**. Setelah disebarkan, Anda akan menggunakan model tersebut untuk menghasilkan konten bahasa alami.
+Sekarang Anda sudah siap untuk menerapkan model untuk digunakan melalui **portal Azure AI Foundry**. Setelah disebarkan, Anda akan menggunakan model tersebut untuk menghasilkan konten bahasa alami.
 
-1. Di Azure AI Studio, buat penyebaran baru dengan pengaturan sebagai berikut:
+1. Di portal Azure AI Foundry, buat penerapan baru dengan pengaturan sebagai berikut:
 
     - **Model**: gpt-35-turbo
     - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
@@ -66,7 +66,7 @@ Sekarang Anda sudah siap untuk menyebarkan model untuk digunakan melalui **Azure
     - **Filter konten**: DefaultV2
     - **Aktifkan kuota dinamis**: Dinonaktifkan
       
-> **Catatan**: Setiap model Azure AI Studio dioptimalkan untuk keseimbangan kemampuan dan performa yang berbeda. Kita akan menggunakan **model GPT 3.5 Turbo** dalam latihan ini, yang sangat mampu menghasilkan bahasa alami dan skenario obrolan.
+> **Catatan**: Setiap model Azure AI Foundry dioptimalkan untuk keseimbangan kemampuan dan performa yang berbeda. Kita akan menggunakan **model GPT 3.5 Turbo** dalam latihan ini, yang sangat mampu menghasilkan bahasa alami dan skenario obrolan.
 
 ## Jelajahi filter konten
 
@@ -101,7 +101,7 @@ Filter konten diterapkan pada perintah dan penyelesaian untuk mencegah bahasa ya
 
 1. Kembali ke halaman penyebaran dan perhatikan bahwa penyebaran Anda sekarang mereferensikan filter konten kustom yang telah Anda buat.
 
-    ![Cuplikan layar halaman penyebaran di Azure AI Studio.](./media/azure-ai-deployment.png)
+    ![Tangkapan layar detail Azure AI Hub di portal Azure AI Foundry.](./media/azure-ai-deployment.png)
 
 ## Hasilkan output bahasa alami
 
@@ -131,9 +131,9 @@ Mari kita lihat, bagaimana perilaku model ini dalam interaksi percakapan.
    Describe characteristics of Scottish people.
     ```
 
-8. Amati hasilnya, yang seharusnya menunjukkan bahwa permintaan untuk menjadi rasis dan menghina tidak didukung. Pencegahan output yang menyinggung ini merupakan hasil dari filter konten default di Azure AI Studio.
+8. Amati hasilnya, yang seharusnya menunjukkan bahwa permintaan untuk menjadi rasis dan menghina tidak didukung. Pencegahan output yang menyinggung ini merupakan hasil dari filter konten default di portal Azure AI Foundry.
 
-> **Tips**: Untuk detail selengkapnya tentang kategori dan tingkat keparahan yang digunakan dalam filter konten, lihat [Pemfilteran konten](https://learn.microsoft.com/azure/ai-studio/concepts/content-filtering) dalam dokumentasi layanan Azure AI Studio.
+> **Tips**: Untuk detail selengkapnya tentang kategori dan tingkat keparahan yang digunakan dalam filter konten, lihat [Pemfilteran konten](https://learn.microsoft.com/azure/ai-studio/concepts/content-filtering) dalam dokumentasi layanan Azure AI Foundry.
 
 ## Penghapusan
 

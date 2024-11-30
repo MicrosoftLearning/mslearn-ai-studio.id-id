@@ -5,7 +5,7 @@ lab:
 
 # Membangun salinan kustom menggunakan alat pengembangan code-first
 
-Dalam latihan ini, Anda akan mengkloning dan menyebarkan templat Azure Developer CLI yang menyediakan dan [menyebarkan proyek AI Anda ke titik akhir online](https://learn.microsoft.com/azure/developer/azure-developer-cli/azure-ai-ml-endpoints?WT.mc_id=academic-140829-cacaste) di Azure AI Studio. Anda kemudian akan menggunakannya sebagai titik awal untuk membangun salinan kustom Anda sendiri dengan Azure AI dan pengalaman kode-pertama.
+Dalam latihan ini, Anda akan mengkloning dan menerapkan templat Azure Developer CLI yang menyediakan dan [menyebarkan proyek AI Anda ke titik akhir online](https://learn.microsoft.com/azure/developer/azure-developer-cli/azure-ai-ml-endpoints?WT.mc_id=academic-140829-cacaste) di Azure AI Foundry. Anda kemudian akan menggunakannya sebagai titik awal untuk membangun salinan kustom Anda sendiri dengan Azure AI dan pengalaman kode-pertama.
 
 Latihan ini akan memakan waktu sekitar **90** menit.
 
@@ -21,7 +21,7 @@ Untuk menyelesaikan latihan ini, Anda perlu:
 
 Untuk mulai menggunakan templat proyek Azure Developer CLI AI, navigasikan ke [Templat Azure AI dengan koleksi Azure Developer CLI](https://learn.microsoft.com/collections/5pq0uompdgje8d/?WT.mc_id=academic-140829-cacaste). Dengan menjelajahi koleksi, Anda dapat menemukan beberapa proyek yang dikelompokkan berdasarkan teknologi dan kasus penggunaan, termasuk sampel proyek multi-modal dan multi-agen, proyek seperti salinan, dan sampel yang mengintegrasikan kerangka kerja dan layanan Azure yang berbeda.
 
-Untuk latihan ini, Anda akan mengambil **[salinan Contoso Chat Retail dengan templat proyek Azure AI Studio & PromptFlow (Python)](https://aka.ms/contoso-retail-sample)** sebagai titik awal Anda. Templat proyek ini adalah pengalaman pertama kode yang menggunakan Prompty dan PromptFlow untuk membangun salinan kustom (chat AI) yang dapat diintegrasikan ke dalam situs web ritel (chat UI) dari perusahaan fiksi bernama Contoso Outdoors.
+Untuk latihan ini, Anda akan mengambil **[copilot Contoso Chat Retail dengan templat proyek Azure AI Foundry & PromptFlow (Python)](https://aka.ms/contoso-retail-sample)** sebagai titik awal Anda. Templat proyek ini adalah pengalaman pertama kode yang menggunakan Prompty dan PromptFlow untuk membangun salinan kustom (chat AI) yang dapat diintegrasikan ke dalam situs web ritel (chat UI) dari perusahaan fiksi bernama Contoso Outdoors.
 
 ![UI/UX Obrolan Contoso](./media/contoso_outdoors_website.png)
 
@@ -83,7 +83,7 @@ Setelah masuk, Anda siap untuk mulai menyediakan sumber daya Azure untuk proyek 
 Provisi dan penyebaran aplikasi AI menggunakan azd dapat memakan waktu 10 menit atau lebih untuk menyelesaikannya. Anda dapat melacak kemajuan dengan:
 
 - Menampilkan Penyedia sumber daya di [Portal Azure](https://ms.portal.azure.com/). Cari grup sumber daya yang sesuai dengan nama lingkungan Anda. Pilih opsi **Penyebaran** di bilah sisi, lalu pantau status penyebaran sumber daya yang sedang dibuat.
-- Mengunjungi portal [Azure AI Studio](https://ai.azure.com) . Masuk menggunakan akun Azure Anda. Cari hub AI yang sesuai dengan grup sumber daya di atas (Anda mungkin perlu menyegarkan beberapa kali). Pilih proyek AI yang tercantum, lalu pilih **Penyebaran** di bilah sampingnya untuk melacak status untuk model dan penyebaran aplikasi obrolan.
+- Mengunjungi portal [portal Azure AI Foundry](https://ai.azure.com). Masuk menggunakan akun Azure Anda. Cari hub AI yang sesuai dengan grup sumber daya di atas (Anda mungkin perlu menyegarkan beberapa kali). Pilih proyek AI yang tercantum, lalu pilih **Penyebaran** di bilah sampingnya untuk melacak status untuk model dan penyebaran aplikasi obrolan.
 
 Mari kita jelajahi cara memvalidasi provisi sumber daya menggunakan Portal Azure.
 
@@ -92,13 +92,13 @@ Mari kita jelajahi cara memvalidasi provisi sumber daya menggunakan Portal Azure
 
     ![Gambaran umum grup sumber daya Portal Azure](./media/azure-portal-resource-group.png)
 
-1. Mari kita mulai dengan memverifikasi bahwa sumber daya [arsitektur Azure AI Studio](https://learn.microsoft.com/azure/ai-studio/concepts/architecture) telah dibuat. Gambar di bawah ini memberikan detail lebih lanjut tentang apa yang disediakan masing-masing sumber daya ini ke aplikasi AI kami.
+1. Mari kita mulai dengan memverifikasi bahwa sumber daya [Azure AI Foundry](https://learn.microsoft.com/azure/ai-studio/concepts/architecture) utama telah dibuat. Gambar di bawah ini memberikan detail lebih lanjut tentang apa yang disediakan masing-masing sumber daya ini ke aplikasi AI kami.
 
     - **Hub Azure AI**: Sumber daya Azure tingkat atas. Menyediakan lingkungan kolaborasi untuk tim.
     - **Proyek Azure AI**: Turunan hub. Mengelompokkan komponen aplikasi untuk orkestrasi, kustomisasi.
     - **Layanan Azure AI**: Mengelola titik akhir model Anda.
 
-    ![Arsitektur Azure AI Studio](./media/resource-provider-connected-resources.svg)
+    ![Arsitektur Azure AI Foundry](./media/resource-provider-connected-resources.svg)
 
 1. Selanjutnya, mari kita verifikasi bahwa kita menyediakan dua sumber daya utama untuk mengimplementasikan pola desain [Retrieval Augmented Generation](https://learn.microsoft.com/azure/ai-studio/concepts/retrieval-augmented-generation) dengan menyimpan data produk dan pelanggan untuk pengambilan berbasis kueri.
 
@@ -115,11 +115,11 @@ Mari kita jelajahi cara memvalidasi provisi sumber daya menggunakan Portal Azure
 
 1. Terakhir tetapi tidak kalah pentingnya, Anda akan melihat sumber daya baru dengan jenis **penyebaran online pembelajaran mesin**. Ini adalah sumber daya yang sesuai dengan titik akhir proyek Azure AI yang disebarkan (untuk salinan obrolan).
 
-## Memvalidasi penyebaran menggunakan Azure AI Studio
+## Memvalidasi penerapan menggunakan Azure AI Foundry
 
-Portal Azure membantu Anda mengelola sumber daya Azure yang mendasar untuk proyek Anda. Portal Azure AI Studio membantu Anda *membangun dan mengelola* proyek AI itu sendiri, menyeluruh, dari pemilihan model hingga penyebaran aplikasi. Perintah `azd up` harus telah menyelesaikan seluruh proses dari provisi model yang diperlukan, hingga menyebarkan dan menghosting titik akhir API salinan untuk penggunaan. Mari kita validasi bahwa aplikasi berfungsi seperti yang diharapkan.
+Portal Azure membantu Anda mengelola sumber daya Azure yang mendasar untuk proyek Anda. Portal Azure AI Foundry membantu Anda *membangun dan mengelola* proyek AI itu sendiri, secara menyeluruh, dari pemilihan model hingga penerapan aplikasi. Perintah `azd up` harus telah menyelesaikan seluruh proses dari provisi model yang diperlukan, hingga menyebarkan dan menghosting titik akhir API salinan untuk penggunaan. Mari kita validasi bahwa aplikasi berfungsi seperti yang diharapkan.
 
-1. Kunjungi halaman **Kelola** di [Azure AI Studio](https://ai.azure.com/manage) untuk melihat semua hub Azure AI di langganan Anda.
+1. Kunjungi halaman **Kelola** di [portal Azure AI Foundry](https://ai.azure.com/manage) untuk melihat semua hub Azure AI di langganan Anda.
 1. Pilih hub untuk grup sumber daya Anda untuk melihat semua proyek Azure AI di dalamnya.
 1. Pilih proyek AI default di hub, lalu pilih **Penyebaran** di menu di sebelah kiri.
 1. Di bawah **Penyebaran model**, verifikasi bahwa Anda memiliki Koneksi Azure OpenAI termasuk penyebaran:
@@ -131,13 +131,13 @@ Portal Azure membantu Anda mengelola sumber daya Azure yang mendasar untuk proye
 
     ![Penyebaran Proyek Azure AI](./media/azure-ai-project-deployment.png)
 
-## Menguji penyebaran (di cloud) menggunakan Azure AI Studio
+## Menguji penerapan (di cloud) menggunakan Azure AI Foundry
 
-Untuk memvalidasi bahwa salinan yang disebarkan berfungsi, gunakan kemampuan playground pengujian bawaan di Azure AI Studio.
+Untuk memvalidasi bahwa copilot yang diterapkan berfungsi, gunakan kemampuan playground pengujian bawaan di portal Azure AI Foundry.
 
 ![Detail penyebaran obrolan](./media/chat-deployment-details.png)
 
-1. Di Azure AI Studio, dari daftar **Penyebaran aplikasi** pilih **penyebaran chat-deployment-xxxx** .
+1. Di portal Azure AI Foundry, dari daftar **Penerapan aplikasi** pilih penerapan **chat-deployment-xxxx** .
 1. Pada halaman **Detail** aplikasi obrolan yang disebarkan, pilih tab **Uji** untuk mendapatkan antarmuka pengujian.
 
     Perhatikan bahwa tab **Detail** juga memiliki nilai `Target URI` dan `Key` yang dapat Anda gunakan dengan aplikasi front-end lainnya (misalnya situs web Contoso Outdoor) untuk mengintegrasikan asisten obrolan ini untuk interaksi pengguna dunia nyata.

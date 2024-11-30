@@ -7,7 +7,7 @@ lab:
 
 Retrieval Augmented Generation (RAG) adalah teknik yang digunakan untuk membangun aplikasi yang mengintegrasikan data dari sumber data kustom ke dalam permintaan untuk model AI generatif. RAG adalah pola yang umum digunakan untuk mengembangkan *salinan*kustom - aplikasi berbasis obrolan yang menggunakan model bahasa untuk menafsirkan input dan menghasilkan respons yang sesuai.
 
-Dalam latihan ini, Anda akan menggunakan Azure AI Studio untuk mengintegrasikan data kustom ke dalam alur permintaan AI generatif.
+Dalam latihan ini, Anda akan menggunakan Azure AI Foundry untuk mengintegrasikan data kustom ke dalam alur permintaan AI generatif.
 
 Latihan ini memakan waktu sekitar **45** menit.
 
@@ -39,23 +39,22 @@ Solusi salinan Anda akan mengintegrasikan data kustom ke dalam alur permintaan. 
 
 ## Membuat proyek Azure OpenAI
 
-Sekarang Anda siap untuk membuat proyek Azure AI Studio dan sumber daya Azure AI untuk mendukungnya.
+Sekarang Anda siap untuk membuat proyek Azure AI Foundry dan sumber daya Azure AI untuk mendukungnya.
 
-1. Di browser web, buka [Azure AI Studio](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda.
-1. Pada halaman **Beranda** Azure AI Studio, pilih **+ Proyek baru**.
-1. Di wizard **Buat proyek**, berikan nama unik untuk proyek Anda lalu pilih **Sesuaikan** dan atur pengaturan berikut ini:
+1. Di browser web, buka portal [Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda.
+1. Di beranda, pilih **+ Buat proyek**.
+1. Di wizard **Buat proyek**, Anda bisa melihat semua sumber daya Azure yang akan dibuat secara otomatis dengan proyek Anda. Pilih **Kustomisasi** dan sambungkan ke sumber daya Azure AI Search Anda:
 
-    - **Buat hub**: *Buat sumber daya dengan pengaturan berikut:*
+    - **Nama hub**: *Nama unik*
+    - **Langganan Azure**: *Langganan Azure Anda*.
+    - **Grup sumber daya**: *Pilih grup sumber daya yang berisi sumber daya Azure AI Search Anda*
+    - **Lokasi**: *Pilih lokasi yang sama dengan sumber daya Azure AI Search Anda*
+    - **Sambungkan Layanan Azure AI atau Azure OpenAI**: (Baru) *Autofills dengan nama hub yang Anda pilih*
+    - **Sambungkan Pencarian Azure AI**: *pilih sumber daya Pencarian Azure AI Anda*
 
-        - **Nama hub**: *Nama unik*
-        - **Langganan Azure**: *Langganan Azure Anda*.
-        - **Grup sumber daya**: *Pilih grup sumber daya yang berisi sumber daya Azure AI Search Anda*
-        - **Lokasi**: *Pilih lokasi yang sama dengan sumber daya Azure AI Search Anda*
-        - **Sambungkan Layanan Azure AI atau Azure OpenAI**: (Baru) *Autofills dengan nama hub yang Anda pilih*
-        - **Sambungkan Pencarian Azure AI**: *pilih sumber daya Pencarian Azure AI Anda*
-
-1. Tunggu proyek Anda dibuat.
-
+1. Pilih **Berikutnya** dan tinjau konfigurasi Anda.
+1. Pilih **Buat** dan tunggu hingga prosesnya selesai.
+   
 ## Terapkan model
 
 Anda memerlukan dua model untuk mengimplementasikan solusi Anda:
@@ -63,8 +62,8 @@ Anda memerlukan dua model untuk mengimplementasikan solusi Anda:
 - Model *penyematan* untuk memvektorisasi data teks untuk pengindeksan dan pemrosesan yang efisien.
 - Model yang dapat menghasilkan respons bahasa alami terhadap pertanyaan berdasarkan data Anda.
 
-1. Di Azure AI Studio, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Komponen**, pilih halaman **Penyebaran** .
-1. Buat penyebaran baru model **text-embedding-ada-002** dengan pengaturan berikut dengan memilih **Sesuaikan** di wizard Deploy model::
+1. Di portal Azure AI Foundry, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Aset saya**, pilih halaman **Model + titik akhir**.
+1. Buat penyebaran baru model **text-embedding-ada-002** dengan pengaturan berikut dengan memilih **Sesuaikan** di wizard Penerapan model:
 
     - **Nama penyebaran**: `text-embedding-ada-002`
     - **Tipe penyebaran**: Standar
@@ -83,21 +82,21 @@ Anda memerlukan dua model untuk mengimplementasikan solusi Anda:
 Data untuk salinan Anda terdiri dari serangkaian brosur perjalanan dalam format PDF dari agen perjalanan fiktif *Margie's Travel*. Mari kita tambahkan ke proyek.
 
 1. Unduh [arsip zip brosur](https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip) dari `https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip` dan ekstrak ke folder bernama **brosur** pada sistem file lokal Anda.
-1. Di Azure AI Studio, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Komponen**, pilih halaman **Data** .
+1. Di portal Azure AI Foundry, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Aset saya**, pilih halaman **Data + Indeks**.
 1. Pilih **+ Data baru**.
 1. Di wizard **Tambahkan data** Anda, perluas menu drop-down untuk memilih **Unggah file/folder**.
 1. Pilih **Unggah folder** dan pilih folder **brosur** .
-1. Atur nama data `brochures`.
+1. Pilih **Berikutnya** dan ubah nama data menjadi `brochures`.
 1. Tunggu folder untuk diunggah dan perhatikan bahwa folder tersebut berisi beberapa file .pdf.
 
 ## Buat indeks dan muat data Anda.
 
 Setelah menambahkan sumber data ke proyek, Anda dapat menggunakannya untuk membuat indeks di sumber daya Azure AI Search Anda.
 
-1. Di Azure AI Studio, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Komponen**, pilih halaman **Indeks** .
-1. Tambahkan indeks baru dengan pengaturan berikut:
+1. Di portal Azure AI Foundry, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Aset saya**, pilih halaman **Data + Indeks**.
+1. Tambahkan **Indeks** baru dengan pengaturan berikut:
     - **Lokasi sumber**
-        - **Sumber data**: Data di Azure AI Studio
+        - **Sumber data**: Data di portal Azure AI Foundry
             - *Pilih ** sumber data brosur** *
     - **Konfigurasi indeks**:
         - **Pilih Azure AI layanan Pencarian**: *Pilih **koneksi AzureAISearch** ke sumber daya Azure AI Search Anda*
@@ -117,7 +116,7 @@ Setelah menambahkan sumber data ke proyek, Anda dapat menggunakannya untuk membu
 
 Sebelum menggunakan indeks Anda dalam alur prompt berbasis RAG, mari kita verifikasi bahwa indeks tersebut dapat digunakan untuk memengaruhi respons AI generatif.
 
-1. Di panel navigasi di sebelah kiri, di bawah **Proyek taman bermain**, pilih halaman **Obrolan** .
+1. Di panel navigasi di sebelah kiri, di bawah halaman **Playground**.
 1. Pada halaman Obrolan, di panel Opsi, pastikan penyebaran model **gpt-35-turbo-16k** Anda dipilih. Kemudian, di panel sesi obrolan utama, kirimkan perintah `Where can I stay in New York?`
 1. Tinjau respons, yang harus menjadi jawaban umum dari model tanpa data apa pun dari indeks.
 1. Pada panel Penyiapan, pilih tab **Tambahkan data Anda**, lalu tambahkan **indeks-brosur** indeks proyek dan pilih jenis pencarian **hibrid (vektor + kata kunci).**
@@ -129,9 +128,9 @@ Sebelum menggunakan indeks Anda dalam alur prompt berbasis RAG, mari kita verifi
 
 ## Menggunakan indeks dalam alur perintah
 
-Indeks vektor Anda telah disimpan di proyek Azure AI Studio, memungkinkan Anda menggunakannya dengan mudah dalam alur perintah.
+Indeks vektor Anda telah disimpan di proyek Azure AI Foundry, memungkinkan Anda menggunakannya dengan mudah dalam alur perintah.
 
-1. Di Azure AI Studio, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Alat**, pilih halaman **Alur permintaan** 
+1. Di Azure AI Foundry, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Membangun dan menyesuaikan**, pilih halaman **Alur perintah**
 1. Buat alur permintaan baru dengan mengkloning **Tanya Jawab Multi-Putaran pada sampel Data** Anda di galeri. Simpan klon sampel ini di folder bernama `brochure-flow`.
     <details>  
       <summary><b>Tips pemecahan masalah</b>: Kesalahan izin</summary>
@@ -233,7 +232,7 @@ Sekarang setelah Anda memiliki alur kerja yang menggunakan data terindeks, Anda 
         - **Pengumpulan data inferensi**: Dipilih
     - **Pengaturan tingkat lanjut**:
         - *Menjaga pengaturan default*
-1. Di Azure AI Studio, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Komponen**, pilih halaman **Penyebaran** .
+1. Di portal Azure AI Foundry, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Aset saya**, pilih halaman **Model + titik akhir**.
 1. Terus refresh tampilan hingga **penyebaran brosur-endpoint-1** ditampilkan sebagai telah *berhasil* di bawah **titik akhir titik** akhir brosur (ini mungkin memakan waktu yang signifikan).
 1. Ketika penyebaran telah berhasil, pilih penyebaran tersebut. Kemudian, pada halaman **Uji** , masukkan perintah `What is there to do in San Francisco?` dan tinjau responsnya.
 1. Masukkan perintah `Where else could I go?` dan tinjau responsnya.
@@ -241,9 +240,9 @@ Sekarang setelah Anda memiliki alur kerja yang menggunakan data terindeks, Anda 
 
 ## Latihan 
 
-Sekarang Anda telah mengalami cara mengintegrasikan data Anda sendiri dalam salinan yang dibangun dengan Azure AI Studio, mari kita jelajahi lebih lanjut!
+Sekarang Anda telah mengalami cara mengintegrasikan data Anda sendiri dalam copilot yang dibangun dengan portal Azure AI Foundry , mari kita jelajahi lebih lanjut!
 
-Coba tambahkan sumber data baru melalui Azure AI Studio, indeks, dan integrasikan data terindeks dalam alur perintah. Beberapa himpunan data yang dapat Anda coba adalah:
+Coba tambahkan sumber data baru melalui portal Azure AI Foundry, indeks, dan integrasikan data yang diindeks dalam alur perintah. Beberapa himpunan data yang dapat Anda coba adalah:
 
 - Kumpulan artikel (penelitian) yang Anda miliki di komputer Anda.
 - Sekumpulan presentasi dari konferensi sebelumnya.
@@ -255,4 +254,4 @@ Jadilah sebagai sumber daya yang Anda bisa untuk membuat sumber data Anda dan me
 
 Untuk menghindari biaya Azure dan pemanfaatan sumber daya yang tidak perlu, Anda harus menghapus sumber daya yang Anda sebarkan dalam latihan ini.
 
-1. Jika Anda telah selesai menjelajahi Azure AI Studio, kembali ke [portal Azure](https://portal.azure.com) di `https://portal.azure.com` dan masuk menggunakan kredensial Azure Anda jika perlu. Kemudian hapus sumber daya di grup sumber daya tempat Anda memprovisikan sumber daya Azure AI Search dan Azure AI Anda.
+1. Jika Anda telah selesai menjelajahi Azure AI Foundry, kembali ke [portal Azure](https://portal.azure.com) di `https://portal.azure.com` dan masuk menggunakan kredensial Azure Anda jika perlu. Kemudian hapus sumber daya di grup sumber daya tempat Anda memprovisikan sumber daya Azure AI Search dan Azure AI Anda.

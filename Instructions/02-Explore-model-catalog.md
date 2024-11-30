@@ -1,21 +1,22 @@
 ---
 lab:
-  title: 'Menjelajahi, menyebarkan, dan mengobrol dengan model bahasa di Azure AI Studio'
+  title: 'Menjelajahi, menerapkan, dan mengobrol dengan model bahasa di Azure AI Foundry'
 ---
 
-# Menjelajahi, menyebarkan, dan mengobrol dengan model bahasa di Azure AI Studio
+# Menjelajahi, menerapkan, dan mengobrol dengan model bahasa di Azure AI Foundry
 
-Katalog model Azure AI Studio berfungsi sebagai repositori pusat tempat Anda dapat menjelajahi dan menggunakan berbagai model, memfasilitasi pembuatan skenario AI generatif Anda.
+Katalog model Azure AI Foundry berfungsi sebagai repositori pusat tempat Anda dapat menjelajahi dan menggunakan berbagai model, memfasilitasi pembuatan skenario AI generatif Anda.
 
-Dalam latihan ini, Anda akan menjelajahi katalog model di Azure AI Studio.
+Dalam latihan ini, Anda akan menjelajahi katalog model di portal Azure AI Foundry.
 
 Latihan ini akan memakan waktu sekitar **25** menit.
 
-## Membuat Azure AI hub
+## Membuat hub dan proyek Azure AI
 
-Anda memerlukan hub Azure AI di langganan Azure Anda untuk menghosting proyek. Anda dapat membuat sumber daya ini saat membuat proyek, atau menyediakannya sebelumnya (yang akan kita lakukan dalam latihan ini).
+Hub Azure AI menyediakan ruang kerja kolaboratif tempat Anda dapat menentukan satu atau beberapa *proyek*. Mari kita buat proyek dan hub Azure AI.
 
-1. Pada bagian **Manajemen**, pilih **Semua sumber daya**, lalu pilih **+ Hub baru**. Buat proyek baru dengan pengaturan berikut:
+1. Di beranda, pilih **+ Buat proyek**. Di wizard **Buat proyek**, Anda bisa melihat semua sumber daya Azure yang akan dibuat secara otomatis dengan proyek Anda, atau Anda bisa mengkustomisasi pengaturan berikut dengan memilih **Sesuaikan** sebelum memilih **Buat**:
+
     - **Nama hub**: *Nama unik*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Grup sumber daya baru*
@@ -25,33 +26,21 @@ Anda memerlukan hub Azure AI di langganan Azure Anda untuk menghosting proyek. A
 
     > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
 
-    Setelah hub Azure AI dibuat, hub tersebut akan terlihat mirip dengan gambar berikut:
+1. Jika Anda memilih **Sesuaikan**, pilih **Berikutnya** dan tinjau konfigurasi Anda.
+1. 1. Pilih **Buat** dan tunggu hingga prosesnya selesai.
+   
+    Setelah hub dan proyek Azure AI dibuat, tampilannya akan terlihat seperti gambar berikut:
 
-    ![Cuplikan layar detail hub Azure AI di Azure AI Studio.](./media/azure-ai-resource.png)
+    ![Tangkapan layar detail hub Azure AI di portal Azure AI Foundry.](./media/azure-ai-resource.png)
 
-1. Buka tab browser baru (biarkan tab Azure AI Studio terbuka) dan telusuri ke portal Azure di [https://portal.azure.com](https://portal.azure.com?azure-portal=true), masuk dengan kredensial Azure Anda jika diminta.
+1. Buka tab browser baru (biarkan tab Azure AI Foundry terbuka) dan telusuri ke portal Azure di [https://portal.azure.com](https://portal.azure.com?azure-portal=true), masuk dengan kredensial Azure Anda jika diminta.
 1. Telusuri ke grup sumber daya tempat Anda membuat hub Azure AI, dan lihat sumber daya Azure yang telah dibuat.
 
     ![Cuplikan layar hub Azure AI dan sumber daya terkait di portal Azure.](./media/azure-portal.png)
 
-1. Kembali ke tab browser Azure AI Studio.
-1. Tampilkan setiap halaman di panel di sisi kiri halaman untuk hub Azure AI Anda, dan perhatikan artefak yang bisa Anda buat dan kelola. Pada halaman **Koneksi** , amati bahwa koneksi ke Layanan Azure OpenAI dan AI telah dibuat.
-
-## Membuat proyek
-
-Hub Azure AI menyediakan ruang kerja kolaboratif tempat Anda dapat menentukan satu atau beberapa *proyek*. Mari kita buat proyek di hub Azure AI Anda.
-
-1. Di Azure AI Studio, pastikan Anda berada di hub yang baru saja Anda buat (Anda dapat memverifikasi lokasi Anda dengan memeriksa jalur di bagian atas layar).
-1. Navigasi ke **Semua proyek** menggunakan menu di sebelah kiri.
-1. Pilih **+ Proyek baru**.
-1. Di wizard **Buat proyek baru** buat proyek dengan pengaturan berikut:
-    - **Hub saat ini**: *Hub AI Anda*
-    - **Nama proyek**: *Nama unik untuk proyek Anda*
-1. Tunggu proyek Anda dibuat. Halaman ini akan terlihat mirip dengan gambar berikut:
-
-    ![Cuplikan layar halaman detail proyek di portal Azure AI Studio.](./media/azure-ai-project.png)
-
-1. Tampilkan halaman di panel di sisi kiri, perluas setiap bagian, dan perhatikan tugas yang bisa Anda lakukan dan sumber daya yang bisa Anda kelola dalam proyek.
+1. Kembali ke tab browser portal Azure AI Foundry.
+1. Tampilkan setiap halaman di panel di sisi kiri halaman untuk hub Azure AI Anda, dan perhatikan artefak yang bisa Anda buat dan kelola. Di halaman **Pusat manajemen**, Anda dapat memilih **Sumber daya terhubung**, baik di bawah hub atau proyek Anda, dan mengamati bahwa koneksi ke Layanan Azure OpenAI dan AI telah dibuat.
+1. Jika Anda berada di halaman Pusat manajemen, pilih **Buka proyek**.
 
 ## Memilih model menggunakan tolok ukur model
 
@@ -59,9 +48,9 @@ Sebelum menyebarkan model, Anda dapat menjelajahi tolok ukur model untuk memutus
 
 Bayangkan Anda ingin membuat salinan kustom yang berfungsi sebagai asisten perjalanan. Secara khusus, Anda ingin salinan Anda menawarkan dukungan untuk pertanyaan terkait perjalanan, seperti persyaratan visa, prakiraan cuaca, atraksi lokal, dan norma budaya.
 
-Salinan Anda perlu memberikan informasi yang akurat secara faktual, jadi groundedness penting. Selanjutnya, Anda ingin jawaban copilot mudah dibaca dan dipahami. Oleh karena itu, Anda juga ingin memilih model yang memiliki tingkat tinggi pada kefasihan dan koherensi.
+Salinan Anda perlu memberikan informasi yang akurat secara faktual, jadi groundedness penting. Selanjutnya, Anda ingin jawaban copilot mudah dibaca dan dipahami. Oleh karena itu, Anda juga ingin memilih model yang memiliki peringkat tinggi pada kefasihan dan koherensi.
 
-1. Di Azure AI Studio, navigasikan ke **Tolok ukur Model** di bawah bagian **Memulai** , menggunakan menu di sebelah kiri.
+1. Di portal proyek Azure AI Foundry, navigasikan ke **Tolak ukur Model** menggunakan menu di sebelah kiri.
     Di tab **Tolok ukur kualitas** Anda dapat menemukan beberapa bagan yang sudah divisualisasikan untuk Anda, membandingkan model yang berbeda.
 1. Filter model yang ditampilkan:
     - **Tugas**: Jawaban atas pertanyaan
@@ -82,8 +71,9 @@ Sekarang setelah Anda menjelajahi opsi Anda melalui tolok ukur model, Anda siap 
 
 Mari kita mulai dengan menyebarkan model dari katalog Model. Anda mungkin lebih suka opsi ini ketika Anda ingin memfilter semua model yang tersedia.
 
-1. Navigasikan ke halaman **Katalog model** di bawah bagian **Memulai** , menggunakan menu di sebelah kiri.
-1. Cari dan sebarkan `gpt-35-turbo` model, yang dikumpulkan oleh Azure AI, dengan pengaturan berikut:
+1. Navigasikan ke halaman **Katalog model** menggunakan menu di sebelah kiri.
+1. Cari dan terapkan `gpt-35-turbo`model, yang dikumpulkan oleh Azure AI, dengan pengaturan berikut dengan memilih **Sesuaikan** di detail penerapan:
+   
     - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
     - **Tipe penyebaran**: Standar
     - **Versi model**: *Pilih versi default*
@@ -92,12 +82,12 @@ Mari kita mulai dengan menyebarkan model dari katalog Model. Anda mungkin lebih 
     - **Filter konten**: DefaultV2
     - **Aktifkan kuota dinamis**: Dinonaktifkan
 
-### Menyebarkan model melalui Penyebaran
+### Menerapkan model melalui Model + titik akhir
 
-Jika Anda sudah tahu persis model mana yang ingin Anda sebarkan, Anda mungkin lebih suka melakukannya melalui Penyebaran.
+Jika Anda sudah mengetahui dengan pasti model mana yang ingin Anda terapkan, Anda mungkin lebih suka melakukannya melalui **Models + titik akhir**.
 
-1. Navigasikan ke halaman **Penyebaran** di bawah bagian **Komponen** , menggunakan menu di sebelah kiri.
-1. Pada tab **Penyebaran model** ,buat penyebaran model baru dengan pengaturan berikut:
+1. Navigasikan ke halaman **Model + titik akhir** di bawah bagian **Aset saya**, menggunakan menu di sebelah kiri.
+1. Di tab **Penyebaran model**, terapkan model dasar baru dengan pengaturan berikut dengan memilih **Kustomisasi** dalam detail penyebaran:
     - **Model**: gpt 4
     - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
     - **Tipe penyebaran**: Standar
@@ -107,28 +97,28 @@ Jika Anda sudah tahu persis model mana yang ingin Anda sebarkan, Anda mungkin le
     - **Filter konten**: DefaultV2
     - **Aktifkan kuota dinamis**: Dinonaktifkan
 
-    > **Catatan**: Anda mungkin telah melihat beberapa model yang menunjukkan tolok ukur Model, tetapi bukan sebagai opsi dalam katalog model Anda. Ketersediaan model berbeda per lokasi. Lokasi Anda ditentukan pada tingkat hub AI, tempat Anda dapat menggunakan **Pembantu lokasi** untuk menentukan model yang ingin Anda sebarkan untuk mendapatkan daftar lokasi tempat Anda dapat menyebarkannya.
+    > **Catatan**: Jika lokasi sumber daya AI Anda saat ini tidak memiliki kuota yang tersedia untuk model yang ingin Anda terapkan, Anda akan diminta untuk memilih lokasi lain tempat sumber daya AI baru akan dibuat dan tersambung ke proyek Anda.
 
 ## Menguji model di taman bermain obrolan
 
 Sekarang setelah kita memiliki dua model untuk dibandingkan, mari kita lihat bagaimana model bersikap dalam interaksi percakapan.
 
-1. Navigasikan ke halaman **Obrolan** di bawah bagian **Proyek playground** , menggunakan menu di sebelah kiri.
+1. Navigasi ke halaman**Playgrounds** menggunakan menu di sebelah kiri.
 1. Di **Taman bermain obrolan**, pilih penyebaran GPT-3.5 Anda.
 1. Di jendela obrolan, masukkan kueri `What can you do?` dan lihat responnya.
     Jawabannya sangat umum. Ingatlah kita ingin membuat salinan kustom yang berfungsi sebagai asisten perjalanan. Anda dapat menentukan jenis bantuan apa yang Anda inginkan dalam pertanyaan yang Anda ajukan.
 1. Di jendela obrolan, masukkan kueri `Imagine you're a travel assistant, what can you help me with?` Jawabannya sudah lebih spesifik. Anda mungkin tidak ingin pengguna akhir Anda harus memberikan konteks yang diperlukan setiap kali mereka berinteraksi dengan salinan Anda. Untuk menambahkan instruksi global, Anda dapat mengedit pesan sistem.
-1. Perbarui pesan sistem dengan perintah berikut:
+1. Di bawah **Pengaturan**, perbarui bidang **Berikan instruksi dan konteks kepada model** dengan perintah berikut:
 
    ```
    You are an AI travel assistant that helps people plan their trips. Your objective is to offer support for travel-related inquiries, such as visa requirements, weather forecasts, local attractions, and cultural norms.
    ```
 
-1. Pilih **Simpan**, dan **Hapus obrolan**.
+1. Pilih **Terapkan perubahan**.
 1. Di jendela obrolan, masukkan kueri `What can you do?` dan tampilkan respons baru. Amati perbedaannya dengan jawaban yang Anda terima sebelumnya. Jawabannya khusus untuk perjalanan sekarang.
 1. Lanjutkan percakapan dengan bertanya: `I'm planning a trip to London, what can I do there?` Salinan menawarkan banyak informasi terkait perjalanan. Anda mungkin ingin memperbaiki outputnya. Misalnya, Anda mungkin ingin jawabannya lebih ringkas.
 1. Perbarui pesan sistem dengan menambahkan `Answer with a maximum of two sentences.` ke akhir pesan. Terapkan perubahan, hapus obrolan, dan uji obrolan lagi dengan bertanya: `I'm planning a trip to London, what can I do there?` Anda mungkin juga ingin salinan Anda melanjutkan percakapan alih-alih hanya menjawab pertanyaan.
-1. Perbarui pesan sistem dengan menambahkan `End your answer with a follow-up question.` ke akhir pesan. Simpan perubahan, kosongkan obrolan, dan uji obrolan lagi dengan bertanya: `I'm planning a trip to London, what can I do there?`
+1. Perbarui konteks model dengan menambahkan `End your answer with a follow-up question.` ke akhir perintah. Simpan perubahan dan uji obrolan lagi dengan bertanya: `I'm planning a trip to London, what can I do there?`
 1. Ubah **Penyebaran** Anda ke model GPT-4 Anda dan ulangi semua langkah di bagian ini. Perhatikan bagaimana model dapat bervariasi dalam outputnya.
 1. Terakhir, uji kedua model pada kueri `Who is the prime minister of the UK?`. Performa pada pertanyaan ini terkait dengan groundedness (apakah responsnya akurat secara faktual) dari model. Apakah performa berkorelasi dengan kesimpulan Anda dari tolok ukur Model?
 
@@ -136,7 +126,7 @@ Sekarang setelah Anda menjelajahi kedua model, pertimbangkan model apa yang akan
 
 ## Penghapusan
 
-Setelah selesai menjelajahi Azure AI Studio, Anda harus menghapus sumber daya yang telah Anda buat untuk menghindari biaya Azure yang tidak perlu.
+Setelah selesai menjelajahi Azure AI Foundry, Anda harus menghapus sumber daya yang telah Anda buat di latihan ini untuk menghindari biaya Azure yang tidak perlu.
 
 1. Kembali ke tab browser yang berisi portal Azure (atau buka kembali [portal Azure](https://portal.azure.com?azure-portal=true) di tab browser baru) dan lihat konten grup sumber daya tempat Anda menyebarkan sumber daya yang digunakan dalam latihan ini.
 1. Pada toolbar pilih **Hapus grup sumber daya**.

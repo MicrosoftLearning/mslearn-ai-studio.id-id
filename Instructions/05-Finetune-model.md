@@ -1,33 +1,33 @@
 ---
 lab:
-  title: Menyempurnakan model bahasa untuk penyelesaian obrolan di Azure AI Studio
+  title: Menyempurnakan model bahasa untuk penyelesaian percakapan di Azure AI Foundry.
 ---
 
-# Menyempurnakan model bahasa untuk penyelesaian obrolan di Azure AI Studio
+# Menyempurnakan model bahasa untuk penyelesaian percakapan di Azure AI Foundry.
 
 Saat Anda ingin model bahasa berperilaku dengan gaya tertentu, Anda dapat menggunakan rekayasa perintah untuk menentukan perilaku yang diinginkan. Ketika Anda ingin meningkatkan konsistensi atas perilaku yang diinginkan, Anda dapat memilih untuk menyempurnakan model, membandingkannya dengan pendekatan rekayasa prompt Anda untuk mengevaluasi metode mana yang paling sesuai dengan kebutuhan Anda.
 
-Dalam latihan ini, Anda akan menyempurnakan model bahasa dengan Azure AI Studio yang ingin Anda gunakan untuk skenario obrolan kustom. Anda akan membandingkan model yang disempurnakan dengan model dasar untuk menilai apakah model yang disempurnakan lebih sesuai dengan kebutuhan Anda.
+Dalam latihan ini, Anda akan menyempurnakan model bahasa dengan Azure AI Foundry yang ingin Anda gunakan untuk skenario aplikasi percakapan yang disesuaikan. Anda akan membandingkan model yang disempurnakan dengan model dasar untuk menilai apakah model yang disempurnakan lebih sesuai dengan kebutuhan Anda.
 
 Bayangkan Anda bekerja untuk agen perjalanan dan Anda mengembangkan aplikasi obrolan untuk membantu orang merencanakan liburan mereka. Tujuannya adalah untuk membuat obrolan sederhana dan menginspirasi yang menyarankan tujuan dan aktivitas. Karena obrolan tidak terhubung ke sumber data apa pun, obrolan **tidak** boleh memberikan rekomendasi khusus untuk hotel, penerbangan, atau restoran untuk memastikan kepercayaan pelanggan Anda.
 
 Latihan ini akan memakan waktu sekitar **60** menit.
 
-## Membuat hub dan proyek AI di Azure AI Studio
+## Membuat AI hub dan proyek di portal Azure AI Foundry.
 
-Anda mulai dengan membuat proyek Azure AI Studio dalam hub Azure AI:
+Anda mulai dengan membuat proyek portal Azure AI Foundry dalam hub Azure AI:
 
 1. Di browser web, buka [https://ai.azure.com](https://ai.azure.com) dan masuk menggunakan kredensial Azure Anda.
-1. Pilih halaman **Beranda** lalu pilih **+ Proyek baru**.
+1. Dari halaman beranda, pilih **+ Buat proyek**.
 1. Di wizard **Buat proyek baru** buat proyek dengan pengaturan berikut:
     - **Nama proyek**: *Nama unik untuk proyek Anda*
-    - **Hub**: *Buat proyek baru dengan pengaturan berikut:*
-    - **Nama hub**: *Nama unik*
-    - **Langganan**: *Langganan Azure Anda*
-    - **Grup sumber daya**: *Grup sumber daya baru*
-    - **Lokasi**: Pilih salah satu wilayah berikut **US Timur2**, **US Tengah Utara**, **Swedia Tengah**, **Swiss Barat**\*
-    - **Sambungkan Layanan Azure AI atau Azure OpenAI**: (Baru) *Isi otomatis dengan nama hub yang Anda pilih*
-    - **Menyambungkan Azure AI Search**: Lewati koneksi
+    - Pilih **Sesuaikan**
+        - **Hub**: *Isi otomatis dengan nama default*
+        - **Langganan**: *Isi otomatis dengan akun masuk Anda*
+        - **Grup sumber daya**: (Baru) *Isi otomatis dengan nama proyek Anda*
+        - **Lokasi**: Pilih salah satu wilayah berikut **US Timur2**, **US Tengah Utara**, **Swedia Tengah**, **Swiss Barat**\*
+        - **Sambungkan Layanan Azure AI atau Azure OpenAI**: (Baru) *Isi otomatis dengan nama hub yang Anda pilih*
+        - **Menyambungkan Azure AI Search**: Lewati koneksi
 
     > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari selengkapnya tentang [Menyempurnakan wilayah model](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions#fine-tuning-models)
 
@@ -38,16 +38,16 @@ Anda mulai dengan membuat proyek Azure AI Studio dalam hub Azure AI:
 
 Karena menyempurnakan model membutuhkan waktu untuk diselesaikan, Anda akan memulai pekerjaan penyempurnaan terlebih dahulu. Sebelum Anda dapat menyempurnakan model, Anda memerlukan himpunan data.
 
-1. Simpan himpunan data pelatihan sebagai file JSONL secara lokal: [https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-finetune.jsonl](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl)
+1. Unduh [himpunan data pelatihan](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl) di `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl`dan simpan sebagai file JSONL secara lokal.
 
     > **Catatan**: Perangkat Anda mungkin secara default berbalik menyimpan file sebagai file .txt. Pilih semua file dan hapus akhiran .txt untuk memastikan Anda menyimpan file sebagai JSONL.
 
-1. Navigasikan ke halaman **Penyempurnaan** di bawah bagian **Alat** , menggunakan menu di sebelah kiri.
-1. Pilih tombol untuk menambahkan model penyempurnaan baru, pilih `gpt-35-turbo` model, dan pilih **Konfirmasi**.
+1. Navigasikan ke halaman **Penyempurnaan** di bawah bagian **Membangun dan menyesuaikan** , menggunakan menu di sebelah kiri.
+1. Pilih tombol untuk menambahkan model penyempurnaan baru, pilih `gpt-35-turbo` model, pilih **Selanjutnya** lalu **Konfirmasi**.
 1. **Sempurnakan** model menggunakan konfigurasi berikut:
     - **Versi model**: *Pilih versi default*
     - **Akhiran model**: `ft-travel`
-    - **Sambungan Azure OpenAI**: *Pilih koneksi default yang dibuat saat Anda membuat hub*
+    - **Sumber daya AI yang tersambung**: *Pilih koneksi yang telah dibuat saat Anda membuat hub. Harus dipilih secara default.*.
     - **Data pelatihan**: Mengunggah file
 
     <details>  
@@ -73,18 +73,20 @@ Karena menyempurnakan model membutuhkan waktu untuk diselesaikan, Anda akan memu
 
 Saat Anda menunggu pekerjaan penyempurnaan selesai, mari kita mengobrol dengan model GPT 3.5 dasar untuk menilai performanya.
 
-1. Navigasikan ke halaman **Penyebaran** di bawah bagian **Komponen** , menggunakan menu di sebelah kiri.
+1. Navigasikan ke halaman **Model + titik akhir** di bawah bagian **Aset saya**, menggunakan menu di sebelah kiri.
 1. Pilih tombol **+ Sebarkan model** , dan pilih opsi **Sebarkan model dasar**.
 1. Sebarkan `gpt-35-turbo` model, yang merupakan jenis model yang sama dengan yang Anda gunakan saat menyempurnakan.
-1. Saat penyebaran selesai, navigasikan ke halaman **Obrolan** di bawah bagian **Proyek playground** .
-1. Pilih `gpt-35-model` model dasar yang Anda sebarkan dalam penyebaran pengaturan.
+1. Saat penerapan telah siap, pilih tombol **Buka di playground**.
+1. Verifikasi bahwa `gpt-35-model`model dasar yang Anda terapkan dipilih di panel penyiapan.
 1. Di jendela obrolan, masukkan kueri `What can you do?` dan lihat responnya.
     Jawabannya sangat umum. Ingatlah bahwa kita ingin membuat aplikasi obrolan yang menginspirasi orang untuk bepergian.
-1. Perbarui pesan sistem dengan perintah berikut:
+1. Perbarui pesan sistem di panel pengaturan dengan perintah berikut:
+
     ```md
     You are an AI assistant that helps people plan their holidays.
     ```
-1. Pilih **Simpan**, lalu pilih **Hapus obrolan**, dan tanyakan lagi `What can you do?` Sebagai respons, asisten dapat memberi tahu Anda bahwa itu dapat membantu Anda memesan penerbangan, hotel, dan mobil sewaan untuk perjalanan Anda. Anda ingin menghindari perilaku ini.
+
+1. Pilih **Terapkan Perubahan**, lalu pilih **Hapus obrolan**, dan tanyakan lagi `What can you do?` Sebagai respons, asisten dapat memberi tahu Anda bahwa itu dapat membantu Anda memesan penerbangan, hotel, dan mobil sewaan untuk perjalanan Anda. Anda ingin menghindari perilaku ini.
 1. Perbarui pesan sistem lagi dengan perintah baru:
 
     ```md
@@ -93,7 +95,7 @@ Saat Anda menunggu pekerjaan penyempurnaan selesai, mari kita mengobrol dengan m
     Ask engaging questions to help someone plan their trip and think about what they want to do on their holiday.
     ```
 
-1. Pilih **Simpan**, dan **Hapus obrolan**.
+1. Pilih **Terapkan perubahan**, dan **Hapus obrolan**.
 1. Lanjutkan pengujian aplikasi obrolan Anda untuk memverifikasi bahwa aplikasi tersebut tidak memberikan informasi apa pun yang tidak didasarkan pada data yang diambil. Misalnya, ajukan pertanyaan berikut dan jelajahi jawaban model:
    
     `Where in Rome should I stay?`
@@ -104,7 +106,7 @@ Saat Anda menunggu pekerjaan penyempurnaan selesai, mari kita mengobrol dengan m
 
     Model ini dapat menyediakan Anda dengan daftar hotel, bahkan ketika Anda menginstruksikannya untuk tidak memberikan rekomendasi hotel. Ini adalah contoh perilaku yang tidak konsisten. Mari kita jelajahi apakah model yang disempurnakan berkinerja lebih baik dalam kasus ini.
 
-1. Navigasi ke halaman **Penyempurnaan** di bawah **Alat** untuk menemukan pekerjaan penyempurnaan Anda dan statusnya. Jika masih berjalan, Anda dapat memilih untuk terus mengevaluasi model dasar yang Anda sebarkan secara manual. Jika sudah selesai, Anda dapat melanjutkan dengan bagian berikutnya.
+1. Navigasi ke halaman **Penyempurnaan** di bawah **Membangun dan menyesuaikan** untuk menemukan pekerjaan penyempurnaan Anda dan statusnya. Jika masih berjalan, Anda dapat memilih untuk terus mengevaluasi model dasar yang Anda sebarkan secara manual. Jika sudah selesai, Anda dapat melanjutkan dengan bagian berikutnya.
 
 ## Menyebarkan model yang disempurnakan
 
@@ -141,7 +143,7 @@ Setelah menyebarkan model yang disempurnakan, Anda dapat menguji model tersebut 
 
 ## Penghapusan
 
-Jika Anda telah selesai menjelajahi Azure AI Studio, Anda harus menghapus sumber daya yang telah Anda buat untuk menghindari biaya Azure yang tidak perlu.
+Jika Anda telah selesai menjelajahi Azure AI Foundry, Anda harus menghapus sumber daya yang telah Anda buat untuk menghindari biaya Azure yang tidak perlu.
 
 - Navigasikan ke [portal Microsoft Azure](https://portal.azure.com) di `https://portal.azure.com`.
 - Di portal Microsoft Azure, pada halaman **Beranda**, pilih **Grup sumber daya**.
