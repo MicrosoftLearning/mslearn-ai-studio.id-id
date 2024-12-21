@@ -1,11 +1,11 @@
 ---
 lab:
-  title: Membuat salinan kustom yang menggunakan data Anda sendiri
+  title: Membuat aplikasi AI generatif yang menggunakan data Anda sendiri
 ---
 
-# Membuat salinan kustom yang menggunakan data Anda sendiri
+# Membuat aplikasi AI generatif yang menggunakan data Anda sendiri
 
-Retrieval Augmented Generation (RAG) adalah teknik yang digunakan untuk membangun aplikasi yang mengintegrasikan data dari sumber data kustom ke dalam permintaan untuk model AI generatif. RAG adalah pola yang umum digunakan untuk mengembangkan *salinan*kustom - aplikasi berbasis obrolan yang menggunakan model bahasa untuk menafsirkan input dan menghasilkan respons yang sesuai.
+Retrieval Augmented Generation (RAG) adalah teknik yang digunakan untuk membangun aplikasi yang mengintegrasikan data dari sumber data kustom ke dalam permintaan untuk model AI generatif. RAG adalah pola yang umum digunakan untuk mengembangkan aplikasi AI generatif - aplikasi berbasis obrolan yang menggunakan model bahasa untuk menafsirkan input dan menghasilkan respons yang sesuai.
 
 Dalam latihan ini, Anda akan menggunakan Azure AI Foundry untuk mengintegrasikan data kustom ke dalam alur permintaan AI generatif.
 
@@ -13,7 +13,7 @@ Latihan ini memakan waktu sekitar **45** menit.
 
 ## Membuat sumber daya  Pencarian Azure AI
 
-Solusi salinan Anda akan mengintegrasikan data kustom ke dalam alur permintaan. Untuk mendukung integrasi ini, Anda memerlukan sumber daya Azure AI Search untuk mengindeks data Anda.
+Solusi aplikasi AI generatif Anda akan memadukan data khusus ke dalam alur yang cepat. Untuk mendukung integrasi ini, Anda memerlukan sumber daya Azure AI Search untuk mengindeks data Anda.
 
 1. Di browser web, buka [portal Azure](https://portal.azure.com) di `https://portal.azure.com` dan masuk menggunakan kredensial Azure Anda.
 1. Di halaman beranda **+ Buat sumber daya** dan pencarian `Azure AI Search`. Kemudian buat sumber daya Azure AI Search baru dengan pengaturan berikut:
@@ -240,7 +240,7 @@ Sekarang setelah Anda memiliki alur kerja yang menggunakan data terindeks, Anda 
 
 ## Latihan 
 
-Sekarang Anda telah mengalami cara mengintegrasikan data Anda sendiri dalam copilot yang dibangun dengan portal Azure AI Foundry , mari kita jelajahi lebih lanjut!
+Sekarang Anda telah merasakan bagaimana memadukan data Anda sendiri dalam aplikasi AI generatif yang dibangun dengan portal Azure AI Foundry, mari jelajahi lebih lanjut!
 
 Coba tambahkan sumber data baru melalui portal Azure AI Foundry, indeks, dan integrasikan data yang diindeks dalam alur perintah. Beberapa himpunan data yang dapat Anda coba adalah:
 
