@@ -4,7 +4,7 @@ permalink: index.html
 layout: home
 ---
 
-# Mengembangkan aplikasi AI Generatif dengan Azure AI Studio
+# Mengembangkan aplikasi AI generatif di portal Azure AI Foundry
 
 Latihan berikut dirancang untuk memberi Anda pengalaman pembelajaran langsung di mana Anda akan menjelajahi pola dan teknik umum yang digunakan pengembang untuk membangun aplikasi AI generatif seperti "copilot", dan mempelajari cara menerapkan pola tersebut menggunakan Layanan Azure AI - khususnya, Layanan Azure OpenAI dan Azure AI Studio.
 
