@@ -15,6 +15,8 @@ Latihan ini akan memakan waktu sekitar **25** menit.
 
 Hub Azure AI menyediakan ruang kerja kolaboratif tempat Anda dapat menentukan satu atau beberapa *proyek*. Mari kita buat proyek dan hub Azure AI.
 
+1. Di browser web, buka portal [Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda.
+
 1. Di beranda, pilih **+ Buat proyek**. Di wizard **Buat proyek**, Anda bisa melihat semua sumber daya Azure yang akan dibuat secara otomatis dengan proyek Anda, atau Anda bisa mengkustomisasi pengaturan berikut dengan memilih **Sesuaikan** sebelum memilih **Buat**:
 
     - **Nama hub**: *Nama unik*
@@ -27,7 +29,7 @@ Hub Azure AI menyediakan ruang kerja kolaboratif tempat Anda dapat menentukan sa
     > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
 
 1. Jika Anda memilih **Sesuaikan**, pilih **Berikutnya** dan tinjau konfigurasi Anda.
-1. 1. Pilih **Buat** dan tunggu hingga prosesnya selesai.
+1. Pilih **Buat** dan tunggu hingga prosesnya selesai.
    
     Setelah hub dan proyek Azure AI dibuat, tampilannya akan terlihat seperti gambar berikut:
 
@@ -50,16 +52,16 @@ Bayangkan Anda ingin membuat salinan kustom yang berfungsi sebagai asisten perja
 
 Salinan Anda perlu memberikan informasi yang akurat secara faktual, jadi groundedness penting. Selanjutnya, Anda ingin jawaban copilot mudah dibaca dan dipahami. Oleh karena itu, Anda juga ingin memilih model yang memiliki peringkat tinggi pada kefasihan dan koherensi.
 
-1. Di portal proyek Azure AI Foundry, navigasikan ke **Tolak ukur Model** menggunakan menu di sebelah kiri.
-    Di tab **Tolok ukur kualitas** Anda dapat menemukan beberapa bagan yang sudah divisualisasikan untuk Anda, membandingkan model yang berbeda.
-1. Filter model yang ditampilkan:
-    - **Tugas**: Jawaban atas pertanyaan
-    - **Koleksi**: Azure OpenAI
-    - **Metrik**: Koherensi, Kefasihan, Groundedness
-1. Jelajahi bagan yang dihasilkan dan tabel perbandingan. Saat menjelajahi, Anda dapat mencoba dan menjawab pertanyaan berikut:
+1. Di portal proyek Azure AI Foundry, navigasikan ke **katalog Model** menggunakan menu di sebelah kiri.
+    Di halaman katalog, pilih **Bandingkan dengan tolok ukur**. Di halaman Tolok ukur model, Anda akan menemukan bagan yang sudah diplot untuk Anda, membandingkan model yang berbeda.
+1. Pilih **+ Model untuk membandingkan** dan menambahkan **gpt-4-32k** dan **gpt-4** ke bagan metrik. Di menu dropdown **Sumbu-X**, di bawah **Kualitas**, pilih metrik berikut dan amati setiap bagan yang dihasilkan sebelum beralih ke bagan berikutnya:
+    - Koherensi
+    - Kelancaran
+    - Groundedness
+1. Saat menjelajahi hasilnya, Anda dapat mencoba dan menjawab pertanyaan berikut:
     - Apakah Anda melihat perbedaan performa antara model GPT-3.5 dan GPT-4?
     - Apakah ada perbedaan antara versi model yang sama?
-    - Bagaimana varian 32k berbeda dari model dasar?
+    - Bagaimana varian 32k GPT-4 berbeda dari model dasar?
 
 Dari koleksi Azure OpenAI, Anda dapat memilih antara model GPT-3.5 dan GPT-4. Mari kita sebarkan kedua model ini dan jelajahi bagaimana perbandingannya untuk kasus penggunaan Anda.
 
@@ -82,6 +84,8 @@ Mari kita mulai dengan menyebarkan model dari katalog Model. Anda mungkin lebih 
     - **Filter konten**: DefaultV2
     - **Aktifkan kuota dinamis**: Dinonaktifkan
 
+    > **Catatan**: Jika lokasi sumber daya AI Anda saat ini tidak memiliki kuota yang tersedia untuk model yang ingin Anda terapkan, Anda akan diminta untuk memilih lokasi lain tempat sumber daya AI baru akan dibuat dan tersambung ke proyek Anda.
+
 ### Menerapkan model melalui Model + titik akhir
 
 Jika Anda sudah mengetahui dengan pasti model mana yang ingin Anda terapkan, Anda mungkin lebih suka melakukannya melalui **Models + titik akhir**.
@@ -96,8 +100,6 @@ Jika Anda sudah mengetahui dengan pasti model mana yang ingin Anda terapkan, And
     - **Batas Tarif Token Per Menit (ribuan)**: 5K
     - **Filter konten**: DefaultV2
     - **Aktifkan kuota dinamis**: Dinonaktifkan
-
-    > **Catatan**: Jika lokasi sumber daya AI Anda saat ini tidak memiliki kuota yang tersedia untuk model yang ingin Anda terapkan, Anda akan diminta untuk memilih lokasi lain tempat sumber daya AI baru akan dibuat dan tersambung ke proyek Anda.
 
 ## Menguji model di taman bermain obrolan
 

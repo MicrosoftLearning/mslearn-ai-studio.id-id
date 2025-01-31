@@ -55,9 +55,9 @@ Karena menyempurnakan model membutuhkan waktu untuk diselesaikan, Anda akan memu
     <p>Jika Anda menerima kesalahan izin saat membuat alur perintah baru, coba langkah berikut untuk memecahkan masalah:</p>
     <ul>
         <li>Di portal Azure, pilih Penjelajah Sumber Daya dari Semua Layanan.</li>
-        <li>Pada halaman IAM, di tab Identitas, konfirmasikan bahwa itu adalah identitas terkelola yang ditetapkan sistem.</li>
-        <li>Lakukan navigasi ke Akun Penyimpanan. Pada halaman IAM, tambahkan penetapan peran <em>Pembaca data blob penyimpanan</em>.</li>
-        <li>Di bawah <strong>Tetapkan akses ke</strong>, pilih <strong>Identitas Terkelola</strong>, <strong>+ Pilih anggota</strong>, dan pilih <strong>Semua identitas terkelola yang ditetapkan sistem</strong>.</li>
+        <li>Pada tab Identitas di bawah Manajemen Sumber Daya, konfirmasikan bahwa itu adalah identitas terkelola yang ditetapkan sistem.</li>
+        <li>Lakukan navigasi ke Akun Penyimpanan. Pada halaman IAM, tambahkan penetapan peran <em>Pemilik Data Blob Penyimpanan</em>.</li>
+        <li>Di bawah <strong>Tetapkan akses ke</strong>, pilih <strong>Identitas Terkelola</strong>, <strong>+ Pilih anggota</strong>, dan pilih <strong>Semua identitas terkelola yang ditetapkan sistem</strong>, dan pilih sumber daya layanan Azure AI Anda.</li>
         <li>Tinjau dan tetapkan untuk menyimpan pengaturan baru dan coba lagi langkah sebelumnya.</li>
     </ul>
     </details>
@@ -76,6 +76,9 @@ Saat Anda menunggu pekerjaan penyempurnaan selesai, mari kita mengobrol dengan m
 1. Navigasikan ke halaman **Model + titik akhir** di bawah bagian **Aset saya**, menggunakan menu di sebelah kiri.
 1. Pilih tombol **+ Sebarkan model** , dan pilih opsi **Sebarkan model dasar**.
 1. Sebarkan `gpt-35-turbo` model, yang merupakan jenis model yang sama dengan yang Anda gunakan saat menyempurnakan.
+
+> **Catatan**: Jika lokasi sumber daya AI Anda saat ini tidak memiliki kuota yang tersedia untuk model yang ingin Anda terapkan, Anda akan diminta untuk memilih lokasi lain tempat sumber daya AI baru akan dibuat dan tersambung ke proyek Anda.
+
 1. Saat penerapan telah siap, pilih tombol **Buka di playground**.
 1. Verifikasi bahwa `gpt-35-model`model dasar yang Anda terapkan dipilih di panel penyiapan.
 1. Di jendela obrolan, masukkan kueri `What can you do?` dan lihat responnya.
@@ -122,7 +125,7 @@ Saat penyempurnaan telah berhasil diselesaikan, Anda dapat menyebarkan model yan
 
 ## Menguji model yang disempurnakan
 
-Setelah menyebarkan model yang disempurnakan, Anda dapat menguji model tersebut seperti Anda menguji model dasar Anda yang telah disebarkan.
+Sekarang, setelah menyebarkan model yang disempurnakan, Anda dapat menguji model tersebut seperti Anda menguji model dasar Anda yang telah disebarkan.
 
 1. Saat penyebaran siap, navigasikan ke model yang disempurnakan dan pilih **Buka di taman bermain**.
 1. Perbarui pesan sistem dengan perintah berikut:
