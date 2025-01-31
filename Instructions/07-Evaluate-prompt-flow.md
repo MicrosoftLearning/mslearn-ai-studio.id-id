@@ -141,6 +141,9 @@ Untuk menghemat waktu, kami telah membuat kumpulan himpunan data output untuk An
     - Pilih **Selanjutnya**
     - **Pilih data yang ingin Anda evaluasi**: Tambahkan himpunan data Anda
         - Unduh [himpunan data validasi](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl) di `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl`, simpan sebagai file JSONL dan unggah ke UI.
+
+    > **Catatan**: Perangkat Anda mungkin secara default berbalik menyimpan file sebagai file .txt. Pilih semua file dan hapus akhiran .txt untuk memastikan Anda menyimpan file sebagai JSONL.
+
     - Pilih **Selanjutnya**
     - **Pilih metrik**: Koherensi, Kefasihan
     - **Koneksi**: *Koneksi Layanan AI Anda*
