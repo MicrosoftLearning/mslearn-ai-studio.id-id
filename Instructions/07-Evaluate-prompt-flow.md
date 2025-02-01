@@ -42,6 +42,9 @@ Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model
     - **Batas Tarif Token Per Menit (ribuan)**: 5K
     - **Filter konten**: DefaultV2
     - **Aktifkan kuota dinamis**: Dinonaktifkan
+
+    > **Catatan**: Jika lokasi sumber daya AI Anda saat ini tidak memiliki kuota yang tersedia untuk model yang ingin Anda terapkan, Anda akan diminta untuk memilih lokasi lain tempat sumber daya AI baru akan dibuat dan tersambung ke proyek Anda.
+
 1. Tunggu hingga aplikasi disebarkan. Saat penyebaran siap, pilih **Buka di playground**.
 1. Dalam kotak teks **Berikan instruksi model dan konteks** , ubah konten menjadi yang berikut ini:
 
@@ -138,11 +141,14 @@ Untuk menghemat waktu, kami telah membuat kumpulan himpunan data output untuk An
     - Pilih **Selanjutnya**
     - **Pilih data yang ingin Anda evaluasi**: Tambahkan himpunan data Anda
         - Unduh [himpunan data validasi](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl) di `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl`, simpan sebagai file JSONL dan unggah ke UI.
+
+    > **Catatan**: Perangkat Anda mungkin secara default berbalik menyimpan file sebagai file .txt. Pilih semua file dan hapus akhiran .txt untuk memastikan Anda menyimpan file sebagai JSONL.
+
     - Pilih **Selanjutnya**
     - **Pilih metrik**: Koherensi, Kefasihan
     - **Koneksi**: *Koneksi Layanan AI Anda*
     - **Nama/Model penyebaran**: *Model GPT-3.5 yang Anda sebarkan*
-    - **kueri**: Pilih **pertanyaan** sebagai sumber data
+    - **kueri**: Pilih **kueri** sebagai sumber data
     - **respons**: Pilih **jawaban** sebagai sumber data
       
 1. Pilih **Berikutnya** lalu tinjau data Anda dan **Kirimkan** evaluasi baru tersebut.

@@ -124,8 +124,10 @@ Alur standar sudah mencakup simpul yang menggunakan alat LLM. Anda dapat menemuk
 
    user:
    
+   {% raw %}
    Entity type: {{entity_type}}
    Text content: {{text}}
+   {% endraw %}
    Entities:
    ```
 

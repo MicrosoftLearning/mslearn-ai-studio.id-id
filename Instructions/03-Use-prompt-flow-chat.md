@@ -42,6 +42,9 @@ Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model
     - **Batas Tarif Token Per Menit (ribuan)**: 5K
     - **Filter konten**: DefaultV2
     - **Aktifkan kuota dinamis**: Dinonaktifkan
+
+    > **Catatan**: Jika lokasi sumber daya AI Anda saat ini tidak memiliki kuota yang tersedia untuk model yang ingin Anda terapkan, Anda akan diminta untuk memilih lokasi lain tempat sumber daya AI baru akan dibuat dan tersambung ke proyek Anda.
+
 1. Tunggu hingga aplikasi disebarkan. Saat penyebaran siap, pilih **Buka di playground**.
 1. Di jendela obrolan, masukkan kueri `What can you do?`.
 
@@ -83,7 +86,7 @@ Anda dapat membuat alur baru dari templat, atau membuat alur berdasarkan konfigu
         <li>Di portal Azure, pilih Penjelajah Sumber Daya dari Semua Layanan.</li>
         <li>Pada tab Identitas di bawah Manajemen Sumber Daya, konfirmasikan bahwa itu adalah identitas terkelola yang ditetapkan sistem.</li>
         <li>Lakukan navigasi ke Akun Penyimpanan. Pada halaman IAM, tambahkan penetapan peran <em>Pembaca data blob penyimpanan</em>.</li>
-        <li>Di bawah <strong>Tetapkan akses ke</strong>, pilih <strong>Identitas Terkelola</strong>, <strong>+ Pilih anggota</strong>, dan pilih <strong>Semua identitas terkelola yang ditetapkan sistem</strong>.</li>
+        <li>Di bawah <strong>Tetapkan akses ke</strong>, pilih <strong>Identitas Terkelola</strong>, <strong>+ Pilih anggota</strong>, dan pilih <strong>Semua identitas terkelola yang ditetapkan sistem</strong>, dan pilih sumber daya layanan Azure AI Anda.</li>
         <li>Tinjau dan tetapkan untuk menyimpan pengaturan baru dan coba lagi langkah sebelumnya.</li>
     </ul>
 </details>
