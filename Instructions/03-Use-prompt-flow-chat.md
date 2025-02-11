@@ -1,11 +1,12 @@
 ---
 lab:
-  title: Membuat copilot kustom dengan alur perintah di portal Azure AI Foundry
+  title: Menggunakan alur perintah untuk mengelola percakapan di aplikasi obrolan
+  description: Pelajari cara menggunakan alur perintah untuk mengelola dialog percakapan dan memastikan bahwa perintah dibuat dan diatur untuk hasil terbaik.
 ---
 
-# Membuat copilot kustom dengan alur perintah di portal Azure AI Foundry
+# Menggunakan alur perintah untuk mengelola percakapan di aplikasi obrolan
 
-Dalam latihan ini, Anda akan menggunakan alur perintah Azure AI Foundry untuk membuat copilot kustom yang menggunakan perintah pengguna dan riwayat obrolan sebagai input, dan menggunakan model GPT dari Azure OpenAI untuk menghasilkan output.
+Dalam latihan ini, Anda akan menggunakan alur perintah portal Azure AI Foundry untuk membuat aplikasi obrolan khusus yang menggunakan perintah pengguna dan riwayat obrolan sebagai input, lalu menggunakan model GPT dari Azure OpenAI untuk menghasilkan keluaran.
 
 Latihan ini akan memakan waktu sekitar **30** menit.
 

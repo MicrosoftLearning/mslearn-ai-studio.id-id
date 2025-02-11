@@ -1,9 +1,10 @@
 ---
 lab:
-  title: Menyempurnakan model bahasa untuk penyelesaian percakapan di Azure AI Foundry.
+  title: Menyempurnakan model bahasa
+  description: Pelajari cara menggunakan data pelatihan tambahan Anda sendiri untuk menyempurnakan model dan menyesuaikan perilakunya.
 ---
 
-# Menyempurnakan model bahasa untuk penyelesaian percakapan di Azure AI Foundry.
+# Menyempurnakan model bahasa
 
 Saat Anda ingin model bahasa berperilaku dengan gaya tertentu, Anda dapat menggunakan rekayasa perintah untuk menentukan perilaku yang diinginkan. Ketika Anda ingin meningkatkan konsistensi atas perilaku yang diinginkan, Anda dapat memilih untuk menyempurnakan model, membandingkannya dengan pendekatan rekayasa prompt Anda untuk mengevaluasi metode mana yang paling sesuai dengan kebutuhan Anda.
 

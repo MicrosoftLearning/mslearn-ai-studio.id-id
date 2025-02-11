@@ -1,9 +1,10 @@
 ---
 lab:
-  title: Menggunakan alur perintah untuk Pengenalan Entitas Bernama (NER) di portal Azure AI Foundry
+  title: Menggunakan alur perintah untuk Pengenalan Entitas Bernama (NER)
+  description: AI generatif tidak sekadar untuk aplikasi obrolan - pelajari cara menggunakan alur perintah dalam skenario analitik teks ketika entitas bernama harus diekstrak dari teks.
 ---
 
-# Menggunakan alur perintah untuk Pengenalan Entitas Bernama (NER) di portal Azure AI Foundry
+# Menggunakan alur perintah untuk Pengenalan Entitas Bernama (NER)
 
 Mengekstrak informasi berharga dari teks dikenal sebagai Pengenal Entitas Bernama (NER). Entitas adalah kata kunci yang menarik bagi Anda dalam teks tertentu.
 

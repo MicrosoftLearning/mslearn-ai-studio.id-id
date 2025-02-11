@@ -1,9 +1,10 @@
 ---
 lab:
-  title: Membangun salinan kustom menggunakan alat pengembangan code-first
+  title: Membangun aplikasi AI generatif menggunakan alat pengembangan code-first
+  description: Pelajari cara menggunakan kode untuk membuat dan memperbarui elemen aplikasi AI generatif Anda untuk mendukung pembuatan dan penyebaran otomatis dalam skenario DevOps.
 ---
 
-# Membangun salinan kustom menggunakan alat pengembangan code-first
+# Membangun aplikasi AI generatif menggunakan alat pengembangan code-first
 
 Dalam latihan ini, Anda akan mengkloning dan menerapkan templat Azure Developer CLI yang menyediakan dan [menyebarkan proyek AI Anda ke titik akhir online](https://learn.microsoft.com/azure/developer/azure-developer-cli/azure-ai-ml-endpoints?WT.mc_id=academic-140829-cacaste) di Azure AI Foundry. Anda kemudian akan menggunakannya sebagai titik awal untuk membangun salinan kustom Anda sendiri dengan Azure AI dan pengalaman kode-pertama.
 

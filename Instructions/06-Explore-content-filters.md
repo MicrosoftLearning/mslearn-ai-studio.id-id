@@ -1,9 +1,10 @@
 ---
 lab:
-  title: Jelajahi filter konten untuk mencegah output konten yang berbahaya di Azure AI Foundry
+  title: Terapkan filter konten untuk mencegah keluaran konten berbahaya
+  description: Pelajari cara menerapkan filter konten yang mengurangi keluaran yang berpotensi menyinggung atau berbahaya di aplikasi AI generatif Anda.
 ---
 
-# Jelajahi filter konten untuk mencegah output konten yang berbahaya di Azure AI Foundry
+# Terapkan filter konten untuk mencegah keluaran konten berbahaya
 
 Azure AI Foundr dilengkapi filter konten default untuk membantu memastikan bahwa perintah dan penyelesaian yang berpotensi berbahaya diidentifikasi dan dihapus dari interaksi dengan layanan. Selain itu, Anda dapat mengajukan izin untuk menentukan filter konten kustom untuk kebutuhan spesifik Anda guna memastikan penyebaran model menerapkan prinsip-prinsip AI yang bertanggung jawab yang sesuai dengan skenario AI generatif Anda. Pemfilteran konten adalah salah satu elemen pendekatan yang efektif untuk AI yang bertanggung jawab ketika bekerja dengan model AI generatif.
 

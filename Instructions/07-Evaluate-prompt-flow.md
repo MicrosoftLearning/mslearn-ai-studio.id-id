@@ -1,9 +1,10 @@
 ---
 lab:
-  title: Mengevaluasi performa copilot kustom Anda di Azure AI Foundry
+  title: Mengevaluasi performa AI generatif
+  description: Pelajari cara mengevaluasi model dan alur obrolan untuk mengoptimalkan kinerja aplikasi obrolan Anda dan kemampuannya dalam merespons dengan tepat.
 ---
 
-# Mengevaluasi performa copilot kustom Anda di Azure AI Foundry
+# Mengevaluasi performa AI generatif
 
 Dalam latihan ini, Anda akan menjelajahi evaluasi bawaan dan kustom untuk menilai dan membandingkan performa aplikasi AI Anda dengan portal Azure AI Foundry.
 
@@ -112,9 +113,9 @@ Anda dapat meninjau respons model secara manual berdasarkan data pengujian. Peni
 1. Anda sekarang dapat meninjau output secara manual untuk setiap pertanyaan dengan memilih ikon jempol ke atas atau bawah di kanan bawah respons. Beri peringkat setiap respons, memastikan Anda menyertakan setidaknya satu jempol ke atas dan satu respons jempol ke bawah dalam peringkat Anda.
 1. Pilih **Simpan hasil** dari bilah menu atas. Masukkan `manual_evaluation_results` sebagai nama untuk hasilnya.
 1. Menggunakan menu di sebelah kiri, navigasikan ke **Evaluasi**.
-1. Pilih tab **Evaluasi manual** untuk menemukan evaluasi manual yang baru saja Anda simpan. Perhatikan bahwa Anda dapat menjelajahi evaluasi manual yang dibuat sebelumnya, melanjutkan di mana Anda pergi, dan menyimpan evaluasi yang diperbarui.
+1. Pilih tab **Evaluasi manual** untuk menemukan evaluasi manual yang baru saja Anda simpan. Perhatikan bahwa Anda dapat menjelajahi evaluasi manual yang dibuat sebelumnya, melanjutkan dari bagian yang Anda tinggalkan, dan menyimpan evaluasi yang telah diperbarui.
 
-## Mengevaluasi salinan Anda dengan metrik bawaan
+## Mengevaluasi aplikasi obrolan Anda dengan metrik bawaan
 
 Ketika Anda telah membuat aplikasi obrolan dengan alur prompt, Anda dapat mengevaluasi alur tersebut dengan melakukan proses batch dan menilai kinerja alur tersebut dengan metrik bawaan.
 
