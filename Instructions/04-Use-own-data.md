@@ -1,6 +1,7 @@
 ---
 lab:
   title: Membuat aplikasi AI generatif yang menggunakan data Anda sendiri
+  description: Pelajari cara menggunakan model Retrieval Augmented Generation (RAG) untuk membuat aplikasi obrolan yang mendasarkan perintah dengan menggunakan data Anda sendiri.
 ---
 
 # Membuat aplikasi AI generatif yang menggunakan data Anda sendiri
@@ -72,7 +73,9 @@ Anda memerlukan dua model untuk mengimplementasikan solusi Anda:
     - **Batas Tarif Token Per Menit (ribuan)**: 5K
     - **Filter konten**: DefaultV2
     - **Aktifkan kuota dinamis**: Dinonaktifkan
-      
+
+    > **Catatan**: Jika lokasi sumber daya AI Anda saat ini tidak memiliki kuota yang tersedia untuk model yang ingin Anda terapkan, Anda akan diminta untuk memilih lokasi lain tempat sumber daya AI baru akan dibuat dan tersambung ke proyek Anda.
+
 1. Ulangi langkah-langkah sebelumnya untuk menyebarkan model **gpt-35-turbo-16k** dengan nama penyebaran `gpt-35-turbo-16k`.
 
     > **Catatan**: Mengurangi Token Per Menit (TPM) membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 5.000 TPM cukup untuk data yang digunakan dalam latihan ini.

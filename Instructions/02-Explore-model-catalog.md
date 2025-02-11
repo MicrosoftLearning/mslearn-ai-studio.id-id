@@ -1,9 +1,10 @@
 ---
 lab:
-  title: 'Menjelajahi, menerapkan, dan mengobrol dengan model bahasa di Azure AI Foundry'
+  title: Memilih dan menyebarkan model bahasa
+  description: Aplikasi AI generatif dibangun di atas satu atau beberapa model bahasa. Pelajari cara menemukan dan memilih model yang tepat untuk proyek AI generatif Anda.
 ---
 
-# Menjelajahi, menerapkan, dan mengobrol dengan model bahasa di Azure AI Foundry
+# Memilih dan menyebarkan model bahasa
 
 Katalog model Azure AI Foundry berfungsi sebagai repositori pusat tempat Anda dapat menjelajahi dan menggunakan berbagai model, memfasilitasi pembuatan skenario AI generatif Anda.
 
