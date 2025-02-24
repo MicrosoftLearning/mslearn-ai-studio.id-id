@@ -44,7 +44,7 @@ Mari kita mulai dengan membuat proyek Azure AI Foundry.
 
 ## Menyebarkan model AI generatif
 
-Sekarang Anda siap untuk menyebarkan model bahasa AI generatif untuk mendukung aplikasi obrolan Anda. Dalam contoh ini, Anda akan menggunakan model Microsoft Phi-4; tetapi prinsip-prinsipnya sama untuk model apa pun.
+Sekarang Anda telah siap untuk menyebarkan model bahasa AI generatif untuk mendukung aplikasi obrolan Anda. Dalam contoh ini, Anda akan menggunakan model Microsoft Phi-4; tetapi prinsip-prinsipnya sama untuk model apa pun.
 
 1. Di toolbar di kanan atas halaman proyek Azure AI Foundry Anda, gunakan ikon **Fitur pratinjau** untuk mengaktifkan fitur **Sebarkan model ke layanan inferensi model Azure AI**. Fitur ini memastikan penyebaran model Anda tersedia untuk layanan Inferensi Azure AI, yang akan Anda gunakan dalam kode aplikasi Anda.
 1. Di panel sebelah kiri untuk proyek Anda, di bagian **Aset saya**, pilih halaman **Model + titik akhir**.
