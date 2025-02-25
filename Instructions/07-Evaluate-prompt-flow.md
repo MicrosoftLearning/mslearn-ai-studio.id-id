@@ -20,11 +20,11 @@ Anda mulai dengan membuat proyek Azure AI Foundry dalam hub Azure AI:
     - **Nama hub**: *Nama unik*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Grup sumber daya baru*
-    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-35-turbo** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
-    - **Sambungkan Layanan Azure AI atau Azure OpenAI**: (Baru) *Autofills dengan nama hub yang Anda pilih*
+    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
+    - **Sambungkan Layanan Azure AI atau Azure OpenAI**: (Baru) *Isi otomatis dengan nama hub yang Anda pilih*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
-    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
+    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#availability)
 
 1. Pilih **Berikutnya** dan tinjau konfigurasi Anda.
 1. Pilih **Buat proyek** dan tunggu hingga prosesnya selesai.
@@ -35,7 +35,7 @@ Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model
 
 1. Navigasikan ke halaman **Model + titik akhir** di bawah bagian **Aset saya**, menggunakan menu di sebelah kiri.
 1. Pilih tombol **+ Sebarkan model** , dan pilih opsi **Sebarkan model dasar**.
-1. Buat penyebaran baru model **gpt-35-turbo** dengan pengaturan berikut dengan memilih **Sesuaikan** di wizard **Sebarkan model**:
+1. Buat penyebaran baru model **gpt-4** dengan pengaturan berikut dengan memilih **Sesuaikan** di wizard **Sebarkan model**:
     - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
     - **Tipe penyebaran**: Standar
     - **Versi model**: *Pilih versi default*
@@ -148,7 +148,7 @@ Untuk menghemat waktu, kami telah membuat kumpulan himpunan data output untuk An
     - Pilih **Selanjutnya**
     - **Pilih metrik**: Koherensi, Kefasihan
     - **Koneksi**: *Koneksi Layanan AI Anda*
-    - **Nama/Model penyebaran**: *Model GPT-3.5 yang Anda sebarkan*
+    - **Nama/Model penyebaran**: *Model GPT-4 yang Anda sebarkan*
     - **kueri**: Pilih **kueri** sebagai sumber data
     - **respons**: Pilih **jawaban** sebagai sumber data
       

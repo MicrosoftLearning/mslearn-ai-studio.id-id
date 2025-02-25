@@ -76,7 +76,7 @@ Anda memerlukan dua model untuk mengimplementasikan solusi Anda:
 
     > **Catatan**: Jika lokasi sumber daya AI Anda saat ini tidak memiliki kuota yang tersedia untuk model yang ingin Anda terapkan, Anda akan diminta untuk memilih lokasi lain tempat sumber daya AI baru akan dibuat dan tersambung ke proyek Anda.
 
-1. Ulangi langkah-langkah sebelumnya untuk menyebarkan model **gpt-35-turbo-16k** dengan nama penyebaran `gpt-35-turbo-16k`.
+1. Ulangi langkah-langkah sebelumnya untuk menyebarkan model **gpt-4** dengan nama penyebaran `gpt-4`.
 
     > **Catatan**: Mengurangi Token Per Menit (TPM) membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 5.000 TPM cukup untuk data yang digunakan dalam latihan ini.
 
@@ -120,7 +120,7 @@ Setelah menambahkan sumber data ke proyek, Anda dapat menggunakannya untuk membu
 Sebelum menggunakan indeks Anda dalam alur prompt berbasis RAG, mari kita verifikasi bahwa indeks tersebut dapat digunakan untuk memengaruhi respons AI generatif.
 
 1. Di panel navigasi di sebelah kiri, di bawah halaman **Playground**.
-1. Pada halaman Obrolan, di panel Opsi, pastikan penyebaran model **gpt-35-turbo-16k** Anda dipilih. Kemudian, di panel sesi obrolan utama, kirimkan perintah `Where can I stay in New York?`
+1. Pada halaman Obrolan, di panel Penyiapan, pastikan penyebaran model **gpt-4** Anda terpilih. Kemudian, di panel sesi obrolan utama, kirimkan perintah `Where can I stay in New York?`
 1. Tinjau respons, yang harus menjadi jawaban umum dari model tanpa data apa pun dari indeks.
 1. Pada panel Penyiapan, pilih tab **Tambahkan data Anda**, lalu tambahkan **indeks-brosur** indeks proyek dan pilih jenis pencarian **hibrid (vektor + kata kunci).**
 
@@ -177,7 +177,7 @@ Indeks vektor Anda telah disimpan di proyek Azure AI Foundry, memungkinkan Anda 
 
     - **Koneksi**: *Sumber daya Azure OpenAI default untuk hub AI Anda*
     - **Api**: obrolan
-    - **nama penyebaran**: gpt-35-turbo-16k
+    - **deployment_name**: gpt-4
     - **format_respon**: {"type":"text"}
 
 1. Tunggu hingga sesi komputasi dimulai, lalu di bagian **pencarian** , atur nilai parameter berikut:
@@ -201,9 +201,9 @@ Indeks vektor Anda telah disimpan di proyek Azure AI Foundry, memungkinkan Anda 
 
 1. Di bagian **chat_with_context** , pilih pengaturan berikut (biarkan orang lain apa adanya):
 
-    - **Koneksi**: Default_AzureOpenAI
+    - **Koneksi**: *Sumber daya Azure OpenAI default untuk hub AI Anda*
     - **Api**: Obrolan
-    - **nama penyebaran**: gpt-35-turbo-16k
+    - **deployment_name**: gpt-4
     - **format_respon**: {"type":"text"}
 
     Kemudian pastikan bahwa **input** untuk alat ini menyertakan parameter berikut:
