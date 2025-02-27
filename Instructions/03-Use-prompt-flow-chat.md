@@ -21,11 +21,11 @@ Anda mulai dengan membuat proyek portal Azure AI Foundry dalam hub Azure AI:
     - **Nama hub**: *Nama unik*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Grup sumber daya baru*
-    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-35-turbo** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
-    - **Sambungkan Layanan Azure AI atau Azure OpenAI**: (Baru) *Autofills dengan nama hub yang Anda pilih*
+    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
+    - **Sambungkan Layanan Azure AI atau Azure OpenAI**: (Baru) *Isi otomatis dengan nama hub yang Anda pilih*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
-    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
+    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#availability)
 
 1. Jika Anda memilih **Sesuaikan**, pilih **Berikutnya** dan tinjau konfigurasi Anda.
 1. Pilih **Buat** dan tunggu hingga prosesnya selesai.
@@ -35,7 +35,8 @@ Anda mulai dengan membuat proyek portal Azure AI Foundry dalam hub Azure AI:
 Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model terlebih dahulu. Azure AI Foundry memungkinkan Anda menerapkan model OpenAI yang dapat Anda gunakan dalam alur Anda.
 
 1. Di panel navigasi di sebelah kiri, di bawah **Aset saya**, pilih halaman **Model + titik akhir**.
-1. Buat penyebaran model **gpt-35-turbo** baru dengan pengaturan berikut:
+1. Pilih **+ Sebarkan model** dan **Sebarkan model dasar**. 
+1. Buat penyebaran baru model **gpt-4** dengan pengaturan berikut dengan memilih **Sesuaikan** di detail penyebaran
     - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
     - **Tipe penyebaran**: Standar
     - **Versi model**: *Pilih versi default*
@@ -107,7 +108,7 @@ Anda dapat membuat alur baru dari templat, atau membuat alur berdasarkan konfigu
 
 1. Di bagian simpul LLM, untuk **Koneksi**, pilih koneksi yang dibuat untuk Anda saat Anda membuat hub AI.
 1. Untuk **Api**, pilih **obrolan**.
-1. Untuk **nama_penyebaran**, pilih model **gpt-35-turbo** yang Anda sebarkan.
+1. Untuk **nama_penyebaran**, pilih model **gpt-4** yang Anda sebarkan.
 1. Untuk **format_respons**, pilih **{"type":"text"}**.
 1. Tinjau bidang perintah dan pastikan bidang tersebut terlihat seperti berikut ini:
 

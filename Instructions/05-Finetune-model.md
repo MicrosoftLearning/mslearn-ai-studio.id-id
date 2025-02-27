@@ -35,7 +35,7 @@ Anda mulai dengan membuat proyek portal Azure AI Foundry dalam hub Azure AI:
 1. Tinjau konfigurasi Anda dan buat proyek Anda.
 1. Tunggu proyek Anda dibuat.
 
-## Menyempurnakan model GPT-3.5
+## Menyempurnakan model GPT-4
 
 Karena menyempurnakan model membutuhkan waktu untuk diselesaikan, Anda akan memulai pekerjaan penyempurnaan terlebih dahulu. Sebelum Anda dapat menyempurnakan model, Anda memerlukan himpunan data.
 
@@ -44,7 +44,7 @@ Karena menyempurnakan model membutuhkan waktu untuk diselesaikan, Anda akan memu
     > **Catatan**: Perangkat Anda mungkin secara default berbalik menyimpan file sebagai file .txt. Pilih semua file dan hapus akhiran .txt untuk memastikan Anda menyimpan file sebagai JSONL.
 
 1. Navigasikan ke halaman **Penyempurnaan** di bawah bagian **Membangun dan menyesuaikan** , menggunakan menu di sebelah kiri.
-1. Pilih tombol untuk menambahkan model penyempurnaan baru, pilih `gpt-35-turbo` model, pilih **Selanjutnya** lalu **Konfirmasi**.
+1. Pilih tombol untuk menambahkan model penyempurnaan baru, pilih `gpt-4` model, pilih **Selanjutnya** lalu **Konfirmasi**.
 1. **Sempurnakan** model menggunakan konfigurasi berikut:
     - **Versi model**: *Pilih versi default*
     - **Akhiran model**: `ft-travel`
@@ -72,16 +72,16 @@ Karena menyempurnakan model membutuhkan waktu untuk diselesaikan, Anda akan memu
 
 ## Mengobrol dengan model dasar
 
-Saat Anda menunggu pekerjaan penyempurnaan selesai, mari kita mengobrol dengan model GPT 3.5 dasar untuk menilai performanya.
+Saat Anda menunggu pekerjaan penyempurnaan selesai, mari kita mengobrol dengan model GPT 4 base untuk menilai performanya.
 
 1. Navigasikan ke halaman **Model + titik akhir** di bawah bagian **Aset saya**, menggunakan menu di sebelah kiri.
 1. Pilih tombol **+ Sebarkan model** , dan pilih opsi **Sebarkan model dasar**.
-1. Sebarkan `gpt-35-turbo` model, yang merupakan jenis model yang sama dengan yang Anda gunakan saat menyempurnakan.
+1. Sebarkan `gpt-4` model, yang merupakan jenis model yang sama dengan yang Anda gunakan saat menyempurnakan.
 
 > **Catatan**: Jika lokasi sumber daya AI Anda saat ini tidak memiliki kuota yang tersedia untuk model yang ingin Anda terapkan, Anda akan diminta untuk memilih lokasi lain tempat sumber daya AI baru akan dibuat dan tersambung ke proyek Anda.
 
 1. Saat penerapan telah siap, pilih tombol **Buka di playground**.
-1. Verifikasi bahwa `gpt-35-model`model dasar yang Anda terapkan dipilih di panel penyiapan.
+1. Verifikasi bahwa `gpt-4`model dasar yang Anda terapkan dipilih di panel penyiapan.
 1. Di jendela obrolan, masukkan kueri `What can you do?` dan lihat responnya.
     Jawabannya sangat umum. Ingatlah bahwa kita ingin membuat aplikasi obrolan yang menginspirasi orang untuk bepergian.
 1. Perbarui pesan sistem di panel pengaturan dengan perintah berikut:
