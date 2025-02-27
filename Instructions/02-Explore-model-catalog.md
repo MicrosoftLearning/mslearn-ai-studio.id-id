@@ -8,7 +8,7 @@ lab:
 
 Katalog model Azure AI Foundry berfungsi sebagai repositori pusat tempat Anda dapat menjelajahi dan menggunakan berbagai model, memfasilitasi pembuatan skenario AI generatif Anda.
 
-Dalam latihan ini, Anda akan menjelajahi katalog model di portal Azure AI Foundry.
+Dalam latihan ini, Anda akan menjelajahi katalog model di portal Azure AI Foundry, dan membandingkan model potensial untuk aplikasi AI generatif yang membantu memecahkan masalah.
 
 Latihan ini akan memakan waktu sekitar **25** menit.
 
@@ -18,119 +18,168 @@ Hub Azure AI menyediakan ruang kerja kolaboratif tempat Anda dapat menentukan sa
 
 1. Di browser web, buka portal [Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda.
 
-1. Di beranda, pilih **+ Buat proyek**. Di wizard **Buat proyek**, Anda bisa melihat semua sumber daya Azure yang akan dibuat secara otomatis dengan proyek Anda, atau Anda bisa mengkustomisasi pengaturan berikut dengan memilih **Sesuaikan** sebelum memilih **Buat**:
-
-    - **Nama hub**: *Nama unik*
+1. Di beranda, pilih **+ Buat proyek**.
+1. Di wizard **Buat proyek**, masukkan nama proyek yang sesuai untuk (misalnya, `my-ai-project`) lalu tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung proyek Anda.
+1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
+    - **Nama hub**: *Nama unik - misalnya `my-ai-hub`*
     - **Langganan**: *Langganan Azure Anda*
-    - **Grup sumber daya**: *Grup sumber daya baru*
-    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-35-turbo** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
-    - **Sambungkan Layanan Azure AI atau Azure OpenAI**: (Baru) *Autofills dengan nama hub yang Anda pilih*
+    - **Grup sumber daya**: *Pilih atau buat grup sumber daya dengan nama unik (misalnya, `my-ai-resources`), atau pilih yang sudah ada*
+    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
+    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru dengan nama yang sesuai (misalnya, `my-ai-services`) atau menggunakan yang sudah ada*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
-    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
+    > \* Kuota model dibatasi di tingkat penyewa oleh kuota regional. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
 
-1. Jika Anda memilih **Sesuaikan**, pilih **Berikutnya** dan tinjau konfigurasi Anda.
-1. Pilih **Buat** dan tunggu hingga prosesnya selesai.
-   
-    Setelah hub dan proyek Azure AI dibuat, tampilannya akan terlihat seperti gambar berikut:
+1. Pilih **Berikutnya** dan tinjau konfigurasi Anda. Lalu pilih **Buat** dan tunggu hingga prosesnya selesai.
+1. Saat proyek Anda dibuat, tutup tips apa pun yang ditampilkan dan tinjau halaman proyek di portal Azure AI Foundry, yang akan terlihat mirip dengan gambar berikut:
 
-    ![Tangkapan layar detail hub Azure AI di portal Azure AI Foundry.](./media/azure-ai-resource.png)
+    ![Tangkapan layar detail proyek Azure AI di portal Azure AI Foundry.](./media/ai-foundry-project.png)
 
-1. Buka tab browser baru (biarkan tab Azure AI Foundry terbuka) dan telusuri ke portal Azure di [https://portal.azure.com](https://portal.azure.com?azure-portal=true), masuk dengan kredensial Azure Anda jika diminta.
-1. Telusuri ke grup sumber daya tempat Anda membuat hub Azure AI, dan lihat sumber daya Azure yang telah dibuat.
+## Mengkonfigurasi penyebaran layanan Inferensi Azure AI
 
-    ![Cuplikan layar hub Azure AI dan sumber daya terkait di portal Azure.](./media/azure-portal.png)
+Ada beberapa opsi untuk menyebarkan model di portal Azure AI Foundry. Dalam latihan ini, Anda akan menggunakan opsi penyebaran **inferensi model Azure AI**, yang mendukung model *Azure OpenAI* dan model-model *Model sebagai layanan* dari katalog model Azure AI Foundry. Karena semua model disebarkan ke titik akhir umum yang dihosting oleh sumber daya Azure AI Services Anda, mudah untuk beralih antar model saat mengujinya untuk membandingkan perilaku dan performa.
 
-1. Kembali ke tab browser portal Azure AI Foundry.
-1. Tampilkan setiap halaman di panel di sisi kiri halaman untuk hub Azure AI Anda, dan perhatikan artefak yang bisa Anda buat dan kelola. Di halaman **Pusat manajemen**, Anda dapat memilih **Sumber daya terhubung**, baik di bawah hub atau proyek Anda, dan mengamati bahwa koneksi ke Layanan Azure OpenAI dan AI telah dibuat.
-1. Jika Anda berada di halaman Pusat manajemen, pilih **Buka proyek**.
+1. Di toolbar di kanan atas halaman proyek Azure AI Foundry Anda, gunakan ikon **Fitur Pratinjau** untuk menampilkan fitur pratinjau.
+1. Aktifkan fitur **Sebarkan model ke layanan inferensi model Azure AI**. Kemudian tutup panel **fitur Pratinjau**.
 
-## Memilih model menggunakan tolok ukur model
+## Meninjau detail dan tolak ukur model
 
-Sebelum menyebarkan model, Anda dapat menjelajahi tolok ukur model untuk memutuskan model mana yang paling sesuai dengan kebutuhan Anda.
+Untuk membantu Anda memilih model, Anda dapat menjelajahi deskripsi model dan tolak ukur untuk menentukan model mana yang paling sesuai dengan kebutuhan Anda.
 
-Bayangkan Anda ingin membuat salinan kustom yang berfungsi sebagai asisten perjalanan. Secara khusus, Anda ingin salinan Anda menawarkan dukungan untuk pertanyaan terkait perjalanan, seperti persyaratan visa, prakiraan cuaca, atraksi lokal, dan norma budaya.
+1. Di portal proyek Azure AI Foundry, pada panel navigasi di sebelah kiri, pilih **Katalog model**.
+1. Di beranda katalog model, cari `gpt-4` untuk menemukan model penyelesaian obrolan **gpt-4**.
 
-Salinan Anda perlu memberikan informasi yang akurat secara faktual, jadi groundedness penting. Selanjutnya, Anda ingin jawaban copilot mudah dibaca dan dipahami. Oleh karena itu, Anda juga ingin memilih model yang memiliki peringkat tinggi pada kefasihan dan koherensi.
+    ![Tangkapan layar pencarian "gpt-4" di katalog model.](./media/model-catalog-search-gpt4.png)
 
-1. Di portal proyek Azure AI Foundry, navigasikan ke **katalog Model** menggunakan menu di sebelah kiri.
-    Di halaman katalog, pilih **Bandingkan dengan tolok ukur**. Di halaman Tolok ukur model, Anda akan menemukan bagan yang sudah diplot untuk Anda, membandingkan model yang berbeda.
-1. Pilih **+ Model untuk membandingkan** dan menambahkan **gpt-4-32k** dan **gpt-4** ke bagan metrik. Di menu dropdown **Sumbu-X**, di bawah **Kualitas**, pilih metrik berikut dan amati setiap bagan yang dihasilkan sebelum beralih ke bagan berikutnya:
+1. Pilih model **gpt-4** dan lihat detailnya. Baca deskripsi dan tinjau informasi lain yang tersedia di halaman.
+
+    ![Tangkapan layar halaman detail model gpt-4.](./media/gpt4-details.png)
+
+1. Pada halaman **gpt-4**, lihat tab **Tolak Ukur** untuk melihat bagaimana model dibandingkan di beberapa tolak ukur performa standar dengan model lain yang digunakan dalam skenario serupa.
+
+    ![Tangkapan layar halaman tolak ukur model gpt-4.](./media/gpt4-benchmarks.png)
+
+1. Gunakan panah belakang (**&larr;**) di samping judul halaman **gpt-4** untuk kembali ke halaman beranda katalog model.
+1. Dalam katalog model, cari `Phi-3.5-mini-instruct` dan lihat detail dan tolak ukur untuk **Phi-3.5-mini-instruct**.
+
+## Membandingkan beberapa model
+
+Anda telah meninjau dua model berbeda, yang keduanya dapat digunakan untuk mengimplementasikan aplikasi obrolan AI generatif. Sekarang mari kita bandingkan metrik untuk kedua model ini secara visual.
+
+1. Kembali ke beranda **Katalog model**.
+1. Pilih **Bandingkan model**. Bagan visual untuk perbandingan model ditampilkan dengan pilihan model umum.
+
+    ![Tangkapan layar halaman perbandingan model.](./media/compare-models.png)
+
+1. Di panel **Model untuk dibandingkan** di sebelah kiri, perhatikan bahwa Anda bisa memilih tugas populer, seperti *jawaban atas pertanyaan* untuk memilih model yang umum digunakan secara otomatis untuk tugas tertentu.
+1. Gunakan ikon **Hapus semua model** (&#128465;) untuk menghapus semua model yang telah dipilih sebelumnya.
+1. Gunakan tombol **+ Model untuk membandingkan**untuk menambahkan model **gpt-4** ke daftar. Kemudian gunakan tombol yang sama untuk menambahkan model **Phi-3.5-mini-instruct** ke daftar.
+1. Tinjau bagan, yang membandingkan model berdasarkan **Indeks Kualitas** (skor standar yang menunjukkan kualitas model) dan **Biaya**. Anda dapat melihat nilai tertentu untuk model dengan menahan mouse di atas titik yang mewakilinya dalam bagan.
+
+    ![Tangkapan layar bagan perbandingan model untuk gpt-4 dan Phi-3.5-mini-instruct.](./media/comparison-chart.png)
+
+1. Di menu dropdown **Sumbu-X**, di bawah **Kualitas**, pilih metrik berikut dan amati setiap bagan yang dihasilkan sebelum beralih ke bagan berikutnya:
+    - Akurasi
     - Koherensi
     - Kelancaran
-    - Groundedness
-1. Saat menjelajahi hasilnya, Anda dapat mencoba dan menjawab pertanyaan berikut:
-    - Apakah Anda melihat perbedaan performa antara model GPT-3.5 dan GPT-4?
-    - Apakah ada perbedaan antara versi model yang sama?
-    - Bagaimana varian 32k GPT-4 berbeda dari model dasar?
+    - Relevansi
 
-Dari koleksi Azure OpenAI, Anda dapat memilih antara model GPT-3.5 dan GPT-4. Mari kita sebarkan kedua model ini dan jelajahi bagaimana perbandingannya untuk kasus penggunaan Anda.
-
-## Menyebarkan model Azure OpenAI
+## Terapkan model
 
 Sekarang setelah Anda menjelajahi opsi Anda melalui tolok ukur model, Anda siap untuk menyebarkan model bahasa. Anda dapat menelusuri katalog model, dan menyebarkan dari sana, atau Anda dapat menyebarkan model melalui halaman **Penyebaran** . Mari kita jelajahi kedua opsi tersebut.
 
-### Menyebarkan model dari katalog Model
+### Menyebarkan model dari *katalog Model*
 
 Mari kita mulai dengan menyebarkan model dari katalog Model. Anda mungkin lebih suka opsi ini ketika Anda ingin memfilter semua model yang tersedia.
 
-1. Navigasikan ke halaman **Katalog model** menggunakan menu di sebelah kiri.
-1. Cari dan terapkan `gpt-35-turbo`model, yang dikumpulkan oleh Azure AI, dengan pengaturan berikut dengan memilih **Sesuaikan** di detail penerapan:
-   
-    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
-    - **Tipe penyebaran**: Standar
+1. Kembali ke beranda **Katalog model**.
+1. Cari dan pilih `gpt-4` model, seperti yang Anda lakukan sebelumnya.
+1. Pada halaman **gpt-4**, pilih **Sebarkan** dan sebarkan model dengan pengaturan berikut dengan memilih **Sesuaikan** di rincian penyebaran:
+    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda - sebagai contoh `gpt-4-model`*
+    - **Tipe penyebaran**: Standar Global
     - **Versi model**: *Pilih versi default*
-    - **Sumber daya AI**: *Pilih sumber daya yang dibuat sebelumnya*
+    - **Sumber daya AI yang terhubung**: *Koneksi sumber daya Azure OpenAI Anda*
     - **Batas Tarif Token Per Menit (ribuan)**: 5K
     - **Filter konten**: DefaultV2
     - **Aktifkan kuota dinamis**: Dinonaktifkan
+      
+    > **Catatan**: Mengurangi TPM membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 5.000 TPM cukup untuk data yang digunakan dalam latihan ini.
 
-    > **Catatan**: Jika lokasi sumber daya AI Anda saat ini tidak memiliki kuota yang tersedia untuk model yang ingin Anda terapkan, Anda akan diminta untuk memilih lokasi lain tempat sumber daya AI baru akan dibuat dan tersambung ke proyek Anda.
+1. Tunggu hingga **status Penyediaan** penyebaran menjadi **Berhasil**.
 
-### Menerapkan model melalui Model + titik akhir
+### Menerapkan model melalui *Model + titik akhir*
 
 Jika Anda sudah mengetahui dengan pasti model mana yang ingin Anda terapkan, Anda mungkin lebih suka melakukannya melalui **Models + titik akhir**.
 
-1. Navigasikan ke halaman **Model + titik akhir** di bawah bagian **Aset saya**, menggunakan menu di sebelah kiri.
-1. Di tab **Penyebaran model**, terapkan model dasar baru dengan pengaturan berikut dengan memilih **Kustomisasi** dalam detail penyebaran:
-    - **Model**: gpt 4
-    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
-    - **Tipe penyebaran**: Standar
-    - **Versi model**: *Pilih versi default*
-    - **Sumber daya AI**: *Pilih sumber daya yang dibuat sebelumnya*
-    - **Batas Tarif Token Per Menit (ribuan)**: 5K
-    - **Filter konten**: DefaultV2
-    - **Aktifkan kuota dinamis**: Dinonaktifkan
+1. Di panel navigasi di sebelah kiri, di bawah **Aset saya**, pilih halaman **Model + titik akhir**.
+1. Di tab **Penyebaran model**, di daftar drop-down **+ Sebarkan model**, pilih **Sebarkan model dasar**. Kemudian cari `Phi-3.5-mini-instruct` dan konfirmasikan pilihan Anda.
+1. Setujui lisensi model.
+1. Sebarkan model **Phi-3.5-mini-instruct** dengan pengaturan berikut:
+    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda - sebagai contoh, `phi-35-model`*
+    - **Tipe penyebaran**: Standar Global
+    - **Detail penyebaran**: *Gunakan pengaturan default*
+
+1. Tunggu hingga **status Penyediaan** penyebaran menjadi **Berhasil**.
 
 ## Menguji model di taman bermain obrolan
 
 Sekarang setelah kita memiliki dua model untuk dibandingkan, mari kita lihat bagaimana model bersikap dalam interaksi percakapan.
 
-1. Navigasi ke halaman**Playgrounds** menggunakan menu di sebelah kiri.
-1. Di **Taman bermain obrolan**, pilih penyebaran GPT-3.5 Anda.
-1. Di jendela obrolan, masukkan kueri `What can you do?` dan lihat responnya.
-    Jawabannya sangat umum. Ingatlah kita ingin membuat salinan kustom yang berfungsi sebagai asisten perjalanan. Anda dapat menentukan jenis bantuan apa yang Anda inginkan dalam pertanyaan yang Anda ajukan.
-1. Di jendela obrolan, masukkan kueri `Imagine you're a travel assistant, what can you help me with?` Jawabannya sudah lebih spesifik. Anda mungkin tidak ingin pengguna akhir Anda harus memberikan konteks yang diperlukan setiap kali mereka berinteraksi dengan salinan Anda. Untuk menambahkan instruksi global, Anda dapat mengedit pesan sistem.
-1. Di bawah **Pengaturan**, perbarui bidang **Berikan instruksi dan konteks kepada model** dengan perintah berikut:
+### Bersiap untuk mengobrol
 
-   ```
-   You are an AI travel assistant that helps people plan their trips. Your objective is to offer support for travel-related inquiries, such as visa requirements, weather forecasts, local attractions, and cultural norms.
-   ```
-
+1. Di bilah navigasi, pilih **Playground**. Lalu pilih **Playground obrolan**.
+1. Di panel **Penyiapan**, di **bidang Berikan instruksi dan konteks** model, atur perintah sistem ke `You are an AI assistant that helps solve problems.`
 1. Pilih **Terapkan perubahan**.
-1. Di jendela obrolan, masukkan kueri `What can you do?` dan tampilkan respons baru. Amati perbedaannya dengan jawaban yang Anda terima sebelumnya. Jawabannya khusus untuk perjalanan sekarang.
-1. Lanjutkan percakapan dengan bertanya: `I'm planning a trip to London, what can I do there?` Salinan menawarkan banyak informasi terkait perjalanan. Anda mungkin ingin memperbaiki outputnya. Misalnya, Anda mungkin ingin jawabannya lebih ringkas.
-1. Perbarui pesan sistem dengan menambahkan `Answer with a maximum of two sentences.` ke akhir pesan. Terapkan perubahan, hapus obrolan, dan uji obrolan lagi dengan bertanya: `I'm planning a trip to London, what can I do there?` Anda mungkin juga ingin salinan Anda melanjutkan percakapan alih-alih hanya menjawab pertanyaan.
-1. Perbarui konteks model dengan menambahkan `End your answer with a follow-up question.` ke akhir perintah. Simpan perubahan dan uji obrolan lagi dengan bertanya: `I'm planning a trip to London, what can I do there?`
-1. Ubah **Penyebaran** Anda ke model GPT-4 Anda dan ulangi semua langkah di bagian ini. Perhatikan bagaimana model dapat bervariasi dalam outputnya.
-1. Terakhir, uji kedua model pada kueri `Who is the prime minister of the UK?`. Performa pada pertanyaan ini terkait dengan groundedness (apakah responsnya akurat secara faktual) dari model. Apakah performa berkorelasi dengan kesimpulan Anda dari tolok ukur Model?
 
-Sekarang setelah Anda menjelajahi kedua model, pertimbangkan model apa yang akan Anda pilih sekarang untuk kasus penggunaan Anda. Pada awalnya, output dari model mungkin berbeda, dan Anda mungkin lebih suka satu model daripada yang lain. Namun, setelah memperbarui pesan sistem, Anda mungkin melihat bahwa perbedaannya minimal. Dari perspektif pengoptimalan biaya, Anda kemudian dapat memilih model GPT-3.5 daripada model GPT-4, karena performanya sangat mirip.
+### Mengobrol dengan model *gpt-4*
+
+Di panel **Penyiapan**, pilih model *gpt-4* Anda.
+1. Di jendela kueri, masukkan kueri berikut ini
+
+    ```
+    I have a fox, a chicken, and a bag of grain that I need to take over a river in a boat. I can only take one thing at a time. If I leave the chicken and the grain unattended, the chicken will eat the grain. If I leave the fox and the chicken unattended, the fox will eat the chicken. How can I get all three things across the river without anything being eaten?
+    ```
+
+1. Tampilkan responsnya. Lalu masukkan kueri susulan berikut:
+
+    ```
+    Explain your reasoning.
+    ```
+
+### Mengobrol dengan model *Phi-3.5*
+
+1. Di panel **Penyiapan**, pilih model *Phi-3.5* Anda.
+1. Pastikan bahwa sesi obrolan baru dimulai sebelum mengulangi perintah yang sama yang sebelumnya Anda gunakan untuk menguji model gpt-4.
+1. Di jendela kueri, masukkan kueri berikut ini
+
+    ```
+    I have a fox, a chicken, and a bag of grain that I need to take over a river in a boat. I can only take one thing at a time. If I leave the chicken and the grain unattended, the chicken will eat the grain. If I leave the fox and the chicken unattended, the fox will eat the chicken. How can I get all three things across the river without anything being eaten?
+    ```
+
+1. Tampilkan responsnya. Lalu masukkan kueri susulan berikut:
+
+    ```
+    Explain your reasoning.
+    ```
+
+### Melakukan perbandingan lebih lanjut
+
+1. Cobalah teka-teki berikut dengan kedua model, meminta model untuk menjelaskan penalaran mereka (jawaban yang benar adalah 40!):
+
+    ```
+    I have 53 socks in my drawer: 21 identical blue, 15 identical black and 17 identical red. The lights are out, and it is completely dark. How many socks must I take out to make 100 percent certain I have at least one pair of black socks?
+    ```
+
+## Cermati model-modelnya
+
+Anda telah membandingkan dua model, yang mungkin bervariasi dalam hal kemampuannya untuk menghasilkan respons yang sesuai dan biayanya. Dalam skenario generatif apa pun, Anda perlu menemukan model dengan keseimbangan yang tepat antara kesesuaian untuk tugas yang perlu Anda lakukan dan biaya penggunaan model untuk jumlah permintaan yang Anda harapkan harus ditangani.
+
+Detail dan tolak ukur yang disediakan dalam katalog model, bersama dengan kemampuan untuk membandingkan model secara visual memberikan titik awal yang berguna saat mengidentifikasi model kandidat untuk solusi AI generatif. Anda kemudian dapat menguji model kandidat dengan berbagai perintah sistem dan pengguna di playground obrolan.
 
 ## Penghapusan
 
 Setelah selesai menjelajahi Azure AI Foundry, Anda harus menghapus sumber daya yang telah Anda buat di latihan ini untuk menghindari biaya Azure yang tidak perlu.
 
-1. Kembali ke tab browser yang berisi portal Azure (atau buka kembali [portal Azure](https://portal.azure.com?azure-portal=true) di tab browser baru) dan lihat konten grup sumber daya tempat Anda menyebarkan sumber daya yang digunakan dalam latihan ini.
+1. Buka [portal Azure](https://portal.azure.com) dan lihat konten grup sumber daya tempat Anda menyebarkan sumber daya yang digunakan dalam latihan ini.
 1. Pada toolbar pilih **Hapus grup sumber daya**.
 1. Masukkan nama grup sumber daya untuk mengonfirmasi bahwa Anda ingin menghapusnya, dan pilih Hapus.
