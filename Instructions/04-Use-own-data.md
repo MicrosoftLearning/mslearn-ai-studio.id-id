@@ -12,49 +12,30 @@ Dalam latihan ini, Anda akan menggunakan Azure AI Foundry untuk mengintegrasikan
 
 Latihan ini memakan waktu sekitar **45** menit.
 
-## Membuat sumber daya  Pencarian Azure AI
-
-Solusi aplikasi AI generatif Anda akan memadukan data khusus ke dalam alur yang cepat. Untuk mendukung integrasi ini, Anda memerlukan sumber daya Azure AI Search untuk mengindeks data Anda.
-
-1. Di browser web, buka [portal Azure](https://portal.azure.com) di `https://portal.azure.com` dan masuk menggunakan kredensial Azure Anda.
-1. Di halaman beranda **+ Buat sumber daya** dan pencarian `Azure AI Search`. Kemudian buat sumber daya Azure AI Search baru dengan pengaturan berikut:
-
-    - **Langganan**: *Pilih langganan Azure Anda*
-    - **Grup sumber daya**: *Memilih atau membuat grup sumber daya*
-    - **Nama layanan**: *Masukkan nama yang unik*
-    - **Lokasi**: *Buat **pilihan acak** dari salah satu wilayah berikut*\*
-        - Australia Timur
-        - Kanada Timur
-        - AS Timur
-        - AS Timur 2
-        - Prancis Tengah
-        - Jepang Timur
-        - AS Tengah Bagian Utara
-        - Swedia Tengah
-        - Swiss 
-    - **Tingkat harga**: Standar
-
-    > \* Nantinya, Anda akan membuat Azure AI Hub (yang menyertakan layanan Azure OpenAI) di wilayah yang sama dengan sumber daya Azure AI Search Anda. Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat Azure AI hub lain di wilayah yang berbeda.
-
-1. Tunggu hingga penyebaran Azure AI Search Anda selesai.
-
 ## Membuat proyek Azure OpenAI
 
-Sekarang Anda siap untuk membuat proyek Azure AI Foundry dan sumber daya Azure AI untuk mendukungnya.
+Mari kita mulai dengan membuat proyek Azure AI Foundry dan sumber daya layanan yang perlu didukungnya menggunakan data Anda sendiri - termasuk sumber daya Pencarian Azure AI.
 
-1. Di browser web, buka portal [Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda.
+1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda. Tutup semua tip atau panel mulai cepat yang terbuka saat pertama kali Anda masuk, dan jika perlu, gunakan logo **Azure AI Foundry** di kiri atas untuk menavigasi ke halaman beranda, yang terlihat sama dengan gambar berikut:
+
+    ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
+
 1. Di beranda, pilih **+ Buat proyek**.
-1. Di wizard **Buat proyek**, Anda bisa melihat semua sumber daya Azure yang akan dibuat secara otomatis dengan proyek Anda. Pilih **Kustomisasi** dan sambungkan ke sumber daya Azure AI Search Anda:
+1. Di wizard **Buat proyek**, masukkan nama proyek yang sesuai untuk (misalnya, `my-ai-project`) lalu tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung proyek Anda.
+1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
+    - **Nama hub**: *Nama unik - misalnya `my-ai-hub`*
+    - **Langganan**: *Langganan Azure Anda*
+    - **Grup sumber daya**: *Pilih atau buat grup sumber daya dengan nama unik (misalnya, `my-ai-resources`), atau pilih yang sudah ada*
+    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4** dan **text-embedding-ada-002** di jendela Pembantu Lokasi dan gunakan wilayah yang disarankan\*
+    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru dengan nama yang sesuai (misalnya, `my-ai-services`) atau menggunakan yang sudah ada*
+    - **Menyambungkan Pencarian Azure AI**: *Membuat sumber daya Pencarian Azure AI baru dengan nama unik*
 
-    - **Nama hub**: *Nama unik*
-    - **Langganan Azure**: *Langganan Azure Anda*.
-    - **Grup sumber daya**: *Pilih grup sumber daya yang berisi sumber daya Azure AI Search Anda*
-    - **Lokasi**: *Pilih lokasi yang sama dengan sumber daya Azure AI Search Anda*
-    - **Sambungkan Layanan Azure AI atau Azure OpenAI**: (Baru) *Autofills dengan nama hub yang Anda pilih*
-    - **Sambungkan Pencarian Azure AI**: *pilih sumber daya Pencarian Azure AI Anda*
+    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
 
-1. Pilih **Berikutnya** dan tinjau konfigurasi Anda.
-1. Pilih **Buat** dan tunggu hingga prosesnya selesai.
+1. Pilih **Berikutnya** dan tinjau konfigurasi Anda. Lalu pilih **Buat** dan tunggu hingga prosesnya selesai.
+1. Saat proyek Anda dibuat, tutup tips apa pun yang ditampilkan dan tinjau halaman proyek **Ringkasan** di Portal Azure AI Foundry, yang akan terlihat mirip dengan gambar berikut:
+
+    ![Tangkapan layar detail proyek Azure AI di portal Azure AI Foundry.](./media/ai-foundry-project.png)
    
 ## Terapkan model
 
