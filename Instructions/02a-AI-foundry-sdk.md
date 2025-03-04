@@ -24,18 +24,11 @@ Mari kita mulai dengan membuat proyek Azure AI Foundry.
     - **Nama hub**: *Nama unik - misalnya `my-ai-hub`*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Pilih atau buat grup sumber daya dengan nama unik (misalnya, `my-ai-resources`), atau pilih yang sudah ada*
-    - **Lokasi**: Buat wilayah acak dari salah satu pilihan berikut\*:
-        - AS Timur
-        - AS Timur 2
-        - US Tengah Utara
-        - US Tengah Selatan
-        - Swedia Tengah
-        - US Barat
-        - AS Barat 3
+    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
     - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru dengan nama yang sesuai (misalnya, `my-ai-services`) atau menggunakan yang sudah ada*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
-    > \* Kuota model dibatasi di tingkat penyewa oleh kuota regional. Memilih wilayah acak membantu mendistribusikan ketersediaan kuota saat beberapa pengguna bekerja di penyewa yang sama. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
+    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
 
 1. Pilih **Berikutnya** dan tinjau konfigurasi Anda. Lalu pilih **Buat** dan tunggu hingga prosesnya selesai.
 1. Saat proyek Anda dibuat, tutup tips apa pun yang ditampilkan dan tinjau halaman proyek di portal Azure AI Foundry, yang akan terlihat mirip dengan gambar berikut:
@@ -60,7 +53,9 @@ Sekarang Anda telah siap untuk menyebarkan model bahasa AI generatif untuk mendu
 
 Setelah menyebarkan model, Anda dapat menggunakan Azure AI Foundry SDK untuk mengembangkan aplikasi yang mengobrol dengannya.
 
-### Menyiapkan konfigurasi aplikasi
+> **Tips**: Anda dapat memilih untuk mengembangkan solusi Anda sendiri menggunakan Python atau Microsoft C#. Ikuti instruksi di bagian yang sesuai untuk bahasa yang Anda pilih.
+
+### Mengkloning repo aplikasi
 
 1. Di portal Azure AI Foundry, lihat halaman **Gambaran Umum** untuk proyek Anda.
 1. Di area **Detail proyek**, perhatikan **string koneksi Proyek**. Anda akan menggunakan string koneksi ini untuk menyambungkan ke proyek Anda di aplikasi klien.
@@ -71,6 +66,8 @@ Setelah menyebarkan model, Anda dapat menggunakan Azure AI Foundry SDK untuk men
 
 1. Di toolbar cloud shell, di menu **Pengaturan**, pilih **Buka versi Klasik** (ini diperlukan untuk menggunakan editor kode).
 
+    > **Tips**: Saat Anda menempelkan perintah ke cloudshell, ouput mungkin mengambil sejumlah besar buffer layar. Anda dapat menghapus layar dengan memasukkan `cls` perintah untuk mempermudah fokus pada setiap tugas.
+
 1. Di panel PowerShell, masukkan perintah berikut untuk mengkloning repositori GitHub untuk latihan ini:
 
     ```
@@ -78,26 +75,53 @@ Setelah menyebarkan model, Anda dapat menggunakan Azure AI Foundry SDK untuk men
     git clone https://github.com/microsoftlearning/mslearn-ai-studio mslearn-ai-foundry
     ```
 
-1. Setelah repositori dikloning, navigasikan ke folder yang berisi file kode aplikasi obrolan:
+### Menyiapkan konfigurasi aplikasi
+
+> **Catatan**: Ikuti langkah-langkah untuk bahasa pemrograman yang Anda pilih.
+
+1. Setelah repositori dikloning, navigasikan ke folder yang berisi file kode aplikasi obrolan:  
+
+    **Python**
 
     ```
-    cd mslearn-ai-foundry/labfiles/chat-app/python
+   cd mslearn-ai-foundry/labfiles/chat-app/python
     ```
 
-1. Di panel baris perintah cloud shell, masukkan perintah berikut untuk menginstal pustaka permintaan Python yang akan Anda gunakan, yaitu:
-    - **python-dotenv** : Digunakan untuk memuat pengaturan dari file konfigurasi aplikasi.
-    - **azure-identity**: Digunakan untuk mengautentikasi dengan kredensial Entra ID.
-    - **azure-ai-projects**: Digunakan untuk bekerja dengan proyek Azure AI Foundry.
-    - **azure-ai-inference**: Digunakan untuk mengobrol dengan model AI generatif.
+    **C#**
+
+    ```
+   cd mslearn-ai-foundry/labfiles/chat-app/c-sharp
+    ```
+
+1. Di panel baris perintah cloud shell, masukkan perintah berikut untuk menginstal pustaka yang akan Anda gunakan:
+
+    **Python**
 
     ```
    pip install python-dotenv azure-identity azure-ai-projects azure-ai-inference
     ```
 
-1. Masukkan perintah berikut untuk mengedit file konfigurasi Python **.env** yang telah disediakan:
+    **C#**
+
+    ```
+   dotnet add package Azure.AI.Inference
+   dotnet add package Azure.AI.Projects --prerelease
+   dotnet add package Azure.Identity
+    ```
+    
+
+1. Masukkan perintah berikut untuk mengedit file konfigurasi yang telah disediakan:
+
+    **Python**
 
     ```
    code .env
+    ```
+
+    **C#**
+
+    ```
+   code appsettings.json
     ```
 
     File dibuka dalam editor kode.
@@ -107,37 +131,75 @@ Setelah menyebarkan model, Anda dapat menggunakan Azure AI Foundry SDK untuk men
 
 ### Menulis kode untuk menyambungkan ke proyek Anda dan mengobrol dengan model Anda
 
-> **Tips**: Saat Anda menambahkan kode ke file kode Python, pastikan untuk mempertahankan indentasi yang benar.
+> **Tips**: Saat Anda menambahkan kode, pastikan untuk mempertahankan indentasi yang benar.
 
-1. Masukkan perintah berikut untuk mengedit file kode Python **chat-app.py** yang telah disediakan:
+1. Masukkan perintah berikut untuk mengedit file kode yang telah disediakan:
+
+    **Python**
 
     ```
    code chat-app.py
     ```
 
-1. Dalam file kode, perhatikan pernyataan **impor** yang ada yang telah ditambahkan di bagian atas file. Kemudian, di bawah komentar **# Tambahkan referensi Proyek AI**, tambahkan kode berikut untuk mereferensikan pustaka Proyek Azure AI:
+    **C#**
 
-    ```python
+    ```
+   code Program.cs
+    ```
+
+1. Dalam file kode, perhatikan pernyataan yang sudah ada yang telah ditambahkan di bagian atas file untuk mengimpor namespace SDK yang diperlukan. Kemudian, di bawah komentar **Tambahkan referensi**, tambahkan kode berikut untuk mereferensikan namespace di pustaka yang Anda instal sebelumnya:
+
+    **Python**
+
+    ```
+   from dotenv import load_dotenv
+   from azure.identity import DefaultAzureCredential
    from azure.ai.projects import AIProjectClient
     ```
 
-1. Dalam fungsi **utama**, di bawah komentar **# Dapatkan pengaturan konfigurasi**, perhatikan bahwa kode memuat string koneksi proyek dan nilai nama penyebaran model yang Anda tentukan dalam file **.env**.
-1. Di bawah komentar **# Inisialisasi klien proyek**, tambahkan kode berikut untuk terhubung ke proyek Azure AI Foundry Anda dengan menggunakan kredensial Azure yang Anda gunakan untuk masuk saat ini:
+    **C#**
 
-    ```python
-   project = AIProjectClient.from_connection_string(
+    ```
+   using Azure.Identity;
+   using Azure.AI.Projects;
+   using Azure.AI.Inference;
+    ```
+
+1. Dalam fungsi **utama**, di bawah komentar **Dapatkan pengaturan konfigurasi**, perhatikan bahwa kode memuat string koneksi proyek dan nilai nama penyebaran model yang Anda tentukan dalam file konfigurasi.
+1. Di bawah komentar **Inisialisasi klien proyek**, tambahkan kode berikut untuk menghubungkan proyek Azure AI Foundry Anda dengan menggunakan kredensial Azure yang Anda gunakan untuk masuk saat ini:
+
+    **Python**
+
+    ```
+   projectClient = AIProjectClient.from_connection_string(
         conn_str=project_connection,
-        credential=DefaultAzureCredential()
-        )
-    ```
-    
-1. Di bawah komentar **# Dapatkan klien obrolan**, tambahkan kode berikut untuk membuat objek klien untuk mengobrol dengan model:
-
-    ```python
-   chat = project.inference.get_chat_completions_client()
+        credential=DefaultAzureCredential())
     ```
 
-1. Perhatikan bahwa kode menyertakan perulangan untuk memungkinkan pengguna memasukkan perintah hingga mereka memasukkan "berhenti". Selanjutnya, di bagian perulangan, di bawah komentar **# Dapatkan penyelesaian obrolan**, tambahkan kode berikut untuk mengirimkan perintah dan mengambil penyelesaian dari model Anda:
+    **C#**
+
+    ```
+   var projectClient = new AIProjectClient(project_connection,
+                        new DefaultAzureCredential());
+    ```
+
+1. Di bawah komentar **Dapatkan klien obrolan**, tambahkan kode berikut untuk membuat objek klien untuk mengobrol dengan model:
+
+    **Python**
+
+    ```
+   chat = projectClient.inference.get_chat_completions_client()
+    ```
+
+    **C#**
+
+    ```
+   ChatCompletionsClient chat = projectClient.GetChatCompletionsClient();
+    ```
+
+1. Perhatikan bahwa kode menyertakan perulangan untuk memungkinkan pengguna memasukkan perintah hingga mereka memasukkan "berhenti". Selanjutnya, di bagian perulangan, di bawah komentar **Dapatkan penyelesaian obrolan**, tambahkan kode berikut untuk mengirimkan perintah dan mengambil penyelesaian dari model Anda:
+
+    **Python**
 
     ```python
    response = chat.complete(
@@ -150,14 +212,39 @@ Setelah menyebarkan model, Anda dapat menggunakan Azure AI Foundry SDK untuk men
    print(response.choices[0].message.content)
     ```
 
+    **C#**
+
+    ```
+   var requestOptions = new ChatCompletionsOptions()
+   {
+       Model = model_deployment,
+       Messages =
+           {
+               new ChatRequestSystemMessage("You are a helpful AI assistant that answers questions."),
+               new ChatRequestUserMessage(input_text),
+           }
+   };
+    
+   Response<ChatCompletions> response = chat.Complete(requestOptions);
+   Console.WriteLine(response.Value.Content);
+    ```
+
 1. Gunakan perintah **CTRL+S** untuk menyimpan perubahan Anda ke file kode lalu gunakan perintah **CTRL+Q** untuk menutup editor kode sambil menjaga baris perintah cloud shell tetap terbuka.
 
 ### Jalankan aplikasi obrolan tersebut
 
-1. Di panel cloud shell, masukkan perintah berikut untuk menjalankan kode Python:
+1. Di panel baris perintah cloud shell, masukkan perintah berikut untuk menjalankan aplikasinya:
+
+    **Python**
 
     ```
    python chat-app.py
+    ```
+
+    **C#**
+
+    ```
+   dotnet run
     ```
 
 1. Saat diminta, masukkan pertanyaan, seperti `What is the fastest animal on Earth?` dan tinjau respons dari model AI generatif Anda.
