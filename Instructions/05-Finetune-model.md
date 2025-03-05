@@ -12,7 +12,9 @@ Dalam latihan ini, Anda akan menyempurnakan model bahasa dengan Azure AI Foundry
 
 Bayangkan Anda bekerja untuk agen perjalanan dan Anda mengembangkan aplikasi obrolan untuk membantu orang merencanakan liburan mereka. Tujuannya adalah untuk membuat obrolan sederhana dan menginspirasi yang menyarankan tujuan dan aktivitas. Karena obrolan tidak terhubung ke sumber data apa pun, obrolan **tidak** boleh memberikan rekomendasi khusus untuk hotel, penerbangan, atau restoran untuk memastikan kepercayaan pelanggan Anda.
 
-Latihan ini akan memakan waktu sekitar **60** menit.
+Latihan ini akan memakan waktu sekitar **60** menit\*.
+
+> \***Catatan**: Waktu ini adalah perkiraan berdasarkan pengalaman rata-rata. Penyempurnaan tergantung pada sumber daya infrastruktur cloud, yang dapat memakan waktu yang bervariasi untuk disediakan tergantung pada kapasitas pusat data dan permintaan bersamaan. Beberapa aktivitas dalam latihan ini mungkin membutuhkan waktu yang <u>lama</u> untuk diselesaikan, dan memerlukan kesabaran. Jika ada yang memakan waktu cukup lama, pertimbangkan untuk meninjau [Dokumentasi penyempurnaan Azure AI Foundry](https://learn.microsoft.com/azure/ai-studio/concepts/fine-tuning-overview) atau beristirahat.
 
 ## Membuat AI hub dan proyek di portal Azure AI Foundry.
 
@@ -26,18 +28,18 @@ Anda mulai dengan membuat proyek portal Azure AI Foundry dalam hub Azure AI:
         - **Hub**: *Isi otomatis dengan nama default*
         - **Langganan**: *Isi otomatis dengan akun masuk Anda*
         - **Grup sumber daya**: (Baru) *Isi otomatis dengan nama proyek Anda*
-        - **Lokasi**: Pilih salah satu wilayah berikut **US Timur2**, **US Tengah Utara**, **Swedia Tengah**, **Swiss Barat**\*
+        -  **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4-finetune** pada jendela pembantu Lokasi dan gunakan wilayah yang direkomendasikan\*
         - **Sambungkan Layanan Azure AI atau Azure OpenAI**: (Baru) *Isi otomatis dengan nama hub yang Anda pilih*
         - **Menyambungkan Azure AI Search**: Lewati koneksi
 
-    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari selengkapnya tentang [Menyempurnakan wilayah model](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions#fine-tuning-models)
+    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari selengkapnya tentang [Menyempurnakan wilayah model](https://learn.microsoft.com/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions#fine-tuning-models)
 
 1. Tinjau konfigurasi Anda dan buat proyek Anda.
 1. Tunggu proyek Anda dibuat.
 
 ## Menyempurnakan model GPT-4
 
-Karena menyempurnakan model membutuhkan waktu untuk diselesaikan, Anda akan memulai pekerjaan penyempurnaan terlebih dahulu. Sebelum Anda dapat menyempurnakan model, Anda memerlukan himpunan data.
+Karena menyempurnakan model membutuhkan waktu untuk diselesaikan, Anda akan memulai pekerjaan penyempurnaan sekarang dan kembali lagi setelah menjelajahi model dasar yang belum disempurnakan untuk diperbandingkan.
 
 1. Unduh [himpunan data pelatihan](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl) di `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl`dan simpan sebagai file JSONL secara lokal.
 
@@ -68,7 +70,7 @@ Karena menyempurnakan model membutuhkan waktu untuk diselesaikan, Anda akan memu
     - **Parameter tugas**: *Pertahankan pengaturan default*
 1. Penyempurnaan akan dimulai dan mungkin perlu waktu untuk menyelesaikannya.
 
-> **Catatan**: Penyempurnaan dan penyebaran dapat memakan waktu, jadi Anda mungkin perlu memeriksa kembali secara berkala. Anda sudah dapat melanjutkan dengan langkah berikutnya saat menunggu.
+> **Catatan**: Penyempurnaan dan penyebaran dapat memakan waktu (30 menit atau lebih), jadi Anda mungkin perlu memeriksa kembali secara berkala. Anda sudah dapat melanjutkan dengan langkah berikutnya saat menunggu.
 
 ## Mengobrol dengan model dasar
 
@@ -76,7 +78,11 @@ Saat Anda menunggu pekerjaan penyempurnaan selesai, mari kita mengobrol dengan m
 
 1. Navigasikan ke halaman **Model + titik akhir** di bawah bagian **Aset saya**, menggunakan menu di sebelah kiri.
 1. Pilih tombol **+ Sebarkan model** , dan pilih opsi **Sebarkan model dasar**.
-1. Sebarkan `gpt-4` model, yang merupakan jenis model yang sama dengan yang Anda gunakan saat menyempurnakan.
+1. Sebarkan `gpt-4`model dengan pengaturan berikut:
+    - **Nama penyebaran**: *Nama unik untuk model Anda, Anda dapat menggunakan default*
+    - **Tipe penyebaran**: Standar
+    - **Batas Tarif Token Per Menit (ribuan)**: 5K
+    - **Filter konten**: Default
 
 > **Catatan**: Jika lokasi sumber daya AI Anda saat ini tidak memiliki kuota yang tersedia untuk model yang ingin Anda terapkan, Anda akan diminta untuk memilih lokasi lain tempat sumber daya AI baru akan dibuat dan tersambung ke proyek Anda.
 
@@ -100,36 +106,54 @@ Saat Anda menunggu pekerjaan penyempurnaan selesai, mari kita mengobrol dengan m
     ```
 
 1. Pilih **Terapkan perubahan**, dan **Hapus obrolan**.
-1. Lanjutkan pengujian aplikasi obrolan Anda untuk memverifikasi bahwa aplikasi tersebut tidak memberikan informasi apa pun yang tidak didasarkan pada data yang diambil. Misalnya, ajukan pertanyaan berikut dan jelajahi jawaban model:
+1. Lanjutkan pengujian aplikasi obrolan Anda untuk memverifikasi bahwa aplikasi tersebut tidak memberikan informasi apa pun yang tidak didasarkan pada data yang diambil. Misalnya, ajukan pertanyaan berikut dan tinjau jawaban model, berikan perhatian khusus pada nada dan gaya penulisan yang digunakan model untuk merespons:
    
     `Where in Rome should I stay?`
     
     `I'm mostly there for the food. Where should I stay to be within walking distance of affordable restaurants?`
 
-    `Give me a list of five bed and breakfasts in Trastevere.`
+    `What are some local delicacies I should try?`
 
-    Model ini dapat menyediakan Anda dengan daftar hotel, bahkan ketika Anda menginstruksikannya untuk tidak memberikan rekomendasi hotel. Ini adalah contoh perilaku yang tidak konsisten. Mari kita jelajahi apakah model yang disempurnakan berkinerja lebih baik dalam kasus ini.
+    `When is the best time of year to visit in terms of the weather?`
 
-1. Navigasi ke halaman **Penyempurnaan** di bawah **Membangun dan menyesuaikan** untuk menemukan pekerjaan penyempurnaan Anda dan statusnya. Jika masih berjalan, Anda dapat memilih untuk terus mengevaluasi model dasar yang Anda sebarkan secara manual. Jika sudah selesai, Anda dapat melanjutkan dengan bagian berikutnya.
+    `What's the best way to get around the city?`
+
+## Meninjau file pelatihan
+
+Model dasar tampaknya bekerja cukup baik, tetapi Anda mungkin mencari gaya percakapan tertentu dari aplikasi AI generatif Anda. Data pelatihan yang digunakan untuk penyempurnaan memberi Anda kesempatan untuk membuat contoh eksplisit dari jenis respons yang Anda inginkan.
+
+1. Buka file JSONL yang Anda unduh sebelumnya (Anda dapat membukanya di editor teks apa pun)
+1. Periksa daftar dokumen JSON dalam file data pelatihan. Yang pertama harus mirip dengan ini (diformat agar mudah dibaca):
+
+    ```json
+    {"messages": [
+        {"role": "system", "content": "You are an AI travel assistant that helps people plan their trips. Your objective is to offer support for travel-related inquiries, such as visa requirements, weather forecasts, local attractions, and cultural norms. You should not provide any hotel, flight, rental car or restaurant recommendations. Ask engaging questions to help someone plan their trip and think about what they want to do on their holiday."},
+        {"role": "user", "content": "What's a must-see in Paris?"},
+        {"role": "assistant", "content": "Oh la la! You simply must twirl around the Eiffel Tower and snap a chic selfie! After that, consider visiting the Louvre Museum to see the Mona Lisa and other masterpieces. What type of attractions are you most interested in?"}
+        ]}
+    ```
+
+    Setiap contoh interaksi dalam daftar menyertakan pesan sistem yang sama dengan yang Anda uji dengan model dasar, perintah pengguna yang terkait dengan kueri perjalanan, dan respons. Gaya respons dalam data pelatihan akan membantu model yang disempurnakan mempelajari cara responsnya.
 
 ## Menyebarkan model yang disempurnakan
 
 Saat penyempurnaan telah berhasil diselesaikan, Anda dapat menyebarkan model yang disempurnakan tersebut.
 
+1. Navigasi ke halaman **Penyempurnaan** di bawah **Membangun dan menyesuaikan** untuk menemukan pekerjaan penyempurnaan Anda dan statusnya. Jika masih berjalan, Anda dapat memilih untuk terus mengobrol dengan model dasar yang disebarkan atau beristirahat. Jika selesai, Anda dapat melanjutkan.
 1. Pilih model yang disempurnakan. Pilih tab **Metrik** dan jelajahi metrik penyempurnaan.
 1. Sebarkan model yang disempurnakan dengan konfigurasi berikut:
     - **Nama penyebaran**: *Nama unik untuk model Anda, Anda dapat menggunakan default*
     - **Tipe penyebaran**: Standar
     - **Batas Tarif Token Per Menit (ribuan)**: 5K
     - **Filter konten**: Default
-1. Tunggu hingga penyebaran selesai sebelum Anda dapat mengujinya, ini mungkin memakan waktu cukup lama.
+1. Tunggu hingga penyebaran selesai sebelum Anda dapat mengujinya, ini mungkin memakan waktu cukup lama. Periksa **Status penyediaan** hingga berhasil (Anda mungkin perlu menyegarkan browser untuk melihat status yang telah diperbarui).
 
 ## Menguji model yang disempurnakan
 
 Sekarang, setelah menyebarkan model yang disempurnakan, Anda dapat menguji model tersebut seperti Anda menguji model dasar Anda yang telah disebarkan.
 
 1. Saat penyebaran siap, navigasikan ke model yang disempurnakan dan pilih **Buka di taman bermain**.
-1. Perbarui pesan sistem dengan perintah berikut:
+1. Pastikan pesan sistem menyertakan instruksi berikut:
 
     ```md
     You are an AI travel assistant that helps people plan their trips. Your objective is to offer support for travel-related inquiries, such as visa requirements, weather forecasts, local attractions, and cultural norms.
@@ -143,7 +167,13 @@ Sekarang, setelah menyebarkan model yang disempurnakan, Anda dapat menguji model
     
     `I'm mostly there for the food. Where should I stay to be within walking distance of affordable restaurants?`
 
-    `Give me a list of five bed and breakfasts in Trastevere.`
+    `What are some local delicacies I should try?`
+
+    `When is the best time of year to visit in terms of the weather?`
+
+    `What's the best way to get around the city?`
+
+1. Setelah meninjau respons, bagaimana hasilnya dibandingkan dengan model dasar?
 
 ## Penghapusan
 

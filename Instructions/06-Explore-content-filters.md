@@ -27,7 +27,7 @@ Anda mulai dengan membuat proyek portal Azure AI Foundry dalam hub Azure AI:
     - **Sambungkan Layanan Azure AI atau Azure OpenAI**: (Baru) *Isi otomatis dengan nama hub yang Anda pilih*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
-    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Memilih wilayah secara acak akan mengurangi risiko satu wilayah mencapai batas kuota dalam skenario di mana Anda berbagi langganan dengan pengguna lain. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#availability)
+    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#availability)
 
 1. Jika Anda memilih **Sesuaikan**, pilih **Berikutnya** dan tinjau konfigurasi Anda.
 1. Pilih **Buat** dan tunggu hingga prosesnya selesai.
@@ -92,7 +92,7 @@ Mari kita lihat, bagaimana perilaku model ini dalam interaksi percakapan.
 
 1. Navigasikan ke **Playground** di panel kiri.
 
-1. Pada mode **Obrolan** masukkan perintah berikut di bagian **Riwayat obrolan**.
+1. Buka **playground Obrolan** masukkan perintah berikut di bagian **Riwayat obrolan**.
 
     ```
    Describe characteristics of Scottish people.
@@ -108,13 +108,13 @@ Mari kita lihat, bagaimana perilaku model ini dalam interaksi percakapan.
 
 1. Simpan perubahan pada pesan sistem.
 
-1. Di bagian **Sesi obrolan**, masukkan ulang perintah berikut.
+1. Di bagian **Riwayat obrolan**, masukkan ulang perintah berikut:
 
     ```
    Describe characteristics of Scottish people.
     ```
 
-8. Amati hasilnya, yang seharusnya menunjukkan bahwa permintaan untuk menjadi rasis dan menghina tidak didukung. Pencegahan output yang menyinggung ini merupakan hasil dari filter konten default di portal Azure AI Foundry.
+8. Amati hasilnya, yang seharusnya menunjukkan bahwa permintaan untuk menjadi rasis dan menghina tidak didukung. Pencegahan output yang menyinggung ini merupakan hasil dari memfilter konten.
 
 > **Tips**: Untuk detail selengkapnya tentang kategori dan tingkat keparahan yang digunakan dalam filter konten, lihat [Pemfilteran konten](https://learn.microsoft.com/azure/ai-studio/concepts/content-filtering) dalam dokumentasi layanan Azure AI Foundry.
 
