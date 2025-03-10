@@ -55,7 +55,7 @@ Setelah menyebarkan model, Anda dapat menggunakan Azure AI Foundry SDK untuk men
 
 > **Tips**: Anda dapat memilih untuk mengembangkan solusi Anda sendiri menggunakan Python atau Microsoft C#. Ikuti instruksi di bagian yang sesuai untuk bahasa yang Anda pilih.
 
-### Mengkloning repo aplikasi
+### Menyiapkan konfigurasi aplikasi
 
 1. Di portal Azure AI Foundry, lihat halaman **Gambaran Umum** untuk proyek Anda.
 1. Di area **Detail proyek**, perhatikan **string koneksi Proyek**. Anda akan menggunakan string koneksi ini untuk menyambungkan ke proyek Anda di aplikasi klien.
@@ -74,8 +74,6 @@ Setelah menyebarkan model, Anda dapat menggunakan Azure AI Foundry SDK untuk men
     rm -r mslearn-ai-foundry -f
     git clone https://github.com/microsoftlearning/mslearn-ai-studio mslearn-ai-foundry
     ```
-
-### Menyiapkan konfigurasi aplikasi
 
 > **Catatan**: Ikuti langkah-langkah untuk bahasa pemrograman yang Anda pilih.
 
