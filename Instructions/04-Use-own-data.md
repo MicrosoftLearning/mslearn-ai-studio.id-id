@@ -8,7 +8,7 @@ lab:
 
 Retrieval Augmented Generation (RAG) adalah teknik yang digunakan untuk membangun aplikasi yang mengintegrasikan data dari sumber data kustom ke dalam permintaan untuk model AI generatif. RAG adalah pola yang umum digunakan untuk mengembangkan aplikasi AI generatif - aplikasi berbasis obrolan yang menggunakan model bahasa untuk menafsirkan input dan menghasilkan respons yang sesuai.
 
-Dalam latihan ini, Anda akan menggunakan Azure AI Foundry untuk mengintegrasikan data kustom ke dalam alur permintaan AI generatif.
+Dalam latihan ini, Anda akan menggunakan Azure AI Foundry untuk mengintegrasikan data kustom ke dalam alur permintaan AI generatif. Anda juga akan menjelajahi cara menerapkan pola RAG di aplikasi klien dengan menggunakan Azure AI Foundry dan Azure OpenAI SDK.
 
 Latihan ini memakan waktu sekitar **45** menit.
 
@@ -89,7 +89,7 @@ Setelah menambahkan sumber data ke proyek, Anda dapat menggunakannya untuk membu
     - **Pengaturan Pencarian**:
         - **Pengaturan vektor**: Menambahkan pencarian vektor ke sumber daya pencarian ini
         - **Koneksi Azure OpenAI**: *Pilih sumber daya Azure OpenAI default untuk hub Anda.*
-        
+
 1. Tunggu hingga proses pengindeksan selesai, yang dapat memakan waktu beberapa menit. Operasi pembuatan indeks terdiri dari pekerjaan berikut:
 
     - Retak, potong, dan sematkan token teks di data brosur Anda.
@@ -116,21 +116,22 @@ Indeks vektor Anda telah disimpan di proyek Azure AI Foundry, memungkinkan Anda 
 
 1. Di Azure AI Foundry, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Membangun dan menyesuaikan**, pilih halaman **Alur perintah**
 1. Buat alur permintaan baru dengan mengkloning **Tanya Jawab Multi-Putaran pada sampel Data** Anda di galeri. Simpan klon sampel ini di folder bernama `brochure-flow`.
-    <details>  
-      <summary><b>Tips pemecahan masalah</b>: Kesalahan izin</summary>
+
+    <details> 
+        <summary><font color="red"><b>Tips pemecahan masalah</b>: Kesalahan izin</font></summary>
         <p>Jika Anda menerima kesalahan izin saat membuat alur perintah baru, coba langkah berikut untuk memecahkan masalah:</p>
         <ul>
-          <li>Di portal Azure, pilih Penjelajah Sumber Daya dari Semua Layanan.</li>
-          <li>Pada tab Identitas di bawah Manajemen Sumber Daya, konfirmasikan bahwa itu adalah identitas terkelola yang ditetapkan sistem.</li>
-          <li>Lakukan navigasi ke Akun Penyimpanan. Pada halaman IAM, tambahkan penetapan peran <em>Pembaca data blob penyimpanan</em>.</li>
-          <li>Di bawah <strong>Tetapkan akses ke</strong>, pilih <strong>Identitas Terkelola</strong>, <strong>+ Pilih anggota</strong>, dan pilih <strong>Semua identitas terkelola yang ditetapkan sistem</strong>, dan pilih sumber daya layanan Azure AI Anda.</li>
-          <li>Tinjau dan tetapkan untuk menyimpan pengaturan baru dan coba lagi langkah sebelumnya.</li>
+            <li>Di portal Azure, di grup sumber daya untuk hub Azure AI Foundry Anda, pilih sumber daya Layanan AI.</li>
+            <li>Pada <b>Manajemen Sumber Daya</b>, di tab <b>Identitas</b>, pastikan bahwa status <b>Sistem yang ditetapkan</b> identitas terkelola adalah <b>Aktif</b>.</li>
+            <li>Di grup sumber daya untuk hub Azure AI Foundry Anda, pilih Akun Penyimpanan</li>
+            <li>Pada halaman <b>Kontrol akses (IAM),</b> tambahkan penetapan peran untuk menetapkan peran <b>Pembaca data blob Penyimpanan</b> ke Identitas terkelola untuk sumber daya layanan Azure AI Anda.</li>
+            <li>Tunggu hingga peran ditetapkan, lalu coba lagi langkah sebelumnya.</li>
         </ul>
     </details>
 
 1. Saat halaman perancang alur perintah terbuka, tinjau **alur-brosur**. Jendela Anda akan terlihat seperti gambar berikut:
 
-    ![Cuplikan layar grafik alur perintah](./media/chat-flow.png)
+    ![Tangkapan layar grafik alur perintah](./media/chat-flow.png)
 
     Alur permintaan sampel yang Anda gunakan mengimplementasikan logika permintaan untuk aplikasi obrolan di mana pengguna dapat secara berulang mengirimkan input teks ke antarmuka obrolan. Riwayat percakapan dipertahankan dan disertakan dalam konteks untuk setiap iterasi. Alur perintah mengatur urutan *alat* untuk:
 
@@ -142,7 +143,11 @@ Indeks vektor Anda telah disimpan di proyek Azure AI Foundry, memungkinkan Anda 
 
 1. Gunakan tombol **Mulai sesi komputasi** untuk memulai komputasi runtime untuk alur.
 
-    Tunggu hingga runtime dimulai. Ini menyediakan konteks komputasi untuk alur perintah. Saat Anda menunggu, di tab **Alur** , tinjau bagian untuk alat dalam alur.
+    Tunggu hingga sesi komputasi dimulai. Ini menyediakan konteks komputasi untuk alur perintah. Saat Anda menunggu, di tab **Alur** , tinjau bagian untuk alat dalam alur.
+
+    >**Catatan**: Karena keterbatasan infrastruktur dan kapasitas, sesi komputasi mungkin gagal dimulai selama periode permintaan tinggi. Jika itu terjadi, Anda dapat melewati menggunakan alur prompt dan memulai tugas **Membuat aplikasi klien RAG dengan Azure AI Foundry dan Azure OpenAI SDK**.
+
+    Kemudian, ketika sesi komputasi telah dimulai...
 
 1. Di bagian **Input** , pastikan input meliputi:
     - **riwayat_obrolan**
@@ -161,7 +166,7 @@ Indeks vektor Anda telah disimpan di proyek Azure AI Foundry, memungkinkan Anda 
     - **deployment_name**: gpt-4
     - **format_respon**: {"type":"text"}
 
-1. Tunggu hingga sesi komputasi dimulai, lalu di bagian **pencarian** , atur nilai parameter berikut:
+1. Di bagian **pencarian** , atur nilai parameter berikut:
 
     - **mlindex_content**: *Pilih bidang kosong untuk membuka panel Hasilkan*
         - **index_type**: Indeks Terdaftar
@@ -199,30 +204,140 @@ Indeks vektor Anda telah disimpan di proyek Azure AI Foundry, memungkinkan Anda 
 1. Tinjau respons, yang harus didasarkan pada data dalam indeks dan mempertimbangkan riwayat obrolan (sehingga "ada" dipahami sebagai "di London").
 1. Tinjau output untuk setiap alat dalam alur, mencatat bagaimana setiap alat dalam alur beroperasi pada inputnya untuk menyiapkan permintaan kontekstual dan mendapatkan respons yang sesuai.
 
-## Sebarkan alur
+    Anda sekarang memiliki alur prompt kerja yang menggunakan indeks Azure AI Search Anda untuk menerapkan pola RAG. Untuk mempelajari selengkapnya tentang cara menyebarkan dan mengonsumsi alur prompt Anda, lihat [dokumentasi Azure AI Foundry](https://learn.microsoft.com/azure/ai-foundry/how-to/flow-deploy).
 
-Sekarang setelah Anda memiliki alur kerja yang menggunakan data terindeks, Anda dapat menyebarkannya sebagai layanan untuk dikonsumsi oleh aplikasi salinan.
+## Membuat aplikasi klien RAG dengan Azure AI Foundry dan Azure OpenAI SDK
 
-> **Catatan**: Tergantung pada wilayah dan beban pusat data, penyebaran terkadang dapat memakan waktu cukup lama dan terkadang akan melemparkan kesalahan saat berinteraksi dengan penyebaran. Jangan ragu untuk beralih ke bagian tantangan di bawah ini saat menyebarkan atau melewati pengujian penyebaran Anda jika Anda kekurangan waktu.
+Meskipun alur prompt adalah cara yang bagus untuk menyertakan model dan data Anda dalam aplikasi berbasis RAG, Anda juga dapat menggunakan Azure AI Foundry dan Azure OpenAI SDK untuk mengimplementasikan pola RAG dalam aplikasi klien. Mari kita jelajahi kode untuk mencapainya dalam contoh sederhana.
 
-1. Di toolbar, pilih **Sebarkan**.
-1. Buat penyebaran baru dengan pengaturan berikut:
-    - **Pengaturan dasar**:
-        - **Titik akhir**: Baru
-        - **Nama titik akhir**: *Gunakan nama titik akhir unik default*
-        - **Nama penyebaran**: *Gunakan nama titik akhir penyebaran default*
-        - **Komputer virtual**: Standard_DS3_v2
-        - **Jumlah instans**: 3
-        - **Pengumpulan data inferensi**: Dipilih
-    - **Pengaturan tingkat lanjut**:
-        - *Menjaga pengaturan default*
-1. Di portal Azure AI Foundry, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Aset saya**, pilih halaman **Model + titik akhir**.
-1. Terus refresh tampilan hingga **penyebaran brosur-endpoint-1** ditampilkan sebagai telah *berhasil* di bawah **titik akhir titik** akhir brosur (ini mungkin memakan waktu yang signifikan).
-1. Ketika penyebaran telah berhasil, pilih penyebaran tersebut. Kemudian, pada halaman **Uji** , masukkan perintah `What is there to do in San Francisco?` dan tinjau responsnya.
-1. Masukkan perintah `Where else could I go?` dan tinjau responsnya.
-1. Lihat halaman **Konsumsi** untuk titik akhir, dan perhatikan bahwa halaman tersebut berisi informasi koneksi dan kode sampel yang dapat Anda gunakan untuk membangun aplikasi klien untuk titik akhir Anda - memungkinkan Anda mengintegrasikan solusi alur perintah ke dalam aplikasi sebagai salinan kustom.
+> **Tips**: Anda dapat memilih untuk mengembangkan solusi Anda sendiri menggunakan Python atau Microsoft C#. Ikuti instruksi di bagian yang sesuai untuk bahasa yang Anda pilih.
 
-## Latihan 
+### Menyiapkan konfigurasi aplikasi
+
+1. Di portal Azure AI Foundry, lihat halaman **Gambaran Umum** untuk proyek Anda.
+1. Di area **Detail proyek**, perhatikan **string koneksi Proyek**. Anda akan menggunakan string koneksi ini untuk menyambungkan ke proyek Anda di aplikasi klien.
+1. Buka tab browser baru (biarkan portal Azure AI Foundry tetap terbuka di tab yang sudah ada). Kemudian di tab baru, telusuri [Portal Azure](https://portal.azure.com) di `https://portal.azure.com`; masuk menggunakan kredensial Azure Anda jika diminta.
+1. Gunakan tombol **[\>_]** di sebelah kanan bilah pencarian di bagian atas halaman untuk membuat Cloud Shell baru di portal Azure, dengan memilih lingkungan ***PowerShell***. Cloud shell menyediakan antarmuka baris perintah dalam panel di bagian bawah portal Azure.
+
+    > **Catatan**: Jika sebelumnya Anda telah membuat cloud shell yang menggunakan lingkungan *Bash* , alihkan ke ***PowerShell***.
+
+1. Di toolbar cloud shell, di menu **Pengaturan**, pilih **Buka versi Klasik** (ini diperlukan untuk menggunakan editor kode).
+
+    > **Tips**: Saat Anda menempelkan perintah ke cloudshell, ouput mungkin mengambil sejumlah besar buffer layar. Anda dapat menghapus layar dengan memasukkan `cls` perintah untuk mempermudah fokus pada setiap tugas.
+
+1. Di panel PowerShell, masukkan perintah berikut untuk mengkloning repositori GitHub untuk latihan ini:
+
+    ```
+    rm -r mslearn-ai-foundry -f
+    git clone https://github.com/microsoftlearning/mslearn-ai-studio mslearn-ai-foundry
+    ```
+
+> **Catatan**: Ikuti langkah-langkah untuk bahasa pemrograman yang Anda pilih.
+
+1. Setelah repositori dikloning, navigasikan ke folder yang berisi file kode aplikasi obrolan:  
+
+    **Python**
+
+    ```
+   cd mslearn-ai-foundry/labfiles/rag-app/python
+    ```
+
+    **C#**
+
+    ```
+   cd mslearn-ai-foundry/labfiles/rag-app/c-sharp
+    ```
+
+1. Di panel baris perintah cloud shell, masukkan perintah berikut untuk menginstal pustaka yang akan Anda gunakan:
+
+    **Python**
+
+    ```
+   pip install python-dotenv azure-ai-projects azure-identity openai
+    ```
+
+    **C#**
+
+    ```
+   dotnet add package Azure.Identity
+   dotnet add package Azure.AI.Projects --prerelease
+   dotnet add package Azure.AI.OpenAI --prerelease
+    ```
+    
+
+1. Masukkan perintah berikut untuk mengedit file konfigurasi yang telah disediakan:
+
+    **Python**
+
+    ```
+   code .env
+    ```
+
+    **C#**
+
+    ```
+   code appsettings.json
+    ```
+
+    File dibuka dalam editor kode.
+
+1. Dalam file kode, ganti tempat penampung berikut: 
+    - **your_project_endpoint**: Ganti dengan string koneksi untuk proyek Anda (disalin dari halaman **Gambaran Umum** proyek di portal Azure AI Foundry)
+    - ** your_model_deployment** Ganti dengan nama yang Anda tetapkan ke penyebaran model Anda (yang seharusnya `gpt-4`)
+    - **your_index**: Ganti dengan nama indeks Anda (yang seharusnya `brochures-index`)
+1. Setelah Anda mengganti tempat penampung, gunakan perintah **CTRL+S** untuk menyimpan perubahan Anda lalu gunakan perintah **CTRL+Q** untuk menutup editor kode sambil menjaga baris perintah cloud shell tetap terbuka.
+
+### Menjelajahi kode untuk mengimplementasikan pola RAG
+
+1. Masukkan perintah berikut untuk mengedit file kode yang telah disediakan:
+
+    **Python**
+
+    ```
+   code rag-app.py
+    ```
+
+    **C#**
+
+    ```
+   code Program.cs
+    ```
+
+1. Tinjau kode dalam file, dengan mencatat bahwa kode tersebut:
+    - Menggunakan Azure AI Foundry SDK untuk menyambungkan ke proyek Anda (menggunakan string koneksi proyek)
+    - Mengambil koneksi Pencarian Azure AI default dari proyek Anda sehingga dapat menentukan titik akhir dan kunci untuk layanan Pencarian Azure AI Anda.
+    - Membuat klien Azure OpenAI yang diautentikasi berdasarkan koneksi layanan Azure OpenAI default dalam proyek Anda.
+    - Mengirimkan perintah (termasuk sistem dan pesan pengguna) ke klien Azure OpenAI, menambahkan informasi tambahan tentang indeks Pencarian Azure AI yang akan digunakan untuk mendasarkan perintah.
+    - Menampilkan respons dari perintah yang didasarkan.
+1. Gunakan perintah **CTRL+Q** untuk menutup editor kode tanpa menyimpan perubahan apa pun, sambil tetap membuka baris perintah cloud shell.
+
+### Jalankan aplikasi obrolan tersebut
+
+1. Di panel baris perintah cloud shell, masukkan perintah berikut untuk menjalankan aplikasinya:
+
+    **Python**
+
+    ```
+   python rag-app.py
+    ```
+
+    **C#**
+
+    ```
+   dotnet run
+    ```
+
+1. Saat diminta, masukkan pertanyaan, seperti `Where can I travel to?` dan tinjau respons dari model AI generatif Anda.
+
+    Perhatikan bahwa respons menyertakan referensi sumber untuk menunjukkan data terindeks tempat jawaban ditemukan.
+
+1. Coba beberapa pertanyaan lagi, misalnya `Where should I stay in London?`
+
+    > **Catatan**: Aplikasi contoh sederhana ini tidak menyertakan logika apa pun untuk mempertahankan riwayat percakapan, sehingga setiap permintaan diperlakukan sebagai percakapan baru.
+
+1. Setelah selesai, tekan enter `quit` untuk mengakhiri program. Lalu tutup panel Cloud Shell.
+
+## Latihan
 
 Sekarang Anda telah merasakan bagaimana memadukan data Anda sendiri dalam aplikasi AI generatif yang dibangun dengan portal Azure AI Foundry, mari jelajahi lebih lanjut!
 
@@ -232,7 +347,7 @@ Coba tambahkan sumber data baru melalui portal Azure AI Foundry, indeks, dan int
 - Sekumpulan presentasi dari konferensi sebelumnya.
 - Salah satu himpunan data yang tersedia di repositori [sampel data Pencarian Azure](https://github.com/Azure-Samples/azure-search-sample-data) .
 
-Jadilah sebagai sumber daya yang Anda bisa untuk membuat sumber data Anda dan mengintegrasikannya dalam alur permintaan Anda. Cobalah alur permintaan baru dan kirimkan perintah yang hanya dapat dijawab oleh himpunan data yang Anda pilih!
+Jadilah sekreatif sebisa Anda untuk membuat sumber data Anda dan mengintegrasikannya dalam alur prompt atau aplikasi klien Anda. Uji solusi Anda dengan mengirimkan perintah yang hanya dapat dijawab oleh himpunan data yang Anda pilih!
 
 ## Penghapusan
 
