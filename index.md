@@ -1,5 +1,5 @@
 ---
-title: Latihan Azure OpenAI
+title: Mengembangkan solusi AI generatif
 permalink: index.html
 layout: home
 ---
