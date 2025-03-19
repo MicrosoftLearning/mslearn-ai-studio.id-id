@@ -102,8 +102,8 @@ Setelah menyebarkan model, Anda dapat menggunakan Azure AI Foundry SDK untuk men
     **C#**
 
     ```
-   dotnet add package Azure.AI.Inference
-   dotnet add package Azure.AI.Projects --prerelease
+   dotnet add package Azure.AI.Inference --version 1.0.0-beta.3
+   dotnet add package Azure.AI.Projects --version 1.0.0-beta.3
    dotnet add package Azure.Identity
     ```
     
