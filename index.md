@@ -4,13 +4,13 @@ permalink: index.html
 layout: home
 ---
 
-# Mengembangkan solusi AI generatif
+# Mengembangkan solusi AI generatif di Azure
 
-Latihan mulai cepat berikut dirancang untuk memberi Anda pengalaman pembelajaran praktis yang memungkinkan Anda menelusuri tugas-tugas umum yang dilakukan oleh pengembang saat membuat solusi AI generatif di Microsoft Azure.
+Latihan berikut dirancang untuk memberi Anda pengalaman pembelajaran praktis yang memungkinkan Anda menelusuri tugas-tugas umum yang dilakukan oleh pengembang saat membuat solusi AI generatif di Microsoft Azure.
 
 > **Catatan**: Untuk menyelesaikan latihan, Anda memerlukan langganan Azure di mana Anda memiliki izin dan kuota yang memadai untuk menyediakan sumber daya Azure dan model AI generatif. Jika Anda belum memilikinya, Anda bisa mendaftar untuk mendapatkan [akun Azure](https://azure.microsoft.com/free). Ada opsi uji coba gratis untuk pengguna baru yang menyertakan kredit selama 30 hari pertama.
 
-## Latihan mulai cepat
+## Latihan
 
 {% assign labs = site.pages | where_exp:"page", "page.url contains '/Instructions'" %} {% for activity in labs  %}
 <hr>
