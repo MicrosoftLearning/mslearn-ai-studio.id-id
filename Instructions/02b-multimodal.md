@@ -10,6 +10,8 @@ Dalam latihan ini, Anda menggunakan model AI generatif *Phi-4-multimodal-instruc
 
 Latihan ini memakan waktu sekitar **30** menit.
 
+> **Catatan**: Latihan ini didasarkan pada SDK pra-rilis, yang mungkin dapat berubah. Jika perlu, kami telah menggunakan versi paket tertentu; yang mungkin tidak mencerminkan versi terbaru yang tersedia.
+
 ## Membuat proyek Azure OpenAI
 
 Mari kita mulai dengan membuat proyek Azure AI Foundry.
@@ -129,7 +131,7 @@ Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klie
     File dibuka dalam editor kode.
 
 10. Dalam file kode, ganti tempat penampung **your_project_endpoint** dengan string koneksi untuk proyek Anda (disalin dari halaman **Gambaran Umum** proyek di portal Azure AI Foundry), dan tempat penampung **your_model_deployment** dengan nama yang Anda tetapkan ke penyebaran model Phi-4-multimodal-instruct Anda.
-11. Setelah Anda mengganti tempat penampung, gunakan perintah **CTRL+S** untuk menyimpan perubahan Anda lalu gunakan perintah **CTRL+Q** untuk menutup editor kode sambil menjaga baris perintah cloud shell tetap terbuka.
+11. Setelah Anda mengganti tempat penampung, gunakan perintah **CTRL+S** atau **Klik kanan > Simpan** untuk menyimpan perubahan Anda dan kemudian gunakan perintah **CTRL+Q** atau **Klik kanan > Keluar** untuk menutup editor kode sambil tetap membuka baris perintah cloud shell.
 
 ### Menulis kode untuk menyambungkan ke proyek Anda dan mendapatkan klien obrolan untuk model Anda
 

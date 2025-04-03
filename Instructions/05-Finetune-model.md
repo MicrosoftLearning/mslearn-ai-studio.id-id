@@ -20,7 +20,7 @@ Latihan ini akan memakan waktu sekitar **60** menit\*.
 
 Anda mulai dengan membuat proyek portal Azure AI Foundry dalam hub Azure AI:
 
-1. Di browser web, buka [https://ai.azure.com](https://ai.azure.com) dan masuk menggunakan kredensial Azure Anda.
+1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda.
 1. Dari halaman beranda, pilih **+ Buat proyek**.
 1. Di wizard **Buat proyek baru** buat proyek dengan pengaturan berikut:
     - **Nama proyek**: *Nama unik untuk proyek Anda*
@@ -46,7 +46,7 @@ Karena menyempurnakan model membutuhkan waktu untuk diselesaikan, Anda akan memu
     > **Catatan**: Perangkat Anda mungkin secara default berbalik menyimpan file sebagai file .txt. Pilih semua file dan hapus akhiran .txt untuk memastikan Anda menyimpan file sebagai JSONL.
 
 1. Navigasikan ke halaman **Penyempurnaan** di bawah bagian **Membangun dan menyesuaikan** , menggunakan menu di sebelah kiri.
-1. Pilih tombol untuk menambahkan model penyempurnaan baru, pilih `gpt-4` model, pilih **Selanjutnya** lalu **Konfirmasi**.
+1. Pilih tombol untuk menambahkan model penyempurnaan baru, pilih model `gpt-4`, lalu pilih **Selanjutnya**.
 1. **Sempurnakan** model menggunakan konfigurasi berikut:
     - **Versi model**: *Pilih versi default*
     - **Akhiran model**: `ft-travel`

@@ -10,24 +10,28 @@ Dalam latihan ini, Anda akan menjelajahi evaluasi bawaan dan kustom untuk menila
 
 Latihan ini akan memakan waktu sekitar **30** menit.
 
-## Membuat hub AI dan proyek di Azure AI Foundry
+## Membuat hub dan proyek Azure AI
 
-Anda mulai dengan membuat proyek Azure AI Foundry dalam hub Azure AI:
+Hub Azure AI menyediakan ruang kerja kolaboratif tempat Anda dapat menentukan satu atau beberapa *proyek*. Mari kita buat proyek dan hub Azure AI.
 
-1. Di browser web, buka [https://ai.azure.com](https://ai.azure.com) dan masuk menggunakan kredensial Azure Anda.
-1. Pilih halaman **Beranda** lalu pilih **+ Proyek baru**.
-1. Di wizard **Buat proyek**, berikan nama unik untuk proyek Anda lalu pilih **Sesuaikan** dan atur pengaturan berikut ini:
-    - **Nama hub**: *Nama unik*
+1. Di browser web, buka portal [Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda.
+
+1. Di beranda, pilih **+ Buat proyek**.
+1. Di wizard **Buat proyek**, masukkan nama proyek yang sesuai untuk (misalnya, `my-ai-project`) lalu tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung proyek Anda.
+1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
+    - **Nama hub**: *Nama unik - misalnya `my-ai-hub`*
     - **Langganan**: *Langganan Azure Anda*
-    - **Grup sumber daya**: *Grup sumber daya baru*
+    - **Grup sumber daya**: *Pilih atau buat grup sumber daya dengan nama unik (misalnya, `my-ai-resources`), atau pilih yang sudah ada*
     - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
-    - **Sambungkan Layanan Azure AI atau Azure OpenAI**: (Baru) *Isi otomatis dengan nama hub yang Anda pilih*
+    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru dengan nama yang sesuai (misalnya, `my-ai-services`) atau menggunakan yang sudah ada*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
-    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari lebih lanjut tentang [ketersediaan model per wilayah](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#availability)
+    > \* Kuota model dibatasi di tingkat penyewa oleh kuota regional. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
 
-1. Pilih **Berikutnya** dan tinjau konfigurasi Anda.
-1. Pilih **Buat proyek** dan tunggu hingga prosesnya selesai.
+1. Pilih **Berikutnya** dan tinjau konfigurasi Anda. Lalu pilih **Buat** dan tunggu hingga prosesnya selesai.
+1. Saat proyek Anda dibuat, tutup tips apa pun yang ditampilkan dan tinjau halaman proyek di portal Azure AI Foundry, yang akan terlihat mirip dengan gambar berikut:
+
+    ![Tangkapan layar detail proyek Azure AI di portal Azure AI Foundry.](./media/ai-foundry-project.png)
 
 ## Sebarkan model GPT
 
@@ -155,7 +159,7 @@ Untuk menghemat waktu, kami telah membuat kumpulan himpunan data output untuk An
 1. Pilih **Berikutnya** lalu tinjau data Anda dan **Kirimkan** evaluasi baru tersebut.
 1. Tunggu hingga evaluasi selesai, Anda mungkin perlu menyegarkan.
 1. Pilih eksekusi evaluasi yang baru saja Anda buat.
-1. Jelajahi **Dasbor metrik** dan **Hasil metrik terperinci**.
+1. Jelajahi **dasbor Metrik** di tab **Laporan** dan **Hasil Metrik terperinci** di tab **Data**.
 
 ## Menghapus sumber daya Azure
 

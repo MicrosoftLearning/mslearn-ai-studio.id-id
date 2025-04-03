@@ -39,8 +39,8 @@ Hub Azure AI menyediakan ruang kerja kolaboratif tempat Anda dapat menentukan sa
 
 Ada beberapa opsi untuk menyebarkan model di portal Azure AI Foundry. Dalam latihan ini, Anda akan menggunakan opsi penyebaran **inferensi model Azure AI**, yang mendukung model *Azure OpenAI* dan model-model *Model sebagai layanan* dari katalog model Azure AI Foundry. Karena semua model disebarkan ke titik akhir umum yang dihosting oleh sumber daya Azure AI Services Anda, mudah untuk beralih antar model saat mengujinya untuk membandingkan perilaku dan performa.
 
-1. Di toolbar di kanan atas halaman proyek Azure AI Foundry Anda, gunakan ikon **Fitur Pratinjau** untuk menampilkan fitur pratinjau.
-1. Aktifkan fitur **Sebarkan model ke layanan inferensi model Azure AI**. Kemudian tutup panel **fitur Pratinjau**.
+1. Di toolbar di kanan atas halaman proyek Azure AI Foundry Anda, gunakan ikon **Fitur Pratinjau** untuk (📣) menampilkan fitur pratinjau.
+1. Verifikasi bahwa fitur **Layanan Penyebaran model ke interfensi model Azure AI diaktifkan **. Kemudian tutup panel **fitur Pratinjau**.
 
 ## Meninjau detail dan tolak ukur model
 
@@ -101,7 +101,6 @@ Mari kita mulai dengan menyebarkan model dari katalog Model. Anda mungkin lebih 
     - **Sumber daya AI yang terhubung**: *Koneksi sumber daya Azure OpenAI Anda*
     - **Batas Tarif Token Per Menit (ribuan)**: 5K
     - **Filter konten**: DefaultV2
-    - **Aktifkan kuota dinamis**: Dinonaktifkan
       
     > **Catatan**: Mengurangi TPM membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 5.000 TPM cukup untuk data yang digunakan dalam latihan ini.
 
