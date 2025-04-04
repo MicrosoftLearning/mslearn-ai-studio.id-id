@@ -12,6 +12,8 @@ Dalam latihan ini, Anda akan menggunakan portal Azure AI Foundry dan Azure AI Fo
 
 Latihan ini memakan waktu sekitar **45** menit.
 
+> **Catatan**: Latihan ini didasarkan pada SDK pra-rilis, yang mungkin dapat berubah. Jika perlu, kami telah menggunakan versi paket tertentu; yang mungkin tidak mencerminkan versi terbaru yang tersedia.
+
 ## Membuat proyek Azure OpenAI
 
 Mari kita mulai dengan membuat proyek Azure AI Foundry dan sumber daya layanan yang perlu didukungnya menggunakan data Anda sendiri - termasuk sumber daya Pencarian Azure AI.
@@ -30,7 +32,7 @@ Mari kita mulai dengan membuat proyek Azure AI Foundry dan sumber daya layanan y
     - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru dengan nama yang sesuai (misalnya, `my-ai-services`) atau menggunakan yang sudah ada*
     - **Menyambungkan Pencarian Azure AI**: *Membuat sumber daya Pencarian Azure AI baru dengan nama unik*
 
-    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
+    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Jika batas kuota tercapai dan tidak ada wilayah yang direkomendasikan untuk kedua model, pilih salah satunya saja dan gunakan wilayah yang direkomendasikan. Anda akan membuat sumber daya lain di wilayah yang berbeda untuk model kedua nanti dalam latihan.
 
 1. Pilih **Berikutnya** dan tinjau konfigurasi Anda. Lalu pilih **Buat** dan tunggu hingga prosesnya selesai.
 1. Saat proyek Anda dibuat, tutup tips apa pun yang ditampilkan dan tinjau halaman proyek **Ringkasan** di Portal Azure AI Foundry, yang akan terlihat mirip dengan gambar berikut:
@@ -189,7 +191,7 @@ Sekarang setelah Anda memiliki indeks yang berfungsi, Anda dapat menggunakan Azu
     - **your_project_endpoint**: Ganti dengan string koneksi untuk proyek Anda (disalin dari halaman **Gambaran Umum** proyek di portal Azure AI Foundry)
     - ** your_model_deployment** Ganti dengan nama yang Anda tetapkan ke penyebaran model Anda (yang seharusnya `gpt-4`)
     - **your_index**: Ganti dengan nama indeks Anda (yang seharusnya `brochures-index`)
-1. Setelah Anda mengganti tempat penampung, gunakan perintah **CTRL+S** untuk menyimpan perubahan Anda lalu gunakan perintah **CTRL+Q** untuk menutup editor kode sambil menjaga baris perintah cloud shell tetap terbuka.
+1. Setelah Anda mengganti tempat penampung, gunakan perintah **CTRL+S** atau **Klik kanan > Simpan** untuk menyimpan perubahan Anda dan kemudian gunakan perintah **CTRL+Q** atau **Klik kanan > Keluar** untuk menutup editor kode sambil tetap membuka baris perintah cloud shell.
 
 ### Menjelajahi kode untuk mengimplementasikan pola RAG
 
