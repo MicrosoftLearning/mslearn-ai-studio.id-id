@@ -16,10 +16,12 @@ Latihan ini akan memakan waktu sekitar **25** menit.
 
 Hub Azure AI menyediakan ruang kerja kolaboratif tempat Anda dapat menentukan satu atau beberapa *proyek*. Mari kita buat proyek dan hub Azure AI.
 
-1. Di browser web, buka portal [Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda.
+1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda. Tutup semua tip atau panel mulai cepat yang terbuka saat pertama kali Anda masuk, dan jika perlu, gunakan logo **Azure AI Foundry** di kiri atas untuk menavigasi ke halaman beranda, yang terlihat sama dengan gambar berikut:
+
+    ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
 1. Di beranda, pilih **+ Buat proyek**.
-1. Di wizard **Buat proyek**, masukkan nama proyek yang sesuai untuk (misalnya, `my-ai-project`) lalu tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung proyek Anda.
+1. Di wizard **Buat proyek**, masukkan nama proyek yang sesuai untuk (misalnya, `my-ai-project`) dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
 1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
     - **Nama hub**: *Nama unik - misalnya `my-ai-hub`*
     - **Langganan**: *Langganan Azure Anda*
@@ -95,16 +97,18 @@ Mari kita mulai dengan menyebarkan model dari katalog Model. Anda mungkin lebih 
 1. Kembali ke beranda **Katalog model**.
 1. Cari dan pilih `gpt-4` model, seperti yang Anda lakukan sebelumnya.
 1. Pada halaman **gpt-4**, pilih **Sebarkan** dan sebarkan model dengan pengaturan berikut dengan memilih **Sesuaikan** di rincian penyebaran:
-    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda - sebagai contoh `gpt-4-model`*
-    - **Tipe penyebaran**: Standar Global
-    - **Versi model**: *Pilih versi default*
-    - **Sumber daya AI yang terhubung**: *Koneksi sumber daya Azure OpenAI Anda*
+1. Terapkan model dengan pengaturan berikut dengan memilih **Sesuaikan** di detail penyeberan:
+    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda - sebagai contoh `gpt-4`*
+    - **Tipe penyebaran**: Standar
+    - **Versi Model**: 0613
+    - **Sumber daya AI yang terhubung**: *Pilih koneksi sumber daya Azure OpenAI Anda*
     - **Batas Tarif Token Per Menit (ribuan)**: 5K
     - **Filter konten**: DefaultV2
+    - **Aktifkan kuota dinamis**: Dinonaktifkan
       
     > **Catatan**: Mengurangi TPM membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 5.000 TPM cukup untuk data yang digunakan dalam latihan ini.
 
-1. Tunggu hingga **status Penyediaan** penyebaran menjadi **Berhasil**.
+1. Tunggu hingga penerapan selesai.
 
 ### Menerapkan model melalui *Model + titik akhir*
 
@@ -114,11 +118,11 @@ Jika Anda sudah mengetahui dengan pasti model mana yang ingin Anda terapkan, And
 1. Di tab **Penyebaran model**, di daftar drop-down **+ Sebarkan model**, pilih **Sebarkan model dasar**. Kemudian cari `Phi-3.5-mini-instruct` dan konfirmasikan pilihan Anda.
 1. Setujui lisensi model.
 1. Sebarkan model **Phi-3.5-mini-instruct** dengan pengaturan berikut:
-    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda - sebagai contoh, `phi-35-model`*
+    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda - sebagai contoh, `Phi-3.5-mini-instruct`*
     - **Tipe penyebaran**: Standar Global
     - **Detail penyebaran**: *Gunakan pengaturan default*
 
-1. Tunggu hingga **status Penyediaan** penyebaran menjadi **Berhasil**.
+1. Tunggu hingga penerapan selesai.
 
 ## Menguji model di taman bermain obrolan
 
