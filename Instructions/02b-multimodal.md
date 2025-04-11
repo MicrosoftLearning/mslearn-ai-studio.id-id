@@ -21,7 +21,7 @@ Mari kita mulai dengan membuat proyek Azure AI Foundry.
     ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
 2. Di beranda, pilih **+ Buat proyek**.
-3. Di wizard **Buat proyek**, masukkan nama proyek yang sesuai untuk (misalnya, `my-ai-project`) lalu tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung proyek Anda.
+3. Di wizard **Buat proyek**, masukkan nama proyek yang sesuai untuk (misalnya, `my-ai-project`) dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
 4. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
     - **Nama hub**: *Nama unik - misalnya `my-ai-hub`*
     - **Langganan**: *Langganan Azure Anda*
@@ -75,14 +75,14 @@ Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klie
 
 5. Di toolbar cloud shell, di menu **Pengaturan**, pilih **Buka versi Klasik** (ini diperlukan untuk menggunakan editor kode).
 
-6. Di panel PowerShell, masukkan perintah berikut untuk mengkloning repositori GitHub untuk latihan ini:
+6. Di panel PowerShell, masukkan perintah berikut untuk mengkloning repositori GitHub yang mengandung file kode untuk latihan ini:
 
     ```
     rm -r mslearn-ai-foundry -f
     git clone https://github.com/microsoftlearning/mslearn-ai-studio mslearn-ai-foundry
     ```
 
-    > **Tips**: Saat Anda menempelkan perintah ke cloudshell, ouput mungkin mengambil sejumlah besar buffer layar. Anda dapat menghapus layar dengan memasukkan `cls` perintah untuk mempermudah fokus pada setiap tugas.
+    > **Tips**: Saat Anda menempelkan perintah ke cloudshell, ouputnya mungkin mengambil sejumlah besar buffer layar. Anda dapat menghapus layar dengan memasukkan `cls` perintah untuk mempermudah fokus pada setiap tugas.
 
 7. Setelah repositori dikloning, navigasikan ke folder yang berisi file kode aplikasi obrolan:  
 
@@ -130,7 +130,7 @@ Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klie
 
     File dibuka dalam editor kode.
 
-10. Dalam file kode, ganti tempat penampung **your_project_endpoint** dengan string koneksi untuk proyek Anda (disalin dari halaman **Gambaran Umum** proyek di portal Azure AI Foundry), dan tempat penampung **your_model_deployment** dengan nama yang Anda tetapkan ke penyebaran model Phi-4-multimodal-instruct Anda.
+10. Dalam file kode, ganti penanda **your_project_connection_string** dengan string koneksi untuk proyek Anda (disalin dari halaman **Gambaran Umum** proyek di portal Azure AI Foundry), dan penanda **your_model_deployment** dengan nama yang Anda tetapkan ke penyebaran model Phi-4-multimodal-instruct Anda.
 11. Setelah Anda mengganti tempat penampung, gunakan perintah **CTRL+S** atau **Klik kanan > Simpan** untuk menyimpan perubahan Anda dan kemudian gunakan perintah **CTRL+Q** atau **Klik kanan > Keluar** untuk menutup editor kode sambil tetap membuka baris perintah cloud shell.
 
 ### Menulis kode untuk menyambungkan ke proyek Anda dan mendapatkan klien obrolan untuk model Anda

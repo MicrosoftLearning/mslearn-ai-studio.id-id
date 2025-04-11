@@ -21,7 +21,7 @@ Mari kita mulai dengan membuat proyek Azure AI Foundry.
     ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
 1. Di beranda, pilih **+ Buat proyek**.
-1. Di wizard **Buat proyek**, masukkan nama proyek yang sesuai untuk (misalnya, `my-ai-project`) lalu tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung proyek Anda.
+1. Di wizard **Buat proyek**, masukkan nama proyek yang sesuai untuk (misalnya, `my-ai-project`) dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
 1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
     - **Nama hub**: *Nama unik - misalnya `my-ai-hub`*
     - **Langganan**: *Langganan Azure Anda*
@@ -30,7 +30,7 @@ Mari kita mulai dengan membuat proyek Azure AI Foundry.
     - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru dengan nama yang sesuai (misalnya, `my-ai-services`) atau menggunakan yang sudah ada*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
-    > \* Jika batas kuota regional tercapai di akhir latihan, ada kemungkinan Anda perlu membuat sumber daya lain di wilayah lain.
+    > \* Kuota model dibatasi di tingkat penyewa oleh kuota regional. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
 
 1. Pilih **Berikutnya** dan tinjau konfigurasi Anda. Lalu pilih **Buat** dan tunggu hingga prosesnya selesai.
 1. Saat proyek Anda dibuat, tutup tips apa pun yang ditampilkan dan tinjau halaman proyek di portal Azure AI Foundry, yang akan terlihat mirip dengan gambar berikut:
@@ -46,17 +46,17 @@ Sekarang Anda telah siap untuk menyebarkan model bahasa AI generatif untuk mendu
 1. Pada halaman **Model + titik akhir** , di tab **Penyebaran model** di menu **+ Sebarkan model** pilih **Sebarkan model dasar**.
 1. Cari model **gpt-4** dari daftar, pilih dan konfirmasi.
 1. Terapkan model dengan pengaturan berikut dengan memilih **Sesuaikan** di detail penyeberan:
-    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda - sebagai contoh `gpt-4`*
-    - **Tipe penyebaran**: Standar Global
-    - **Versi model**: *Pilih versi default*
-    - **Sumber daya AI yang terhubung**: *Koneksi sumber daya Azure OpenAI Anda*
-    - **Batas Tingkat Token per Menit (ribu)**: 5rb (*atau maksimum yang tersedia jika lebih rendah*)
+    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda - misalnya `gpt-4` (ingat nama yang Anda tetapkan, Anda akan membutuhkannya nanti*)
+    - **Tipe penyebaran**: Standar
+    - **Versi Model**: 0613
+    - **Sumber daya AI yang terhubung**: *Pilih koneksi sumber daya Azure OpenAI Anda*
+    - **Batas Tarif Token Per Menit (ribuan)**: 5K
     - **Filter konten**: DefaultV2
     - **Aktifkan kuota dinamis**: Dinonaktifkan
 
     > **Catatan**: Mengurangi TPM membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 5.000 TPM cukup untuk data yang digunakan dalam latihan ini.
 
-1. Tunggu hingga status penyediaan penyebaran menjadi **Selesai**.
+1. Tunggu hingga penerapan selesai.
 
 ## Membuat aplikasi klien untuk mengobrol dengan model
 
@@ -69,7 +69,12 @@ Sekarang setelah Anda menerapkan model, Anda dapat menggunakan Azure AI Foundry 
 1. Di portal Azure AI Foundry, lihat halaman **Gambaran Umum** untuk proyek Anda.
 1. Di area **Detail proyek**, perhatikan **string koneksi Proyek**. Anda akan menggunakan string koneksi ini untuk menyambungkan ke proyek Anda di aplikasi klien.
 1. Buka tab browser baru (biarkan portal Azure AI Foundry tetap terbuka di tab yang sudah ada). Kemudian di tab baru, telusuri [Portal Azure](https://portal.azure.com) di `https://portal.azure.com`; masuk menggunakan kredensial Azure Anda jika diminta.
-1. Gunakan tombol **[\>_]** di sebelah kanan bilah pencarian di bagian atas halaman untuk membuat Cloud Shell baru di portal Azure, dengan memilih lingkungan ***PowerShell***. Cloud shell menyediakan antarmuka baris perintah dalam panel di bagian bawah portal Azure.
+
+    Tutup pemberitahuan selamat datang apa pun untuk melihat halaman beranda portal Azure.
+
+1. Gunakan tombol **[\>_]** di sebelah kanan bilah pencarian di bagian atas halaman untuk membuat Cloud Shell baru di portal Azure, dengan memilih lingkungan ***PowerShell*** dengan tidak ada penyimpanan pada langganan Anda.
+
+    Cloud shell menyediakan antarmuka baris perintah dalam panel di bagian bawah portal Azure. Anda dapat mengubah ukuran atau memaksimalkan panel ini untuk mempermudah pekerjaan.
 
     > **Catatan**: Jika sebelumnya Anda telah membuat cloud shell yang menggunakan lingkungan *Bash* , alihkan ke ***PowerShell***.
 
@@ -77,14 +82,14 @@ Sekarang setelah Anda menerapkan model, Anda dapat menggunakan Azure AI Foundry 
 
     **<font color="red">Pastikan Anda telah beralih ke versi klasik cloud shell sebelum melanjutkan.</font>**
 
-1. Di panel PowerShell, masukkan perintah berikut untuk mengkloning repositori GitHub untuk latihan ini:
+1. Di panel PowerShell, masukkan perintah berikut untuk mengkloning repositori GitHub yang mengandung file kode untuk latihan ini:
 
     ```
     rm -r mslearn-ai-foundry -f
     git clone https://github.com/microsoftlearning/mslearn-ai-studio mslearn-ai-foundry
     ```
 
-    > **Tips**: Saat Anda menempelkan perintah ke cloudshell, ouput mungkin mengambil sejumlah besar buffer layar. Anda dapat menghapus layar dengan memasukkan `cls` perintah untuk mempermudah fokus pada setiap tugas.
+    > **Tips**: Saat Anda menempelkan perintah ke cloudshell, ouputnya mungkin mengambil sejumlah besar buffer layar. Anda dapat menghapus layar dengan memasukkan `cls` perintah untuk mempermudah fokus pada setiap tugas.
 
 1. Setelah repositori dikloning, navigasikan ke folder yang berisi file kode aplikasi obrolan:
 
@@ -135,7 +140,7 @@ Sekarang setelah Anda menerapkan model, Anda dapat menggunakan Azure AI Foundry 
 
     File dibuka dalam editor kode.
 
-1. Dalam file kode, ganti tempat penampung **your_project_endpoint** dengan string koneksi untuk proyek Anda (disalin dari halaman **Gambaran Umum** proyek di portal Azure AI Foundry), dan **tempat penampung your_model_deployment** dengan nama yang Anda tetapkan ke penerapan model GPT-4 Anda.
+1. Dalam file kode, ganti penanda **your_project_endpoint** dengan string koneksi untuk proyek Anda (disalin dari halaman **Gambaran Umum** proyek di portal Azure AI Foundry), dan penanda **your_model_deployment** dengan nama yang Anda tetapkan ke penerapan model GPT-4 Anda.
 1. Setelah Anda mengganti tempat penampung, gunakan perintah **CTRL+S** atau **Klik kanan > Simpan** untuk menyimpan perubahan Anda dan kemudian gunakan perintah **CTRL+Q** atau **Klik kanan > Keluar** untuk menutup editor kode sambil tetap membuka baris perintah cloud shell.
 
 ### Menulis kode untuk menyambungkan ke proyek Anda dan mengobrol dengan model Anda
@@ -161,6 +166,7 @@ Sekarang setelah Anda menerapkan model, Anda dapat menggunakan Azure AI Foundry 
     **Python**
 
     ```python
+   # Add references
    from dotenv import load_dotenv
    from azure.identity import DefaultAzureCredential
    from azure.ai.projects import AIProjectClient
@@ -170,6 +176,7 @@ Sekarang setelah Anda menerapkan model, Anda dapat menggunakan Azure AI Foundry 
     **C#**
 
     ```csharp
+   // Add references
    using Azure.Identity;
    using Azure.AI.Projects;
    using Azure.AI.Inference;
@@ -183,6 +190,7 @@ Sekarang setelah Anda menerapkan model, Anda dapat menggunakan Azure AI Foundry 
     **Python**
 
     ```python
+   # Initialize the project client
    projectClient = AIProjectClient.from_connection_string(
         conn_str=project_connection,
         credential=DefaultAzureCredential())
@@ -191,6 +199,7 @@ Sekarang setelah Anda menerapkan model, Anda dapat menggunakan Azure AI Foundry 
     **C#**
 
     ```csharp
+   // Initialize the project client
    var projectClient = new AIProjectClient(project_connection,
                         new DefaultAzureCredential());
     ```
@@ -200,12 +209,14 @@ Sekarang setelah Anda menerapkan model, Anda dapat menggunakan Azure AI Foundry 
     **Python**
 
     ```python
+   # Get a chat client
    chat = projectClient.inference.get_chat_completions_client()
     ```
 
     **C#**
 
     ```csharp
+   // Get a chat client
    ChatCompletionsClient chat = projectClient.GetChatCompletionsClient();
     ```
 
@@ -216,6 +227,7 @@ Sekarang setelah Anda menerapkan model, Anda dapat menggunakan Azure AI Foundry 
     **Python**
 
     ```python
+   # Initialize prompt with system message
    prompt=[
             SystemMessage("You are a helpful AI assistant that answers questions.")
         ]
@@ -224,7 +236,8 @@ Sekarang setelah Anda menerapkan model, Anda dapat menggunakan Azure AI Foundry 
     **C#**
 
     ```csharp
-    var prompt = new List<ChatRequestMessage>(){
+   // Initialize prompt with system message
+   var prompt = new List<ChatRequestMessage>(){
                     new ChatRequestSystemMessage("You are a helpful AI assistant that answers questions.")
                 };
     ```
@@ -234,10 +247,11 @@ Sekarang setelah Anda menerapkan model, Anda dapat menggunakan Azure AI Foundry 
     **Python**
 
     ```python
+   # Get a chat completion
    prompt.append(UserMessage(input_text))
    response = chat.complete(
-       model=model_deployment,
-       messages=prompt)
+        model=model_deployment,
+        messages=prompt)
    completion = response.choices[0].message.content
    print(completion)
    prompt.append(AssistantMessage(completion))
@@ -246,6 +260,7 @@ Sekarang setelah Anda menerapkan model, Anda dapat menggunakan Azure AI Foundry 
     **C#**
 
     ```csharp
+   // Get a chat completion
    prompt.Add(new ChatRequestUserMessage(input_text));
    var requestOptions = new ChatCompletionsOptions()
    {
@@ -298,7 +313,7 @@ Mari kita buat beberapa modifikasi kode untuk melihat cara mengimplementasikan a
     **C#**
 
     ```
-   dotnet add package Azure.AI.Projects --version 1.0.0-beta.5
+   dotnet add package Azure.AI.Projects --version 1.0.0-beta.6
    dotnet add package Azure.AI.OpenAI --prerelease
     ```
 
@@ -338,12 +353,14 @@ Mari kita buat beberapa modifikasi kode untuk melihat cara mengimplementasikan a
     **Python**
 
     ```python
+   # Get a chat client 
    openai_client = projectClient.inference.get_azure_openai_client(api_version="2024-10-21")
     ```
 
     **C#**
 
     ```csharp
+   // Get a chat client
    ChatClient openaiClient = projectClient.GetAzureOpenAIChatClient(model_deployment);
     ```
 
@@ -354,17 +371,19 @@ Mari kita buat beberapa modifikasi kode untuk melihat cara mengimplementasikan a
     **Python**
 
     ```python
+   # Initialize prompt with system message
    prompt=[
-       {"role": "system", "content": "You are a helpful AI assistant that answers questions."}
-   ]
+        {"role": "system", "content": "You are a helpful AI assistant that answers questions."}
+    ]
     ```
 
     **C#**
 
     ```csharp
+   // Initialize prompt with system message
     var prompt = new List<ChatMessage>(){
-       new SystemChatMessage("You are a helpful AI assistant that answers questions.")
-   };
+        new SystemChatMessage("You are a helpful AI assistant that answers questions.")
+    };
     ```
 
 1. Temukan komentar **Dapatkan penyelesaian obrolan** dan ubah kode untuk menambahkan input pengguna ke perintah, mengambil penyelesaian dari model Anda, dan menambahkan penyelesaian ke perintah sebagai berikut:
@@ -372,10 +391,11 @@ Mari kita buat beberapa modifikasi kode untuk melihat cara mengimplementasikan a
     **Python**
 
     ```python
+   # Get a chat completion
    prompt.append({"role": "user", "content": input_text})
    response = openai_client.chat.completions.create(
-       model=model_deployment,
-       messages=prompt)
+        model=model_deployment,
+        messages=prompt)
    completion = response.choices[0].message.content
    print(completion)
    prompt.append({"role": "assistant", "content": completion})
@@ -384,6 +404,7 @@ Mari kita buat beberapa modifikasi kode untuk melihat cara mengimplementasikan a
     **C#**
 
     ```csharp
+   // Get a chat completion
    prompt.Add(new UserChatMessage(input_text));
    ChatCompletion completion = openaiClient.CompleteChat(prompt);
    var completionText = completion.Content[0].Text;
