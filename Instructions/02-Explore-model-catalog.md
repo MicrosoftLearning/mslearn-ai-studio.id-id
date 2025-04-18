@@ -16,21 +16,21 @@ Latihan ini akan memakan waktu sekitar **25** menit.
 
 Hub Azure AI menyediakan ruang kerja kolaboratif tempat Anda dapat menentukan satu atau beberapa *proyek*. Mari kita buat proyek dan hub Azure AI.
 
-1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda. Tutup semua tip atau panel mulai cepat yang terbuka saat pertama kali Anda masuk, dan jika perlu, gunakan logo **Azure AI Foundry** di kiri atas untuk menavigasi ke halaman beranda, yang terlihat sama dengan gambar berikut:
+1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda. Tutup semua tips atau panel mulai cepat yang terbuka saat pertama kali Anda masuk, dan jika perlu, gunakan logo **Azure AI Foundry** di kiri atas untuk menavigasi ke beranda, yang tampilannya mirip dengan gambar berikut (tutup panel **Bantuan** jika terbuka):
 
     ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
 1. Di beranda, pilih **+ Buat proyek**.
-1. Di wizard **Buat proyek**, masukkan nama proyek yang sesuai untuk (misalnya, `my-ai-project`) dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
+1. Di wizard **Buat proyek**, masukkan nama yang valid untuk proyek Anda dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
 1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
-    - **Nama hub**: *Nama unik - misalnya `my-ai-hub`*
+    - **Nama hub**: *Nama yang valid untuk hub Anda*
     - **Langganan**: *Langganan Azure Anda*
-    - **Grup sumber daya**: *Pilih atau buat grup sumber daya dengan nama unik (misalnya, `my-ai-resources`), atau pilih yang sudah ada*
-    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
-    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru dengan nama yang sesuai (misalnya, `my-ai-services`) atau menggunakan yang sudah ada*
+    - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
+    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4** di jendela pembantu Lokasi dan gunakan wilayah yang direkomendasikan\*
+    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
-    > \* Kuota model dibatasi di tingkat penyewa oleh kuota regional. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
+    > \* Sumber daya Azure OpenAI dibatasi oleh kuota model regional. Jika batas kuota terlampaui di kemudian hari dalam latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
 
 1. Pilih **Berikutnya** dan tinjau konfigurasi Anda. Lalu pilih **Buat** dan tunggu hingga prosesnya selesai.
 1. Saat proyek Anda dibuat, tutup tips apa pun yang ditampilkan dan tinjau halaman proyek di portal Azure AI Foundry, yang akan terlihat mirip dengan gambar berikut:
@@ -39,9 +39,9 @@ Hub Azure AI menyediakan ruang kerja kolaboratif tempat Anda dapat menentukan sa
 
 ## Mengkonfigurasi penyebaran layanan Inferensi Azure AI
 
-Ada beberapa opsi untuk menyebarkan model di portal Azure AI Foundry. Dalam latihan ini, Anda akan menggunakan opsi penyebaran **inferensi model Azure AI**, yang mendukung model *Azure OpenAI* dan model-model *Model sebagai layanan* dari katalog model Azure AI Foundry. Karena semua model disebarkan ke titik akhir umum yang dihosting oleh sumber daya Azure AI Services Anda, mudah untuk beralih antar model saat mengujinya untuk membandingkan perilaku dan performa.
+Ada beberapa opsi untuk menyebarkan model di portal Azure AI Foundry. Dalam latihan ini, Anda akan menggunakan opsi penyebaran **inferensi model Azure AI**, yang mendukung model *Azure OpenAI* dan model-model *Model sebagai layanan* dari katalog model Azure AI Foundry. Karena semua model disebarkan ke titik akhir umum yang dihosting oleh sumber daya Layanan Azure AI Anda, mudah untuk beralih antar model saat mengujinya untuk membandingkan perilaku dan performa.
 
-1. Di toolbar di kanan atas halaman proyek Azure AI Foundry Anda, gunakan ikon **Fitur Pratinjau** untuk (📣) menampilkan fitur pratinjau.
+1. Di toolbar di kanan atas halaman proyek Azure AI Foundry Anda, gunakan ikon **Fitur Pratinjau** **&#9215;**) untuk menampilkan fitur pratinjau.
 1. Verifikasi bahwa fitur **Layanan Penyebaran model ke interfensi model Azure AI diaktifkan **. Kemudian tutup panel **fitur Pratinjau**.
 
 ## Meninjau detail dan tolak ukur model
@@ -49,19 +49,19 @@ Ada beberapa opsi untuk menyebarkan model di portal Azure AI Foundry. Dalam lati
 Untuk membantu Anda memilih model, Anda dapat menjelajahi deskripsi model dan tolak ukur untuk menentukan model mana yang paling sesuai dengan kebutuhan Anda.
 
 1. Di portal proyek Azure AI Foundry, pada panel navigasi di sebelah kiri, pilih **Katalog model**.
-1. Di beranda katalog model, cari `gpt-4` untuk menemukan model penyelesaian obrolan **gpt-4**.
+1. Di laman beranda katalog model, cari untuk `gpt-4o`menemukan model penyelesaian obrolan **gpt-4o**.
 
-    ![Tangkapan layar pencarian "gpt-4" di katalog model.](./media/model-catalog-search-gpt4.png)
+    ![Tangkapan layar pencarian "gpt-4o" di katalog model.](./media/model-catalog-search-gpt4.png)
 
-1. Pilih model **gpt-4** dan lihat detailnya. Baca deskripsi dan tinjau informasi lain yang tersedia di halaman.
+1. Pilih model **gpt-4o** dan lihat detailnya. Baca deskripsi dan tinjau informasi lain yang tersedia di halaman.
 
-    ![Tangkapan layar halaman detail model gpt-4.](./media/gpt4-details.png)
+    ![Tangkapan layar halaman detail model gpt-4o.](./media/gpt4-details.png)
 
-1. Pada halaman **gpt-4**, lihat tab **Tolak Ukur** untuk melihat bagaimana model dibandingkan di beberapa tolak ukur performa standar dengan model lain yang digunakan dalam skenario serupa.
+1. Pada halaman **gpt-4o**, lihat tab **Benchmarks** untuk melihat bagaimana model tersebut dibandingkan pada beberapa tolak ukur performa standar dengan model lain yang digunakan dalam skenario serupa.
 
-    ![Tangkapan layar halaman tolak ukur model gpt-4.](./media/gpt4-benchmarks.png)
+    ![Tangkapan layar halaman tolak ukur model gpt-4o.](./media/gpt4-benchmarks.png)
 
-1. Gunakan panah belakang (**&larr;**) di samping judul halaman **gpt-4** untuk kembali ke halaman beranda katalog model.
+1. Gunakan panah belakang (**&larr;**) di samping judul halaman **gpt-4o** untuk kembali ke beranda katalog model.
 1. Dalam katalog model, cari `Phi-3.5-mini-instruct` dan lihat detail dan tolak ukur untuk **Phi-3.5-mini-instruct**.
 
 ## Membandingkan beberapa model
@@ -75,10 +75,10 @@ Anda telah meninjau dua model berbeda, yang keduanya dapat digunakan untuk mengi
 
 1. Di panel **Model untuk dibandingkan** di sebelah kiri, perhatikan bahwa Anda bisa memilih tugas populer, seperti *jawaban atas pertanyaan* untuk memilih model yang umum digunakan secara otomatis untuk tugas tertentu.
 1. Gunakan ikon **Hapus semua model** (&#128465;) untuk menghapus semua model yang telah dipilih sebelumnya.
-1. Gunakan tombol **+ Model untuk membandingkan**untuk menambahkan model **gpt-4** ke daftar. Kemudian gunakan tombol yang sama untuk menambahkan model **Phi-3.5-mini-instruct** ke daftar.
+1. Gunakan tombol **+ Model untuk membandingkan** untuk menambahkan model **gpt-4o** ke dalam daftar. Kemudian gunakan tombol yang sama untuk menambahkan model **Phi-3.5-mini-instruct** ke daftar.
 1. Tinjau bagan, yang membandingkan model berdasarkan **Indeks Kualitas** (skor standar yang menunjukkan kualitas model) dan **Biaya**. Anda dapat melihat nilai tertentu untuk model dengan menahan mouse di atas titik yang mewakilinya dalam bagan.
 
-    ![Tangkapan layar bagan perbandingan model untuk gpt-4 dan Phi-3.5-mini-instruct.](./media/comparison-chart.png)
+    ![Tangkapan layar bagan perbandingan model untuk gpt-4o dan Phi-3.5-mini-instruct.](./media/comparison-chart.png)
 
 1. Di menu dropdown **Sumbu-X**, di bawah **Kualitas**, pilih metrik berikut dan amati setiap bagan yang dihasilkan sebelum beralih ke bagan berikutnya:
     - Akurasi
@@ -95,18 +95,18 @@ Sekarang setelah Anda menjelajahi opsi Anda melalui tolok ukur model, Anda siap 
 Mari kita mulai dengan menyebarkan model dari katalog Model. Anda mungkin lebih suka opsi ini ketika Anda ingin memfilter semua model yang tersedia.
 
 1. Kembali ke beranda **Katalog model**.
-1. Cari dan pilih `gpt-4` model, seperti yang Anda lakukan sebelumnya.
-1. Pada halaman **gpt-4**, pilih **Sebarkan** dan sebarkan model dengan pengaturan berikut dengan memilih **Sesuaikan** di rincian penyebaran:
+1. Cari dan pilih `gpt-4o` model, seperti yang Anda lakukan sebelumnya.
+1. Pada halaman **gpt-4o**, pilih**Deploy** dan sebarkan model dengan pengaturan berikut dengan memilih **Customize** di rincian penyebaran:
 1. Terapkan model dengan pengaturan berikut dengan memilih **Sesuaikan** di detail penyeberan:
-    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda - sebagai contoh `gpt-4`*
-    - **Tipe penyebaran**: Standar
-    - **Versi Model**: 0613
+    - **Nama penyebaran**: *Nama yang valid untuk penyebaran model Anda*
+    - **Tipe penyebaran**: Standar Global
+    - **Pembaruan versi otomatis**: Diaktifkan
+    - **Versi model**: *Pilih versi terbaru yang tersedia*
     - **Sumber daya AI yang terhubung**: *Pilih koneksi sumber daya Azure OpenAI Anda*
-    - **Batas Tarif Token Per Menit (ribuan)**: 5K
+    - **Batas Rate Token per Menit (ribuan)**: 50K *(atau jumlah maksimum yang tersedia dalam langganan Anda jika kurang dari 50K)*
     - **Filter konten**: DefaultV2
-    - **Aktifkan kuota dinamis**: Dinonaktifkan
-      
-    > **Catatan**: Mengurangi TPM membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 5.000 TPM cukup untuk data yang digunakan dalam latihan ini.
+
+    > **Catatan**: Mengurangi TPM membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 50.000 TPM seharusnya cukup untuk data yang digunakan dalam latihan ini. Jika kuota yang tersedia lebih rendah dari ini, Anda akan dapat menyelesaikan latihan tersebut tetapi Anda mungkin perlu menunggu dan mengirim ulang perintah jika batas rate terlampaui.
 
 1. Tunggu hingga penerapan selesai.
 
@@ -118,7 +118,7 @@ Jika Anda sudah mengetahui dengan pasti model mana yang ingin Anda terapkan, And
 1. Di tab **Penyebaran model**, di daftar drop-down **+ Sebarkan model**, pilih **Sebarkan model dasar**. Kemudian cari `Phi-3.5-mini-instruct` dan konfirmasikan pilihan Anda.
 1. Setujui lisensi model.
 1. Sebarkan model **Phi-3.5-mini-instruct** dengan pengaturan berikut:
-    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda - sebagai contoh, `Phi-3.5-mini-instruct`*
+    - **Nama penyebaran**: *Nama yang valid untuk penyebaran model Anda*
     - **Tipe penyebaran**: Standar Global
     - **Detail penyebaran**: *Gunakan pengaturan default*
 
@@ -134,9 +134,9 @@ Sekarang setelah kita memiliki dua model untuk dibandingkan, mari kita lihat bag
 1. Di panel **Penyiapan**, di **bidang Berikan instruksi dan konteks** model, atur perintah sistem ke `You are an AI assistant that helps solve problems.`
 1. Pilih **Terapkan perubahan**.
 
-### Mengobrol dengan model *gpt-4*
+### Mengobrol dengan model *gpt-4o*
 
-Di panel **Penyiapan**, pilih model *gpt-4* Anda.
+Di panel **Penyiapan**, pilih model *gpt-4o* Anda.
 1. Di jendela kueri, masukkan kueri berikut ini
 
     ```

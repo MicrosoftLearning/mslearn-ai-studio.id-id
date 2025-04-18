@@ -21,20 +21,20 @@ Mari kita mulai dengan membuat proyek Azure AI Foundry.
     ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
 2. Di beranda, pilih **+ Buat proyek**.
-3. Di wizard **Buat proyek**, masukkan nama proyek yang sesuai untuk (misalnya, `my-ai-project`) dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
+3. Di wizard **Buat proyek**, masukkan nama yang valid untuk proyek Anda dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
 4. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
-    - **Nama hub**: *Nama unik - misalnya `my-ai-hub`*
+    - **Nama hub**: *Nama yang valid untuk hub Anda*
     - **Langganan**: *Langganan Azure Anda*
-    - **Grup sumber daya**: *Pilih atau buat grup sumber daya dengan nama unik (misalnya, `my-ai-resources`), atau pilih yang sudah ada*
+    - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
     - **Wilayah**: Pilih salah satu wilayah berikut\*:
-        - AS Timur
-        - AS Timur 2
+        - US Timur
+        - US Timur 2
         - US Tengah Utara
         - US Tengah Selatan
         - Swedia Tengah
         - US Barat
-        - AS Barat 3
-    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru dengan nama yang sesuai (misalnya, `my-ai-services`) atau menggunakan yang sudah ada*
+        - US Barat 3
+    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
     > \* Pada saat penulisan, model Microsoft *Phi-4-multimodal-instruct* yang akan kita gunakan dalam latihan ini tersedia di wilayah ini. Anda dapat memeriksa ketersediaan regional terbaru untuk model tertentu dalam [dokumentasi Azure AI Foundry](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-serverless-availability#region-availability). Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
@@ -48,12 +48,12 @@ Mari kita mulai dengan membuat proyek Azure AI Foundry.
 
 Sekarang Anda siap untuk menyebarkan model *Phi-4-multimodal-instruct* untuk mendukung perintah multimodal.
 
-1. Di toolbar di kanan atas halaman proyek Azure AI Foundry Anda, gunakan ikon **Fitur pratinjau** untuk mengaktifkan fitur **Sebarkan model ke layanan inferensi model Azure AI**. Fitur ini memastikan penyebaran model Anda tersedia untuk layanan Inferensi Azure AI, yang akan Anda gunakan dalam kode aplikasi Anda.
+1. Di toolbar di kanan atas halaman proyek Azure AI Foundry Anda, gunakan ikon **Fitur pratinjau** (**&#9215;**) untuk memastikan bahwa fitur **Sebarkan model ke layanan inferensi model Azure AI** diaktifkan. Fitur ini memastikan penyebaran model Anda tersedia untuk layanan Inferensi Azure AI, yang akan Anda gunakan dalam kode aplikasi Anda.
 2. Di panel sebelah kiri untuk proyek Anda, di bagian **Aset saya**, pilih halaman **Model + titik akhir**.
 3. Pada halaman **Model + titik akhir** , di tab **Penyebaran model** di menu **+ Sebarkan model** pilih **Sebarkan model dasar**.
 4. Cari model **Phi-4-multimodal-instruct** dalam daftar, lalu pilih dan konfirmasikan.
 5. Setujui perjanjian lisensi jika diminta, lalu sebarkan model dengan pengaturan berikut dengan memilih **Sesuaikan** dalam detail penyebaran:
-    - **Nama penyebaran** : *Nama unik untuk penyebaran model Anda - misalnya `Phi-4-multimodal` (ingat nama yang Anda tetapkan, Anda akan membutuhkannya nanti*)
+    - **Nama penyebaran**: *Nama yang valid untuk penyebaran model Anda*
     - **Tipe penyebaran**: Standar Global
     - **Detail penyebaran**: *Gunakan pengaturan default*
 6. Tunggu hingga status penyediaan penyebaran menjadi **Selesai**.
@@ -62,20 +62,27 @@ Sekarang Anda siap untuk menyebarkan model *Phi-4-multimodal-instruct* untuk men
 
 Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klien.
 
-> **Tips**: Anda dapat memilih untuk mengembangkan solusi Anda sendiri menggunakan Python atau Microsoft C#*(segera hadir)*. Ikuti instruksi di bagian yang sesuai untuk bahasa yang Anda pilih.
+> **Tips**: Anda dapat memilih untuk mengembangkan solusi Anda sendiri menggunakan Python atau Microsoft C#. Ikuti instruksi di bagian yang sesuai untuk bahasa yang Anda pilih.
 
 ### Menyiapkan konfigurasi aplikasi
 
 1. Di portal Azure AI Foundry, lihat halaman **Gambaran Umum** untuk proyek Anda.
 2. Di area **Detail proyek**, perhatikan **string koneksi Proyek**. Anda akan menggunakan string koneksi ini untuk menyambungkan ke proyek Anda di aplikasi klien.
 3. Buka tab browser baru (biarkan portal Azure AI Foundry tetap terbuka di tab yang sudah ada). Kemudian di tab baru, telusuri [Portal Azure](https://portal.azure.com) di `https://portal.azure.com`; masuk menggunakan kredensial Azure Anda jika diminta.
-4. Gunakan tombol **[\>_]** di sebelah kanan bilah pencarian di bagian atas halaman untuk membuat Cloud Shell baru di portal Azure, dengan memilih lingkungan ***PowerShell***. Cloud shell menyediakan antarmuka baris perintah dalam panel di bagian bawah portal Azure.
+
+    Tutup pemberitahuan selamat datang apa pun untuk melihat halaman beranda portal Azure.
+
+1. Gunakan tombol **[\>_]** di sebelah kanan bilah pencarian di bagian atas halaman untuk membuat Cloud Shell baru di portal Azure, dengan memilih lingkungan ***PowerShell*** dengan tidak ada penyimpanan pada langganan Anda.
+
+    Cloud shell menyediakan antarmuka baris perintah dalam panel di bagian bawah portal Azure. Anda dapat mengubah ukuran atau memaksimalkan panel ini untuk mempermudah pekerjaan.
 
     > **Catatan**: Jika sebelumnya Anda telah membuat cloud shell yang menggunakan lingkungan *Bash* , alihkan ke ***PowerShell***.
 
 5. Di toolbar cloud shell, di menu **Pengaturan**, pilih **Buka versi Klasik** (ini diperlukan untuk menggunakan editor kode).
 
-6. Di panel PowerShell, masukkan perintah berikut untuk mengkloning repositori GitHub yang mengandung file kode untuk latihan ini:
+    **<font color="red">Pastikan Anda telah beralih ke versi klasik cloud shell sebelum melanjutkan.</font>**
+
+1. Di panel cloud shell, masukkan perintah berikut untuk mengkloning repo GitHub yang berisi file kode untuk latihan ini (ketik perintah, atau salin ke clipboard lalu klik kanan di baris perintah dan tempel sebagai teks biasa):
 
     ```
     rm -r mslearn-ai-foundry -f
@@ -103,6 +110,8 @@ Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klie
     **Python**
 
     ```
+   python -m venv labenv
+   ./labenv/bin/Activate.ps1
    pip install python-dotenv azure-identity azure-ai-projects azure-ai-inference
     ```
 
@@ -131,7 +140,7 @@ Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klie
     File dibuka dalam editor kode.
 
 10. Dalam file kode, ganti penanda **your_project_connection_string** dengan string koneksi untuk proyek Anda (disalin dari halaman **Gambaran Umum** proyek di portal Azure AI Foundry), dan penanda **your_model_deployment** dengan nama yang Anda tetapkan ke penyebaran model Phi-4-multimodal-instruct Anda.
-11. Setelah Anda mengganti tempat penampung, gunakan perintah **CTRL+S** atau **Klik kanan > Simpan** untuk menyimpan perubahan Anda dan kemudian gunakan perintah **CTRL+Q** atau **Klik kanan > Keluar** untuk menutup editor kode sambil tetap membuka baris perintah cloud shell.
+11. Setelah Anda mengganti tempat penampung, di editor kode,gunakan perintah **CTRL+S** atau **Klik kanan > Simpan** untuk menyimpan perubahan Anda dan kemudian gunakan perintah **CTRL+Q** atau **Klik kanan > Keluar** untuk menutup editor kode sambil tetap membuka baris perintah cloud shell.
 
 ### Menulis kode untuk menyambungkan ke proyek Anda dan mendapatkan klien obrolan untuk model Anda
 
