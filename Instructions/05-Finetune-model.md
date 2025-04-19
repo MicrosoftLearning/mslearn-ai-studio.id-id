@@ -1,7 +1,7 @@
 ---
 lab:
   title: Menyempurnakan model bahasa
-  description: Pelajari cara menggunakan data pelatihan tambahan Anda sendiri untuk menyempurnakan model dan menyesuaikan perilakunya.
+  description: Pelajari cara menggunakan data pelatihan Anda sendiri untuk menyempurnakan model dan menyesuaikan perilakunya.
 ---
 
 # Menyempurnakan model bahasa
@@ -10,7 +10,7 @@ Saat Anda ingin model bahasa berperilaku dengan gaya tertentu, Anda dapat menggu
 
 Dalam latihan ini, Anda akan menyempurnakan model bahasa dengan Azure AI Foundry yang ingin Anda gunakan untuk skenario aplikasi percakapan yang disesuaikan. Anda akan membandingkan model yang disempurnakan dengan model dasar untuk menilai apakah model yang disempurnakan lebih sesuai dengan kebutuhan Anda.
 
-Bayangkan Anda bekerja untuk agen perjalanan dan Anda mengembangkan aplikasi obrolan untuk membantu orang merencanakan liburan mereka. Tujuannya adalah untuk membuat obrolan sederhana dan menginspirasi yang menyarankan tujuan dan aktivitas. Karena obrolan tidak terhubung ke sumber data apa pun, obrolan **tidak** boleh memberikan rekomendasi khusus untuk hotel, penerbangan, atau restoran untuk memastikan kepercayaan pelanggan Anda.
+Bayangkan Anda bekerja untuk agen perjalanan dan Anda mengembangkan aplikasi obrolan untuk membantu orang merencanakan liburan mereka. Targetnya adalah untuk membuat obrolan sederhana dan inspiratif yang menyarankan destinasi dan aktivitas dengan nada percakapan yang konsisten dan ramah.
 
 Latihan ini akan memakan waktu sekitar **60** menit\*.
 
@@ -18,35 +18,39 @@ Latihan ini akan memakan waktu sekitar **60** menit\*.
 
 ## Membuat AI hub dan proyek di portal Azure AI Foundry.
 
-Anda mulai dengan membuat proyek portal Azure AI Foundry dalam hub Azure AI:
+Mari kita mulai dengan membuat proyek Portal Azure AI Foundry dalam hub Azure AI:
 
-1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda.
-1. Dari halaman beranda, pilih **+ Buat proyek**.
-1. Di wizard **Buat proyek baru** buat proyek dengan pengaturan berikut:
-    - **Nama proyek**: *Nama unik untuk proyek Anda*
-    - Pilih **Sesuaikan**
-        - **Hub**: *Isi otomatis dengan nama default*
-        - **Langganan**: *Isi otomatis dengan akun masuk Anda*
-        - **Grup sumber daya**: (Baru) *Isi otomatis dengan nama proyek Anda*
-        -  **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4-finetune** pada jendela pembantu Lokasi dan gunakan wilayah yang direkomendasikan\*
-        - **Sambungkan Layanan Azure AI atau Azure OpenAI**: (Baru) *Isi otomatis dengan nama hub yang Anda pilih*
-        - **Menyambungkan Azure AI Search**: Lewati koneksi
+1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda. Tutup semua tip atau panel mulai cepat yang terbuka saat pertama kali Anda masuk, dan jika perlu, gunakan logo **Azure AI Foundry** di kiri atas untuk menavigasi ke halaman beranda, yang terlihat sama dengan gambar berikut:
 
-    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Wilayah yang tercantum di pembantu lokasi mencakup kuota default untuk tipe model yang digunakan dalam latihan ini. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. Pelajari selengkapnya tentang [Menyempurnakan wilayah model](https://learn.microsoft.com/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions#fine-tuning-models)
+    ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
-1. Tinjau konfigurasi Anda dan buat proyek Anda.
-1. Tunggu proyek Anda dibuat.
+1. Di beranda, pilih **+ Buat proyek**.
+1. Di wizard **Buat proyek**, masukkan nama yang valid untuk proyek Anda, dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
+1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
+    - **Nama hub**: *Nama yang valid untuk hub Anda*
+    - **Langganan**: *Langganan Azure Anda*
+    - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
+    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4o-finetune** di jendela pembantu Lokasi dan gunakan wilayah yang direkomendasikan\*
+    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru*
+    - **Menyambungkan Pencarian Azure AI**: *Membuat sumber daya Pencarian Azure AI baru dengan nama unik*
 
-## Menyempurnakan model GPT-4
+    > \* Sumber daya Azure OpenAI dibatasi oleh kuota model regional. Jika batas kuota terlampaui di kemudian hari dalam latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda. 
 
-Karena menyempurnakan model membutuhkan waktu untuk diselesaikan, Anda akan memulai pekerjaan penyempurnaan sekarang dan kembali lagi setelah menjelajahi model dasar yang belum disempurnakan untuk diperbandingkan.
+1. Pilih **Berikutnya** dan tinjau konfigurasi Anda. Lalu pilih **Buat** dan tunggu hingga prosesnya selesai.
+1. Saat proyek Anda dibuat, tutup tips apa pun yang ditampilkan dan tinjau halaman proyek di portal Azure AI Foundry, yang akan terlihat mirip dengan gambar berikut:
+
+    ![Tangkapan layar detail proyek Azure AI di portal Azure AI Foundry.](./media/ai-foundry-project.png)
+
+## Menyempurnakan model.
+
+Karena menyesuaikan model membutuhkan waktu untuk diselesaikan, Anda akan memulai pekerjaan penyesuaian sekarang dan kembali lagi setelah menjelajahi model dasar yang belum disesuaikan untuk tujuan perbandingan.
 
 1. Unduh [himpunan data pelatihan](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl) di `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl`dan simpan sebagai file JSONL secara lokal.
 
     > **Catatan**: Perangkat Anda mungkin secara default berbalik menyimpan file sebagai file .txt. Pilih semua file dan hapus akhiran .txt untuk memastikan Anda menyimpan file sebagai JSONL.
 
 1. Navigasikan ke halaman **Penyempurnaan** di bawah bagian **Membangun dan menyesuaikan** , menggunakan menu di sebelah kiri.
-1. Pilih tombol untuk menambahkan model penyempurnaan baru, pilih model `gpt-4`, lalu pilih **Selanjutnya**.
+1. Pilih tombol untuk menambahkan model fine-tune, pilih model **gpt-4o**, lalu pilih **Berikutnya**.
 1. **Sempurnakan** model menggunakan konfigurasi berikut:
     - **Versi model**: *Pilih versi default*
     - **Akhiran model**: `ft-travel`
@@ -68,28 +72,38 @@ Karena menyempurnakan model membutuhkan waktu untuk diselesaikan, Anda akan memu
     - **Unggah file**: Pilih file JSONL yang Anda unduh di langkah sebelumnya.
     - **Data validasi**: Tidak ada
     - **Parameter tugas**: *Pertahankan pengaturan default*
-1. Penyempurnaan akan dimulai dan mungkin perlu waktu untuk menyelesaikannya.
+1. Penyempurnaan akan dimulai dan mungkin perlu waktu untuk menyelesaikannya. Anda dapat melanjutkan dengan bagian latihan berikutnya saat menunggu.
 
-> **Catatan**: Penyempurnaan dan penyebaran dapat memakan waktu (30 menit atau lebih), jadi Anda mungkin perlu memeriksa kembali secara berkala. Anda sudah dapat melanjutkan dengan langkah berikutnya saat menunggu.
+> **Catatan**: Penyempurnaan dan penyebaran dapat memakan waktu (30 menit atau lebih), jadi Anda mungkin perlu memeriksa kembali secara berkala. Anda dapat melihat detail selengkapnya tentang kemajuan sejauh ini dengan memilih pekerjaan model penyesuaian dan melihat tab **Log**-nya.
 
 ## Mengobrol dengan model dasar
 
-Saat Anda menunggu pekerjaan penyempurnaan selesai, mari kita mengobrol dengan model GPT 4 base untuk menilai performanya.
+Saat Anda menunggu pekerjaan penyesuaian selesai, mari mengobrol dengan model GPT 4o dasar untuk menilai performanya.
 
-1. Navigasikan ke halaman **Model + titik akhir** di bawah bagian **Aset saya**, menggunakan menu di sebelah kiri.
-1. Pilih tombol **+ Sebarkan model** , dan pilih opsi **Sebarkan model dasar**.
-1. Sebarkan `gpt-4`model dengan pengaturan berikut:
-    - **Nama penyebaran**: *Nama unik untuk model Anda, Anda dapat menggunakan default*
-    - **Tipe penyebaran**: Standar
-    - **Batas Tarif Token Per Menit (ribuan)**: 5K
-    - **Filter konten**: Default
+1. Di panel sebelah kiri untuk proyek Anda, di bagian **Aset saya**, pilih halaman **Model + titik akhir**.
+1. Pada halaman **Model + titik akhir** , di tab **Penyebaran model** di menu **+ Sebarkan model** pilih **Sebarkan model dasar**.
+1. Cari model **gpt-4o** dari daftar, pilih dan konfirmasi.
+1. Terapkan model dengan pengaturan berikut dengan memilih **Sesuaikan** di detail penyeberan:
+    - **Nama penyebaran**: *Nama yang valid untuk penyebaran model Anda*
+    - **Tipe penyebaran**: Standar Global
+    - **Pembaruan versi otomatis**: Diaktifkan
+    - **Versi model**: *Pilih versi terbaru yang tersedia*
+    - **Sumber daya AI terhubung**: *Pilih koneksi sumber daya Azure OpenAI Anda (jika lokasi sumber daya AI Anda saat ini tidak memiliki kuota yang tersedia untuk model yang ingin Anda sebarkan, Anda akan diminta untuk memilih lokasi lain tempat sumber daya AI baru akan dibuat dan tersambung ke proyek Anda)*
+    - **Batas Rate Token per Menit (ribuan)**: 50K *(atau jumlah maksimum yang tersedia dalam langganan Anda jika kurang dari 50K)*
+    - **Filter konten**: DefaultV2
+
+    > **Catatan**: Mengurangi TPM membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 50.000 TPM seharusnya cukup untuk data yang digunakan dalam latihan ini. Jika kuota yang tersedia lebih rendah dari ini, Anda akan dapat menyelesaikan latihan tetapi Anda mungkin mengalami kesalahan jika batas rate terlampaui.
+
+1. Tunggu hingga penerapan selesai.
 
 > **Catatan**: Jika lokasi sumber daya AI Anda saat ini tidak memiliki kuota yang tersedia untuk model yang ingin Anda terapkan, Anda akan diminta untuk memilih lokasi lain tempat sumber daya AI baru akan dibuat dan tersambung ke proyek Anda.
 
 1. Saat penerapan telah siap, pilih tombol **Buka di playground**.
-1. Verifikasi bahwa `gpt-4`model dasar yang Anda terapkan dipilih di panel penyiapan.
+1. Verifikasi bahwa model dasar gpt-4o yang Anda terapkan dipilih di panel penyiapan.
 1. Di jendela obrolan, masukkan kueri `What can you do?` dan lihat responnya.
-    Jawabannya sangat umum. Ingatlah bahwa kita ingin membuat aplikasi obrolan yang menginspirasi orang untuk bepergian.
+
+    Jawabannya mungkin cukup umum. Ingatlah bahwa kita ingin membuat aplikasi obrolan yang menginspirasi orang untuk bepergian.
+
 1. Perbarui pesan sistem di panel pengaturan dengan perintah berikut:
 
     ```md
@@ -99,7 +113,7 @@ Saat Anda menunggu pekerjaan penyempurnaan selesai, mari kita mengobrol dengan m
 1. Pilih **Terapkan Perubahan**, lalu pilih **Hapus obrolan**, dan tanyakan lagi `What can you do?` Sebagai respons, asisten dapat memberi tahu Anda bahwa itu dapat membantu Anda memesan penerbangan, hotel, dan mobil sewaan untuk perjalanan Anda. Anda ingin menghindari perilaku ini.
 1. Perbarui pesan sistem lagi dengan perintah baru:
 
-    ```md
+    ```
     You are an AI travel assistant that helps people plan their trips. Your objective is to offer support for travel-related inquiries, such as visa requirements, weather forecasts, local attractions, and cultural norms.
     You should not provide any hotel, flight, rental car or restaurant recommendations.
     Ask engaging questions to help someone plan their trip and think about what they want to do on their holiday.
@@ -140,11 +154,14 @@ Model dasar tampaknya bekerja cukup baik, tetapi Anda mungkin mencari gaya perca
 Saat penyempurnaan telah berhasil diselesaikan, Anda dapat menyebarkan model yang disempurnakan tersebut.
 
 1. Navigasi ke halaman **Penyempurnaan** di bawah **Membangun dan menyesuaikan** untuk menemukan pekerjaan penyempurnaan Anda dan statusnya. Jika masih berjalan, Anda dapat memilih untuk terus mengobrol dengan model dasar yang disebarkan atau beristirahat. Jika selesai, Anda dapat melanjutkan.
-1. Pilih model yang disempurnakan. Pilih tab **Metrik** dan jelajahi metrik penyempurnaan.
+
+    > **Tips**: Gunakan tombol **Refresh** di halaman penyesuaian untuk me-refresh tampilan. Jika pekerjaan penyesuaian hilang sepenuhnya, refresh halaman di browser.
+
+1. Pilih tautan pekerjaan penyesuaian untuk membuka halaman detailnya. Pilih tab **Metrik** dan jelajahi metrik penyesuaian.
 1. Sebarkan model yang disempurnakan dengan konfigurasi berikut:
-    - **Nama penyebaran**: *Nama unik untuk model Anda, Anda dapat menggunakan default*
+    - **Nama penyebaran**: *Nama yang valid untuk penyebaran model Anda*
     - **Tipe penyebaran**: Standar
-    - **Batas Tarif Token Per Menit (ribuan)**: 5K
+    - **Batas Rate Token per Menit (ribuan)**: 50K *(atau jumlah maksimum yang tersedia dalam langganan Anda jika kurang dari 50K)*
     - **Filter konten**: Default
 1. Tunggu hingga penyebaran selesai sebelum Anda dapat mengujinya, ini mungkin memakan waktu cukup lama. Periksa **Status penyediaan** hingga berhasil (Anda mungkin perlu menyegarkan browser untuk melihat status yang telah diperbarui).
 
@@ -155,16 +172,16 @@ Sekarang, setelah menyebarkan model yang disempurnakan, Anda dapat menguji model
 1. Saat penyebaran siap, navigasikan ke model yang disempurnakan dan pilih **Buka di taman bermain**.
 1. Pastikan pesan sistem menyertakan instruksi berikut:
 
-    ```md
+    ```
     You are an AI travel assistant that helps people plan their trips. Your objective is to offer support for travel-related inquiries, such as visa requirements, weather forecasts, local attractions, and cultural norms.
     You should not provide any hotel, flight, rental car or restaurant recommendations.
     Ask engaging questions to help someone plan their trip and think about what they want to do on their holiday.
     ```
 
 1. Uji model yang disempurnakan Anda untuk menilai apakah perilakunya lebih konsisten sekarang. Misalnya, ajukan pertanyaan berikut lagi dan jelajahi jawaban model:
-   
+
     `Where in Rome should I stay?`
-    
+
     `I'm mostly there for the food. Where should I stay to be within walking distance of affordable restaurants?`
 
     `What are some local delicacies I should try?`

@@ -23,22 +23,22 @@ Mari kita mulai dengan membuat proyek Azure AI Foundry dan sumber daya layanan y
     ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
 1. Di beranda, pilih **+ Buat proyek**.
-1. Di wizard **Buat proyek**, masukkan nama proyek yang sesuai untuk (misalnya, `my-ai-project`) dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
+1. Di wizard **Buat proyek**, masukkan nama yang valid untuk proyek Anda, dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
 1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
-    - **Nama hub**: *Nama unik - misalnya `my-ai-hub`*
+    - **Nama hub**: *Nama yang valid untuk hub Anda*
     - **Langganan**: *Langganan Azure Anda*
-    - **Grup sumber daya**: *Pilih atau buat grup sumber daya dengan nama unik (misalnya, `my-ai-resources`), atau pilih yang sudah ada*
-    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4** dan **text-embedding-ada-002** di jendela Pembantu Lokasi dan gunakan wilayah yang disarankan\*
-    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru dengan nama yang sesuai (misalnya, `my-ai-services`) atau menggunakan yang sudah ada*
+    - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
+    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4** di jendela pembantu Lokasi dan gunakan wilayah yang direkomendasikan\*
+    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru*
     - **Menyambungkan Pencarian Azure AI**: *Membuat sumber daya Pencarian Azure AI baru dengan nama unik*
 
-    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Jika batas kuota tercapai dan tidak ada wilayah yang direkomendasikan untuk kedua model, pilih salah satunya saja dan gunakan wilayah yang direkomendasikan. Anda akan membuat sumber daya lain di wilayah yang berbeda untuk model kedua nanti dalam latihan.
+    > \* Sumber daya Azure OpenAI dibatasi oleh kuota model regional. Jika batas kuota terlampaui di kemudian hari dalam latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
 
 1. Pilih **Berikutnya** dan tinjau konfigurasi Anda. Lalu pilih **Buat** dan tunggu hingga prosesnya selesai.
-1. Saat proyek Anda dibuat, tutup tips apa pun yang ditampilkan dan tinjau halaman proyek **Ringkasan** di Portal Azure AI Foundry, yang akan terlihat mirip dengan gambar berikut:
+1. Saat proyek Anda dibuat, tutup tips apa pun yang ditampilkan dan tinjau halaman proyek di portal Azure AI Foundry, yang akan terlihat mirip dengan gambar berikut:
 
     ![Tangkapan layar detail proyek Azure AI di portal Azure AI Foundry.](./media/ai-foundry-project.png)
-   
+
 ## Terapkan model
 
 Anda memerlukan dua model untuk mengimplementasikan solusi Anda:
@@ -49,23 +49,22 @@ Anda memerlukan dua model untuk mengimplementasikan solusi Anda:
 1. Di portal Azure AI Foundry, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Aset saya**, pilih halaman **Model + titik akhir**.
 1. Buat penyebaran baru model **text-embedding-ada-002** dengan pengaturan berikut dengan memilih **Sesuaikan** di wizard Penerapan model:
 
-    - **Nama penyebaran**: `text-embedding-ada-002`
-    - **Tipe penyebaran**: Standar
+    - **Nama penyebaran**: *Nama yang valid untuk penyebaran model Anda*
+    - **Tipe penyebaran**: Standar Global
     - **Versi model**: *Pilih versi default*
-    - **Sumber daya AI**: *Pilih sumber daya yang dibuat sebelumnya*
-    - **Batas Tarif Token Per Menit (ribuan)**: 5K
+    - **Sumber daya AI terhubung**: *Pilih sumber daya yang dibuat sebelumnya*
+    - **Batas Rate Token per Menit (ribuan)**: 50K *(atau jumlah maksimum yang tersedia dalam langganan Anda jika kurang dari 50K)*
     - **Filter konten**: DefaultV2
-    - **Aktifkan kuota dinamis**: Dinonaktifkan
 
     > **Catatan**: Jika lokasi sumber daya AI Anda saat ini tidak memiliki kuota yang tersedia untuk model yang ingin Anda terapkan, Anda akan diminta untuk memilih lokasi lain tempat sumber daya AI baru akan dibuat dan tersambung ke proyek Anda.
 
-1. Ulangi langkah-langkah sebelumnya untuk menyebarkan model **gpt-4** dengan nama penyebaran`gpt-4` menggunakan penyebaran **standar** versi default dengan batas laju TPM 5K.
+1. Kembali ke halaman **Models + titik akhir** dan ulangi langkah-langkah sebelumnya untuk menyebarkan model **gpt-4o** menggunakan penyebaran **Standar Global** dari versi terbaru dengan batas rate TPM **50K** (atau batas maksimum yang tersedia dalam langganan Anda jika kurang dari 50K).
 
-    > **Catatan**: Mengurangi Token Per Menit (TPM) membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 5.000 TPM cukup untuk data yang digunakan dalam latihan ini.
+    > **Catatan**: Mengurangi Token Per Menit (TPM) membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 50.000 TPM cukup untuk data yang digunakan dalam latihan ini.
 
 ## Menambahkan data ke proyek Anda
 
-Data untuk salinan Anda terdiri dari serangkaian brosur perjalanan dalam format PDF dari agen perjalanan fiktif *Margie's Travel*. Mari kita tambahkan ke proyek.
+Data untuk aplikasi Anda terdiri dari serangkaian brosur perjalanan dalam format PDF dari agen perjalanan fiktif *Margie's Travel*. Mari kita tambahkan ke proyek.
 
 1. Di tab browser baru, unduh [arsip zip brosur](https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip) dari `https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip` dan ekstrak ke folder bernama **brosur** pada sistem file lokal Anda.
 1. Di portal Azure AI Foundry, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Aset saya**, pilih halaman **Data + Indeks**.
@@ -82,7 +81,7 @@ Setelah menambahkan sumber data ke proyek, Anda dapat menggunakannya untuk membu
 1. Di portal Azure AI Foundry, di proyek Anda, di panel navigasi di sebelah kiri, di bawah **Aset saya**, pilih halaman **Data + Indeks**.
 1. Tambahkan **Indeks** baru dengan pengaturan berikut:
     - **Lokasi sumber**
-        - **Sumber data**: Data di portal Azure AI Foundry
+        - **Sumber data**: Data di Azure AI Foundry
             - *Pilih ** sumber data brosur** *
     - **Konfigurasi indeks**:
         - **Pilih Azure AI layanan Pencarian**: *Pilih **koneksi AzureAISearch** ke sumber daya Azure AI Search Anda*
@@ -109,7 +108,7 @@ Setelah menambahkan sumber data ke proyek, Anda dapat menggunakannya untuk membu
 Sebelum menggunakan indeks Anda dalam alur prompt berbasis RAG, mari kita verifikasi bahwa indeks tersebut dapat digunakan untuk memengaruhi respons AI generatif.
 
 1. Pada panel navigasi di sebelah kiri, pilih halaman **Playground** dan buka **Obrolan**.
-1. Pada halaman Obrolan, di panel Penyiapan, pastikan penyebaran model **gpt-4** Anda terpilih. Kemudian, di panel sesi obrolan utama, kirimkan perintah `Where can I stay in New York?`
+1. Pada halaman Playground obrolan, di panel Penyiapan, pastikan penyebaran model **gpt-4** Anda dipilih. Kemudian, di panel sesi obrolan utama, kirimkan perintah `Where can I stay in New York?`
 1. Tinjau respons, yang harus menjadi jawaban umum dari model tanpa data apa pun dari indeks.
 1. Pada panel Penyiapan, pilih tab **Tambahkan data Anda**, lalu tambahkan **indeks-brosur** indeks proyek dan pilih jenis pencarian **hibrid (vektor + kata kunci).**
 
@@ -142,7 +141,7 @@ Sekarang setelah Anda memiliki indeks yang berfungsi, Anda dapat menggunakan Azu
 
     **<font color="red">Pastikan Anda telah beralih ke versi klasik cloud shell sebelum melanjutkan.</font>**
 
-1. Di panel PowerShell, masukkan perintah berikut untuk mengkloning repositori GitHub yang mengandung file kode untuk latihan ini:
+1. Di panel cloud shell, masukkan perintah berikut untuk mengkloning repo GitHub yang berisi file kode untuk latihan ini (ketik perintah, atau salin ke clipboard lalu klik kanan di baris perintah dan tempel sebagai teks biasa):
 
     ```
     rm -r mslearn-ai-foundry -f
@@ -172,6 +171,8 @@ Sekarang setelah Anda memiliki indeks yang berfungsi, Anda dapat menggunakan Azu
     **Python**
 
     ```
+   python -m venv labenv
+   ./labenv/bin/Activate.ps1
    pip install python-dotenv azure-ai-projects azure-identity openai
     ```
 
@@ -202,9 +203,9 @@ Sekarang setelah Anda memiliki indeks yang berfungsi, Anda dapat menggunakan Azu
 
 1. Dalam file kode, ganti tempat penampung berikut: 
     - **your_project_connection_string**: Ganti dengan string koneksi untuk proyek Anda (disalin dari halaman **Gambaran Umum** proyek di portal Azure AI Foundry)
-    - ** your_model_deployment** Ganti dengan nama yang Anda tetapkan ke penyebaran model Anda (yang seharusnya `gpt-4`)
+    - ** your_model_deployment** Ganti dengan nama yang Anda tetapkan ke penyebaran model **gpt-4o** Anda
     - **your_index**: Ganti dengan nama indeks Anda (yang seharusnya `brochures-index`)
-1. Setelah Anda mengganti tempat penampung, gunakan perintah **CTRL+S** atau **Klik kanan > Simpan** untuk menyimpan perubahan Anda dan kemudian gunakan perintah **CTRL+Q** atau **Klik kanan > Keluar** untuk menutup editor kode sambil tetap membuka baris perintah cloud shell.
+1. Setelah Anda mengganti tempat penampung, di editor kode,gunakan perintah **CTRL+S** atau **Klik kanan > Simpan** untuk menyimpan perubahan Anda dan kemudian gunakan perintah **CTRL+Q** atau **Klik kanan > Keluar** untuk menutup editor kode sambil tetap membuka baris perintah cloud shell.
 
 ### Menjelajahi kode untuk mengimplementasikan pola RAG
 

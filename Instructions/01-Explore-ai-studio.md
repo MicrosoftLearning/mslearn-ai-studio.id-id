@@ -14,7 +14,7 @@ Latihan ini memakan waktu sekitar **30** menit.
 
 Mari kita mulai dengan menjelajahi portal Azure AI Foundry.
 
-1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda. Tutup semua tip atau panel mulai cepat yang terbuka saat pertama kali Anda masuk, dan jika perlu, gunakan logo **Azure AI Foundry** di kiri atas untuk menavigasi ke halaman beranda, yang terlihat sama dengan gambar berikut:
+1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda. Tutup semua tips atau panel mulai cepat yang terbuka saat pertama kali Anda masuk, dan jika perlu, gunakan logo **Azure AI Foundry** di kiri atas untuk menavigasi ke beranda, yang tampilannya mirip dengan gambar berikut (tutup panel **Bantuan** jika terbuka):
 
     ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
@@ -25,16 +25,16 @@ Mari kita mulai dengan menjelajahi portal Azure AI Foundry.
 *Hub* Azure AI menyediakan ruang kerja kolaboratif tempat Anda dapat menentukan satu atau beberapa *proyek*. Mari kita buat proyek dan hub Azure AI dan tinjau sumber daya Azure yang dibuat untuk mendukungnya.
 
 1. Di beranda, pilih **+ Buat proyek**.
-1. Di wizard **Buat proyek**, masukkan nama proyek yang sesuai untuk (misalnya, `my-ai-project`) lalu tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung proyek Anda.
+1. Di wizard **Buat proyek**, masukkan nama yang valid untuk proyek Anda dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
 1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
-    - **Nama hub**: *Nama unik - misalnya `my-ai-hub`*
+    - **Nama hub**: *Nama yang valid untuk hub Anda*
     - **Langganan**: *Langganan Azure Anda*
-    - **Grup sumber daya**: *Pilih atau buat grup sumber daya dengan nama unik (misalnya, `my-ai-resources`), atau pilih yang sudah ada*
-    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
-    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru dengan nama yang sesuai (misalnya, `my-ai-services`) atau menggunakan yang sudah ada*
+    - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
+    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4** di jendela pembantu Lokasi dan gunakan wilayah yang direkomendasikan\*
+    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
-    > \* Sumber daya Azure OpenAI dibatasi oleh kuota regional. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
+    > \* Sumber daya Azure OpenAI dibatasi oleh kuota model regional. Jika batas kuota terlampaui di kemudian hari dalam latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
 
 1. Pilih **Berikutnya** dan tinjau konfigurasi Anda. Lalu pilih **Buat** dan tunggu hingga prosesnya selesai.
 1. Saat proyek Anda dibuat, tutup tips apa pun yang ditampilkan dan tinjau halaman proyek di portal Azure AI Foundry, yang akan terlihat mirip dengan gambar berikut:
@@ -75,7 +75,7 @@ Misalkan proyek Anda memerlukan akses ke sumber daya **Layanan Azure AI** kedua 
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Pilih grup sumber daya yang berisi sumber daya Azure AI Foundry Anda*
     - **Wilayah**: *Pilih wilayah yang tersedia selain wilayah yang berisi sumber daya Anda yang sudah ada*
-    - **Nama**: *Nama unik*
+    - **Nama**: *Nama yang sesuai untuk sumber daya Layanan Azure AI kedua Anda*
     - **Tingkat harga**: Standar S0
 1. Tunggu hingga sumber daya Layanan AI dibuat.
 1. Kembali ke tab browser portal Azure AI Foundry, dan di tampilan **Pusat manajemen**, di panel navigasi, di bagian untuk *<u>proyek Anda</u>*, lihat halaman **Sumber daya tersambung**. Sumber daya tersambung yang ada dalam proyek Anda dicantumkan.
@@ -108,25 +108,34 @@ Proyek Azure AI Foundry Anda memiliki akses ke Layanan Azure AI. Mari kita coba 
 
 ## Menyebarkan dan menguji model AI generatif
 
-Proyek Anda juga berisi sumber daya yang terhubung untuk Azure OpenAI, yang memungkinkan Anda menggunakan model bahasa Azure OpenAI untuk menerapkan solusi AI generatif.
+Proyek Anda juga berisi sumber daya yang terhubung untuk Azure OpenAI, yang memungkinkan Anda menggunakan model bahasa Azure OpenAI untuk menerapkan solusi AI generatif. Anda juga dapat menemukan dan menggunakan model AI generatif dari vendor lain dalam katalog model.
 
 1. Di panel sebelah kiri untuk proyek Anda, di bagian **Aset saya**, pilih halaman **Model + titik akhir**.
 1. Pada halaman **Model + titik akhir** , di tab **Penyebaran model** di menu **+ Sebarkan model** pilih **Sebarkan model dasar**.
-1. Cari model **gpt-4** dari daftar, pilih dan konfirmasi.
+1. Cari model **gpt-4o** dari daftar, pilih dan konfirmasi.
 1. Terapkan model dengan pengaturan berikut dengan memilih **Sesuaikan** di detail penyeberan:
-    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda - sebagai contoh `gpt-4-model`*
-    - **Tipe penyebaran**: Standar
-    - **Versi model**: *Pilih versi default*
-    - **Sumber daya AI yang terhubung**: *Pilih salah satu koneksi sumber daya Azure OpenAI Anda*
-    - **Batas Tarif Token Per Menit (ribuan)**: 5K
+    - **Nama penyebaran**: *Nama yang valid untuk penyebaran model Anda*
+    - **Tipe penyebaran**: Standar Global
+    - **Pembaruan versi otomatis**: Diaktifkan
+    - **Versi model**: *Pilih versi terbaru yang tersedia*
+    - **Sumber daya AI yang terhubung**: *Pilih koneksi sumber daya Azure OpenAI Anda*
+    - **Batas Rate Token per Menit (ribuan)**: 50K *(atau jumlah maksimum yang tersedia dalam langganan Anda jika kurang dari 50K)*
     - **Filter konten**: DefaultV2
-    - **Aktifkan kuota dinamis**: Dinonaktifkan
-      
-    > **Catatan**: Mengurangi TPM membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 5.000 TPM cukup untuk data yang digunakan dalam latihan ini.
+
+    > **Catatan**: Mengurangi TPM membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 50.000 TPM seharusnya cukup untuk data yang digunakan dalam latihan ini. Jika kuota yang tersedia lebih rendah dari ini, Anda akan dapat menyelesaikan latihan tetapi Anda mungkin mengalami kesalahan jika batas rate terlampaui.
+
+1. Tunggu hingga penerapan selesai.
 
 1. Setelah model disebarkan, di halaman gambaran umum penyebaran, pilih **Buka di playground**.
 1. Di halaman **obrolan playground** pastikan bahwa penyebaran model Anda dipilih di bagian **Penyebaran** .
-1. Di jendela obrolan, masukkan kueri seperti `How can I use Azure AI Services in a software development project?` dan lihat responsnya:
+1. Di panel **Penyiapan** , dalam kotak **Give the model instructions and context**, masukkan instruksi berikut ini:
+
+    ```
+    You are a history teacher who can answer questions about past events all around the world.
+    ```
+
+1. Terapkan perubahan untuk memperbarui pesan sistem.
+1. Di jendela obrolan, masukkan kueri seperti `What are the key events in the history of Scotland?` dan lihat responsnya:
 
     ![Tangkapan layar playground di portal Azure AI Foundry.](./media/ai-foundry-playground.png)
 

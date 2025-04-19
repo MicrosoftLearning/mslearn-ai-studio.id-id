@@ -1,69 +1,85 @@
 ---
 lab:
-  title: Mengevaluasi performa AI generatif
-  description: Pelajari cara mengevaluasi model dan alur obrolan untuk mengoptimalkan kinerja aplikasi obrolan Anda dan kemampuannya dalam merespons dengan tepat.
+  title: Mengevaluasi performa model AI generatif
+  description: Pelajari cara mengevaluasi model dan perintah obrolan untuk mengoptimalkan kinerja aplikasi obrolan Anda dan kemampuannya dalam merespons dengan tepat.
 ---
 
-# Mengevaluasi performa AI generatif
+# Mengevaluasi performa model AI generatif
 
-Dalam latihan ini, Anda akan menjelajahi evaluasi bawaan dan kustom untuk menilai dan membandingkan performa aplikasi AI Anda dengan portal Azure AI Foundry.
+Dalam latihan ini, Anda akan menggunakan evaluasi manual dan otomatis untuk menilai performa model di portal Azure AI Foundry.
 
 Latihan ini akan memakan waktu sekitar **30** menit.
 
-## Membuat hub dan proyek Azure AI
+## Membuat proyek Azure OpenAI
 
-Hub Azure AI menyediakan ruang kerja kolaboratif tempat Anda dapat menentukan satu atau beberapa *proyek*. Mari kita buat proyek dan hub Azure AI.
+Mari kita mulai dengan membuat proyek Azure AI Foundry.
 
-1. Di browser web, buka portal [Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda.
+1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda. Tutup semua tips atau panel mulai cepat yang terbuka saat pertama kali Anda masuk, dan jika perlu, gunakan logo **Azure AI Foundry** di kiri atas untuk menavigasi ke laman beranda, yang tampilannya mirip dengan gambar berikut (tutup panel **Bantuan** jika terbuka):
+
+    ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
 1. Di beranda, pilih **+ Buat proyek**.
-1. Di wizard **Buat proyek**, masukkan nama proyek yang sesuai untuk (misalnya, `my-ai-project`) lalu tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung proyek Anda.
+1. Di wizard **Buat proyek**, masukkan nama yang valid untuk proyek Anda dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
 1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
-    - **Nama hub**: *Nama unik - misalnya `my-ai-hub`*
+    - **Nama hub**: *Nama yang valid untuk hub Anda*
     - **Langganan**: *Langganan Azure Anda*
-    - **Grup sumber daya**: *Pilih atau buat grup sumber daya dengan nama unik (misalnya, `my-ai-resources`), atau pilih yang sudah ada*
-    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4** di jendela Pembantu lokasi dan gunakan wilayah yang direkomendasikan\*
-    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru dengan nama yang sesuai (misalnya, `my-ai-services`) atau menggunakan yang sudah ada*
+    - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
+    - **Wilayah**: Pilih salah satu wilayah berikut\*:
+        - AS Timur 2
+        - Prancis Tengah
+        - UK Selatan
+        - Swedia Tengah
+    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
-    > \* Kuota model dibatasi di tingkat penyewa oleh kuota regional. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
+    > \* Pada saat penulisan, wilayah-wilayah ini mendukung evaluasi metrik keamanan AI.
 
 1. Pilih **Berikutnya** dan tinjau konfigurasi Anda. Lalu pilih **Buat** dan tunggu hingga prosesnya selesai.
 1. Saat proyek Anda dibuat, tutup tips apa pun yang ditampilkan dan tinjau halaman proyek di portal Azure AI Foundry, yang akan terlihat mirip dengan gambar berikut:
 
     ![Tangkapan layar detail proyek Azure AI di portal Azure AI Foundry.](./media/ai-foundry-project.png)
 
-## Sebarkan model GPT
+## Terapkan model
 
-Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model terlebih dahulu. Azure AI Foundry memungkinkan Anda menerapkan model OpenAI yang dapat Anda gunakan dalam alur Anda.
+Dalam latihan ini, Anda akan mengevaluasi performa model gpt-4o-mini. Anda juga akan menggunakan model gpt-4o untuk menghasilkan metrik evaluasi yang dibantu AI.
 
-1. Navigasikan ke halaman **Model + titik akhir** di bawah bagian **Aset saya**, menggunakan menu di sebelah kiri.
-1. Pilih tombol **+ Sebarkan model** , dan pilih opsi **Sebarkan model dasar**.
-1. Buat penyebaran baru model **gpt-4** dengan pengaturan berikut dengan memilih **Sesuaikan** di wizard **Sebarkan model**:
-    - **Nama penyebaran**: *Nama unik untuk penyebaran model Anda*
-    - **Tipe penyebaran**: Standar
-    - **Versi model**: *Pilih versi default*
-    - **Sumber daya AI**: *Pilih sumber daya yang dibuat sebelumnya*
-    - **Batas Tarif Token Per Menit (ribuan)**: 5K
+1. Di panel navigasi di sebelah kiri untuk proyek Anda, di bagian **My assets**, pilih halaman **Models + endpoints**.
+1. Pada halaman **Model + titik akhir** , di tab **Penyebaran model** di menu **+ Sebarkan model** pilih **Sebarkan model dasar**.
+1. Cari model **gpt-4o** dari daftar, pilih dan konfirmasi.
+1. Terapkan model dengan pengaturan berikut dengan memilih **Sesuaikan** di detail penyeberan:
+    - **Nama penyebaran**: *Nama yang valid untuk penyebaran model Anda*
+    - **Tipe penyebaran**: Standar Global
+    - **Pembaruan versi otomatis**: Diaktifkan
+    - **Versi model**: *Pilih versi terbaru yang tersedia*
+    - **Sumber daya AI yang terhubung**: *Pilih koneksi sumber daya Azure OpenAI Anda*
+    - **Batas Rate Token per Menit (ribuan)**: 50K *(atau jumlah maksimum yang tersedia dalam langganan Anda jika kurang dari 50K)*
     - **Filter konten**: DefaultV2
-    - **Aktifkan kuota dinamis**: Dinonaktifkan
 
-    > **Catatan**: Jika lokasi sumber daya AI Anda saat ini tidak memiliki kuota yang tersedia untuk model yang ingin Anda terapkan, Anda akan diminta untuk memilih lokasi lain tempat sumber daya AI baru akan dibuat dan tersambung ke proyek Anda.
+    > **Catatan**: Mengurangi TPM membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 50.000 TPM seharusnya cukup untuk data yang digunakan dalam latihan ini. Jika kuota yang tersedia lebih rendah dari ini, Anda akan dapat menyelesaikan latihan tetapi Anda mungkin mengalami kesalahan jika batas rate terlampaui.
 
-1. Tunggu hingga aplikasi disebarkan. Saat penyebaran siap, pilih **Buka di playground**.
-1. Dalam kotak teks **Berikan instruksi model dan konteks** , ubah konten menjadi yang berikut ini:
+1. Tunggu hingga penerapan selesai.
+1. Kembali ke halaman **Models + endpoints** dan ulangi langkah-langkah sebelumnya untuk menyebarkan model **gpt-4o-mini** dengan pengaturan yang sama.
+
+## Mengevaluasi model secara manual
+
+Anda dapat meninjau respons model secara manual berdasarkan data pengujian. Peninjauan secara manual memungkinkan Anda menguji input yang berbeda untuk mengevaluasi apakah model berfungsi seperti yang diharapkan.
+
+1. Di tab browser baru, unduh [travel_evaluation_data.csv](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.csv) dari `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.csv`dan simpan di folder lokal.
+1. Kembali ke tab portal Azure AI Foundry, di panel navigasi, di bagian **Nilai dan tingkatkan** , pilih **Evaluasi**.
+1. Di halaman **Evaluasi** , lihat tab **Evaluasi manual** dan pilih **+ New manual evaluation**.
+1. Ubah **Pesan Sistem** menjadi instruksi berikut untuk asisten perjalanan AI:
 
    ```
-   **Objective**: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
+   Objective: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
 
-   **Capabilities**:
+   Capabilities:
    - Provide up-to-date travel information, including destinations, accommodations, transportation, and local attractions.
    - Offer personalized travel suggestions based on user preferences, budget, and travel dates.
    - Share tips on packing, safety, and navigating travel disruptions.
    - Help with itinerary planning, including optimal routes and must-see landmarks.
    - Answer common travel questions and provide solutions to potential travel issues.
     
-   **Instructions**:
+   Instructions:
    1. Engage with the user in a friendly and professional manner, as a travel agent would.
    2. Use available resources to provide accurate and relevant travel information.
    3. Tailor responses to the user's specific travel needs and interests.
@@ -71,29 +87,41 @@ Untuk menggunakan model bahasa dalam alur perintah, Anda perlu menyebarkan model
    5. Encourage the user to ask follow-up questions for further assistance.
    ```
 
-1. Pilih **Terapkan perubahan**.
-1. Di jendela obrolan (riwayat), masukkan kueri: `What can you do?` untuk memverifikasi bahwa model bahasa berperilaku seperti yang diharapkan.
+1. Di bagian **Konfigurasi**, dalam daftar **Model**, pilih penyebaran model **gpt-4o-mini** Anda.
+1. Di bagian **Hasil evaluasi manual**, pilih **Import test data** dan unggah file **travel_evaluation_data.csv** yang Anda unduh sebelumnya; pemetaan bidang kumpulan data sebagai berikut:
+    - **Input**: Pertanyaan
+    - **Respon yang diharapkan**: ExpectedResponse
+1. Tinjau pertanyaan dan jawaban yang diharapkan dalam file pengujian - Anda akan menggunakannya untuk mengevaluasi respons yang dihasilkan model.
+1. Pilih **Jalankan** dari bilah atas untuk menghasilkan output untuk semua pertanyaan yang Anda tambahkan sebagai input. Setelah beberapa menit, respons dari model harus ditampilkan di kolom **Output** baru, seperti ini:
 
-Sekarang setelah Anda memiliki model yang disebarkan dengan pesan sistem yang diperbarui, Anda dapat mengevaluasi model.
+    ![Tangkapan layar halaman evaluasi manual di portal Azure AI Foundry.](./media/manual-evaluation.png)
 
-## Mengevaluasi model bahasa di portal Azure AI Foundry secara manual
+1. Tinjau output untuk setiap pertanyaan, membandingkan output dari model dengan jawaban yang diharapkan lalu "beri skor" pada hasilnya dengan memilih ikon jempol ke atas atau jempol ke bawah di kanan bawah setiap respons.
+1. Setelah Anda menilai responsnya, tinjau petak ringkasan di atas daftar. Kemudian di toolbar, pilih **Simpan hasil** dan tetapkan nama yang sesuai. Menyimpan hasil memungkinkan Anda untuk mengambilnya nanti untuk evaluasi atau perbandingan lebih lanjut dengan model yang berbeda.
 
-Anda dapat meninjau respons model secara manual berdasarkan data pengujian. Peninjauan secara manual memungkinkan Anda menguji input yang berbeda satu per satu untuk mengevaluasi apakah model berfungsi seperti yang diharapkan.
+## Gunakan evaluasi otomatis
 
-1. Di **taman bermain Obrolan**, pilih menu dropdown **Evaluasi**  dari bilah atas, dan pilih **Evaluasi manual**.
-1. Ubah **Pesan sistem** ke pesan yang sama seperti yang Anda gunakan di atas (sertakan di sini lagi):
+Meskipun membandingkan output model secara manual dengan respons yang Anda harapkan dapat menjadi cara yang berguna untuk menilai performa model, ini adalah pendekatan yang memakan waktu dalam skenario di mana Anda mengharapkan berbagai pertanyaan dan respons; dan pendekatan tersebut menyediakan sedikit cara metrik standar yang dapat Anda gunakan untuk membandingkan berbagai model dan kombinasi perintah.
+
+Evaluasi otomatis adalah pendekatan yang mencoba mengatasi kekurangan ini dengan menghitung metrik dan menggunakan AI untuk menilai respons berdasarkan koherensi, relevansi, dan faktor lainnya.
+
+1. Gunakan panah belakang (**&larr;**) di **samping judul halaman Evaluasi manual** untuk kembali ke halaman **Evaluasi**.
+1. Lihat tab **Evaluasi otomatis**.
+1. Pilih **Create a new evaluation**, dan saat diminta, pilih opsi untuk mengevaluasi **Model dan perintah**
+1. Di halaman **Buat evaluasi baru**, di bagian **Informasi dasar**, tinjau nama evaluasi default yang dibuat secara otomatis (Anda dapat mengubahnya jika mau) dan memilih model penyebaran **gpt-40-mini** Anda.
+1. Ubah **Pesan Sistem** ke instruksi yang sama untuk asisten perjalanan AI yang Anda gunakan sebelumnya:
 
    ```
-   **Objective**: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
+   Objective: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
 
-   **Capabilities**:
+   Capabilities:
    - Provide up-to-date travel information, including destinations, accommodations, transportation, and local attractions.
    - Offer personalized travel suggestions based on user preferences, budget, and travel dates.
    - Share tips on packing, safety, and navigating travel disruptions.
    - Help with itinerary planning, including optimal routes and must-see landmarks.
    - Answer common travel questions and provide solutions to potential travel issues.
     
-   **Instructions**:
+   Instructions:
    1. Engage with the user in a friendly and professional manner, as a travel agent would.
    2. Use available resources to provide accurate and relevant travel information.
    3. Tailor responses to the user's specific travel needs and interests.
@@ -101,67 +129,33 @@ Anda dapat meninjau respons model secara manual berdasarkan data pengujian. Peni
    5. Encourage the user to ask follow-up questions for further assistance.
    ```
 
-1. Di bagian **Hasil evaluasi manual** Anda akan menambahkan lima input yang akan Anda tinjau outputnya. Masukkan lima pertanyaan berikut sebagai lima **Input**terpisah:
+1. Di bagian **Konfigurasikan data pengujian**, perhatikan bahwa Anda dapat menggunakan model GPT untuk membuat data pengujian bagi Anda (yang kemudian dapat Anda edit dan tambahkan agar sesuai dengan harapan Anda), menggunakan himpunan data yang ada, atau mengunggah file. Dalam latihan ini, pilih **Use existing dataset** lalu pilih **travel_evaluation_data_csv_*xxxx...*** himpunan data (yang dibuat saat Anda mengunggah file .csv sebelumnya).
+1. Tinjau baris sampel dari himpunan data, lalu di bagian **Choose your data column**, pilih pemetaan kolom berikut:
+    - **Kueri**: Pertanyaan
+    - **Konteks**: *Biarkan ini kosong. Ini digunakan untuk mengevaluasi "groundedness" saat mengaitkan sumber data kontekstual dengan model Anda.*
+    - **Kebenaran dasar**: ExpectedAnswer
+1. Di bagian **Pilih apa yang ingin Anda evaluasi** , pilih <u>semua</u> dari kategori evaluasi berikut:
+    - Kualitas AI (bantuan AI)
+    - Risiko dan keamanan (bantuan AI)
+    - Kualitas AI (NLP)
+1. Dalam daftar **Choose a model deployment as judge**, pilih model**gpt-4o** Anda. Model ini akan digunakan untuk menilai respons dari model ***gpt-4o-mini** untuk kualitas terkait bahasa dan metrik perbandingan AI generatif standar.
+1. Pilih **Create** untuk memulai proses evaluasi, dan tunggu hingga selesai. Proses ini memerlukan waktu beberapa menit.
 
-   `Can you provide a list of the top-rated budget hotels in Rome?`
+    > **Tips**: Jika muncul kesalahan yang menunjukkan bahwa izin proyek sedang ditetapkan, tunggu sebentar lalu pilih **Create** lagi. Diperlukan beberapa waktu agar izin sumber daya untuk proyek yang baru dibuat disebarkan.
 
-   `I'm looking for a vegan-friendly restaurant in New York City. Can you help?`
+1. Setelah evaluasi selesai, gulir ke bawah jika perlu untuk melihat area **Dasbor metrik** kemudian lihat metrik **Kualitas AI (Bantuan AI)**:
 
-   `Can you suggest a 7-day itinerary for a family vacation in Orlando, Florida?`
+    ![Tangkapan layar metrik kualitas AI di portal Azure AI Foundry.](./media/ai-quality-metrics.png)
 
-   `Can you help me plan a surprise honeymoon trip to the Maldives?`
+    Gunakan ikon **<sup>(i) </sup>** untuk melihat definisi metrik.
 
-   `Are there any guided tours available for the Great Wall of China?`
+1. Lihat tab **Risiko dan keamanan** untuk melihat metrik yang terkait dengan konten yang berpotensi membahayakan.
+1. Lihat tab **kualitas AI (NLP**) untuk melihat metrik standar untuk model AI generatif.
+1. Gulir kembali ke bagian atas halaman jika perlu, lalu pilih tab **Data** untuk melihat data mentah dari evaluasi. Data mencakup metrik untuk setiap input serta penjelasan tentang alasan yang diterapkan model gpt-4o saat menilai respons.
 
-1. Pilih **Jalankan** dari bilah atas untuk menghasilkan output untuk semua pertanyaan yang Anda tambahkan sebagai input.
-1. Anda sekarang dapat meninjau output secara manual untuk setiap pertanyaan dengan memilih ikon jempol ke atas atau bawah di kanan bawah respons. Beri peringkat setiap respons, memastikan Anda menyertakan setidaknya satu jempol ke atas dan satu respons jempol ke bawah dalam peringkat Anda.
-1. Pilih **Simpan hasil** dari bilah menu atas. Masukkan `manual_evaluation_results` sebagai nama untuk hasilnya.
-1. Menggunakan menu di sebelah kiri, navigasikan ke **Evaluasi**.
-1. Pilih tab **Evaluasi manual** untuk menemukan evaluasi manual yang baru saja Anda simpan. Perhatikan bahwa Anda dapat menjelajahi evaluasi manual yang dibuat sebelumnya, melanjutkan dari bagian yang Anda tinggalkan, dan menyimpan evaluasi yang telah diperbarui.
+    ![Tangkapan layar data evaluasi di portal Azure AI Foundry.](./media/evaluation-data.png)
 
-## Mengevaluasi aplikasi obrolan Anda dengan metrik bawaan
-
-Ketika Anda telah membuat aplikasi obrolan dengan alur prompt, Anda dapat mengevaluasi alur tersebut dengan melakukan proses batch dan menilai kinerja alur tersebut dengan metrik bawaan.
-
-![Diagram konstruksi himpunan data input untuk evaluasi.](./media/diagram-dataset-evaluation.png)
-
-Untuk mengevaluasi alur obrolan, kueri pengguna, dan respons obrolan disediakan sebagai input untuk evaluasi.
-
-Untuk menghemat waktu, kami telah membuat kumpulan himpunan data output untuk Anda yang berisi hasil beberapa input yang sedang diproses oleh alur permintaan. Setiap hasil disimpan dalam himpunan data yang akan Anda evaluasi di langkah berikutnya.
-
-1. Pilih tab **Evaluasi otomatis** dan buat **Evaluasi baru** dengan pengaturan berikut: <details>  
-      <summary><b>Tips pemecahan masalah</b>: Kesalahan izin</summary>
-        <p>Jika Anda menerima kesalahan izin saat membuat alur perintah baru, coba langkah berikut untuk memecahkan masalah:</p>
-        <ul>
-          <li>Di portal Azure, pilih Penjelajah Sumber Daya dari Semua Layanan.</li>
-          <li>Pada tab Identitas di bawah Manajemen Sumber Daya, konfirmasikan bahwa itu adalah identitas terkelola yang ditetapkan sistem.</li>
-          <li>Lakukan navigasi ke Akun Penyimpanan. Pada halaman IAM, tambahkan penetapan peran <em>Pembaca data blob penyimpanan</em>.</li>
-          <li>Di bawah <strong>Tetapkan akses ke</strong>, pilih <strong>Identitas Terkelola</strong>, <strong>+ Pilih anggota</strong>, dan pilih <strong>Semua identitas terkelola yang ditetapkan sistem</strong>.</li>
-          <li>Tinjau dan tetapkan untuk menyimpan pengaturan baru dan coba lagi langkah sebelumnya.</li>
-        </ul>
-    </details>
-
-    - **Apa yang ingin Anda evaluasi?**: Himpunan data
-    - **Nama evaluasi**: *Masukkan nama unik*
-    - Pilih **Selanjutnya**
-    - **Pilih data yang ingin Anda evaluasi**: Tambahkan himpunan data Anda
-        - Unduh [himpunan data validasi](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl) di `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl`, simpan sebagai file JSONL dan unggah ke UI.
-
-    > **Catatan**: Perangkat Anda mungkin secara default berbalik menyimpan file sebagai file .txt. Pilih semua file dan hapus akhiran .txt untuk memastikan Anda menyimpan file sebagai JSONL.
-
-    - Pilih **Selanjutnya**
-    - **Pilih metrik**: Koherensi, Kefasihan
-    - **Koneksi**: *Koneksi Layanan AI Anda*
-    - **Nama/Model penyebaran**: *Model GPT-4 yang Anda sebarkan*
-    - **kueri**: Pilih **kueri** sebagai sumber data
-    - **respons**: Pilih **jawaban** sebagai sumber data
-      
-1. Pilih **Berikutnya** lalu tinjau data Anda dan **Kirimkan** evaluasi baru tersebut.
-1. Tunggu hingga evaluasi selesai, Anda mungkin perlu menyegarkan.
-1. Pilih eksekusi evaluasi yang baru saja Anda buat.
-1. Jelajahi **dasbor Metrik** di tab **Laporan** dan **Hasil Metrik terperinci** di tab **Data**.
-
-## Menghapus sumber daya Azure
+## Penghapusan
 
 Setelah selesai menjelajahi Azure AI Foundry, Anda harus menghapus sumber daya yang telah Anda buat untuk menghindari biaya Azure yang tidak perlu.
 
