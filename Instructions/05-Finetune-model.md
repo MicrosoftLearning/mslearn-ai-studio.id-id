@@ -14,7 +14,7 @@ Bayangkan Anda bekerja untuk agen perjalanan dan Anda mengembangkan aplikasi obr
 
 Latihan ini akan memakan waktu sekitar **60** menit\*.
 
-> \***Catatan**: Waktu ini adalah perkiraan berdasarkan pengalaman rata-rata. Penyempurnaan tergantung pada sumber daya infrastruktur cloud, yang dapat memakan waktu yang bervariasi untuk disediakan tergantung pada kapasitas pusat data dan permintaan bersamaan. Beberapa aktivitas dalam latihan ini mungkin membutuhkan waktu yang <u>lama</u> untuk diselesaikan, dan memerlukan kesabaran. Jika ada yang memakan waktu cukup lama, pertimbangkan untuk meninjau [Dokumentasi penyempurnaan Azure AI Foundry](https://learn.microsoft.com/azure/ai-studio/concepts/fine-tuning-overview) atau beristirahat.
+> \***Catatan**: Waktu ini adalah perkiraan berdasarkan pengalaman rata-rata. Penyempurnaan tergantung pada sumber daya infrastruktur cloud, yang dapat memakan waktu yang bervariasi untuk disediakan tergantung pada kapasitas pusat data dan permintaan bersamaan. Beberapa aktivitas dalam latihan ini mungkin membutuhkan waktu yang <u>lama</u> untuk diselesaikan, dan memerlukan kesabaran. Jika ada yang memakan waktu cukup lama, pertimbangkan untuk meninjau [Dokumentasi penyempurnaan Azure AI Foundry](https://learn.microsoft.com/azure/ai-studio/concepts/fine-tuning-overview) atau beristirahat. Beberapa teknologi yang digunakan dalam latihan ini dalam pratinjau atau dalam pengembangan aktif. Anda mungkin mengalami beberapa perilaku, peringatan, atau kesalahan yang tidak terduga.
 
 ## Membuat AI hub dan proyek di portal Azure AI Foundry.
 

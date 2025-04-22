@@ -10,6 +10,8 @@ Dalam latihan ini, Anda menggunakan Azure AI Foundry SDK untuk membuat aplikasi 
 
 Latihan ini memakan waktu sekitar **40** menit.
 
+> **Catatan**: Beberapa teknologi yang digunakan dalam latihan ini sedang dalam pratinjau atau dalam pengembangan aktif. Anda mungkin mengalami beberapa perilaku, peringatan, atau kesalahan yang tidak terduga.
+
 > **Catatan**: Latihan ini didasarkan pada SDK pra-rilis, yang mungkin dapat berubah. Jika perlu, kami telah menggunakan versi paket tertentu; yang mungkin tidak mencerminkan versi terbaru yang tersedia.
 
 ## Membuat proyek Azure OpenAI
@@ -26,7 +28,7 @@ Mari kita mulai dengan membuat proyek Azure AI Foundry.
     - **Nama hub**: *Nama yang valid untuk hub Anda*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
-    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4** di jendela pembantu Lokasi dan gunakan wilayah yang direkomendasikan\*
+    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4o** di jendela pembantu Lokasi dan gunakan wilayah yang direkomendasikan\*
     - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 

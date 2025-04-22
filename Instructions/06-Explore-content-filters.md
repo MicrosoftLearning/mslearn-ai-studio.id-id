@@ -6,11 +6,13 @@ lab:
 
 # Terapkan filter konten untuk mencegah keluaran konten berbahaya
 
-Azure AI Foundr dilengkapi filter konten default untuk membantu memastikan bahwa perintah dan penyelesaian yang berpotensi berbahaya diidentifikasi dan dihapus dari interaksi dengan layanan. Selain itu, Anda dapat mengajukan izin untuk menentukan filter konten kustom untuk kebutuhan spesifik Anda guna memastikan penyebaran model menerapkan prinsip-prinsip AI yang bertanggung jawab yang sesuai dengan skenario AI generatif Anda. Pemfilteran konten adalah salah satu elemen pendekatan yang efektif untuk AI yang bertanggung jawab ketika bekerja dengan model AI generatif.
+Azure AI Foundr dilengkapi filter konten default untuk membantu memastikan bahwa perintah dan penyelesaian yang berpotensi berbahaya diidentifikasi dan dihapus dari interaksi dengan layanan. Selain itu, Anda dapat menetapkan filter konten khusus sesuai kebutuhan spesifik Anda untuk memastikan penerapan model Anda menggunakan prinsip AI yang bertanggung jawab dengan tepat dalam skenario AI generatif Anda. Pemfilteran konten adalah salah satu elemen pendekatan yang efektif untuk AI yang bertanggung jawab ketika bekerja dengan model AI generatif.
 
 Dalam latihan ini, Anda akan menjelajahi pengaruh filter konten default dalam Azure AI Foundry.
 
 Latihan ini akan memakan waktu sekitar **25** menit.
+
+> **Catatan**: Sebagian teknologi yang digunakan dalam latihan ini masih dalam tahap pratinjau atau sedang dalam pengembangan aktif. Anda mungkin mengalami beberapa perilaku, peringatan, atau kesalahan tak terduga.
 
 ## Membuat proyek Azure OpenAI
 
@@ -23,7 +25,7 @@ Mari kita mulai dengan membuat proyek Azure AI Foundry.
 1. Di beranda, pilih **+ Buat proyek**.
 1. Di wizard **Buat proyek**, masukkan nama yang valid untuk proyek Anda dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
 1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
-    - **Nama hub**: *Nama yang valid untuk hub Anda*
+    - **Nama hub** : *Nama yang valid untuk hub Anda*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
     - **Wilayah**: Pilih salah satu wilayah berikut\*:

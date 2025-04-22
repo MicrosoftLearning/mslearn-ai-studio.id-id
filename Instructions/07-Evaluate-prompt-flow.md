@@ -10,6 +10,8 @@ Dalam latihan ini, Anda akan menggunakan evaluasi manual dan otomatis untuk meni
 
 Latihan ini akan memakan waktu sekitar **30** menit.
 
+> **Catatan**: Beberapa teknologi yang digunakan dalam latihan ini sedang dalam pratinjau atau dalam pengembangan aktif. Anda mungkin mengalami beberapa perilaku, peringatan, atau kesalahan yang tidak terduga.
+
 ## Membuat proyek Azure OpenAI
 
 Mari kita mulai dengan membuat proyek Azure AI Foundry.
@@ -32,7 +34,7 @@ Mari kita mulai dengan membuat proyek Azure AI Foundry.
     - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru*
     - **Menyambungkan Azure AI Search**: Lewati koneksi
 
-    > \* Pada saat penulisan, wilayah-wilayah ini mendukung evaluasi metrik keamanan AI.
+    > \* Pada saat penulisan, wilayah-wilayah ini mendukung evaluasi metrik keamanan AI. Ketersediaan model dibatasi oleh kuota regional. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
 
 1. Pilih **Berikutnya** dan tinjau konfigurasi Anda. Lalu pilih **Buat** dan tunggu hingga prosesnya selesai.
 1. Saat proyek Anda dibuat, tutup tips apa pun yang ditampilkan dan tinjau halaman proyek di portal Azure AI Foundry, yang akan terlihat mirip dengan gambar berikut:

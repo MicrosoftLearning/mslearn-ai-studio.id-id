@@ -10,7 +10,7 @@ Dalam latihan ini, Anda menggunakan model AI generatif *Phi-4-multimodal-instruc
 
 Latihan ini memakan waktu sekitar **30** menit.
 
-> **Catatan**: Latihan ini didasarkan pada SDK pra-rilis, yang mungkin dapat berubah. Jika perlu, kami telah menggunakan versi paket tertentu; yang mungkin tidak mencerminkan versi terbaru yang tersedia.
+> **Catatan**: Latihan ini didasarkan pada SDK pra-rilis, yang mungkin dapat berubah. Jika perlu, kami telah menggunakan versi paket tertentu; yang mungkin tidak mencerminkan versi terbaru yang tersedia. Anda mungkin mengalami beberapa perilaku, peringatan, atau kesalahan yang tidak terduga.
 
 ## Membuat proyek Azure OpenAI
 
