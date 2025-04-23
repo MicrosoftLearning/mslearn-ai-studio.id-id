@@ -23,7 +23,7 @@ Mari kita mulai dengan membuat proyek Azure AI Foundry.
 2. Di beranda, pilih **+ Buat proyek**.
 3. Di wizard **Buat proyek**, masukkan nama yang valid untuk proyek Anda dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
 4. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
-    - **Nama hub**: *Nama yang valid untuk hub Anda*
+    - **Nama hub** : *Nama yang valid untuk hub Anda*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
     - **Wilayah**: Pilih salah satu wilayah berikut\*:
@@ -164,7 +164,8 @@ Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klie
 
     **Python**
 
-    ```
+    ```python
+   # Add references
    from dotenv import load_dotenv
    from azure.identity import DefaultAzureCredential
    from azure.ai.projects import AIProjectClient
@@ -182,7 +183,8 @@ Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klie
 
     **C#**
 
-    ```
+    ```csharp
+   // Add references
    using Azure.Identity;
    using Azure.AI.Projects;
    using Azure.AI.Inference;
@@ -193,7 +195,8 @@ Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klie
 
     **Python**
 
-    ```
+    ```python
+   # Get configuration settings
    project_client = AIProjectClient.from_connection_string(
         conn_str=project_connection,
         credential=DefaultAzureCredential())
@@ -201,7 +204,8 @@ Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klie
 
     **C#**
 
-    ```
+    ```csharp
+   // Get configuration settings
    var projectClient = new AIProjectClient(project_connection,
                         new DefaultAzureCredential());
     ```
@@ -210,13 +214,15 @@ Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klie
 
     **Python**
 
-    ```
+    ```python
+   # Get a chat client
    chat_client = project_client.inference.get_chat_completions_client(model=model_deployment)
     ```
 
     **C#**
 
-    ```
+    ```csharp
+   // Get a chat client
    ChatCompletionsClient chat = projectClient.GetChatCompletionsClient();
     ```
 
@@ -228,6 +234,7 @@ Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klie
     **Python**
 
     ```python
+   # Get a response to text input
    response = chat_client.complete(
        messages=[
            SystemMessage(system_message),
@@ -238,7 +245,8 @@ Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klie
 
     **C#**
 
-    ```
+    ```csharp
+   // Get a response to text input
    var requestOptions = new ChatCompletionsOptions()
    {
    Model = model_deployment,
@@ -281,6 +289,7 @@ Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klie
     **Python**
 
     ```python
+   # Get a response to image input
    image_url = "https://github.com/microsoftlearning/mslearn-ai-studio/raw/refs/heads/main/labfiles/multimodal/orange.jpg"
    image_format = "jpeg"
    request = Request(image_url, headers={"User-Agent": "Mozilla/5.0"})
@@ -302,7 +311,8 @@ Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klie
     **C#**
 
     ```csharp
-  string imageUrl = "https://github.com/microsoftlearning/mslearn-ai-studio/raw/refs/heads/main/labfiles/multimodal/orange.jpg";
+  // Get a response to image input
+   string imageUrl = "https://github.com/microsoftlearning/mslearn-ai-studio/raw/refs/heads/main/labfiles/multimodal/orange.jpg";
    ChatCompletionsOptions requestOptions = new ChatCompletionsOptions()
    {
        Messages = {
@@ -346,6 +356,7 @@ Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klie
     **Python**
 
     ```python
+   # Get a response to audio input
    file_path="https://github.com/microsoftlearning/mslearn-ai-studio/raw/refs/heads/main/labfiles/multimodal/manzanas.mp3"
    response = chat_client.complete(
            messages=[
@@ -367,6 +378,7 @@ Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klie
     **C#**
 
     ```csharp
+   // Get a response to audio input
    string audioUrl="https://github.com/microsoftlearning/mslearn-ai-studio/raw/refs/heads/main/labfiles/multimodal/manzanas.mp3";
    var requestOptions = new ChatCompletionsOptions()
    {
@@ -382,7 +394,6 @@ Setelah menyebarkan model, Anda dapat menggunakan penyebaran dalam aplikasi klie
    var response = chat.Complete(requestOptions);
    Console.WriteLine(response.Value.Content);
     ```
-
 
 2. Gunakan perintah **CTRL+S** untuk menyimpan perubahan Anda ke file kode. Anda juga dapat menutup editor kode (**CTRL+Q**) jika mau.
 

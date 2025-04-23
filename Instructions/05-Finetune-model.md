@@ -14,7 +14,7 @@ Bayangkan Anda bekerja untuk agen perjalanan dan Anda mengembangkan aplikasi obr
 
 Latihan ini akan memakan waktu sekitar **60** menit\*.
 
-> \***Catatan**: Waktu ini adalah perkiraan berdasarkan pengalaman rata-rata. Penyempurnaan tergantung pada sumber daya infrastruktur cloud, yang dapat memakan waktu yang bervariasi untuk disediakan tergantung pada kapasitas pusat data dan permintaan bersamaan. Beberapa aktivitas dalam latihan ini mungkin membutuhkan waktu yang <u>lama</u> untuk diselesaikan, dan memerlukan kesabaran. Jika ada yang memakan waktu cukup lama, pertimbangkan untuk meninjau [Dokumentasi penyempurnaan Azure AI Foundry](https://learn.microsoft.com/azure/ai-studio/concepts/fine-tuning-overview) atau beristirahat. Beberapa teknologi yang digunakan dalam latihan ini dalam pratinjau atau dalam pengembangan aktif. Anda mungkin mengalami beberapa perilaku, peringatan, atau kesalahan yang tidak terduga.
+> \***Catatan**: Waktu ini adalah perkiraan berdasarkan pengalaman rata-rata. Penyempurnaan tergantung pada sumber daya infrastruktur cloud, yang dapat memakan waktu yang bervariasi untuk disediakan tergantung pada kapasitas pusat data dan permintaan bersamaan. Beberapa aktivitas dalam latihan ini mungkin membutuhkan waktu yang <u>lama</u> untuk diselesaikan, dan memerlukan kesabaran. Jika ada yang memakan waktu cukup lama, pertimbangkan untuk meninjau [Dokumentasi penyempurnaan Azure AI Foundry](https://learn.microsoft.com/azure/ai-studio/concepts/fine-tuning-overview) atau beristirahat. Sebagian teknologi yang digunakan dalam latihan ini dalam pratinjau atau dalam pengembangan aktif. Anda mungkin mengalami beberapa perilaku, peringatan, atau kesalahan tak terduga.
 
 ## Membuat AI hub dan proyek di portal Azure AI Foundry.
 
@@ -25,9 +25,9 @@ Mari kita mulai dengan membuat proyek Portal Azure AI Foundry dalam hub Azure AI
     ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
 1. Di beranda, pilih **+ Buat proyek**.
-1. Di wizard **Buat proyek**, masukkan nama yang valid untuk proyek Anda, dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
+1. Di wizard **Buat proyek**, masukkan nama proyek yang valid untuk proyek Anda, dan jika hub yang ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
 1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
-    - **Nama hub**: *Nama yang valid untuk hub Anda*
+    - **Nama hub** : *Nama yang valid untuk hub Anda*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
     - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4o-finetune** di jendela pembantu Lokasi dan gunakan wilayah yang direkomendasikan\*
@@ -53,6 +53,7 @@ Karena menyesuaikan model membutuhkan waktu untuk diselesaikan, Anda akan memula
 1. Pilih tombol untuk menambahkan model fine-tune, pilih model **gpt-4o**, lalu pilih **Berikutnya**.
 1. **Sempurnakan** model menggunakan konfigurasi berikut:
     - **Versi model**: *Pilih versi default*
+    - **Metode penyesuaian**: yang Diawasi
     - **Akhiran model**: `ft-travel`
     - **Sumber daya AI yang tersambung**: *Pilih koneksi yang telah dibuat saat Anda membuat hub. Harus dipilih secara default.*.
     - **Data pelatihan**: Mengunggah file
