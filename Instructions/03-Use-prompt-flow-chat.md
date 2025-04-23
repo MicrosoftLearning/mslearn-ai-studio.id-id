@@ -10,6 +10,8 @@ Dalam latihan ini, Anda akan menggunakan alur perintah portal Azure AI Foundry u
 
 Latihan ini akan memakan waktu sekitar **30** menit.
 
+> **Catatan**: Beberapa teknologi yang digunakan dalam latihan ini sedang dalam pratinjau atau dalam pengembangan aktif. Anda mungkin mengalami beberapa perilaku, peringatan, atau kesalahan yang tidak terduga.
+
 ## Membuat proyek Azure OpenAI
 
 Mari kita mulai dengan membuat proyek Azure AI Foundry.
