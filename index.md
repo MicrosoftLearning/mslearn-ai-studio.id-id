@@ -1,10 +1,8 @@
 ---
-title: Mengembangkan solusi AI generatif
+title: Mengembangkan solusi AI generatif di Azure
 permalink: index.html
 layout: home
 ---
-
-# Mengembangkan solusi AI generatif di Azure
 
 Latihan berikut dirancang untuk memberi Anda pengalaman pembelajaran praktis yang memungkinkan Anda menelusuri tugas-tugas umum yang dilakukan oleh pengembang saat membuat solusi AI generatif di Microsoft Azure.
 
