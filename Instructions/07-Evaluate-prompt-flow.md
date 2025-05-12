@@ -23,7 +23,7 @@ Mari kita mulai dengan membuat proyek Azure AI Foundry.
 1. Di beranda, pilih **+ Buat proyek**.
 1. Di wizard **Buat proyek**, masukkan nama yang valid untuk proyek Anda dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
 1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
-    - **Nama hub**: *Nama yang valid untuk hub Anda*
+    - **Nama hub** : *Nama yang valid untuk hub Anda*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
     - **Wilayah**: Pilih salah satu wilayah berikut\*:
@@ -66,31 +66,17 @@ Dalam latihan ini, Anda akan mengevaluasi performa model gpt-4o-mini. Anda juga 
 
 Anda dapat meninjau respons model secara manual berdasarkan data pengujian. Peninjauan secara manual memungkinkan Anda menguji input yang berbeda untuk mengevaluasi apakah model berfungsi seperti yang diharapkan.
 
-1. Di tab browser baru, unduh [travel_evaluation_data.csv](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.csv) dari `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.csv`dan simpan di folder lokal.
+1. Di tab browser baru, unduh [travel_evaluation_data.jsonl](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.jsonl) dari`https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.jsonl` dan simpan di folder lokal sebagai **travel_evaluation_data.jsonl** (pastikan untuk menyimpannya sebagai file .jsonl, bukan file .txt).
 1. Kembali ke tab portal Azure AI Foundry, di panel navigasi, di bagian **Nilai dan tingkatkan** , pilih **Evaluasi**.
 1. Di halaman **Evaluasi** , lihat tab **Evaluasi manual** dan pilih **+ New manual evaluation**.
+1. Di bagian **Konfigurasi**, dalam daftar **Model**, pilih penyebaran model **gpt-4o-mini** Anda.
 1. Ubah **Pesan Sistem** menjadi instruksi berikut untuk asisten perjalanan AI:
 
    ```
-   Objective: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
-
-   Capabilities:
-   - Provide up-to-date travel information, including destinations, accommodations, transportation, and local attractions.
-   - Offer personalized travel suggestions based on user preferences, budget, and travel dates.
-   - Share tips on packing, safety, and navigating travel disruptions.
-   - Help with itinerary planning, including optimal routes and must-see landmarks.
-   - Answer common travel questions and provide solutions to potential travel issues.
-    
-   Instructions:
-   1. Engage with the user in a friendly and professional manner, as a travel agent would.
-   2. Use available resources to provide accurate and relevant travel information.
-   3. Tailor responses to the user's specific travel needs and interests.
-   4. Ensure recommendations are practical and consider the user's safety and comfort.
-   5. Encourage the user to ask follow-up questions for further assistance.
+   Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
    ```
 
-1. Di bagian **Konfigurasi**, dalam daftar **Model**, pilih penyebaran model **gpt-4o-mini** Anda.
-1. Di bagian **Hasil evaluasi manual**, pilih **Import test data** dan unggah file **travel_evaluation_data.csv** yang Anda unduh sebelumnya; pemetaan bidang kumpulan data sebagai berikut:
+1. Di bagian **Hasil evaluasi manual**, pilih **Impor data tes** dan unggah file **travel_evaluation_data.jsonl** yang Anda unduh sebelumnya; buat pemetaan bidang himpunan data sebagai berikut:
     - **Input**: Pertanyaan
     - **Respon yang diharapkan**: ExpectedResponse
 1. Tinjau pertanyaan dan jawaban yang diharapkan dalam file pengujian - Anda akan menggunakannya untuk mengevaluasi respons yang dihasilkan model.
@@ -114,24 +100,10 @@ Evaluasi otomatis adalah pendekatan yang mencoba mengatasi kekurangan ini dengan
 1. Ubah **Pesan Sistem** ke instruksi yang sama untuk asisten perjalanan AI yang Anda gunakan sebelumnya:
 
    ```
-   Objective: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
-
-   Capabilities:
-   - Provide up-to-date travel information, including destinations, accommodations, transportation, and local attractions.
-   - Offer personalized travel suggestions based on user preferences, budget, and travel dates.
-   - Share tips on packing, safety, and navigating travel disruptions.
-   - Help with itinerary planning, including optimal routes and must-see landmarks.
-   - Answer common travel questions and provide solutions to potential travel issues.
-    
-   Instructions:
-   1. Engage with the user in a friendly and professional manner, as a travel agent would.
-   2. Use available resources to provide accurate and relevant travel information.
-   3. Tailor responses to the user's specific travel needs and interests.
-   4. Ensure recommendations are practical and consider the user's safety and comfort.
-   5. Encourage the user to ask follow-up questions for further assistance.
+   Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
    ```
 
-1. Di bagian **Konfigurasikan data pengujian**, perhatikan bahwa Anda dapat menggunakan model GPT untuk membuat data pengujian bagi Anda (yang kemudian dapat Anda edit dan tambahkan agar sesuai dengan harapan Anda), menggunakan himpunan data yang ada, atau mengunggah file. Dalam latihan ini, pilih **Use existing dataset** lalu pilih **travel_evaluation_data_csv_*xxxx...*** himpunan data (yang dibuat saat Anda mengunggah file .csv sebelumnya).
+1. Di bagian **Konfigurasikan data pengujian**, perhatikan bahwa Anda dapat menggunakan model GPT untuk membuat data pengujian bagi Anda (yang kemudian dapat Anda edit dan tambahkan agar sesuai dengan harapan Anda), menggunakan himpunan data yang ada, atau mengunggah file. Dalam latihan ini, pilih **Use existing dataset** lalu pilih kumpulan data **travel_evaluation_data_jsonl_*xxxx...*** (yang dibuat saat Anda mengunggah file .jsonl sebelumnya).
 1. Tinjau baris sampel dari himpunan data, lalu di bagian **Choose your data column**, pilih pemetaan kolom berikut:
     - **Kueri**: Pertanyaan
     - **Konteks**: *Biarkan ini kosong. Ini digunakan untuk mengevaluasi "groundedness" saat mengaitkan sumber data kontekstual dengan model Anda.*
@@ -140,7 +112,7 @@ Evaluasi otomatis adalah pendekatan yang mencoba mengatasi kekurangan ini dengan
     - Kualitas AI (bantuan AI)
     - Risiko dan keamanan (bantuan AI)
     - Kualitas AI (NLP)
-1. Dalam daftar **Choose a model deployment as judge**, pilih model**gpt-4o** Anda. Model ini akan digunakan untuk menilai respons dari model ***gpt-4o-mini** untuk kualitas terkait bahasa dan metrik perbandingan AI generatif standar.
+1. Dalam daftar **Choose a model deployment as judge**, pilih model**gpt-4o** Anda. Model ini akan digunakan untuk menilai respons dari model **gpt-4o-mini** untuk kualitas terkait bahasa dan metrik perbandingan AI generatif standar.
 1. Pilih **Create** untuk memulai proses evaluasi, dan tunggu hingga selesai. Proses ini memerlukan waktu beberapa menit.
 
     > **Tips**: Jika muncul kesalahan yang menunjukkan bahwa izin proyek sedang ditetapkan, tunggu sebentar lalu pilih **Create** lagi. Diperlukan beberapa waktu agar izin sumber daya untuk proyek yang baru dibuat disebarkan.
