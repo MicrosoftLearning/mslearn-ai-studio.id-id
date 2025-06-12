@@ -14,20 +14,22 @@ Latihan ini akan memakan waktu sekitar **30** menit.
 
 ## Membuat pusat penyimpanan AI dan proyek di Azure AI Foundry
 
-Fitur Azure AI Foundry yang akan kita gunakan dalam latihan ini memerlukan proyek yang didasarkan pada sumber daya pusat penyimpanan *pusat penyimpanan* Azure AI Foundry.
+Fitur Azure AI Foundry yang akan kita gunakan dalam latihan ini memerlukan proyek yang didasarkan pada sumber daya *hub* Azure AI Foundry.
 
 1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda. Tutup semua tips atau panel mulai cepat yang terbuka saat pertama kali Anda masuk, dan jika perlu, gunakan logo **Azure AI Foundry** di kiri atas untuk menavigasi ke beranda, yang tampilannya mirip dengan gambar berikut (tutup panel **Bantuan** jika terbuka):
 
     ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
-1. Di peramban, navigasikan ke`https://ai.azure.com/managementCenter/allResources` dan pilih **Buat**. Lalu pilih opsi untuk membuat sumber daya** pusat penyimpanan AI baru**.
-1. Di wizard **Buat proyek**, masukkan nama yang valid untuk proyek Anda, dan jika pusat penyimpanan yang ada disarankan, pilih opsi untuk membuat yang baru dan perluas **Opsi tingkat lanjut** untuk menentukan pengaturan berikut untuk proyek Anda:
+1. Di browser, navigasikan ke `https://ai.azure.com/managementCenter/allResources`dan pilih **Create**. Lalu pilih opsi untuk membuat **sumber daya hub AI** baru.
+1. Dalam wizard **Create a project**, masukkan nama yang valid untuk proyek Anda, dan jika disarankan hub yang sudah ada, pilih opsi untuk membuat yang baru dan perluas **Advanced options** dalam menentukan pengaturan berikut untuk proyek Anda:
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
-    - **Nama pusat penyimpanan**:Nama yang valid untuk pusat penyimpanan Anda
-    - **Lokasi**: US Timur 2 atau Swedia Tengah\*
+    - **Nama hub**: Nama yang valid untuk hub Anda
+    - **Lokasi**: AS Timur 2 atau Swedia Tengah (*Jika kemudian terjadi batas kuota telampau saat latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda*)
 
-    > \* Sumber daya Azure OpenAI dibatasi oleh kuota model regional. Jika batas kuota terlampaui di kemudian hari dalam latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
+    > **Catatan**: Jika Anda bekerja dengan berlangganan Azure di mana kebijakan digunakan untuk membatasi nama sumber daya yang diizinkan, Anda mungkin perlu menggunakan tautan di bagian bawah kotak dialog **Buat proyek baru** untuk membuat hub menggunakan portal Azure.
+
+    > **Tips**: Jika tombol **Buat** masih dinonaktifkan, pastikan untuk mengganti nama hub Anda menjadi nilai alfanumerik unik.
 
 1. Tunggu proyek Anda dibuat.
 

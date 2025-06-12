@@ -32,7 +32,7 @@ Mari kita mulai dengan menjelajahi portal Azure AI Foundry.
 1. Dalam hasil pencarian, pilih **model gpt-4o** untuk melihat detailnya, lalu di bagian atas halaman untuk model, pilih **Gunakan model** ini.
 1. Saat diminta untuk membuat proyek, masukkan nama yang valid untuk proyek Anda dan perluas **opsi** Tingkat Lanjut.
 1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
-    - **Sumber daya** Azure AI Foundry: *Nama yang valid untuk sumber daya Azure AI Foundry Anda*
+    - **Sumber daya Azure AI Foundry**: *Nama yang valid untuk sumber daya Azure AI Foundry Anda*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
     - **Wilayah**: *Pilih **Lokasi yang didukung Layanan AI***\*
@@ -72,7 +72,7 @@ Mari kita mulai dengan menjelajahi portal Azure AI Foundry.
 
 Proyek Azure AI Foundry Anda dan sumber daya Azure AI Foundry yang dimilikinya menyertakan koneksi ke sumber daya yang dapat Anda gunakan dalam aplikasi AI.
 
-1. Di halaman Pusat manajemen, di panel navigasi, di bawah proyek Anda, pilih **Buka proyek**.
+1. Di halaman Pusat Manajeman, pada panel navigasi, di bawah proyek Anda, pilih **Buka sumber daya**.
 1. Di halaman **Gambaran Umum** proyek, lihat **bagian Titik Akhir dan kunci**; yang berisi titik akhir dan kunci otorisasi yang dapat Anda gunakan dalam kode aplikasi Anda untuk mengakses:
     - Proyek Azure AI Foundry dan model apa pun yang disebarkan di dalamnya.
     - Azure OpenAI dalam model Azure AI Foundry.
