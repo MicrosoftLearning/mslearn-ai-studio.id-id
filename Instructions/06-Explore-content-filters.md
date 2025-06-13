@@ -14,19 +14,19 @@ Latihan ini akan memakan waktu sekitar **25** menit.
 
 > **Catatan**: Beberapa teknologi yang digunakan dalam latihan ini sedang dalam pratinjau atau dalam pengembangan aktif. Anda mungkin mengalami beberapa perilaku, peringatan, atau kesalahan yang tidak terduga.
 
-## Menerapkan model dalam proyek Azure AI Foundry
+## Menyebarkan model dalam proyek Azure AI Foundry
 
-Mari kita mulai dengan membuat model dalam proyek Azure AI Foundry.
+Mari mulai dengan menyebarkan model dalam proyek Azure AI Foundry.
 
 1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda. Tutup semua tips atau panel mulai cepat yang terbuka saat pertama kali Anda masuk, dan jika perlu, gunakan logo **Azure AI Foundry** di kiri atas untuk menavigasi ke beranda, yang tampilannya mirip dengan gambar berikut (tutup panel **Bantuan** jika terbuka):
 
     ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
-1. Di beranda, di bagian **Jelajahi model dan kemampuan** , cari `Phi-4`model; yang akan kita gunakan dalam proyek kita.
-1. Dalam hasil pencarian, pilih **model Phi-4** untuk melihat detailnya, lalu di bagian atas halaman untuk model, pilih **Gunakan model ini**.
-1. Saat diminta untuk membuat proyek, masukkan nama yang valid untuk proyek Anda dan perluas **opsi** Tingkat Lanjut.
-1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
-    - **Sumber daya** Azure AI Foundry: *Nama yang valid untuk sumber daya Azure AI Foundry Anda*
+1. Di beranda, di bagian **Jelajahi model dan kapabilitas**, cari model `Phi-4`; yang akan digunakan dalam proyek kita.
+1. Dalam hasil pencarian, pilih model **Phi-4** untuk melihat detailnya, lalu di bagian atas halaman model, pilih **Use this model**.
+1. Saat diminta untuk membuat proyek, masukkan nama yang valid untuk proyek Anda dan perluas **Opsi tingkat lanjut**.
+1. Pilih **Sesuaikan** dan tentukan pengaturan berikut untuk proyek Anda:
+    - **Sumber daya Azure AI Foundry**: *Nama yang valid untuk sumber daya Azure AI Foundry Anda*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
     - **Wilayah**: Pilih salah satu wilayah berikut\*:
@@ -40,15 +40,16 @@ Mari kita mulai dengan membuat model dalam proyek Azure AI Foundry.
 
     > \* Pada saat penulisan, model Microsoft *Phi-4* yang akan kita gunakan dalam latihan ini tersedia di wilayah ini. Anda dapat memeriksa ketersediaan regional terbaru untuk model tertentu dalam [dokumentasi Azure AI Foundry](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-serverless-availability#region-availability). Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
 
-1. Pilih **Buat** dan tunggu proyek Anda, termasuk penggunaan model Phi-4 yang Anda pilih, untuk membuatnya.
-1. Saat proyek Anda dibuat,ruang obrolan akan dibuka secara otomatis.
-1. Di panel **Penyiapan**perhatikan nama penggunaan model Anda; yang seharusnya **Phi-4**.
+1. Pilih **Create**, lalu tunggu proyek Anda dibuat.
+1. Ketika diminta dengan informasi Phi-4, setujui ketentuan penggunaan dan sebarkan model.
+1. Ketika model Anda disebarkan, pilih tombol biru di bagian atas info penyebaran untuk membuka playground.
+1. Di panel **Setup**, perhatikan nama penyebaran model Anda; yang seharusnya **Phi-4**.
 
-## Mengobrol dengan menggunakan filter konten
+## Mengobrol menggunakan filter konten
 
-Model Phi-4 yang Anda gunakan memiliki filter konten default yang diterapkan, dan memiliki sekumpulan filter seimbang yang melarang konten paling berbahaya sekaligus memungkinkan bahasa input dan output dianggap aman.
+Model Phi-4 yang Anda sebarkan memiliki filter konten yang diterapkan secara default, yang memiliki sekumpulan filter seimbang yang dapat melarang konten yang paling berbahaya sekaligus memperbolehkan bahasa input dan output yang dianggap cukup aman.
 
-1. Di ruang obrolan, pastikan model Phi-4 Anda pilih.
+1. Di playground obrolan, pastikan model Phi-4 Anda dipilih.
 1. Kirim perintah berikut dan lihat responsnya:
 
     ```
@@ -77,17 +78,17 @@ Model Phi-4 yang Anda gunakan memiliki filter konten default yang diterapkan, da
 
 Sekarang mari kita lihat apa yang terjadi ketika tidak ada filter konten yang diterapkan.
 
-1. Di panel navigasi, di bagian **Aset saya**, pilih **Model dan titik akhir**
-1. Pilih **model Phi-4** yang Anda sebarkan sebelumnya untuk melihat detailnya.
-1. Pada toolbar, pilih **Edit**. Lalu di **daftar Filter** Konten, pilih **Tidak Ada** dan kirimkan perubahan Anda.
-1. Ketika perubahan telah dilakukan, pilih **Buka ruang obrolan** di halaman untuk model Phi-4.
-1. Pada ruang Obrolan, di panel **Penyiapan**pastikan memilih model penggunaan Phi-4. Kemudian, kirim perintah berikut dan lihat responsnya:
+1. Di panel navigasi di sebelah kiri, di bagian **My assets**, pilih **Models and endpoints**.
+1. Pilih model **Phi-4** yang Anda sebarkan sebelumnya untuk melihat detailnya.
+1. Pada toolbar, pilih **Edit**. Kemudian pada daftar **Content Filter**, pilih **None** dan kirimkan perubahan Anda.
+1. Setelah perubahan dibuat, di halaman model Phi-4 Anda, pilih **Open in playground**.
+1. Pada playground Obrolan, di panel **Setup**, pastikan penyebaran model Phi-4 Anda dipilih. Kemudian, kirim perintah berikut dan lihat responsnya:
 
     ```
    What should I do if I cut myself?
     ```
 
-    Model tersebut dapat mengembalikan panduan yang berguna tentang apa yang harus dilakukan jika terjadi cedera akibat kecelakaan.
+    Model tersebut seharusnya tetap memberikan panduan yang berguna tentang apa yang harus dilakukan jika terjadi cedera akibat kecelakaan.
 
 1. Sekarang coba perintah ini:
 
@@ -105,17 +106,17 @@ Sekarang mari kita lihat apa yang terjadi ketika tidak ada filter konten yang di
 
     Sekali lagi, respons dapat dimoderasi oleh model itu sendiri.
 
-## Membuat dan menguji filter konten khusus
+## Membuat dan menerapkan filter konten khusus
 
 Saat filter konten default tidak memenuhi kebutuhan Anda, Anda dapat membuat filter konten khusus untuk mengambil kontrol yang lebih besar dalam mencegah munculnya konten yang berpotensi membahayakan atau menyinggung.
 
-1. Di panel navigasi, di bagian **Lindungi dan pengaturan** , pilih **Pagar pembatas + kontrol**.
+1. Di panel navigasi, di bagian **Protect and govern**, pilih **Guardrails + controls**.
 1. Pilih tab **Content filters** , lalu pilih **+ Create content filter**.
 
     Anda membuat dan menerapkan filter konten dengan memberikan detail dalam serangkaian halaman.
 
-1. Pada halaman **Informasi** dasar, berikan nama yang sesuai untuk filter konten Anda
-1. Pada halaman** Filter input** tinjau pengaturan yang diterapkan ke perintah input.
+1. Pada halaman **Basic information**, berikan nama yang sesuai untuk filter konten Anda
+1. Pada tab **Input filter**, tinjau pengaturan yang diterapkan pada perintah input.
 
     Filter konten didasarkan pada pembatasan untuk empat kategori konten yang berpotensi berbahaya:
 
@@ -124,17 +125,17 @@ Saat filter konten default tidak memenuhi kebutuhan Anda, Anda dapat membuat fil
     - **Seksual**: Bahasa yang eksplisit secara seksual atau kasar.
     - **Menyakiti diri sendiri**: Bahasa yang menggambarkan atau mendorong tindakan menyakiti diri sendiri.
 
-    Filter diterapkan untuk setiap kategori ini pada perintah dan penyelesaian berdasarkan ambang pemblokiran tingkat keparahan**Blokir rendah**, **Blokir sedang**, **Blokir tinggi** yang digunakan untuk menentukan jenis bahasa apa yang dicegat dan dicegah oleh filter.
+    Filter diterapkan untuk setiap kategori ini dalam perintah dan penyelesaian, berdasarkan ambang batas pemblokiran dengan tingkat keparahan **Blokir sedikit**dan **Blokir sebagian**, **Blokir semua** yang digunakan untuk menentukan jenis bahasa apa yang diterima dan dicegah oleh filter.
 
     Selain itu, perlindungan*prompt shield* disediakan untuk mengurangi upaya yang disengaja untuk menyalahgunakan aplikasi AI generatif Anda.
 
-1. Ubah ambang batas untuk setiap kategori filter input menjadi **BlokIr Rendah, Sedang, dan Tinggi**.
+1. Mengubah ambang batas untuk setiap kategori filter input menjadi **Blokir semua**.
 
-1. Pada halaman **Filter output**, tinjau pengaturan yang dapat diterapkan pada respons output, lalu ubah ambang batas untuk setiap kategori menjadi **Blokir Rendah, Sedang dan Tinggi**.
+1. Pada halaman **Filter output**, tinjau pengaturan yang dapat diterapkan pada respons output, lalu ubah ambang batas untuk setiap kategori menjadi **Blokir semua**.
 
-1. **Penggunaan**pilih model penggunaan**Phi-4 **untuk menerapkan filter konten baru ke dalamnya, mengonfirmasi bahwa Anda ingin mengganti filter konten yang ada ketika diperintahkan.
+1. Pada halaman **Deployment**, pilih penyebaran model **Phi-4** Anda untuk menerapkan filter konten baru ke dalamnya dan mengonfirmasi bahwa Anda ingin mengganti filter konten yang ada saat diminta.
 
-1. Pada halaman **Tinjauan**, pilih **Buat filter**, lalu tunggu filter konten yang akan dibuat.
+1. Pada halaman **Review**, pilih **Create filter**, lalu tunggu filter konten yang akan dibuat.
 
 1. Kembali ke halaman **Models + titik akhir** dan verifikasi bahwa penyebaran Anda sekarang merujuk pada filter konten khusus yang telah Anda buat.
 
@@ -142,7 +143,7 @@ Saat filter konten default tidak memenuhi kebutuhan Anda, Anda dapat membuat fil
 
 Mari kita berdiskusi terakhir kali dengan model untuk melihat efek filter konten khusus.
 
-1. Pada panel navigasi pilih**Playground**dan buka**Playground Obrolan**.
+1. Pada panel navigasi, pilih **Playgrounds** dan buka **Chat playground**.
 1. Pastikan sesi baru telah dimulai dengan model Phi-4 Anda.
 1. Kirim perintah berikut dan lihat responsnya:
 

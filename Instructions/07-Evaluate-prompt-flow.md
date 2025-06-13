@@ -21,11 +21,10 @@ Fitur Azure AI Foundry yang akan kita gunakan dalam latihan ini memerlukan proye
     ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
 1. Di browser, navigasikan ke `https://ai.azure.com/managementCenter/allResources`dan pilih **Create**. Lalu pilih opsi untuk membuat **sumber daya hub AI** baru.
-1. Dalam wizard **Create a project**, masukkan nama yang valid untuk proyek Anda, dan jika disarankan hub yang sudah ada, pilih opsi untuk membuat yang baru dan perluas **Advanced options** dalam menentukan pengaturan berikut untuk proyek Anda:
+1. Di wizard **Buat proyek**, masukkan nama yang valid untuk proyek Anda, dan gunakan tautan **Ganti nama hub** untuk menentukan nama yang valid untuk hub baru Anda. Perluas **opsi Tingkat Lanjut** untuk tentukan pengaturan proyek Anda sebagai berikut:
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
-    - **Nama hub**: Nama yang valid untuk hub Anda
-    - **Lokasi**Pilih salah satu dari lokasi berikut ini (*Jika kemudian terjadi batas kuota terlampaui saat latihan Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.*):
+    - **Lokasi**: Pilih salah satu dari lokasi berikut ini (*Jika kemudian terjadi batas kuota terlampaui saat latihan Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.*):
         - AS Timur 2
         - Prancis Tengah
         - UK Selatan
