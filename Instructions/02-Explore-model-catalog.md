@@ -69,8 +69,8 @@ Untuk menggunakan model, Anda perlu membuat proyek* Azure AI Foundry*.
 
 1. Di bagian atas halaman gambaran **umum model gpt-4o** , pilih **Gunakan model** ini.
 1. Saat diminta untuk membuat proyek, masukkan nama yang valid untuk proyek Anda dan perluas **opsi** Tingkat Lanjut.
-1. Di bagian **Opsi** Tingkat lanjut, tentukan pengaturan berikut untuk pusat penyimpanan Anda:
-    - **Sumber daya** Azure AI Foundry: *Nama yang valid untuk sumber daya Azure AI Foundry Anda*
+1. Di bagian **Opsi tingkat lanjut** tentukan pengaturan berikut untuk proyek Anda:
+    - **Sumber daya Azure AI Foundry**: *Nama yang valid untuk sumber daya Azure AI Foundry Anda*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
     - **Wilayah**: *Pilih **Lokasi yang didukung Layanan AI***\*

@@ -16,9 +16,9 @@ Latihan ini akan memakan waktu sekitar **60** menit\*.
 
 > \***Catatan**: Waktu ini adalah perkiraan berdasarkan pengalaman rata-rata. Penyempurnaan tergantung pada sumber daya infrastruktur cloud, yang dapat memakan waktu yang bervariasi untuk disediakan tergantung pada kapasitas pusat data dan permintaan bersamaan. Beberapa aktivitas dalam latihan ini mungkin membutuhkan waktu yang <u>lama</u> untuk diselesaikan, dan memerlukan kesabaran. Jika ada yang memakan waktu cukup lama, pertimbangkan untuk meninjau [Dokumentasi penyempurnaan Azure AI Foundry](https://learn.microsoft.com/azure/ai-studio/concepts/fine-tuning-overview) atau beristirahat. Ada kemungkinan sebagian proses kehabisan waktu atau tampak berjalan tanpa batas waktu. Sebagian teknologi yang digunakan dalam latihan ini dalam pratinjau atau dalam pengembangan aktif. Anda mungkin mengalami beberapa perilaku, peringatan, atau kesalahan tak terduga.
 
-## Menerapkan model dalam proyek Azure AI Foundry
+## Menyebarkan model dalam proyek Azure AI Foundry
 
-Mari kita mulai dengan membuat model dalam proyek Azure AI Foundry.
+Mari mulai dengan menyebarkan model dalam proyek Azure AI Foundry.
 
 1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda. Tutup semua tips atau panel mulai cepat yang terbuka saat pertama kali Anda masuk, dan jika perlu, gunakan logo **Azure AI Foundry** di kiri atas untuk menavigasi ke beranda, yang tampilannya mirip dengan gambar berikut (tutup panel **Bantuan** jika terbuka):
 
@@ -27,8 +27,8 @@ Mari kita mulai dengan membuat model dalam proyek Azure AI Foundry.
 1. Di beranda, pada bagian **Jelajahi model dan kemampuan** , cari`gpt-4o` model; yang akan kita gunakan dalam proyek kita.
 1. Dalam hasil pencarian, pilih **model gpt-4o** untuk melihat detailnya, lalu di bagian atas halaman untuk model, pilih **Gunakan model** ini.
 1. Saat diminta untuk membuat proyek, masukkan nama yang valid untuk proyek Anda dan perluas **opsi** Tingkat Lanjut.
-1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
-    - **Sumber daya** Azure AI Foundry: *Nama yang valid untuk sumber daya Azure AI Foundry Anda*
+1. Pilih **Sesuaikan** dan tentukan pengaturan berikut untuk proyek Anda:
+    - **Sumber daya Azure AI Foundry**: *Nama yang valid untuk sumber daya Azure AI Foundry Anda*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
     - **Wilayah**: *Pilih salah satu wilayah berikut:*\*

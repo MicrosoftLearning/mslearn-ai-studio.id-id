@@ -31,7 +31,7 @@ Mari kita mulai dengan menjelajahi portal Azure AI Foundry.
 1. Di beranda, pada bagian **Jelajahi model dan kemampuan** , cari`gpt-4o` model; yang akan kita gunakan dalam proyek kita.
 1. Dalam hasil pencarian, pilih **model gpt-4o** untuk melihat detailnya, lalu di bagian atas halaman untuk model, pilih **Gunakan model** ini.
 1. Saat diminta untuk membuat proyek, masukkan nama yang valid untuk proyek Anda dan perluas **opsi** Tingkat Lanjut.
-1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
+1. Pilih **Sesuaikan** dan tentukan pengaturan berikut untuk proyek Anda:
     - **Sumber daya Azure AI Foundry**: *Nama yang valid untuk sumber daya Azure AI Foundry Anda*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
