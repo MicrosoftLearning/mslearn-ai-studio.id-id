@@ -46,8 +46,6 @@ Mari kita mulai dengan menjelajahi portal Azure AI Foundry.
 
 1. Di panel navigasi di sebelah kiri, pilih **Gambaran Umum** untuk melihat halaman utama untuk proyek Anda; yang terlihat seperti ini:
 
-    > **Catatan**: Jika *kesalahan izin tidak mencukupi* tampil, gunakan tombol **Perbaiki saya** untuk mengatasinya.
-
     ![Tangkapan layar halaman gambaran umum proyek Azure AI Foundry .](./media/ai-foundry-project.png)
 
 1. Di bagian bawah panel navigasi di sebelah kiri, pilih **Pusat Manajemen**. Pusat manajemen adalah tempat Anda dapat mengonfigurasi pengaturan di tingkat *sumber daya* dan *proyek* ; yang keduanya diperlihatkan di panel navigasi.

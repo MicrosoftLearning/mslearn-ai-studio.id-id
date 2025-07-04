@@ -43,8 +43,6 @@ Mari mulai dengan menyebarkan model dalam proyek Azure AI Foundry.
 1. Di panel **Penyiapan** , perhatikan nama penyebaran model Anda; yang seharusnya **gpt-4o**. Anda dapat mengonfirmasi ini dengan melihat penyebaran di **halaman Model dan titik** akhir (cukup buka halaman tersebut di panel navigasi di sebelah kiri).
 1. Di panel navigasi di sebelah kiri, pilih **Gambaran Umum** untuk melihat halaman utama untuk proyek Anda; yang terlihat seperti ini:
 
-    > **Catatan**: Jika *kesalahan izin** Tidak Cukup* tampil, gunakan tombol **Perbaiki saya** untuk mengatasinya.
-
     ![Tangkapan layar halaman gambaran umum proyek Azure AI Foundry .](./media/ai-foundry-project.png)
 
 ## Menyempurnakan model.
