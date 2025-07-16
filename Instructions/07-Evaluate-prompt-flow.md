@@ -12,34 +12,29 @@ Latihan ini akan memakan waktu sekitar **30** menit.
 
 > **Catatan**: Beberapa teknologi yang digunakan dalam latihan ini sedang dalam pratinjau atau dalam pengembangan aktif. Anda mungkin mengalami beberapa perilaku, peringatan, atau kesalahan yang tidak terduga.
 
-## Membuat proyek Azure OpenAI
+## Membuat pusat penyimpanan AI dan proyek di Azure AI Foundry
 
-Mari kita mulai dengan membuat proyek Azure AI Foundry.
+Fitur Azure AI Foundry yang akan kita gunakan dalam latihan ini memerlukan proyek yang didasarkan pada sumber daya *hub* Azure AI Foundry.
 
-1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda. Tutup semua tips atau panel mulai cepat yang terbuka saat pertama kali Anda masuk, dan jika perlu, gunakan logo **Azure AI Foundry** di kiri atas untuk menavigasi ke laman beranda, yang tampilannya mirip dengan gambar berikut (tutup panel **Bantuan** jika terbuka):
+1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda. Tutup semua tips atau panel mulai cepat yang terbuka saat pertama kali Anda masuk, dan jika perlu, gunakan logo **Azure AI Foundry** di kiri atas untuk menavigasi ke beranda, yang tampilannya mirip dengan gambar berikut (tutup panel **Bantuan** jika terbuka):
 
     ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
-1. Di beranda, pilih **+ Buat proyek**.
-1. Di wizard **Buat proyek**, masukkan nama yang valid untuk proyek Anda dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
-1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
-    - **Nama hub** : *Nama yang valid untuk hub Anda*
+1. Di browser, navigasikan ke `https://ai.azure.com/managementCenter/allResources`dan pilih **Create**. Lalu pilih opsi untuk membuat **sumber daya hub AI** baru.
+1. Di wizard **Buat proyek** masukkan nama yang valid untuk proyek Anda dan pilih opsi untuk membut hub baru. Kemudian gunakan tautan **Ganti nama hub** untuk menentukan nama yang valid untuk hub baru Anda, perluas **opsi Tingkat lanjut**, dan tentukan pengaturan berikut untuk proyek Anda:
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
-    - **Wilayah**: Pilih salah satu wilayah berikut\*:
+    - **Lokasi**: Pilih salah satu dari lokasi berikut ini (*Jika kemudian terjadi batas kuota terlampaui saat latihan Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.*):
         - AS Timur 2
         - Prancis Tengah
         - UK Selatan
         - Swedia Tengah
-    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru*
-    - **Menyambungkan Azure AI Search**: Lewati koneksi
 
-    > \* Pada saat penulisan, wilayah-wilayah ini mendukung evaluasi metrik keamanan AI. Ketersediaan model dibatasi oleh kuota regional. Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
+    > **Catatan**: Jika Anda bekerja dengan berlangganan Azure di mana kebijakan digunakan untuk membatasi nama sumber daya yang diizinkan, Anda mungkin perlu menggunakan tautan di bagian bawah kotak dialog **Buat proyek baru** untuk membuat hub menggunakan portal Azure.
 
-1. Pilih **Berikutnya** dan tinjau konfigurasi Anda. Lalu pilih **Buat** dan tunggu hingga prosesnya selesai.
-1. Saat proyek Anda dibuat, tutup tips apa pun yang ditampilkan dan tinjau halaman proyek di portal Azure AI Foundry, yang akan terlihat mirip dengan gambar berikut:
+    > **Tips**: Jika tombol **Buat** masih dinonaktifkan, pastikan untuk mengganti nama hub Anda menjadi nilai alfanumerik unik.
 
-    ![Tangkapan layar detail proyek Azure AI di portal Azure AI Foundry.](./media/ai-foundry-project.png)
+1. Tunggu proyek Anda dibuat.
 
 ## Terapkan model
 
@@ -67,7 +62,8 @@ Dalam latihan ini, Anda akan mengevaluasi performa model gpt-4o-mini. Anda juga 
 Anda dapat meninjau respons model secara manual berdasarkan data pengujian. Peninjauan secara manual memungkinkan Anda menguji input yang berbeda untuk mengevaluasi apakah model berfungsi seperti yang diharapkan.
 
 1. Di tab browser baru, unduh [travel_evaluation_data.jsonl](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.jsonl) dari`https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.jsonl` dan simpan di folder lokal sebagai **travel_evaluation_data.jsonl** (pastikan untuk menyimpannya sebagai file .jsonl, bukan file .txt).
-1. Kembali ke tab portal Azure AI Foundry, di panel navigasi, di bagian **Nilai dan tingkatkan** , pilih **Evaluasi**.
+1. Kembali ke halaman portal Azure AI Foundry, di panel navigasi, di bagian **Lindungi dan atur** , pilih **Evaluasi**.
+1. Jika panel **Buat evaluasi** baru terbuka secara otomatis, pilih **Batal** untuk menutupnya.
 1. Di halaman **Evaluasi** , lihat tab **Evaluasi manual** dan pilih **+ New manual evaluation**.
 1. Di bagian **Konfigurasi**, dalam daftar **Model**, pilih penyebaran model **gpt-4o-mini** Anda.
 1. Ubah **Pesan Sistem** menjadi instruksi berikut untuk asisten perjalanan AI:
@@ -76,7 +72,7 @@ Anda dapat meninjau respons model secara manual berdasarkan data pengujian. Peni
    Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
    ```
 
-1. Di bagian **Hasil evaluasi manual**, pilih **Impor data tes** dan unggah file **travel_evaluation_data.jsonl** yang Anda unduh sebelumnya; buat pemetaan bidang himpunan data sebagai berikut:
+1. Di bagian **Hasil evaluasi manual**, pilih **Impor data tes** dan unggah file **travel_evaluation_data.jsonl** yang Anda unduh sebelumnya; gulir ke bawah untuk pemetaan bidang himpunan data sebagai berikut:
     - **Input**: Pertanyaan
     - **Respon yang diharapkan**: ExpectedResponse
 1. Tinjau pertanyaan dan jawaban yang diharapkan dalam file pengujian - Anda akan menggunakannya untuk mengevaluasi respons yang dihasilkan model.
@@ -95,39 +91,48 @@ Evaluasi otomatis adalah pendekatan yang mencoba mengatasi kekurangan ini dengan
 
 1. Gunakan panah belakang (**&larr;**) di **samping judul halaman Evaluasi manual** untuk kembali ke halaman **Evaluasi**.
 1. Lihat tab **Evaluasi otomatis**.
-1. Pilih **Create a new evaluation**, dan saat diminta, pilih opsi untuk mengevaluasi **Model dan perintah**
-1. Di halaman **Buat evaluasi baru**, di bagian **Informasi dasar**, tinjau nama evaluasi default yang dibuat secara otomatis (Anda dapat mengubahnya jika mau) dan memilih model penyebaran **gpt-40-mini** Anda.
-1. Ubah **Pesan Sistem** ke instruksi yang sama untuk asisten perjalanan AI yang Anda gunakan sebelumnya:
+1. Pilih **Buat evaluasi baru**dan ketika diperintahkan pilih opsi untuk mengevaluasi**Evaluasi model**dan pilihl**Berikutnya**.
+1. Pada halaman **Pilih sumber** data, pilih **Gunakan himpunana data**Anda dan pilih **travel_evaluation_data_jsonl_*xxxx...*** himpunan data berdasarkan file yang Anda unggah sebelumnya, dan pilih **Berikutnya**.
+1. Pada halaman **Uji model** Anda, pilih **model gpt-4o-mini** dan ubah **pesan** Sistem ke instruksi yang sama untuk asisten perjalanan AI yang Anda gunakan sebelumnya:
 
    ```
    Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
    ```
 
-1. Di bagian **Konfigurasikan data pengujian**, perhatikan bahwa Anda dapat menggunakan model GPT untuk membuat data pengujian bagi Anda (yang kemudian dapat Anda edit dan tambahkan agar sesuai dengan harapan Anda), menggunakan himpunan data yang ada, atau mengunggah file. Dalam latihan ini, pilih **Use existing dataset** lalu pilih kumpulan data **travel_evaluation_data_jsonl_*xxxx...*** (yang dibuat saat Anda mengunggah file .jsonl sebelumnya).
-1. Tinjau baris sampel dari himpunan data, lalu di bagian **Choose your data column**, pilih pemetaan kolom berikut:
-    - **Kueri**: Pertanyaan
-    - **Konteks**: *Biarkan ini kosong. Ini digunakan untuk mengevaluasi "groundedness" saat mengaitkan sumber data kontekstual dengan model Anda.*
-    - **Kebenaran dasar**: ExpectedAnswer
-1. Di bagian **Pilih apa yang ingin Anda evaluasi** , pilih <u>semua</u> dari kategori evaluasi berikut:
-    - Kualitas AI (bantuan AI)
-    - Risiko dan keamanan (bantuan AI)
-    - Kualitas AI (NLP)
-1. Dalam daftar **Choose a model deployment as judge**, pilih model**gpt-4o** Anda. Model ini akan digunakan untuk menilai respons dari model **gpt-4o-mini** untuk kualitas terkait bahasa dan metrik perbandingan AI generatif standar.
-1. Pilih **Create** untuk memulai proses evaluasi, dan tunggu hingga selesai. Proses ini memerlukan waktu beberapa menit.
+1. Pilih **bidang pertanyaan** pilih **\{\{item.pertanyaani\}\}**.
+1. Pilih **Berikutnya** untuk pindah ke halaman berikutnya.
+1. Pada halaman **Konfigurasi evaluator** , gunakan **tombol +Tambahkan** untuk menambahkan evaluator berikut, mengonfigurasi masing-masing sebagai berikut:
+    - **Skor model**:
+        - **Nama kriteria**: Kesamaan_semantik
+        - **Nilai dengan**: *Pilih model gpt-4o** Anda ***
+        - **Pengaturan pengguna** (di bagian bawah):
 
-    > **Tips**: Jika muncul kesalahan yang menunjukkan bahwa izin proyek sedang ditetapkan, tunggu sebentar lalu pilih **Create** lagi. Diperlukan beberapa waktu agar izin sumber daya untuk proyek yang baru dibuat disebarkan.
 
-1. Setelah evaluasi selesai, gulir ke bawah jika perlu untuk melihat area **Dasbor metrik** kemudian lihat metrik **Kualitas AI (Bantuan AI)**:
+            Hasil: \{\{sample.output_text\}\}<br>
+            Kebenaran Dasar: \{\{item. ExpectedResponse\}\}<br>
+            <br>
+        
+    - **Evaluator skala likert**:
+        - **Nama kriteria: Relevansi**: 
+        - **Nilai dengan**: *Pilih model gpt-4o** Anda ***
+        - **Pertanyaan**: \{\{item.question\}\}
 
-    ![Tangkapan layar metrik kualitas AI di portal Azure AI Foundry.](./media/ai-quality-metrics.png)
+    - **Kesamaan teks**:
+        - **Nama kriteria**: F1_Score
+        - **Kebenaran dasar**: \{\{item. ExpectedResponse\}\}
 
-    Gunakan ikon **<sup>(i) </sup>** untuk melihat definisi metrik.
+    - **Konten yang penuh kebencian dan tidak adil**:
+        - **Nama kriteria**: Hate_and_unfairness
+        - **Pertanyaan**: \{\{item.question\}\}
 
-1. Lihat tab **Risiko dan keamanan** untuk melihat metrik yang terkait dengan konten yang berpotensi membahayakan.
-1. Lihat tab **kualitas AI (NLP**) untuk melihat metrik standar untuk model AI generatif.
-1. Gulir kembali ke bagian atas halaman jika perlu, lalu pilih tab **Data** untuk melihat data mentah dari evaluasi. Data mencakup metrik untuk setiap input serta penjelasan tentang alasan yang diterapkan model gpt-4o saat menilai respons.
+1. Pilih **Berikutnya** dan tinjau pengaturan evaluasi Anda. Anda seharusnya mengonfigurasi evaluasi untuk menggunakan himpunan data evaluasi perjalanan untuk mengevaluasi **model gpt-4o-mini**kesamaan semantik, relevansi, skor F1, dan bahasa yang penuh kebencian dan tidak adil.
+1. Beri evaluasi nama yang sesuai, dan **Kirimkan** untuk memulai proses evaluasi,lalu tunggu hingga selesai. Proses ini memerlukan waktu beberapa menit. Anda dapat menggunakan tombol **bilah Refresh** untuk memeriksa status.
 
-    ![Tangkapan layar data evaluasi di portal Azure AI Foundry.](./media/evaluation-data.png)
+1. Setelah evaluasi selesai, jika perlu, gulir ke bawah untuk meninjau hasilnya.
+
+    ![Tangkapan layar metrik evaluasi.](./media/ai-quality-metrics.png)
+
+1. Di bagian atas halaman,pilih halaman **Data** untuk melihat data mentah dari evaluasi. Data mencakup metrik untuk setiap input serta penjelasan tentang alasan yang diterapkan model gpt-4o saat menilai respons.
 
 ## Penghapusan
 

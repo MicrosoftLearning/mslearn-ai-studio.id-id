@@ -4,7 +4,7 @@ lab:
   description: Pelajari cara menggunakan alur perintah untuk mengelola dialog percakapan dan memastikan bahwa perintah dibuat dan diatur untuk hasil terbaik.
 ---
 
-# Menggunakan alur perintah untuk mengelola percakapan di aplikasi obrolan
+## Menggunakan alur perintah untuk mengelola percakapan di aplikasi obrolan
 
 Dalam latihan ini, Anda akan menggunakan alur perintah portal Azure AI Foundry untuk membuat aplikasi obrolan khusus yang menggunakan perintah pengguna dan riwayat obrolan sebagai input, lalu menggunakan model GPT dari Azure OpenAI untuk menghasilkan keluaran.
 
@@ -12,44 +12,32 @@ Latihan ini akan memakan waktu sekitar **30** menit.
 
 > **Catatan**: Beberapa teknologi yang digunakan dalam latihan ini sedang dalam pratinjau atau dalam pengembangan aktif. Anda mungkin mengalami beberapa perilaku, peringatan, atau kesalahan yang tidak terduga.
 
-## Membuat proyek Azure OpenAI
+## Membuat pusat penyimpanan AI dan proyek di Azure AI Foundry
 
-Mari kita mulai dengan membuat proyek Azure AI Foundry.
+Fitur Azure AI Foundry yang akan kita gunakan dalam latihan ini memerlukan proyek yang didasarkan pada sumber daya *hub* Azure AI Foundry.
 
-1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda. Tutup semua tip atau panel mulai cepat yang terbuka saat pertama kali Anda masuk, dan jika perlu, gunakan logo **Azure AI Foundry** di kiri atas untuk menavigasi ke halaman beranda, yang terlihat sama dengan gambar berikut:
+1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda. Tutup semua tips atau panel mulai cepat yang terbuka saat pertama kali Anda masuk, dan jika perlu, gunakan logo **Azure AI Foundry** di kiri atas untuk menavigasi ke beranda, yang tampilannya mirip dengan gambar berikut (tutup panel **Bantuan** jika terbuka):
 
     ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
-1. Di beranda, pilih **+ Buat proyek**.
-1. Di wizard **Buat proyek**, masukkan nama yang valid untuk proyek Anda dan jika hub yang telah ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
-1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
-    - **Nama hub**: *Nama yang valid untuk hub Anda*
+1. Di browser, navigasikan ke `https://ai.azure.com/managementCenter/allResources`dan pilih **Create**. Lalu pilih opsi untuk membuat **sumber daya hub AI** baru.
+1. Di wizard **Buat proyek**, masukkan nama yang valid untuk proyek Anda, dan gunakan tautan **Ganti nama hub** untuk menentukan nama yang valid untuk hub baru Anda. Perluas **opsi Tingkat Lanjut** untuk tentukan pengaturan proyek Anda sebagai berikut:
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
-    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4o** di jendela pembantu Lokasi dan gunakan wilayah yang direkomendasikan\*
-    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru*
-    - **Menyambungkan Azure AI Search**: Lewati koneksi
+    - **Lokasi**: AS Timur 2 atau Swedia Tengah (*Jika kemudian terjadi batas kuota telampau saat latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda*)
 
-    > \* Sumber daya Azure OpenAI dibatasi oleh kuota model regional. Jika batas kuota terlampaui di kemudian hari dalam latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
+    > **Catatan**: Jika Anda bekerja dengan berlangganan Azure di mana kebijakan digunakan untuk membatasi nama sumber daya yang diizinkan, Anda mungkin perlu menggunakan tautan di bagian bawah kotak dialog **untuk Membuat proyek baru** guna membuat hub menggunakan portal Azure.
 
-1. Pilih **Berikutnya** dan tinjau konfigurasi Anda. Lalu pilih **Buat** dan tunggu hingga prosesnya selesai.
-1. Saat proyek Anda dibuat, tutup tips apa pun yang ditampilkan dan tinjau halaman proyek di portal Azure AI Foundry, yang akan terlihat mirip dengan gambar berikut:
+    > **Tips**: Jika tombol **Buat** masih dinonaktifkan, pastikan untuk mengganti nama hub Anda menjadi nilai alfanumerik unik.
 
-    ![Tangkapan layar detail proyek Azure AI di portal Azure AI Foundry.](./media/ai-foundry-project.png)
+1. Tunggu proyek Anda dibuat.
 
 ## Mengonfigurasi otorisasi sumber daya
 
-Alat alur prompt di Azure AI Foundry membuat aset berbasis file yang menentukan alur prompt dalam folder di blob storage. Sebelum menjelajahi alur prompt, mari pastikan bahwa sumber daya Layanan Azure AI Anda memiliki akses yang diperlukan ke penyimpanan blob sehingga dapat membacanya.
+Alat alur prompt di Azure AI Foundry membuat aset berbasis file yang menentukan alur prompt dalam folder di blob storage. Sebelum menjelajahi alur perintah, mari pastikan bahwa sumber daya Layanan Azure AI Anda memiliki akses yang diperlukan ke penyimpanan blob agar dapat dibaca.
 
-1. Di portal Azure AI Foundry, di panel navigasi, pilih **Management center** dan lihat halaman detail untuk proyek Anda, yang terlihat mirip dengan gambar ini:
-
-    ![Cuplikan layar pusat manajemen.](./media/ai-foundry-manage-project.png)
-
-1. Di bawah **Grup Sumber Daya**, pilih grup sumber daya Anda untuk membukanya di portal Azure di tab browser baru; masuk dengan kredensial Azure Anda jika diminta dan tutup pemberitahuan selamat datang untuk melihat halaman grup sumber daya.
-
-    Grup sumber daya berisi semua sumber daya Azure untuk mendukung hub dan proyek Anda.
-
-1. Pilih **Azure AI Services** untuk hub Anda untuk membukanya. Kemudian perluas bagian **Di bawah Manajemen Sumber Daya** dan pilih halaman **Identitas** :
+1. Di tab peramban baru, buka [portal Azure](https://portal.azure.com) di `https://portal.azure.com`, masuk dengan kredensial Azure Anda jika diminta; dan lihat grup sumber daya yang berisi sumber daya pusat penyimpanan Azure AI Anda.
+1. Pilih sumber daya **Azure AI Foundry**pusat penyimpanan Anda untuk membukanya. Kemudian perluas bagian **Manajemen Sumber Daya** dan pilih halaman **Identitas**:
 
     ![Cuplikan layar halaman Identitas Layanan Azure AI di portal Azure.](./media/ai-services-identity.png)
 
@@ -62,8 +50,7 @@ Alat alur prompt di Azure AI Foundry membuat aset berbasis file yang menentukan 
 
     ![Cuplikan layar dari halaman kontrol akses akun penyimpanan pada portal Azure.](./media/assign-role-access.png)
 
-1. Saat Anda telah meninjau dan menetapkan akses peran untuk mengizinkan identitas terkelola Layanan Azure AI untuk membaca blob di akun penyimpanan, tutup tab portal Azure dan kembali ke portal Azure AI Foundry.
-1. Di portal Azure AI Foundry, di panel navigasi, pilih **Go to project** untuk kembali ke beranda proyek Anda.
+1. Saat Anda telah meninjau dan menetapkan akses peran untuk mengizinkan identitas yang dikelola Azure AI Foundry untuk membaca blob di akun penyimpanan, tutup tab portal Azure dan kembali ke portal Azure AI Foundry.
 
 ## Menyebarkan model AI generatif
 
@@ -93,6 +80,8 @@ Alur prompt menyediakan cara untuk mengatur perintah dan aktivitas lain untuk me
 1. Buat alur baru berdasarkan templat **Alur obrolan**, tentukan`Travel-Chat` sebagai nama folder.
 
     Alur obrolan sederhana dibuat untuk Anda.
+
+    > **Tips**: Jika terjadi kesalahan izin. Tunggu beberapa menit dan coba lagi, tentukan nama alur yang berbeda jika perlu.
 
 1. Untuk dapat menguji alur Anda, Anda memerlukan komputasi, dan mungkin perlu waktu beberapa saat untuk memulainya; jadi pilih **Start compute session** untuk memulainya saat Anda menjelajahi dan memodifikasi alur default.
 

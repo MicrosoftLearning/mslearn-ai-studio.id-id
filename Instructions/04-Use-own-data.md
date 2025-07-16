@@ -8,36 +8,31 @@ lab:
 
 Retrieval Augmented Generation (RAG) adalah teknik yang digunakan untuk membangun aplikasi yang mengintegrasikan data dari sumber data kustom ke dalam permintaan untuk model AI generatif. RAG adalah pola yang umum digunakan untuk mengembangkan aplikasi AI generatif - aplikasi berbasis obrolan yang menggunakan model bahasa untuk menafsirkan input dan menghasilkan respons yang sesuai.
 
-Dalam latihan ini, Anda akan menggunakan portal Azure AI Foundry dan Azure AI Foundry serta Azure OpenAI SDK untuk mengintegrasikan data khusus ke dalam aplikasi AI generatif.
+Dalam latihan ini, Anda akan menggunakan Azure AI Foundry untuk mengintegrasikan data khusus ke dalam solusi AI generatif.
 
 Latihan ini memakan waktu sekitar **45** menit.
 
-> **Catatan**: Latihan ini didasarkan pada SDK pra-rilis, yang mungkin dapat berubah. Jika perlu, kami telah menggunakan versi paket tertentu; yang mungkin tidak mencerminkan versi terbaru yang tersedia. Anda mungkin mengalami beberapa perilaku, peringatan, atau kesalahan tak terduga.
+> **Catatan**: Latihan ini didasarkan pada layanan pra-rilis, yang dapat berubah sewaktu-waktu.
 
-## Membuat proyek Azure OpenAI
+## Membuat hub dan proyek di Azure AI Foundry
 
-Mari kita mulai dengan membuat proyek Azure AI Foundry dan sumber daya layanan yang perlu didukungnya menggunakan data Anda sendiri - termasuk sumber daya Pencarian Azure AI.
+Fitur Azure AI Foundry yang akan kita gunakan dalam latihan ini memerlukan proyek yang didasarkan pada sumber daya *hub* Azure AI Foundry.
 
-1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda. Tutup semua tip atau panel mulai cepat yang terbuka saat pertama kali Anda masuk, dan jika perlu, gunakan logo **Azure AI Foundry** di kiri atas untuk menavigasi ke halaman beranda, yang terlihat sama dengan gambar berikut:
+1. Di browser web, buka [portal Azure AI Foundry](https://ai.azure.com) di `https://ai.azure.com` dan masuk menggunakan kredensial Azure Anda. Tutup semua tips atau panel mulai cepat yang terbuka saat pertama kali Anda masuk, dan jika perlu, gunakan logo **Azure AI Foundry** di kiri atas untuk menavigasi ke beranda, yang tampilannya mirip dengan gambar berikut (tutup panel **Bantuan** jika terbuka):
 
     ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
-1. Di beranda, pilih **+ Buat proyek**.
-1. Di wizard **Buat proyek**, masukkan nama proyek yang valid untuk proyek Anda, dan jika hub yang ada disarankan, pilih opsi untuk membuat yang baru. Kemudian tinjau sumber daya Azure yang akan dibuat secara otomatis untuk mendukung hub dan proyek Anda.
-1. Pilih **Kustomisasi** dan tentukan pengaturan berikut untuk hub Anda:
-    - **Nama hub** : *Nama yang valid untuk hub Anda*
+1. Di browser, navigasikan ke `https://ai.azure.com/managementCenter/allResources`dan pilih **Create**. Lalu pilih opsi untuk membuat **sumber daya hub AI** baru.
+1. Di wizard **Buat proyek** masukkan nama yang valid untuk proyek Anda dan pilih opsi untuk membut hub baru. Kemudian gunakan tautan **Ganti nama hub** untuk menentukan nama yang valid untuk hub baru Anda, perluas **opsi Tingkat lanjut**, dan tentukan pengaturan berikut untuk proyek Anda:
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
-    - **Lokasi**: Pilih **Bantu saya memilih** lalu pilih **gpt-4o** di jendela pembantu Lokasi dan gunakan wilayah yang direkomendasikan\*
-    - **Menyambungkan Layanan Azure AI atau Azure OpenAI**: *Membuat sumber daya Layanan AI baru*
-    - **Menyambungkan Pencarian Azure AI**: *Membuat sumber daya Pencarian Azure AI baru dengan nama unik*
+    - **Lokasi**: AS Timur 2 atau Swedia Tengah (*Jika kemudian terjadi batas kuota telampau saat latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda*)
 
-    > \* Sumber daya Azure OpenAI dibatasi oleh kuota model regional. Jika batas kuota terlampaui di kemudian hari dalam latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
+    > **Catatan**: Jika Anda bekerja dengan berlangganan Azure di mana kebijakan digunakan untuk membatasi nama sumber daya yang diizinkan, Anda mungkin perlu menggunakan tautan di bagian bawah kotak dialog **untuk Membuat proyek baru** guna membuat hub menggunakan portal Azure.
 
-1. Pilih **Berikutnya** dan tinjau konfigurasi Anda. Lalu pilih **Buat** dan tunggu hingga prosesnya selesai.
-1. Saat proyek Anda dibuat, tutup tips apa pun yang ditampilkan dan tinjau halaman proyek di portal Azure AI Foundry, yang akan terlihat mirip dengan gambar berikut:
+    > **Tips**: Jika tombol **Buat** masih dinonaktifkan, pastikan untuk mengganti nama hub Anda menjadi nilai alfanumerik unik.
 
-    ![Tangkapan layar detail proyek Azure AI di portal Azure AI Foundry.](./media/ai-foundry-project.png)
+1. Tunggu hingga proyek Anda dibuat, lalu navigasikan ke proyek Anda.
 
 ## Terapkan model
 
@@ -84,7 +79,15 @@ Setelah menambahkan sumber data ke proyek, Anda dapat menggunakannya untuk membu
         - **Sumber data**: Data di Azure AI Foundry
             - *Pilih ** sumber data brosur** *
     - **Konfigurasi indeks**:
-        - **Pilih Azure AI layanan Pencarian**: *Pilih **koneksi AzureAISearch** ke sumber daya Azure AI Search Anda*
+        - **Pilih layanan Pencarian Azure AI**: *Buat sumber daya Azure AI Search baru dengan pengaturan* berikut:
+            - **Langganan**: *Langganan Azure Anda*
+            - **Grup sumber daya**: *Grup sumber daya yang sama dengan hub AI Anda*
+            - **Nama layanan**: *Nama yang valid untuk Sumber Daya AI Search*
+            - **Lokasi**: *Lokasi yang sama dengan hub AI Anda*
+            - **Tingkat harga**: Dasar
+            
+            Tunggu hingga sumber daya AI Search dibuat. Kemudian kembali ke Azure AI Foundry dan selesaikan konfigurasi indeks dengan memilih **Hubungkan sumber daya Azure AI Search lainnya** dan tambahkan koneksi ke sumber daya AI Search yang baru saja Anda buat.
+ 
         - **Indeks vektor**: `brochures-index`
         - **Mesin virtual**: Pilih otomatis
     - **Pengaturan Pencarian**:
@@ -117,20 +120,15 @@ Sebelum menggunakan indeks Anda dalam alur prompt berbasis RAG, mari kita verifi
 1. Setelah indeks ditambahkan dan sesi obrolan dimulai ulang, kirim ulang perintah `Where can I stay in New York?`
 1. Tinjau respons, yang harus didasarkan pada data dalam indeks.
 
-## Membuat aplikasi klien RAG dengan Azure AI Foundry dan Azure OpenAI SDK
+## Membuat aplikasi klien RAG
 
-Sekarang setelah Anda memiliki indeks yang berfungsi, Anda dapat menggunakan Azure AI Foundry dan SDK Azure OpenAI untuk menerapkan pola RAG dalam aplikasi klien. Mari kita jelajahi kode untuk mencapainya dalam contoh sederhana.
+Sekarang setelah Anda memiliki indeks yang berfungsi, Anda dapat menggunakan Azure OpenAI SDK untuk menerapkan pola RAG dalam aplikasi klien. Mari kita jelajahi kode untuk mencapainya dalam contoh sederhana.
 
 > **Tips**: Anda dapat memilih untuk mengembangkan solusi Anda sendiri menggunakan Python atau Microsoft C#. Ikuti instruksi di bagian yang sesuai untuk bahasa yang Anda pilih.
 
 ### Menyiapkan konfigurasi aplikasi
 
-1. Di portal Azure AI Foundry, lihat halaman **Gambaran Umum** untuk proyek Anda.
-1. Di area **Detail proyek**, perhatikan **string koneksi Proyek**. Anda akan menggunakan string koneksi ini untuk menyambungkan ke proyek Anda di aplikasi klien.
-1. Buka tab browser baru (biarkan portal Azure AI Foundry tetap terbuka di tab yang sudah ada). Kemudian di tab baru, telusuri [Portal Azure](https://portal.azure.com) di `https://portal.azure.com`; masuk menggunakan kredensial Azure Anda jika diminta.
-
-    Tutup pemberitahuan selamat datang apa pun untuk melihat halaman beranda portal Azure.
-
+1. Kembali ke tab browser yang berisi portal Azure (biarkan portal Azure AI Foundry tetap terbuka di tab yang ada).
 1. Gunakan tombol **[\>_]** di sebelah kanan bilah pencarian di bagian atas halaman untuk membuat Cloud Shell baru di portal Azure, dengan memilih lingkungan ***PowerShell*** dengan tidak ada penyimpanan pada langganan Anda.
 
     Cloud shell menyediakan antarmuka baris perintah dalam panel di bagian bawah portal Azure. Anda dapat mengubah ukuran atau memaksimalkan panel ini untuk mempermudah pekerjaan.
@@ -166,22 +164,20 @@ Sekarang setelah Anda memiliki indeks yang berfungsi, Anda dapat menggunakan Azu
    cd mslearn-ai-foundry/labfiles/rag-app/c-sharp
     ```
 
-1. Di panel baris perintah cloud shell, masukkan perintah berikut untuk menginstal pustaka yang akan Anda gunakan:
+1. Di panel baris perintah cloud shell, masukkan perintah berikut untuk menginstal pustaka OpenAI SDK:
 
     **Python**
 
     ```
    python -m venv labenv
    ./labenv/bin/Activate.ps1
-   pip install python-dotenv azure-ai-projects azure-identity openai
+   pip install -r requirements.txt openai
     ```
 
     **C#**
 
     ```
-   dotnet add package Azure.Identity
-   dotnet add package Azure.AI.Projects --prerelease
-   dotnet add package Azure.AI.OpenAI --prerelease
+   dotnet add package Azure.AI.OpenAI
     ```
     
 
@@ -202,10 +198,13 @@ Sekarang setelah Anda memiliki indeks yang berfungsi, Anda dapat menggunakan Azu
     File dibuka dalam editor kode.
 
 1. Dalam file kode, ganti tempat penampung berikut: 
-    - **your_project_connection_string**: Ganti dengan string koneksi untuk proyek Anda (disalin dari halaman **Ikhtisar** proyek di portal Azure AI Foundry).
-    - **your_gpt_model_deployment** Ganti dengan nama yang Anda tetapkan untuk penerapan model **gpt-4o** Anda.
-    - **your_embedding_model_deployment**: Ganti dengan nama yang Anda tetapkan untuk penerapan model **text-embedding-ada-002** Anda.
-    - **your_index**: Ganti dengan nama indeks Anda (yang seharusnya `brochures-index`).
+    - **your_openai_endpoint**: Titik akhir Open AI dari halaman **Overview** proyek Anda di portal Azure AI Foundry (pastikan untuk memilih tab kemampuan **Azure OpenAI**, bukan kemampuan Azure AI Inference atau Azure AI Services).
+    - **your_openai_api_key** Kunci API Open AI dari halaman **Overview** proyek Anda di portal Azure AI Foundry (pastikan untuk memilih tab kemampuan **Azure OpenAI**, bukan kemampuan Azure AI Inference atau Azure AI Services).
+    - **your_chat_model**: Nama yang Anda tetapkan untuk penyebaran model **gpt-4o** Anda, dari halaman **Models + endpoints** di portal Azure AI Foundry (nama default-nya adalah `gpt-4o`).
+    - **your_embedding_model**: Nama yang Anda tetapkan untuk penerapan model **text-embedding-ada-002** Anda, dari halaman **Models + endpoints** di portal Azure AI Foundry (nama default-nya adalah `text-embedding-ada-002`).
+    - **** your_search_endpoint: URL untuk sumber daya Azure AI Search Anda. Anda akan menemukannya di **Management center** di portal Azure AI Foundry.
+    - **your_search_api_key**: Kunci API untuk sumber daya Azure AI Search Anda. Anda akan menemukannya di **Management center** di portal Azure AI Foundry.
+    - **your_index**: Ganti dengan nama indeks Anda dari halaman **Data + indexes** untuk proyek Anda di portal Azure AI Foundry (seharusnya `brochures-index`).
 1. Setelah Anda mengganti tempat penampung, di editor kode,gunakan perintah **CTRL+S** atau **Klik kanan > Simpan** untuk menyimpan perubahan Anda dan kemudian gunakan perintah **CTRL+Q** atau **Klik kanan > Keluar** untuk menutup editor kode sambil tetap membuka baris perintah cloud shell.
 
 ### Menjelajahi kode untuk mengimplementasikan pola RAG
@@ -225,10 +224,8 @@ Sekarang setelah Anda memiliki indeks yang berfungsi, Anda dapat menggunakan Azu
     ```
 
 1. Tinjau kode dalam file, dengan mencatat bahwa kode tersebut:
-    - Menggunakan Azure AI Foundry SDK untuk menyambungkan ke proyek Anda (menggunakan string koneksi proyek)
-    - Membuat klien Azure OpenAI terautentikasi dari koneksi proyek Anda.
-    - Mengambil koneksi Pencarian Azure AI default dari proyek Anda sehingga dapat menentukan titik akhir dan kunci untuk layanan Pencarian Azure AI Anda.
-    - Membuat pesan sistem yang sesuai.
+    - Membuat klien Azure OpenAI menggunakan titik akhir, kunci, dan model obrolan.
+    - Membuat pesan sistem yang sesuai untuk solusi obrolan terkait perjalanan.
     - Mengirimkan perintah (termasuk pesan sistem dan pesan pengguna berdasarkan masukan pengguna) ke klien Azure OpenAI, dengan menambahkan:
         - Detail koneksi untuk indeks Pencarian Azure AI yang akan ditanyakan.
         - Detail model penyematan yang akan digunakan untuk membuat vektor pertanyaan.\*.
