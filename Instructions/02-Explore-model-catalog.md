@@ -75,10 +75,7 @@ Untuk menggunakan model, Anda perlu membuat proyek* Azure AI Foundry*.
 
     > \* Sumber daya Azure OpenAI dibatasi oleh kuota model regional. Jika batas kuota terlampaui di kemudian hari dalam latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
 
-1. Pilih **Create**, lalu tunggu proyek Anda dibuat. Jika diminta, sebarkan model gpt-4o menggunakan jenis penyebaran **Standar global** dan sesuaikan detail penyebaran untuk mengatur **batas tarif Token per menit** 50K (atau maksimum yang tersedia jika kurang dari 50K).
-
-    > **Catatan**: Mengurangi TPM membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 50.000 TPM seharusnya cukup untuk data yang digunakan dalam latihan ini. Jika kuota yang tersedia lebih rendah dari ini, Anda akan dapat menyelesaikan latihan tetapi Anda mungkin mengalami kesalahan jika batas rate terlampaui.
-
+1. Pilih **Buat** dan tunggu untuk proyek Anda, termasuk penyebaran model gpt-4 yang dipilih untuk dibuat.
 1. Saat proyek Anda dibuat, ruang obrolan akan terbuka secara otomatis sehingga Anda dapat menguji model Anda:
 
     ![Cuplikan layar ruang obrolan proyek Azure AI Foundry.](./media/ai-foundry-chat-playground.png)
