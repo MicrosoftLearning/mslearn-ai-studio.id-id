@@ -34,7 +34,7 @@ Mari kita mulai dengan masuk ke portal Azure AI Foundry dan menjelajahi beberapa
     ![Tangkapan layar halaman tolak ukur model gpt-4o.](./media/gpt4-benchmarks.png)
 
 1. Gunakan panah belakang (**&larr;**) di samping judul halaman **gpt-4o** untuk kembali ke beranda katalog model.
-1. Cari `Phi-3.5-mini-instruct` dan lihat detail dan tolak ukur untuk model **Phi-3.5-mini-instruct**.
+1. Cari `Phi-4-mini-instruct` dan lihat detail dan tolak ukur untuk model **Phi-4-mini-instruct**.
 
 ## Membandingkan beberapa model
 
@@ -47,16 +47,14 @@ Anda telah meninjau dua model berbeda, yang keduanya dapat digunakan untuk mengi
 
 1. Di panel **Model untuk dibandingkan** di sebelah kiri, perhatikan bahwa Anda bisa memilih tugas populer, seperti *jawaban atas pertanyaan* untuk memilih model yang umum digunakan secara otomatis untuk tugas tertentu.
 1. Gunakan ikon **Hapus semua model** (&#128465;) untuk menghapus semua model yang telah dipilih sebelumnya.
-1. Gunakan tombol **+ Model untuk membandingkan** untuk menambahkan model **gpt-4o** ke dalam daftar. Kemudian gunakan tombol yang sama untuk menambahkan model **Phi-3.5-mini-instruct** ke daftar.
+1. Gunakan tombol **+ Model untuk membandingkan** untuk menambahkan model **gpt-4o** ke dalam daftar. Kemudian gunakan tombol yang sama untuk menambahkan model **Phi-4-mini-instruct** ke daftar.
 1. Tinjau bagan, yang membandingkan model berdasarkan **Indeks Kualitas** (skor standar yang menunjukkan kualitas model) dan **Biaya**. Anda dapat melihat nilai tertentu untuk model dengan menahan mouse di atas titik yang mewakilinya dalam bagan.
 
-    ![Tangkapan layar bagan perbandingan model untuk gpt-4o dan Phi-3.5-mini-instruct.](./media/comparison-chart.png)
+    ![Cuplikan layar bagan perbandingan model untuk gpt-4o dan Phi-4-mini-instruct.](./media/comparison-chart.png)
 
 1. Di menu dropdown **Sumbu-X**, di bawah **Kualitas**, pilih metrik berikut dan amati setiap bagan yang dihasilkan sebelum beralih ke bagan berikutnya:
     - Akurasi
-    - Koherensi
-    - Kelancaran
-    - Relevansi
+    - Indeks kualitas
 
     Berdasarkan tolok ukur, model gpt-4o terlihat seperti menawarkan performa keseluruhan terbaik, tetapi dengan biaya yang lebih tinggi.
 
@@ -77,7 +75,10 @@ Untuk menggunakan model, Anda perlu membuat proyek* Azure AI Foundry*.
 
     > \* Sumber daya Azure OpenAI dibatasi oleh kuota model regional. Jika batas kuota terlampaui di kemudian hari dalam latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
 
-1. Pilih **Buat** dan tunggu untuk proyek Anda, termasuk penyebaran model gpt-4 yang dipilih untuk dibuat.
+1. Pilih **Create**, lalu tunggu proyek Anda dibuat. Jika diminta, sebarkan model gpt-4o menggunakan jenis penyebaran **Standar global** dan sesuaikan detail penyebaran untuk mengatur **batas tarif Token per menit** 50K (atau maksimum yang tersedia jika kurang dari 50K).
+
+    > **Catatan**: Mengurangi TPM membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 50.000 TPM seharusnya cukup untuk data yang digunakan dalam latihan ini. Jika kuota yang tersedia lebih rendah dari ini, Anda akan dapat menyelesaikan latihan tetapi Anda mungkin mengalami kesalahan jika batas rate terlampaui.
+
 1. Saat proyek Anda dibuat, ruang obrolan akan terbuka secara otomatis sehingga Anda dapat menguji model Anda:
 
     ![Cuplikan layar ruang obrolan proyek Azure AI Foundry.](./media/ai-foundry-chat-playground.png)
@@ -103,27 +104,25 @@ Sekarang setelah Anda memiliki penyebaran model, Anda dapat menggunakan ruang ob
 
 ## Sebarkan model baru
 
-Saat Anda membuat proyek, **model gpt-4o** yang Anda pilih secara otomatis disebarkan. Mari kita sebarkan model ***Phi-3.5-mini-instruct** yang juga Anda pertimbangkan.
+Saat Anda membuat proyek, **model gpt-4o** yang Anda pilih secara otomatis disebarkan. Mari kita sebarkan model ***Phi-4-mini-instruct** yang juga Anda pertimbangkan.
 
 1. Di panel navigasi di sebelah kiri, di bawah **Aset saya**, pilih halaman **Model + titik akhir**.
-1. Di tab **Penyebaran model**, di daftar drop-down **+ Sebarkan model**, pilih **Sebarkan model dasar**. Kemudian cari `Phi-3.5-mini-instruct` dan konfirmasikan pilihan Anda.
+1. Di tab **Penyebaran model**, di daftar drop-down **+ Sebarkan model**, pilih **Sebarkan model dasar**. Kemudian cari `Phi-4-mini-instruct` dan konfirmasikan pilihan Anda.
 1. Setujui lisensi model.
-1. Sebarkan model **Phi-3.5-mini-instruct** dengan pengaturan berikut:
+1. Sebarkan model **Phi-4-mini-instruct** dengan pengaturan berikut:
     - **Nama penyebaran**: *Nama yang valid untuk penyebaran model Anda*
     - **Tipe penyebaran**: Standar Global
     - **Detail penyebaran**: *Gunakan pengaturan default*
 
 1. Tunggu hingga penerapan selesai.
 
-## Mengobrol dengan model *Phi-3.5*
+## Mengobrol dengan model *Phi-4*
 
 Sekarang mari kita mengobrol dengan model baru di ruang obrolan.
 
 1. Di bilah navigasi, pilih **Playground**. Lalu pilih **Playground obrolan**.
-1. Di ruang obrolan,pada **panel Penyiapan**, pastikan bahwa model Phi-3.5-mini-instruct** Anda **dipilih dan di bidang **Berikan instruksi model dan konteks** atur perintah sistem ke`You are an AI assistant that helps solve problems.` (perintah sistem yang sama dengan yang Anda gunakan untuk menguji model gpt-4o.)
-1. Pilih **Terapkan perubahan** untuk memperbarui perintah sistem.
-1. Pastikan bahwa sesi obrolan baru dimulai sebelum mengulangi perintah yang sama yang sebelumnya Anda gunakan untuk menguji model gpt-4.
-1. Di jendela kueri, masukkan kueri berikut ini
+1. Di playground obrolan, di panel **Penyiapan**, pastikan bahwa model **Phi-4-mini-instruct** Anda dipilih dan di kotak obrolan, berikan baris pertama sebagai `System message: You are an AI assistant that helps solve problems.` (permintaan sistem yang sama dengan yang Anda gunakan untuk menguji model gpt-4o, tetapi karena tidak ada pengaturan pesan sistem, kami menyediakannya di obrolan pertama untuk konteks.)
+1. Pada baris baru di jendela obrolan (di bawah pesan sistem Anda), masukkan kueri berikut
 
     ```
    I have a fox, a chicken, and a bag of grain that I need to take over a river in a boat. I can only take one thing at a time. If I leave the chicken and the grain unattended, the chicken will eat the grain. If I leave the fox and the chicken unattended, the fox will eat the chicken. How can I get all three things across the river without anything being eaten?

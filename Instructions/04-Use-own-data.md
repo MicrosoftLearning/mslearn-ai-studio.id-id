@@ -22,7 +22,7 @@ Fitur Azure AI Foundry yang akan kita gunakan dalam latihan ini memerlukan proye
 
     ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
-1. Di browser, navigasikan ke `https://ai.azure.com/managementCenter/allResources`dan pilih **Create**. Lalu pilih opsi untuk membuat **sumber daya hub AI** baru.
+1. Di browser, navigasikan ke `https://ai.azure.com/managementCenter/allResources` dan pilih **Buat baru**. Lalu pilih opsi untuk membuat **sumber daya hub AI** baru.
 1. Di wizard **Buat proyek** masukkan nama yang valid untuk proyek Anda dan pilih opsi untuk membut hub baru. Kemudian gunakan tautan **Ganti nama hub** untuk menentukan nama yang valid untuk hub baru Anda, perluas **opsi Tingkat lanjut**, dan tentukan pengaturan berikut untuk proyek Anda:
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
@@ -198,8 +198,8 @@ Sekarang setelah Anda memiliki indeks yang berfungsi, Anda dapat menggunakan Azu
     File dibuka dalam editor kode.
 
 1. Dalam file kode, ganti tempat penampung berikut: 
-    - **your_openai_endpoint**: Titik akhir Open AI dari halaman **Overview** proyek Anda di portal Azure AI Foundry (pastikan untuk memilih tab kemampuan **Azure OpenAI**, bukan kemampuan Azure AI Inference atau Azure AI Services).
-    - **your_openai_api_key** Kunci API Open AI dari halaman **Overview** proyek Anda di portal Azure AI Foundry (pastikan untuk memilih tab kemampuan **Azure OpenAI**, bukan kemampuan Azure AI Inference atau Azure AI Services).
+    - **your_openai_endpoint**: Titik akhir Open AI dari halaman **Sekilas** proyek Anda di portal Azure AI Foundry (pastikan untuk memilih tab kemampuan **Azure OpenAI**, bukan kemampuan Azure AI Inference atau Azure AI Service).
+    - **your_openai_api_key** Kunci API Open AI dari halaman **Sekilas** proyek Anda di portal Azure AI Foundry (pastikan untuk memilih tab kemampuan **Azure OpenAI**, bukan kemampuan Azure AI Inference atau Azure AI Service).
     - **your_chat_model**: Nama yang Anda tetapkan untuk penyebaran model **gpt-4o** Anda, dari halaman **Models + endpoints** di portal Azure AI Foundry (nama default-nya adalah `gpt-4o`).
     - **your_embedding_model**: Nama yang Anda tetapkan untuk penerapan model **text-embedding-ada-002** Anda, dari halaman **Models + endpoints** di portal Azure AI Foundry (nama default-nya adalah `text-embedding-ada-002`).
     - **** your_search_endpoint: URL untuk sumber daya Azure AI Search Anda. Anda akan menemukannya di **Management center** di portal Azure AI Foundry.
@@ -251,6 +251,8 @@ Sekarang setelah Anda memiliki indeks yang berfungsi, Anda dapat menggunakan Azu
     ```
    dotnet run
     ```
+
+    > **Tips**: Jika kesalahan kompilasi terjadi karena .NET versi 9.0 tidak diinstal, gunakan perintah `dotnet --version` untuk menentukan versi .NET yang diinstal di lingkungan Anda, lalu edit file **rag_app.csproj** di folder kode untuk memperbarui pengaturan **TargetFramework** yang sesuai.
 
 1. Saat diminta, masukkan pertanyaan, seperti `Where should I go on vacation to see architecture?` dan tinjau respons dari model AI generatif Anda.
 
