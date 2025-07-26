@@ -66,9 +66,9 @@ Mari kita mulai dengan menjelajahi portal Azure AI Foundry.
 
 1. Tutup halaman portal Azure dan kembali ke portal Azure AI Foundry.
 
-## Meninjau koneksi proyek
+## Meninjau titik akhir proyek
 
-Proyek Azure AI Foundry Anda dan sumber daya Azure AI Foundry yang dimilikinya menyertakan koneksi ke sumber daya yang dapat Anda gunakan dalam aplikasi AI.
+Proyek Azure AI Foundry mencakup sejumlah *titik akhir* yang dapat digunakan aplikasi klien untuk terhubung ke proyek dan model serta layanan AI yang disertakan.
 
 1. Di halaman Pusat Manajeman, pada panel navigasi, di bawah proyek Anda, pilih **Buka sumber daya**.
 1. Di halaman **Gambaran Umum** proyek, lihat **bagian Titik Akhir dan kunci**; yang berisi titik akhir dan kunci otorisasi yang dapat Anda gunakan dalam kode aplikasi Anda untuk mengakses:
