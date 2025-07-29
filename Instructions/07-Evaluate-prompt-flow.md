@@ -103,7 +103,7 @@ Evaluasi otomatis adalah pendekatan yang mencoba mengatasi kekurangan ini dengan
 1. Pilih **Berikutnya** untuk pindah ke halaman berikutnya.
 1. Pada halaman **Konfigurasi evaluator** , gunakan **tombol +Tambahkan** untuk menambahkan evaluator berikut, mengonfigurasi masing-masing sebagai berikut:
     - **Skor model**:
-        - **Nama kriteria**: Kesamaan_semantik
+        - **Nama kriteria**: *Pilih prasetel **Semantic_similarity***
         - **Nilai dengan**: *Pilih model gpt-4o** Anda ***
         - **Pengaturan pengguna** (di bagian bawah):
 
@@ -113,12 +113,12 @@ Evaluasi otomatis adalah pendekatan yang mencoba mengatasi kekurangan ini dengan
             <br>
         
     - **Evaluator skala likert**:
-        - **Nama kriteria: Relevansi**: 
+        - **Nama kriteria**: *Pilih prasetel **Relevance***
         - **Nilai dengan**: *Pilih model gpt-4o** Anda ***
         - **Pertanyaan**: \{\{item.question\}\}
 
     - **Kesamaan teks**:
-        - **Nama kriteria**: F1_Score
+        - **Nama kriteria**: *Pilih prasetel **F1_Score***
         - **Kebenaran dasar**: \{\{item. ExpectedResponse\}\}
 
     - **Konten yang penuh kebencian dan tidak adil**:

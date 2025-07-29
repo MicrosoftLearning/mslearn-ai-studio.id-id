@@ -10,9 +10,15 @@ Retrieval Augmented Generation (RAG) adalah teknik yang digunakan untuk membangu
 
 Dalam latihan ini, Anda akan menggunakan Azure AI Foundry untuk mengintegrasikan data khusus ke dalam solusi AI generatif.
 
-Latihan ini memakan waktu sekitar **45** menit.
+> **Catatan**: Kode dalam latihan ini didasarkan pada perangkat lunak SDK pra-rilis, yang mungkin dapat berubah. Jika perlu, kami telah menggunakan versi paket tertentu; yang mungkin tidak mencerminkan versi terbaru yang tersedia. Anda mungkin mengalami beberapa perilaku, peringatan, atau kesalahan tak terduga.
 
-> **Catatan**: Latihan ini didasarkan pada layanan pra-rilis, yang dapat berubah sewaktu-waktu.
+Meskipun latihan ini didasarkan pada Azure OpenAI Python SDK, Anda dapat mengembangkan aplikasi obrolan AI menggunakan beberapa SDK khusus bahasa; Termasuk:
+
+- [OpenAI untuk Python](https://pypi.org/project/openai/)
+- [Azure Open AI untuk Microsoft .NET](https://www.nuget.org/packages/Azure.AI.OpenAI)
+- [Azure OpenAI untuk TypeScript](https://www.npmjs.com/package/@azure/openai)
+
+Latihan ini memakan waktu sekitar **45** menit.
 
 ## Membuat hub dan proyek di Azure AI Foundry
 
@@ -124,8 +130,6 @@ Sebelum menggunakan indeks Anda dalam alur prompt berbasis RAG, mari kita verifi
 
 Sekarang setelah Anda memiliki indeks yang berfungsi, Anda dapat menggunakan Azure OpenAI SDK untuk menerapkan pola RAG dalam aplikasi klien. Mari kita jelajahi kode untuk mencapainya dalam contoh sederhana.
 
-> **Tips**: Anda dapat memilih untuk mengembangkan solusi Anda sendiri menggunakan Python atau Microsoft C#. Ikuti instruksi di bagian yang sesuai untuk bahasa yang Anda pilih.
-
 ### Menyiapkan konfigurasi aplikasi
 
 1. Kembali ke tab browser yang berisi portal Azure (biarkan portal Azure AI Foundry tetap terbuka di tab yang ada).
@@ -150,23 +154,11 @@ Sekarang setelah Anda memiliki indeks yang berfungsi, Anda dapat menggunakan Azu
 
 1. Setelah repositori dikloning, navigasikan ke folder yang berisi file kode aplikasi obrolan:
 
-    > **Catatan**: Ikuti langkah-langkah untuk bahasa pemrograman yang Anda pilih.
-
-    **Python**
-
     ```
    cd mslearn-ai-foundry/labfiles/rag-app/python
     ```
 
-    **C#**
-
-    ```
-   cd mslearn-ai-foundry/labfiles/rag-app/c-sharp
-    ```
-
 1. Di panel baris perintah cloud shell, masukkan perintah berikut untuk menginstal pustaka OpenAI SDK:
-
-    **Python**
 
     ```
    python -m venv labenv
@@ -174,30 +166,15 @@ Sekarang setelah Anda memiliki indeks yang berfungsi, Anda dapat menggunakan Azu
    pip install -r requirements.txt openai
     ```
 
-    **C#**
-
-    ```
-   dotnet add package Azure.AI.OpenAI
-    ```
-    
-
 1. Masukkan perintah berikut untuk mengedit file konfigurasi yang telah disediakan:
-
-    **Python**
 
     ```
    code .env
     ```
 
-    **C#**
-
-    ```
-   code appsettings.json
-    ```
-
     File dibuka dalam editor kode.
 
-1. Dalam file kode, ganti tempat penampung berikut: 
+1. Dalam file konfigurasi, ganti tempat penampung berikut: 
     - **your_openai_endpoint**: Titik akhir Open AI dari halaman **Sekilas** proyek Anda di portal Azure AI Foundry (pastikan untuk memilih tab kemampuan **Azure OpenAI**, bukan kemampuan Azure AI Inference atau Azure AI Service).
     - **your_openai_api_key** Kunci API Open AI dari halaman **Sekilas** proyek Anda di portal Azure AI Foundry (pastikan untuk memilih tab kemampuan **Azure OpenAI**, bukan kemampuan Azure AI Inference atau Azure AI Service).
     - **your_chat_model**: Nama yang Anda tetapkan untuk penyebaran model **gpt-4o** Anda, dari halaman **Models + endpoints** di portal Azure AI Foundry (nama default-nya adalah `gpt-4o`).
@@ -211,16 +188,8 @@ Sekarang setelah Anda memiliki indeks yang berfungsi, Anda dapat menggunakan Azu
 
 1. Masukkan perintah berikut untuk mengedit file kode yang telah disediakan:
 
-    **Python**
-
     ```
    code rag-app.py
-    ```
-
-    **C#**
-
-    ```
-   code Program.cs
     ```
 
 1. Tinjau kode dalam file, dengan mencatat bahwa kode tersebut:
@@ -240,19 +209,9 @@ Sekarang setelah Anda memiliki indeks yang berfungsi, Anda dapat menggunakan Azu
 
 1. Di panel baris perintah cloud shell, masukkan perintah berikut untuk menjalankan aplikasinya:
 
-    **Python**
-
     ```
    python rag-app.py
     ```
-
-    **C#**
-
-    ```
-   dotnet run
-    ```
-
-    > **Tips**: Jika kesalahan kompilasi terjadi karena .NET versi 9.0 tidak diinstal, gunakan perintah `dotnet --version` untuk menentukan versi .NET yang diinstal di lingkungan Anda, lalu edit file **rag_app.csproj** di folder kode untuk memperbarui pengaturan **TargetFramework** yang sesuai.
 
 1. Saat diminta, masukkan pertanyaan, seperti `Where should I go on vacation to see architecture?` dan tinjau respons dari model AI generatif Anda.
 
