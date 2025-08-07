@@ -147,7 +147,7 @@ Sekarang setelah Anda menyebarkan model, Anda dapat menggunakan Azure AI Foundry
 
     ```python
    # Get a chat client
-   openai_client = project_client.inference.get_azure_openai_client(api_version="2024-10-21")
+   openai_client = project_client.get_openai_client(api_version="2024-10-21")
     ```
 
 1. Temukan permintaan **Inisialisasi perintah dengan pesan sistem**, dan tambahkan kode berikut untuk menginisialisasi kumpulan pesan dengan perintah sistem.
