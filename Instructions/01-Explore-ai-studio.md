@@ -35,7 +35,7 @@ Mari kita mulai dengan menjelajahi portal Azure AI Foundry.
     - **Sumber daya Azure AI Foundry**: *Nama yang valid untuk sumber daya Azure AI Foundry Anda*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
-    - **Wilayah**: *Pilih **Lokasi yang didukung Layanan AI***\*
+    - **Wilayah**: *Pilih **AI Foundry yang direkomendasikan***\*
 
     > \* Sumber daya Azure OpenAI dibatasi oleh kuota model regional. Jika batas kuota terlampaui di kemudian hari dalam latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
 

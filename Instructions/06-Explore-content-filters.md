@@ -8,7 +8,7 @@ lab:
 
 Azure AI Foundr dilengkapi filter konten default untuk membantu memastikan bahwa perintah dan penyelesaian yang berpotensi berbahaya diidentifikasi dan dihapus dari interaksi dengan layanan. Selain itu, Anda dapat menetapkan filter konten khusus sesuai kebutuhan spesifik Anda untuk memastikan penerapan model Anda menggunakan prinsip AI yang bertanggung jawab dengan tepat dalam skenario AI generatif Anda. Pemfilteran konten adalah salah satu elemen pendekatan yang efektif untuk AI yang bertanggung jawab ketika bekerja dengan model AI generatif.
 
-Dalam latihan ini, Anda akan menjelajahi pengaruh filter konten default dalam Azure AI Foundry.
+Dalam latihan ini, Anda akan menjelajahi pengaruh filter konten dalam Azure AI Foundry.
 
 Latihan ini akan memakan waktu sekitar **25** menit.
 
@@ -22,34 +22,26 @@ Mari mulai dengan menyebarkan model dalam proyek Azure AI Foundry.
 
     ![Tangkapan layar portal Azure AI Foundry.](./media/ai-foundry-home.png)
 
-1. Di beranda, di bagian **Jelajahi model dan kapabilitas**, cari model `Phi-4`; yang akan digunakan dalam proyek kita.
-1. Dalam hasil pencarian, pilih model **Phi-4** untuk melihat detailnya, lalu di bagian atas halaman model, pilih **Use this model**.
-1. Saat diminta untuk membuat proyek, masukkan nama yang valid untuk proyek Anda dan perluas **Opsi tingkat lanjut**.
+1. Di beranda, pada bagian **Jelajahi model dan kemampuan** , cari`gpt-4o` model; yang akan kita gunakan dalam proyek kita.
+1. Dalam hasil pencarian, pilih **model gpt-4o** untuk melihat detailnya, lalu di bagian atas halaman untuk model, pilih **Gunakan model** ini.
+1. Saat diminta untuk membuat proyek, masukkan nama yang valid untuk proyek Anda dan perluas **opsi** Tingkat Lanjut.
 1. Pilih **Sesuaikan** dan tentukan pengaturan berikut untuk proyek Anda:
     - **Sumber daya Azure AI Foundry**: *Nama yang valid untuk sumber daya Azure AI Foundry Anda*
     - **Langganan**: *Langganan Azure Anda*
     - **Grup sumber daya**: *Buat atau pilih grup sumber daya*
-    - **Wilayah**: Pilih salah satu wilayah berikut\*:
-        - US Timur
-        - US Timur 2
-        - US Tengah Utara
-        - US Tengah Selatan
-        - Swedia Tengah
-        - US Barat
-        - US Barat 3
+    - **Wilayah**: *Pilih **AI Foundry yang direkomendasikan***\*
 
-    > \* Pada saat penulisan, model Microsoft *Phi-4* yang akan kita gunakan dalam latihan ini tersedia di wilayah ini. Anda dapat memeriksa ketersediaan regional terbaru untuk model tertentu dalam [dokumentasi Azure AI Foundry](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-serverless-availability#region-availability). Jika batas kuota tercapai di akhir latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
+    > \* Sumber daya Azure OpenAI dibatasi oleh kuota model regional. Jika batas kuota terlampaui di kemudian hari dalam latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
 
-1. Pilih **Create**, lalu tunggu proyek Anda dibuat.
-1. Ketika diminta dengan informasi Phi-4, setujui ketentuan penggunaan dan sebarkan model.
-1. Ketika model Anda disebarkan, pilih tombol biru di bagian atas info penyebaran untuk membuka playground.
-1. Di panel **Setup**, perhatikan nama penyebaran model Anda; yang seharusnya **Phi-4**.
+1. Pilih **Create**, lalu tunggu proyek Anda dibuat. Jika diminta, sebarkan model gpt-4o menggunakan jenis penyebaran **standar Global**.
+1. Saat model Anda disebarkan, model ditampilkan di taman bermain.
+1. Di panel **Penyiapan** , perhatikan nama penyebaran model Anda; yang seharusnya **gpt-4o**.
 
 ## Mengobrol menggunakan filter konten
 
-Model Phi-4 yang Anda sebarkan memiliki filter konten yang diterapkan secara default, yang memiliki sekumpulan filter seimbang yang dapat melarang konten yang paling berbahaya sekaligus memperbolehkan bahasa input dan output yang dianggap cukup aman.
+Model yang Anda sebarkan memiliki filter konten yang diterapkan secara default, yang memiliki sekumpulan filter seimbang yang dapat melarang konten yang paling berbahaya sekaligus memperbolehkan bahasa input dan output yang dianggap cukup aman.
 
-1. Di playground obrolan, pastikan model Phi-4 Anda dipilih.
+1. Di playground obrolan, pastikan model gpt-4o Anda dipilih.
 1. Kirim perintah berikut dan lihat responsnya:
 
     ```
@@ -93,15 +85,15 @@ Saat filter konten default tidak memenuhi kebutuhan Anda, Anda dapat membuat fil
     - **Seksual**: Bahasa yang eksplisit secara seksual atau kasar.
     - **Menyakiti diri sendiri**: Bahasa yang menggambarkan atau mendorong tindakan menyakiti diri sendiri.
 
-    Filter diterapkan untuk setiap kategori ini dalam perintah dan penyelesaian, berdasarkan ambang batas pemblokiran dengan tingkat keparahan **Blokir sedikit**dan **Blokir sebagian**, **Blokir semua** yang digunakan untuk menentukan jenis bahasa apa yang diterima dan dicegah oleh filter.
+    Filter diterapkan untuk setiap kategori ini dalam perintah dan penyelesaian, berdasarkan ambang batas pemblokiran yang digunakan untuk menentukan jenis bahasa apa yang diterima dan dicegah oleh filter.
 
     Selain itu, perlindungan*prompt shield* disediakan untuk mengurangi upaya yang disengaja untuk menyalahgunakan aplikasi AI generatif Anda.
 
-1. Mengubah ambang batas untuk setiap kategori filter input menjadi **Blokir semua**.
+1. Mengubah ambang batas untuk setiap kategori filter input menjadi ambang pemblokiran ***tertinggi.***
 
-1. Pada halaman **Filter output**, tinjau pengaturan yang dapat diterapkan pada respons output, lalu ubah ambang batas untuk setiap kategori menjadi **Blokir semua**.
+1. Pada halaman **Filter output**, tinjau pengaturan yang dapat diterapkan pada respons output, lalu ubah ambang batas untuk setiap kategori menjadi ambang pemblokiran ***tertinggi***.
 
-1. Pada halaman **Deployment**, pilih penyebaran model **Phi-4** Anda untuk menerapkan filter konten baru ke dalamnya dan mengonfirmasi bahwa Anda ingin mengganti filter konten yang ada saat diminta.
+1. Pada halaman **Deployment**, pilih penyebaran model **gpt-4o** Anda untuk menerapkan filter konten baru ke dalamnya dan mengonfirmasi bahwa Anda ingin mengganti filter konten yang ada saat diminta.
 
 1. Pada halaman **Review**, pilih **Create filter**, lalu tunggu filter konten yang akan dibuat.
 
@@ -119,7 +111,7 @@ Mari kita berdiskusi terakhir kali dengan model untuk melihat efek filter konten
    What should I do if I cut myself?
     ```
 
-    Kali ini, filter konten harus memblokir perintah tersebut atas dasar bahwa perintah tersebut dapat ditafsirkan sebagai referensi terhadap tindakan menyakiti diri sendiri.
+    Kali ini, filter konten mungkin memblokir perintah tersebut atas dasar bahwa perintah tersebut dapat ditafsirkan sebagai referensi terhadap tindakan menyakiti diri sendiri.
 
     > **Penting**: Jika Anda memiliki kekhawatiran tentang tindakan menyakiti diri sendiri atau masalah kesehatan mental lainnya, silakan cari bantuan profesional. Coba masukkan perintah `Where can I get help or support related to self-harm?`.
 
