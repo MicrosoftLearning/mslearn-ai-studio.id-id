@@ -175,8 +175,8 @@ Sekarang setelah Anda memiliki indeks yang berfungsi, Anda dapat menggunakan Azu
     File dibuka dalam editor kode.
 
 1. Dalam file konfigurasi, ganti tempat penampung berikut: 
-    - **your_openai_endpoint**: Titik akhir Open AI dari halaman **Sekilas** proyek Anda di portal Azure AI Foundry (pastikan untuk memilih tab kemampuan **Azure OpenAI**, bukan kemampuan Azure AI Inference atau Azure AI Service).
-    - **your_openai_api_key** Kunci API Open AI dari halaman **Sekilas** proyek Anda di portal Azure AI Foundry (pastikan untuk memilih tab kemampuan **Azure OpenAI**, bukan kemampuan Azure AI Inference atau Azure AI Service).
+    - **your_openai_endpoint**: Titik akhir Open AI dari halaman **Gambaran Umum** proyek Anda di portal Azure AI Foundry (pastikan untuk memilih tab kemampuan **Azure OpenAI**).
+    - **your_openai_api_key** Kunci API Open AI dari halaman **Gambaran Umum** proyek Anda di portal Azure AI Foundry (pastikan untuk memilih tab kemampuan **Azure OpenAI**).
     - **your_chat_model**: Nama yang Anda tetapkan untuk penyebaran model **gpt-4o** Anda, dari halaman **Models + endpoints** di portal Azure AI Foundry (nama default-nya adalah `gpt-4o`).
     - **your_embedding_model**: Nama yang Anda tetapkan untuk penerapan model **text-embedding-ada-002** Anda, dari halaman **Models + endpoints** di portal Azure AI Foundry (nama default-nya adalah `text-embedding-ada-002`).
     - **** your_search_endpoint: URL untuk sumber daya Azure AI Search Anda. Anda akan menemukannya di **Management center** di portal Azure AI Foundry.

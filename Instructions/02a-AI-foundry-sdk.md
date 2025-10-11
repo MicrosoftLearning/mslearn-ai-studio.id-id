@@ -37,15 +37,12 @@ Mari mulai dengan menyebarkan model dalam proyek Azure AI Foundry.
 
     > \* Sumber daya Azure OpenAI dibatasi oleh kuota model regional. Jika batas kuota terlampaui di kemudian hari dalam latihan, Anda mungkin perlu membuat sumber daya lain di wilayah yang berbeda.
 
-1. Pilih **Create**, lalu tunggu proyek Anda dibuat. Jika diminta, sebarkan model gpt-4o menggunakan jenis penyebaran **Standar global** dan sesuaikan detail penyebaran untuk mengatur **batas tarif Token per menit** 50K (atau maksimum yang tersedia jika kurang dari 50K).
+1. Pilih **Buat** dan tunggu untuk proyek Anda, termasuk penyebaran model gpt-4o yang dipilih untuk dibuat.
 
-    > **Catatan**: Mengurangi TPM membantu menghindari penggunaan berlebih kuota yang tersedia dalam langganan yang Anda gunakan. 50.000 TPM seharusnya cukup untuk data yang digunakan dalam latihan ini. Jika kuota yang tersedia lebih rendah dari ini, Anda akan dapat menyelesaikan latihan tetapi Anda mungkin mengalami kesalahan jika batas rate terlampaui.
+    > <font color="red"><b>PENTING</b>:</font> Bergantung pada kuota yang tersedia untuk model gpt-4o, Anda mungkin menerima permintaan tambahan untuk menyebarkan model ke sumber daya di wilayah yang berbeda. Jika ini terjadi, lakukan penyebaran, gunakan pengaturan default. Nanti dalam latihan, Anda <b><u>tidak</u></b> dapat menggunakan titik akhir proyek default - Anda harus menggunakan URI target khusus model.
 
-1. Saat proyek Anda dibuat, ruang obrolan akan terbuka secara otomatis sehingga Anda dapat menguji model Anda:
+1. Saat proyek Anda dibuat, playground obrolan akan dibuka secara otomatis sehingga Anda dapat menguji model Anda (jika tidak, di panel tugas di sebelah kiri, pilih **Playground** lalu buka **Playground obrolan**).
 1. Di panel **Penyiapan** , perhatikan nama penyebaran model Anda; yang seharusnya **gpt-4o**. Anda dapat mengonfirmasi ini dengan melihat penyebaran di **halaman Model dan titik** akhir (cukup buka halaman tersebut di panel navigasi di sebelah kiri).
-1. Di panel navigasi di sebelah kiri, pilih **Gambaran Umum** untuk melihat halaman utama untuk proyek Anda; yang terlihat seperti ini:
-
-    ![Tangkapan layar halaman gambaran umum proyek Azure AI Foundry .](./media/ai-foundry-project.png)
 
 ## Membuat aplikasi klien untuk mengobrol dengan model
 
@@ -105,7 +102,9 @@ Sekarang setelah Anda menyebarkan model, Anda dapat menggunakan Azure AI Foundry
 
     File dibuka dalam editor kode.
 
-1. Dalam file kode, ganti tempat penampung **your_project_endpoint** dengan **titik akhir proyek Azure AI Foundry** untuk proyek Anda (disalin dari halaman **Gambaran umum** di portal Azure AI Foundry); dan tempat penampung **your_model_deployment** dengan nama yang Anda tentukan ke penyebaran model gpt-4.
+    > <font color="red"><b>PENTING</b>:</font> Jika Anda menyebarkan model gpt-4o di wilayah default untuk proyek Anda, Anda dapat menggunakan <b>proyek Azure AI Foundry</b> atau titik akhir <b>Azure OpenAI</b> di halaman <b>Gambaran Umum</b> agar proyek Anda tersambung ke model Anda. Jika Anda memiliki kuota yang tidak mencukupi dan menyebarkan model ke wilayah lain, pada halaman <b>Model + Titik Akhir</b>, pilih model Anda dan gunakan <b>URI Target</b> untuk model Anda.
+
+1. Dalam file kode, ganti tempat penampung **your_project_endpoint** dengan titik akhir yang sesuai untuk model Anda, dan tempat penampung **your_model_deployment** dengan nama yang ditetapkan untuk penyebaran model gpt-4o Anda.
 1. Setelah Anda mengganti tempat penampung, gunakan perintah **CTRL+S** atau **Klik kanan > Simpan** untuk menyimpan perubahan Anda dan kemudian gunakan perintah **CTRL+Q** atau **Klik kanan > Keluar** untuk menutup editor kode sambil tetap membuka baris perintah cloud shell.
 
 ### Menulis kode untuk menyambungkan ke proyek Anda dan mengobrol dengan model Anda
