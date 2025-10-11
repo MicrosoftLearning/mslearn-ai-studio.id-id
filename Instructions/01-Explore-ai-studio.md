@@ -73,7 +73,7 @@ Mari kita mulai dengan menjelajahi portal Azure AI Foundry.
 
 Proyek Azure AI Foundry mencakup sejumlah *titik akhir* yang dapat digunakan aplikasi klien untuk terhubung ke proyek dan model serta layanan AI yang disertakan.
 
-1. Di halaman Pusat Manajeman, pada panel navigasi, di bawah proyek Anda, pilih **Buka sumber daya**.
+1. Di halaman Pusat manajemen, di panel navigasi, di bawah proyek Anda, pilih **Buka proyek**.
 1. Di halaman **Gambaran Umum** proyek, lihat **bagian Titik Akhir dan kunci**; yang berisi titik akhir dan kunci otorisasi yang dapat Anda gunakan dalam kode aplikasi Anda untuk mengakses:
     - Proyek Azure AI Foundry dan model apa pun yang disebarkan di dalamnya.
     - Azure OpenAI dalam model Azure AI Foundry.
