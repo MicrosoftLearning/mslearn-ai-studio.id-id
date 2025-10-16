@@ -46,7 +46,7 @@ Alat alur prompt di Azure AI Foundry membuat aset berbasis file yang menentukan 
 
     ![Cuplikan layar dari halaman kontrol akses akun penyimpanan pada portal Azure.](./media/storage-access-control.png)
 
-1. Tambahkan penetapan peran ke`Storage blob data reader` peran untuk identitas terkelola yang digunakan oleh sumber daya Layanan Azure AI Anda:
+1. Tambahkan penetapan peran ke peran `Storage blob data reader` untuk identitas terkelola yang digunakan oleh sumber daya proyek Azure AI Foundry Anda:
 
     ![Cuplikan layar dari halaman kontrol akses akun penyimpanan pada portal Azure.](./media/assign-role-access.png)
 

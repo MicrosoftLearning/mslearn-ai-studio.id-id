@@ -104,7 +104,7 @@ Saat filter konten default tidak memenuhi kebutuhan Anda, Anda dapat membuat fil
 Mari kita berdiskusi terakhir kali dengan model untuk melihat efek filter konten khusus.
 
 1. Pada panel navigasi, pilih **Playgrounds** dan buka **Chat playground**.
-1. Pastikan sesi baru telah dimulai dengan model Phi-4 Anda.
+1. Pastikan sesi baru telah dimulai dengan model GPT-4o Anda.
 1. Kirim perintah berikut dan lihat responsnya:
 
     ```
