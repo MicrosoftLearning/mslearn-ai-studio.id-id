@@ -1,3 +1,5 @@
+**⚠️ This GitHub repo will retire on 28th November 2025.**
+
 # Mengembangkan Solusi AI Generatif di Azure
 
 Latihan di repositori ini dirancang untuk memberikan pengalaman belajar praktis, di mana Anda akan mempelajari tugas-tugas umum yang dilakukan oleh pengembang saat membuat solusi AI generatif di Microsoft Azure.
